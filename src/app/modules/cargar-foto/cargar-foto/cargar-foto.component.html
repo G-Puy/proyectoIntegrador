@@ -1,0 +1,28 @@
+<!-- <input type="file" multiple="true" name="subiendo" #fotito (ngModel)=fotos>
+<button (click)="subirFoto()">SUBIR</button>
+
+ -->
+
+
+<div>
+    <h2>Cargar Imágenes</h2>
+    <input type="file" multiple (change)="onFileChange($event)">
+    <button (click)="uploadImages()">Subir Imágenes</button>
+</div>
+<div>
+
+    <img [src]="urlItems" *ngFor="let urlItems of arrayImagenes">
+</div>
+
+
+
+<div>
+
+    <input type="text" [(ngModel)]="nombreImagen">
+    <button (click)="recuperarImagen()">Recuperar imagen</button>
+
+</div>
+
+<div>
+    <app-card-producto></app-card-producto>
+</div>
