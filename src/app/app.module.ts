@@ -6,19 +6,21 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CargarFotoModule } from './modules/cargar-foto/cargar-foto.module';
 import { CardProductoComponent } from './components/CardProducto/card-producto.component';
-import { NavBarGlobalComponent } from './components/NavBarGlobal/nav-bar-global.component';
+import { NavBarGlobalComponent } from './modules/home/NavBarGlobal/nav-bar-global.component';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarGlobalComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CargarFotoModule,
-    HttpClientModule
+    HttpClientModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

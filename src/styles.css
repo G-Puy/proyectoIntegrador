@@ -2,7 +2,11 @@
 :root {
     --rosadoQueDiosa: #F67280;
     --negroQueDiosa: #2C2C2C;
-    --negroQueDiosaTransparente: #2c2c2cd3;
+    --negroQueDiosaTransparente: #2c2c2cc7;
+}
+
+.custom-dialog {
+    background: blue;
 }
 
 .fuenteLetra {
