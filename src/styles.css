@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+
 :root {
     --rosadoQueDiosa: #F67280;
     --negroQueDiosa: #2C2C2C;
     --negroQueDiosaTransparente: #2c2c2cc7;
+}
+
+.letraRosaDiosa {
+    color: var(--rosadoQueDiosa);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .custom-dialog {
@@ -22,4 +29,9 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 1.5rem !important;
+}
+
+.colorclass {
+    background: var(--negroQueDiosaTransparente);
+    /* background-color: red; */
 }

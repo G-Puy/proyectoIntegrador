@@ -8,7 +8,7 @@ import { CargarFotoModule } from './modules/cargar-foto/cargar-foto.module';
 import { CardProductoComponent } from './components/CardProducto/card-producto.component';
 import { NavBarGlobalComponent } from './modules/home/NavBarGlobal/nav-bar-global.component';
 import { HomeModule } from './modules/home/home.module';
-
+import { OverlayModule } from '@angular/cdk/overlay';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { HomeModule } from './modules/home/home.module';
     BrowserAnimationsModule,
     CargarFotoModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

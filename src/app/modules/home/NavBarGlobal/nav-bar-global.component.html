@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg justify-content-between align-items-center"
     style="background-color: var(--negroQueDiosa);">
     <span class="material-symbols-outlined col-1" style="color: var(--rosadoQueDiosa); font-size: 2rem; padding: 0;"
-        (click)="openDialogoClose()">
+        (click)="abrirMenu()">
         menu
     </span>
     <div>
@@ -19,6 +19,3 @@
         </span>
     </div>
 </nav>
-<div *ngIf="estadoDialogo" class="dialog-overlay" [ngClass]="{'show': estadoDialogo}">
-    <app-menu (closeDialog)="openDialogoClose()"></app-menu>
-</div>

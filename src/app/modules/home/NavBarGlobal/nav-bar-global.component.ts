@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MenuComponent } from '../Menu/menu.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-nav-bar-global',
@@ -8,30 +10,24 @@ import { MenuComponent } from '../Menu/menu.component';
   styleUrls: ['./nav-bar-global.component.css']
 })
 export class NavBarGlobalComponent {
-  constructor(public dialog: MatDialog, private ngZone: NgZone) { }
+  constructor(private overlay: Overlay) { }
 
   abrirMenu() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '100%'; // Establecer el ancho al 100%
-    dialogConfig.height = '100%'; // Establecer el alto al 100%
-    dialogConfig.panelClass = 'custom-dialog'; // Aplicar la clase de estilo personalizada
-    const dialogRef = this.dialog.open(MenuComponent, dialogConfig);
-  }
-  estadoDialogo: boolean = false;
-  openDialogoClose() {
 
-    if (this.estadoDialogo == true) {
+    const overlayRef = this.overlay.create({
+      hasBackdrop: true,
+      backdropClass: 'colorclass',
+      //panelClass: 'overlay-panel',
+      positionStrategy: this.overlay
+        .position()
+        .global()
+        .centerHorizontally()
+        .centerVertically(),
+    });
+    const dialogPortal = new ComponentPortal(MenuComponent);
+    overlayRef.attach(dialogPortal);
+    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
 
-      this.ngZone.run(() => {
-        this.estadoDialogo = false;
-      });
-
-    } else {
-      this.ngZone.run(() => {
-        this.estadoDialogo = true;
-      });
-
-    }
   }
 
 

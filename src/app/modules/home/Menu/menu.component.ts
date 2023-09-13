@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -6,12 +6,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-
-  @Output() closeDialog = new EventEmitter<void>();
-
-  onCloseClick() {
-    this.closeDialog.emit();
-  }
 
 
 

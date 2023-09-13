@@ -1,0 +1,21 @@
+.red-list ul>li>span:first-child {
+    color: red;
+}
+
+.centered-list {
+    text-align: center;
+}
+
+.centered-list ul {
+    display: inline-block;
+    text-align: left;
+}
+
+.blancLi ul>li {
+    color: white;
+}
+
+li {
+    text-decoration: none;
+    list-style-type: none;
+}
