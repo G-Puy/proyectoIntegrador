@@ -1,21 +1,25 @@
-.red-list ul>li>span:first-child {
-    color: red;
+.rosa>ul>li>span {
+    color: var(--rosadoQueDiosa);
+    font-size: 1.8rem;
 }
 
-.centered-list {
+.rosa>ul>li a {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.rosa {
+    padding-top: 4rem;
     text-align: center;
 }
 
-.centered-list ul {
-    display: inline-block;
-    text-align: left;
-}
-
-.blancLi ul>li {
-    color: white;
-}
-
-li {
-    text-decoration: none;
+.rosa ul {
+    padding: 0;
+    margin: 0;
     list-style-type: none;
+    text-decoration: none;
+}
+
+.rosa li {
+    margin-top: 0.3rem;
 }

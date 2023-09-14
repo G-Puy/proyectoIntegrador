@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MenuComponent } from '../Menu/menu.component';
-import { Overlay } from '@angular/cdk/overlay';
+import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
@@ -10,7 +10,10 @@ import { ComponentPortal } from '@angular/cdk/portal';
   styleUrls: ['./nav-bar-global.component.css']
 })
 export class NavBarGlobalComponent {
+
   constructor(private overlay: Overlay) { }
+
+
 
   abrirMenu() {
 
