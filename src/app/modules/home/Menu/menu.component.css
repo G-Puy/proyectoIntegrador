@@ -23,3 +23,29 @@
 .rosa li {
     margin-top: 0.3rem;
 }
+
+
+/* Agrega una clase CSS para el elemento ul */
+.scrollable-list {
+    max-height: 100vh;
+    /* Establece la altura máxima según tus necesidades */
+    overflow-y: scroll;
+    /* Muestra siempre la barra de desplazamiento, incluso cuando no es necesario */
+    scrollbar-width: thin;
+    /* Establece el ancho de la barra de desplazamiento */
+    scrollbar-color: transparent transparent;
+    /* Establece el color de la barra de desplazamiento */
+    /*  scroll-behavior: smooth !important; */
+    /* Agrega scroll suave */
+}
+
+/* Establece el color de fondo de la barra de desplazamiento para que coincida con el fondo */
+.scrollable-list::-webkit-scrollbar {
+    width: 5px;
+    /* Ancho de la barra de desplazamiento */
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Color del "pulgarcito" de la barra de desplazamiento */
+}
