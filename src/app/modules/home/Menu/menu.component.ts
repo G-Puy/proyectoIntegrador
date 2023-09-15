@@ -1,3 +1,4 @@
+import { OverlayRef } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
+  overlayRef!: OverlayRef; // Declara la propiedad overlayRef
 
-
+  constructor() { }
 
 }
