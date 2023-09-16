@@ -5,25 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CargarFotoModule } from './modules/cargar-foto/cargar-foto.module';
-import { CardProductoComponent } from './components/CardProducto/card-producto.component';
-import { NavBarGlobalComponent } from './modules/home/NavBarGlobal/nav-bar-global.component';
 import { HomeModule } from './modules/home/home.module';
-import { OverlayModule } from '@angular/cdk/overlay';
+import { OverlayModule, OverlayRef } from '@angular/cdk/overlay';
+
 @NgModule({
   declarations: [
     AppComponent,
 
+
   ],
   imports: [
     BrowserModule,
+    OverlayModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CargarFotoModule,
     HttpClientModule,
     HomeModule,
-    OverlayModule
+
+
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

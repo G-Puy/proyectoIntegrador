@@ -1,5 +1,5 @@
-import { OverlayRef } from '@angular/cdk/overlay';
-import { Component } from '@angular/core';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-
-  overlayRef!: OverlayRef; // Declara la propiedad overlayRef
-
-  constructor() { }
-
+  overlayRef: OverlayRef | undefined;
+  constructor(public oaverlayRef: Overlay) { }
+  @Output() cerrarOverlay: EventEmitter<void> = new EventEmitter<void>();
+  cerrar() {
+    this.cerrarOverlay.emit();
+    // this.overlayRef?.detach();
+  }
 }

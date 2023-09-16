@@ -1,8 +1,8 @@
-import { Component, NgZone } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MenuComponent } from '../Menu/menu.component';
-import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
+import { Component } from '@angular/core';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { MenuComponent } from '../Menu/menu.component';
+
 
 @Component({
   selector: 'app-nav-bar-global',
@@ -11,26 +11,35 @@ import { ComponentPortal } from '@angular/cdk/portal';
 })
 export class NavBarGlobalComponent {
 
-  constructor(private overlay: Overlay) { }
+  constructor(
+    private overlay: Overlay,
+  ) { }
 
 
 
   abrirMenu() {
 
-    const overlayRef = this.overlay.create({
+    const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
       backdropClass: 'colorclass',
-      //panelClass: 'overlay-panel',
       positionStrategy: this.overlay
         .position()
         .global()
         .centerHorizontally()
         .centerVertically(),
     });
-    const dialogPortal = new ComponentPortal(MenuComponent);
-    overlayRef.attach(dialogPortal);
-    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
 
+    const overlayRef = this.overlay.create(overlayConfig);
+    const portal = new ComponentPortal(MenuComponent);
+    const componentRef = overlayRef.attach(portal);
+    componentRef.instance.cerrarOverlay.subscribe(() => {
+      overlayRef.detach();
+    });
+    /* componentRef.instance.cerrarOverlay = () => {
+      overlayRef.detach();
+    }; */
+
+    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
 
