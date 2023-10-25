@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [],
@@ -9,12 +10,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
 
     FormsModule,
-    ReactiveFormsModule
-
+    //Material
+    ReactiveFormsModule,
+    MatExpansionModule
   ], exports: [
 
     FormsModule,
-    ReactiveFormsModule
+    //Material
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatTreeModule
   ]
 })
 export class SharedModule { }

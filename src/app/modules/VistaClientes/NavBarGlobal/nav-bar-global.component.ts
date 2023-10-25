@@ -26,7 +26,7 @@ export class NavBarGlobalComponent {
         .position()
         .global()
         .centerHorizontally()
-        .centerVertically(),
+      //.centerVertically(),
     });
 
     const overlayRef = this.overlay.create(overlayConfig);
@@ -35,9 +35,7 @@ export class NavBarGlobalComponent {
     componentRef.instance.cerrarOverlay.subscribe(() => {
       overlayRef.detach();
     });
-    /* componentRef.instance.cerrarOverlay = () => {
-      overlayRef.detach();
-    }; */
+
 
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }

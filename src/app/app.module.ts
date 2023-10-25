@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CargarFotoModule } from './modules/cargar-foto/cargar-foto.module';
-import { HomeModule } from './modules/home/home.module';
-import { OverlayModule, OverlayRef } from '@angular/cdk/overlay';
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { HomeModuleClientes } from './modules/VistaClientes/homeClientes.module';
+import { HomeEmpresaModule } from './modules/VistaEmpresa/home-empresa.module';
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,11 @@ import { OverlayModule, OverlayRef } from '@angular/cdk/overlay';
     BrowserAnimationsModule,
     CargarFotoModule,
     HttpClientModule,
-    HomeModule,
+    HomeModuleClientes,
+    HomeEmpresaModule,
+    RouterModule
+
+
 
 
   ],

@@ -4,6 +4,7 @@
 :root {
     --rosadoQueDiosa: #F67280;
     --negroQueDiosa: #2C2C2C;
+    --rosadoQueDiosaAl80: #f6727fe0;
     --negroQueDiosaTransparente: #2c2c2cc7;
 }
 
@@ -16,9 +17,16 @@
     background: blue;
 }
 
+
+
 .fuenteLetra {
     font-family: 'Audiowide';
 }
+
+.fuenteLetraRoboto {
+    font-family: 'Roboto', sans-serif !important;
+}
+
 
 html,
 body {
@@ -34,4 +42,10 @@ body {
 .colorclass {
     background: var(--negroQueDiosaTransparente);
     /* background-color: red; */
+}
+
+.sombra {
+    -webkit-box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
+    box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
 }
