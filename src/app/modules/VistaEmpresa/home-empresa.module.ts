@@ -7,6 +7,7 @@ import { HomeEmpresaModuleRoutingModule } from './home-empresa-routing.module';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from './pages/layout-empresa/layout-empresa.component';
 import { AgregarModificarProductoComponent } from './pages/productos/agregar-modificar-producto/agregar-modificar-producto.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -16,7 +17,8 @@ import { AgregarModificarProductoComponent } from './pages/productos/agregar-mod
     NavBarGlobalEmpresaComponent,
     ProductosComponent,
     LayoutEmpresaComponent,
-    AgregarModificarProductoComponent
+    AgregarModificarProductoComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

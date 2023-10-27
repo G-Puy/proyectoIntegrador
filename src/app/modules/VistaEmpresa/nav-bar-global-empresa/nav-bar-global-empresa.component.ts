@@ -10,23 +10,23 @@ import { Subscription, filter } from 'rxjs';
 export class NavBarGlobalEmpresaComponent {
   public subscriber: Subscription = new Subscription;
   constructor(private router: Router) { }
-  queMuestro: string = "/lEmpresa";
+  queMuestro: string = "/login";
   icono: string = "account_circle";
   ngOnInit() {
     this.subscriber = this.router.events.pipe(
       filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.queMuestro = event.url;
+      console.log(event.url);
 
 
 
-      this.icono = "arrow_back_ios";
+      //this.icono = "arrow_back_ios";
       /* if (event.url == "/lEmpresa") {
         this.icono = "account_circle";
       } else {
         this.icono = "arrow_back_ios";
       } */
-      //console.log(this.queMuestro);
     });
   }
 

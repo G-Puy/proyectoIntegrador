@@ -1,0 +1,22 @@
+.contenedorMenu {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.InputLogin {
+    height: 2.8rem;
+    width: 12rem;
+    background-color: var(--negroQueDiosa);
+    border: none;
+    border-bottom: 1px solid white;
+    box-sizing: unset;
+    color: var(--rosadoQueDiosa);
+}
+
+.centerBasico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

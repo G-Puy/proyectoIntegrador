@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'store',
     loadChildren: () => import('./modules/VistaClientes/homeClientes.module').then(m => m.HomeModuleClientes)
   },
-  { path: '', redirectTo: '/store', pathMatch: 'full' }, // Ruta predeterminada
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta predeterminada
   { path: '**', redirectTo: '/store' },
 ];
 

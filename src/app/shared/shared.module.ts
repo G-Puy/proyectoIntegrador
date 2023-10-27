@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTreeModule } from '@angular/material/tree';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [],
   imports: [
@@ -12,14 +13,19 @@ import { MatTreeModule } from '@angular/material/tree';
     FormsModule,
     //Material
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule,
+    MatFormFieldModule
+
   ], exports: [
 
     FormsModule,
     //Material
     ReactiveFormsModule,
     MatExpansionModule,
-    MatTreeModule
+    MatTreeModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class SharedModule { }
