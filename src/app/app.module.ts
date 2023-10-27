@@ -8,7 +8,8 @@ import { CargarFotoModule } from './modules/cargar-foto/cargar-foto.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { HomeModuleClientes } from './modules/VistaClientes/homeClientes.module';
 import { HomeEmpresaModule } from './modules/VistaEmpresa/home-empresa.module';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { RouterModule, Routes } from '@angular/router';
     HttpClientModule,
     HomeModuleClientes,
     HomeEmpresaModule,
-    RouterModule
+    RouterModule,
+
 
 
 

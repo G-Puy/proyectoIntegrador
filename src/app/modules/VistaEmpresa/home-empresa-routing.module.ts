@@ -3,14 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeEmpresaComponent } from "./pages/home-empresa/home-empresa.component";
 import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from "./pages/layout-empresa/layout-empresa.component";
+import { AgregarModificarProductoComponent } from "./pages/productos/agregar-modificar-producto/agregar-modificar-producto.component";
 
 const routes: Routes = [
     {
         path: '',
         component: LayoutEmpresaComponent,
         children: [
-            { path: 'productos', component: ProductosComponent },
             { path: '', component: HomeEmpresaComponent },
+            { path: 'productos', component: ProductosComponent },
+            { path: 'productos/amp', component: AgregarModificarProductoComponent },// AMP = Agregar Modificar Producto
             { path: '**', redirectTo: '' }
         ]
     }

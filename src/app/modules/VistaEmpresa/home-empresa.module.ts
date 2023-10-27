@@ -6,6 +6,7 @@ import { NavBarGlobalEmpresaComponent } from './nav-bar-global-empresa/nav-bar-g
 import { HomeEmpresaModuleRoutingModule } from './home-empresa-routing.module';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from './pages/layout-empresa/layout-empresa.component';
+import { AgregarModificarProductoComponent } from './pages/productos/agregar-modificar-producto/agregar-modificar-producto.component';
 
 
 
@@ -14,7 +15,8 @@ import { LayoutEmpresaComponent } from './pages/layout-empresa/layout-empresa.co
     HomeEmpresaComponent,
     NavBarGlobalEmpresaComponent,
     ProductosComponent,
-    LayoutEmpresaComponent
+    LayoutEmpresaComponent,
+    AgregarModificarProductoComponent
   ],
   imports: [
     CommonModule,
