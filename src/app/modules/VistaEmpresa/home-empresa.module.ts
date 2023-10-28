@@ -8,6 +8,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from './pages/layout-empresa/layout-empresa.component';
 import { AgregarModificarProductoComponent } from './pages/productos/agregar-modificar-producto/agregar-modificar-producto.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TallesComponent } from './pages/talles/talles.component';
 
 
 
@@ -18,7 +19,8 @@ import { LoginComponent } from './pages/login/login.component';
     ProductosComponent,
     LayoutEmpresaComponent,
     AgregarModificarProductoComponent,
-    LoginComponent
+    LoginComponent,
+    TallesComponent
   ],
   imports: [
     CommonModule,

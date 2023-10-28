@@ -15,16 +15,18 @@ import { ErrorStateMatcher } from '@angular/material/core';
 })
 export class LoginComponent implements OnInit {
 
-  formgrouplogin: FormGroup;
+  formGroupLogin: FormGroup;
   constructor(private formBuilder: FormBuilder) {
-    this.formgrouplogin = this.formBuilder.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required],
-    });
+    this.formGroupLogin = this.formBuilder.group({
+      usuario: [null, Validators.required],
+      password: [null, Validators.required]
+    })
+
   }
   ngOnInit() {
 
   }
+
 
   onSubmit() { }
 }

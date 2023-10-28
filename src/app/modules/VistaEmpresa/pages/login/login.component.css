@@ -5,18 +5,44 @@
     text-align: center;
 }
 
-.InputLogin {
-    height: 2.8rem;
-    width: 12rem;
-    background-color: var(--negroQueDiosa);
-    border: none;
-    border-bottom: 1px solid white;
-    box-sizing: unset;
-    color: var(--rosadoQueDiosa);
+.InputLogin::focus-visible {
+    border: none !important;
 }
 
 .centerBasico {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.inputBasicoLogin {
+
+    height: 3rem;
+    width: 15rem;
+    background: var(--negroQueDiosa);
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.inputBasicoLogin:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    background: rgba(161, 161, 161, 0.068);
+    border-radius: 10px;
+    color: var(--rosadoQueDiosa);
+}
+
+.btnLogin {
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background-color: var(--rosadoQueDiosa);
+    border: none;
+    color: white;
+    margin-top: 1.5rem;
+}
+
+.marginBotton {
+    margin-bottom: 2rem;
 }
