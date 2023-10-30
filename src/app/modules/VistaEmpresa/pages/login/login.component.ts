@@ -10,6 +10,8 @@ import {
 import { ErrorStateMatcher } from '@angular/material/core';
 import { LoginService } from './login.service';
 import { User } from 'src/app/interfaces/user.interfce';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 interface LoginForm {
   usuario: string;
   password: string;
@@ -23,9 +25,17 @@ interface LoginForm {
 
 export class LoginComponent implements OnInit {
 
+  user: User = {
+    id: 123,
+    usuario: 'pepe',
+    correo: 'pepe@gmail.com'
+
+  };
   formGroupLogin: FormGroup;
+  errorLogin: string = '';
   constructor(private formBuilder: FormBuilder,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private router: Router) {
     this.formGroupLogin = this.formBuilder.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -34,14 +44,26 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
 
-  }
-  /* onLogin(): void {
-    const formGroupLogin = this.formGroupLogin;
-    let usuario: string = formGroupLogin.get('usuario').value;
-    this.loginService.login(this.formGroupLogin.get('usuario').value, this.formGroupLogin.get('password').value)
-      .subscribe(user => { })
-  } */
 
-  onSubmit() { }
+  }
+  onLogin(): void {
+    const formGroupLogin = this.formGroupLogin;
+    let usuario: string = formGroupLogin.get('usuario')!.value;
+    this.loginService.login(this.formGroupLogin.get('usuario')!.value, this.formGroupLogin.get('password')!.value)
+      .subscribe(user => {
+
+        this.router.navigate(['/lEmpresa/homeEmpresa']);
+
+      })
+  }
+
+
+  onSubmit() {
+
+
+    localStorage.setItem('token', 'AdsafSADF234sdgfa$3ag43q2gsaf')
+    this.router.navigate(['/lEmpresa/homeEmpresa']);
+
+  }
 }
 

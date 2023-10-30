@@ -1,4 +1,4 @@
-<div class="col-md-12 p-0  " *ngIf="queMuestro != '/login'">
+<div class="col-md-12 p-0  " *ngIf="queMuestro != '/lEmpresa'">
     <nav class="navbar  justify-content-between align-items-center" style="background-color: var(--negroQueDiosa);">
         <!-- <span class="material-symbols-outlined col-1" style="color: var(--rosadoQueDiosa); font-size: 2rem; padding: 0;">
             menu
@@ -13,7 +13,8 @@
             </span>
             <a href="" class="fuenteLetra" style="color: var(--rosadoQueDiosa); margin-left: 0.5rem;">Que Diosa</a>
         </div>
-        <span class="material-symbols-outlined" style="color: var(--rosadoQueDiosa); font-size: 2rem;">
+        <span class="material-symbols-outlined" style="color: var(--rosadoQueDiosa); font-size: 2rem;"
+            (click)="logOut()">
             logout
         </span>
     </nav>

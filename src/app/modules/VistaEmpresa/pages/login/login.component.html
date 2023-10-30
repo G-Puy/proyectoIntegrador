@@ -29,7 +29,7 @@
 
 
 <div style="background: var(--negroQueDiosa); width: 100%; height: 100%;">
-    <div class="contenedorMenu" style="padding-top: 10rem;">
+    <div class="contenedorMenu" style="padding-top: 7rem;">
         <span class="contenedorMenu">
             <img src="../../../assets/imgs/logoSinTexto.png" alt="logo" width="250" height="250">
         </span>
@@ -55,7 +55,10 @@
                 </div>
             </div>
             <div>
-                <button class="btnLogin sombra" style="">INGRESAR</button>
+                <span *ngIf="errorLogin != ''">
+                    <p></p>
+                </span>
+                <button class="btnLogin sombra" (click)="onSubmit()">INGRESAR</button>
             </div>
         </form>
     </div>
