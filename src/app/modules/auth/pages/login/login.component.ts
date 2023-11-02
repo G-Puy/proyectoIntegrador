@@ -8,10 +8,10 @@ import {
   Validators
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { LoginService } from './login.service';
 import { User } from 'src/app/interfaces/user.interfce';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 interface LoginForm {
   usuario: string;
   password: string;
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   formGroupLogin: FormGroup;
   errorLogin: string = '';
   constructor(private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private loginService: AuthService,
     private router: Router) {
     this.formGroupLogin = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit() {
-
+    console.log('LOGIN >>');
 
   }
   onLogin(): void {
@@ -51,19 +51,14 @@ export class LoginComponent implements OnInit {
     let usuario: string = formGroupLogin.get('usuario')!.value;
     this.loginService.login(this.formGroupLogin.get('usuario')!.value, this.formGroupLogin.get('password')!.value)
       .subscribe(user => {
-
         this.router.navigate(['/lEmpresa/homeEmpresa']);
-
       })
   }
 
 
   onSubmit() {
-
-
     localStorage.setItem('token', 'AdsafSADF234sdgfa$3ag43q2gsaf')
     this.router.navigate(['/lEmpresa/homeEmpresa']);
-
   }
 }
 

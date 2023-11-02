@@ -23,6 +23,7 @@ export class LoginService {
         tap(resp => this.user = resp),
         tap(user => localStorage.setItem('token', user.id.toString()))
       )
+
   }
 
   logOut() {
@@ -31,7 +32,7 @@ export class LoginService {
   }
 
   checkAuthentication(): Observable<boolean> {
-    if (!localStorage.getItem('token')) return of(false);
+    if (!localStorage.getItem('token')) return of(true);
     const token = localStorage.getItem('token');
     return this.http.get<User>(`${this.baseURL}/usrs/1`)
       .pipe(

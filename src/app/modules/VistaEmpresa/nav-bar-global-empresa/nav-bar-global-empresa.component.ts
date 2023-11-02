@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, Event } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
-import { LoginService } from '../pages/login/login.service';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar-global-empresa',
@@ -11,7 +11,7 @@ import { LoginService } from '../pages/login/login.service';
 export class NavBarGlobalEmpresaComponent {
   public subscriber: Subscription = new Subscription;
   constructor(private router: Router,
-    private loginService: LoginService) { }
+    private auth: AuthService) { }
   queMuestro: string = "/lEmpresa";
   icono: string = "account_circle";
   ngOnInit() {
@@ -39,7 +39,7 @@ export class NavBarGlobalEmpresaComponent {
   }
 
   logOut() {
-    this.loginService.logOut();
+    this.auth.logOut();
     this.router.navigate(['/lEmpresa']);
   }
 
