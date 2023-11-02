@@ -35,7 +35,7 @@ export class AuthGuard implements CanMatch, CanActivate {
         console.log({ route, segments });
         // throw new Error('Method not implemented.');
 
-        return false;
+        return true;
         // return this.checkAuthStatus();
     }
 
@@ -43,7 +43,7 @@ export class AuthGuard implements CanMatch, CanActivate {
         console.log('CanActivate');
         console.log(route, state);
         // throw new Error('Method not implemented.');
-        return false;
+        return true;
 
         //  return this.checkAuthStatus();
     }
