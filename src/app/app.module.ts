@@ -10,11 +10,10 @@ import { HomeModuleClientes } from './modules/VistaClientes/homeClientes.module'
 import { HomeEmpresaModule } from './modules/VistaEmpresa/home-empresa.module';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -25,12 +24,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     HomeModuleClientes,
     HomeEmpresaModule,
-    RouterModule,
-
-
-
-
-
+    RouterModule
   ],
   providers: [
   ],

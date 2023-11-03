@@ -5,6 +5,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from "./pages/layout-empresa/layout-empresa.component";
 import { AgregarModificarProductoComponent } from "./pages/productos/agregar-modificar-producto/agregar-modificar-producto.component";
 import { LoginComponent } from "../auth/pages/login/login.component";
+import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
 
 const routes: Routes = [
     {
@@ -14,6 +15,7 @@ const routes: Routes = [
             { path: '', component: HomeEmpresaComponent },
             { path: 'productos', component: ProductosComponent },
             { path: 'productos/amp', component: AgregarModificarProductoComponent },// AMP = Agregar Modificar Producto
+            { path: 'tipoProductos', component: TipoProductoComponent },
             { path: '**', redirectTo: '' }
         ]
     }

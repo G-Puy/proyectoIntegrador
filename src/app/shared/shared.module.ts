@@ -6,9 +6,12 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
 
@@ -18,7 +21,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+
+
+
 
   ], exports: [
 
@@ -29,7 +38,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTreeModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule
   ]
 })
 export class SharedModule { }

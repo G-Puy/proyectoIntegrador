@@ -8,6 +8,8 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { LayoutEmpresaComponent } from './pages/layout-empresa/layout-empresa.component';
 import { AgregarModificarProductoComponent } from './pages/productos/agregar-modificar-producto/agregar-modificar-producto.component';
 import { TallesComponent } from './pages/talles/talles.component';
+import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 
@@ -18,15 +20,18 @@ import { TallesComponent } from './pages/talles/talles.component';
     ProductosComponent,
     LayoutEmpresaComponent,
     AgregarModificarProductoComponent,
-    TallesComponent
+    TallesComponent,
+    TipoProductoComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    HomeEmpresaModuleRoutingModule
+    HomeEmpresaModuleRoutingModule,
+    ComponentsModule
   ],
   exports: [
-    NavBarGlobalEmpresaComponent, HomeEmpresaComponent
+    NavBarGlobalEmpresaComponent,
+    HomeEmpresaComponent
   ]
 })
 export class HomeEmpresaModule { }

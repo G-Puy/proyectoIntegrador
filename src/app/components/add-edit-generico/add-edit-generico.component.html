@@ -1,0 +1,10 @@
+<div mat-dialog>
+    <h1 mat-dialog-title>{{textoMostrar}}</h1>
+    <div mat-dialog-content>
+        <input matInput [(ngModel)]="valorInput" placeholder="Texto">
+    </div>
+    <div>
+        <button mat-button (click)="cancel()">Cancelar</button>
+        <button mat-button (click)="accept()">Aceptar</button>
+    </div>
+</div>
