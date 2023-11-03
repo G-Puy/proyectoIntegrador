@@ -29,7 +29,7 @@ export class CargarFotoComponent {
 
 
     this.ServicioFoto.subirFoto(this.imagenesTest.nativeElement.files!).subscribe(data => {
-      console.log(data);
+      //console.log(data);
     });
 
   }
@@ -112,11 +112,11 @@ export class CargarFotoComponent {
       .subscribe(imgBinario => {
 
         // const base64String = btoa(String.fromCharCode.apply(null, imgBinario.datos));
-        console.log(imgBinario);
+        //  console.log(imgBinario);
         this.arrayImagenes.push(`data:image/jpeg;base64,${imgBinario.fileContents}`);
 
       }, error => {
-        console.error('Error al cargar imágenes:', error);
+        //    console.error('Error al cargar imágenes:', error);
       });
 
 

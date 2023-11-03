@@ -31,8 +31,8 @@ export class AuthGuard implements CanMatch, CanActivate {
 
 
     canMatch(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> {
-        console.log('CanMatch');
-        console.log({ route, segments });
+        //  console.log('CanMatch');
+        //  console.log({ route, segments });
         // throw new Error('Method not implemented.');
 
         return true;
@@ -40,8 +40,8 @@ export class AuthGuard implements CanMatch, CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        console.log('CanActivate');
-        console.log(route, state);
+        //  console.log('CanActivate');
+        //   console.log(route, state);
         // throw new Error('Method not implemented.');
         return true;
 
