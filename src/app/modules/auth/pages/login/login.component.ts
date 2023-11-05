@@ -8,7 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { User } from 'src/app/interfaces/user.interfce';
+import { DTOUsuario } from 'src/app/interfaces/usuario.interfce';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
@@ -25,16 +25,12 @@ interface LoginForm {
 
 export class LoginComponent implements OnInit {
 
-  user: User = {
-    id: 123,
-    usuario: 'pepe',
-    correo: 'pepe@gmail.com'
 
-  };
   formGroupLogin: FormGroup;
   errorLogin: string = '';
-  constructor(private formBuilder: FormBuilder,
-    private loginService: AuthService,
+  constructor(
+    private formBuilder: FormBuilder,
+    private autServ: AuthService,
     private router: Router) {
     this.formGroupLogin = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -47,18 +43,15 @@ export class LoginComponent implements OnInit {
 
   }
   onLogin(): void {
-    const formGroupLogin = this.formGroupLogin;
-    let usuario: string = formGroupLogin.get('usuario')!.value;
-    this.loginService.login(this.formGroupLogin.get('usuario')!.value, this.formGroupLogin.get('password')!.value)
+    this.autServ.login(this.formGroupLogin.get('usuario')!.value, this.formGroupLogin.get('password')!.value)
       .subscribe(user => {
-        this.router.navigate(['/lEmpresa/homeEmpresa']);
+        if (user != null) {
+          this.router.navigate(['/lEmpresa']);
+        }
       })
   }
 
 
-  onSubmit() {
-    localStorage.setItem('token', 'AdsafSADF234sdgfa$3ag43q2gsaf')
-    this.router.navigate(['/lEmpresa/homeEmpresa']);
-  }
+
 }
 

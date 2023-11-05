@@ -33,7 +33,7 @@
         <span class="contenedorMenu">
             <img src="../../../assets/imgs/logoSinTexto.png" alt="logo" width="250" height="250">
         </span>
-        <form class="example-form" [formGroup]="formGroupLogin" (ngSubmit)="onSubmit()" style="margin-top: 4rem;">
+        <form class="example-form" [formGroup]="formGroupLogin" style="margin-top: 4rem;">
             <div class="centerBasico marginBotton">
                 <span class="material-symbols-outlined centerBasico"
                     style="color: var(--rosadoQueDiosa); margin-right: 1rem; font-size: 2.5rem;">
@@ -58,7 +58,7 @@
                 <span *ngIf="errorLogin != ''">
                     <p></p>
                 </span>
-                <button class="btnLogin sombra" (click)="onSubmit()">INGRESAR</button>
+                <button class="btnLogin sombra" (click)="onLogin()">INGRESAR</button>
             </div>
         </form>
     </div>

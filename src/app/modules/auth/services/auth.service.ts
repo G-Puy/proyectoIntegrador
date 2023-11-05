@@ -1,43 +1,59 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
-import { User } from 'src/app/interfaces/user.interfce';
+import { DTOUsuario, DTOUsuarioLogin } from 'src/app/interfaces/usuario.interfce';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseURL = '';
-  private user?: User;
+  apiUrl = 'https://localhost:7202/';
+  private usuarioLogin: DTOUsuarioLogin | null = null;
+  private usuarioLogeado: DTOUsuario | null = null;
+  error: string = '';
   constructor(private http: HttpClient) {
+
   }
-  get currentUser(): User | undefined {
-    if (!this.user) return undefined;
-    return structuredClone(this.user);//Puede llegar a no funcionar por compatibilidad
+  get currentUser(): DTOUsuario | null {
+    if (!this.usuarioLogeado) return null;
+    return structuredClone(this.usuarioLogeado);//Puede llegar a no funcionar por compatibilidad
   }
 
-  login(usuario: string, password: string): Observable<User> {
-    //http.post('login',{usuario, password});
-    return this.http.get<User>(`${this.baseURL}/users/1`)
+  login(NombreDeUsuario: string, Contrasenia: string): Observable<DTOUsuario> {
+    // this.usuarioLogin = {
+    //   NombreDeUsuario: usuario,
+    //   Contrasenia: contrasenia
+    // }
+    const body = this.usuarioLogin;
+    return this.http.post<DTOUsuario>(`${this.apiUrl}api/Usuario/login`, { NombreDeUsuario, Contrasenia })
       .pipe(
-        tap(resp => this.user = resp),
-        tap(user => localStorage.setItem('token', user.id.toString()))
+        tap(resp => this.usuarioLogeado = resp), //si viene null viene null (?)
+        tap(user => {
+          if (user != null) {
+            localStorage.setItem('token', user.contrasenia.toString());
+            console.log(localStorage.getItem('token'));
+            localStorage.setItem('username', user.nombreDeUsuario.toString());
+          }
+        })
+
       )
 
   }
 
   logOut() {
-    this.user = undefined;
+    this.usuarioLogin = null;
     localStorage.clear();
   }
 
   checkAuthentication(): Observable<boolean> {
-    if (!localStorage.getItem('token')) return of(true);
+    if (!localStorage.getItem('token')) return of(false);
     const token = localStorage.getItem('token');
-    return this.http.get<User>(`${this.baseURL}/usrs/1`)
+    const nombreDeUsuario = localStorage.getItem('username');
+    return this.http.get<DTOUsuario>(`${this.apiUrl}api/Usuario/confirmarToken?token=${token}&nombreDeUsuario=${nombreDeUsuario}`)
       .pipe(
-        tap(user => this.user = user),
+        tap(user => this.usuarioLogeado = user),
         map(user => !!user),
         catchError(err => of(false))
       );

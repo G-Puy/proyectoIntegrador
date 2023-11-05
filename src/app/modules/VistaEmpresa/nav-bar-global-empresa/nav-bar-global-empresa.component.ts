@@ -39,7 +39,7 @@ export class NavBarGlobalEmpresaComponent {
 
   logOut() {
     this.auth.logOut();
-    this.router.navigate(['/lEmpresa']);
+    this.router.navigate(['/auth/login']);
   }
 
   action() {
@@ -56,6 +56,5 @@ export class NavBarGlobalEmpresaComponent {
   goBack(): void {
     this.location.back();
   }
-
 
 }

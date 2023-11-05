@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanMatch, CanActivate {
+export class PublicGuard implements CanMatch, CanActivate {
 
     constructor(
         private http: HttpClient,
@@ -19,10 +19,11 @@ export class AuthGuard implements CanMatch, CanActivate {
         return this.auth.checkAuthentication()
             .pipe(
                 tap(estaAutenticado => {
-                    if (!estaAutenticado) {
-                        this.router.navigate(['/auth/login']);
+                    if (estaAutenticado) {
+                        this.router.navigate(['./']);
                     }
-                })
+                }),
+                map(esAutenticado => !esAutenticado)
             )
     }
 
