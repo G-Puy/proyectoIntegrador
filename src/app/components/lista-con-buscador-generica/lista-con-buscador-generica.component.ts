@@ -3,6 +3,7 @@ import { Component, Inject, OnInit, ViewChild, Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Data } from '@angular/router';
 export interface Element {
   nombreTipoPrenda: string;
 }
@@ -13,7 +14,9 @@ export interface Element {
 })
 export class ListaConBuscadorGenericaComponent implements OnInit {
   @Input() seccionOrigen!: string;
-
+  @Input() textoSeccion!: string;
+  textoBtn: string = "Agregar nuevo";
+  muestroBuscador: boolean = false;
 
   ELEMENT_DATA: Element[] = [
     { nombreTipoPrenda: 'Top' },
@@ -29,11 +32,18 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   dataSourceOriginal;
   constructor() {
     // este array va a ser sumplantado por el servicio necesario segun orgien.
-
     this.dataSourceOriginal = this.ELEMENT_DATA;
   }
-  ngOnInit() {
 
+
+  ngOnInit() {
+    console.log(this.seccionOrigen);
+    switch (this.seccionOrigen) {
+
+      case 'tipoproducto':
+        this.muestroBuscador = true;
+        break;
+    }
     this.dataSource.sort = this.sort;
     this.dataSource.sort.active = 'nombreTipoPrenda';
     this.dataSource.sort.direction = 'asc';

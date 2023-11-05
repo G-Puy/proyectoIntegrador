@@ -1,7 +1,7 @@
 <div class="text-center">
-    <h1>{{seccionOrigen}}</h1>
+    <h1>{{textoSeccion}}</h1>
 </div>
-<div style="display: flex; justify-content: center; align-items: center;">
+<div *ngIf="seccionOrigen == 'tipoproducto'" style="display: flex; justify-content: center; align-items: center;">
     <input matInput type="text" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo" style="max-width: 12rem;">
     <button mat-button (click)="filtrar()">Aceptar</button>
 </div>
@@ -27,3 +27,12 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+<div class="fixedAbajoDerecha" style="gap: 0.5rem;">
+    <button class="btnAddCircular sombra">
+        <span class="material-symbols-outlined ">
+            add
+        </span>
+    </button>
+
+
+</div>
