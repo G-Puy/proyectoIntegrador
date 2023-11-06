@@ -22,10 +22,6 @@ export class AuthService {
   }
 
   login(NombreDeUsuario: string, Contrasenia: string): Observable<DTOUsuario> {
-    // this.usuarioLogin = {
-    //   NombreDeUsuario: usuario,
-    //   Contrasenia: contrasenia
-    // }
     const body = this.usuarioLogin;
     return this.http.post<DTOUsuario>(`${this.apiUrl}api/Usuario/login`, { NombreDeUsuario, Contrasenia })
       .pipe(
@@ -39,7 +35,6 @@ export class AuthService {
         })
 
       )
-
   }
 
   logOut() {

@@ -1,7 +1,7 @@
 <div class="text-center">
     <h1>{{textoSeccion}}</h1>
 </div>
-<div *ngIf="seccionOrigen == 'tipoproducto'" style="display: flex; justify-content: center; align-items: center;">
+<div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;">
     <input matInput type="text" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo" style="max-width: 12rem;">
     <button mat-button (click)="filtrar()">Aceptar</button>
 </div>
@@ -19,7 +19,8 @@
     </ng-container>
     <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined">
+        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined"
+                (click)="abrirDialogEditar(element)">
                 edit
             </span></mat-cell>
     </ng-container>
@@ -27,12 +28,9 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-<div class="fixedAbajoDerecha" style="gap: 0.5rem;">
-    <button class="btnAddCircular sombra">
-        <span class="material-symbols-outlined ">
-            add
-        </span>
-    </button>
 
-
-</div>
+<button class=" sombra btnAddCircular" matTooltip="Agregar nuevo" (click)="abrirDialogAgregar()">
+    <span class="material-symbols-outlined ">
+        add
+    </span>
+</button>

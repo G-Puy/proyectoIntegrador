@@ -58,25 +58,33 @@ body {
 }
 
 
-.btnAddCircular {
 
-    /* 20px desde el borde inferior */
-    border-radius: 60%;
-    border: none;
-    background-color: var(--rosadoQueDiosaAl80);
-    color: white;
-}
-
-.fixedAbajoDerecha {
-    position: fixed;
-    /* Posición fija en la pantalla */
-    right: 20px;
-    /* 20px desde el borde derecho */
-    bottom: 20px;
-}
 
 .cenntradoBasico {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btnAddCircular {
+    width: 60px;
+    /* Ajusta el ancho del botón */
+    height: 60px;
+    /* Ajusta la altura del botón */
+    font-size: 30px;
+    /* Ajusta el tamaño del icono 'add' */
+    border-radius: 50%;
+    /* Hace que el botón sea circular */
+    border: none;
+    /* Elimina el borde predeterminado */
+    background-color: var(--rosadoQueDiosaAl80);
+    color: white;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Cambia el cursor a un puntero cuando se pasa sobre el botón */
 }

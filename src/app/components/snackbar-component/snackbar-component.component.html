@@ -1,0 +1,15 @@
+<div class="custom-snackbar">
+    {{ data.message }}
+    <!-- El botón para cerrar solo se muestra si la duración es 0 -->
+    <button *ngIf="data.duration === 0" (click)="closeSnackbar()">Leído</button>
+    <div *ngIf="data.exitoOno == true">
+        <span class="material-symbols-outlined" style="color: green;">
+            check_circle
+        </span>
+    </div>
+    <div *ngIf="data.exitoOno == false" style="color: red;">
+        <span class="material-symbols-outlined">
+            cancel
+        </span>
+    </div>
+</div>

@@ -10,6 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
   ],
@@ -26,7 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule
 
 
 
@@ -44,7 +48,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }
