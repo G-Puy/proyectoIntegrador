@@ -92,6 +92,6 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
 
   abrirDialogEditar(obj: any) {
     //console.log("Vamos a editar el objeto ----> " + obj);
-    this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 0, true);
+    this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
   }
 }
