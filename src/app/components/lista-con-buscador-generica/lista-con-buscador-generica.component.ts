@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Data } from '@angular/router';
 import { AddEditGenericoComponent } from '../add-edit-generico/add-edit-generico.component';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
+import { SharedService } from 'src/app/shared/shared.service';
+import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 export interface Element {
   nombreTipoPrenda: string;
 }
@@ -20,49 +22,38 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   textoBtn: string = "Agregar nuevo";
   muestroBuscador: boolean = false;
 
-  ELEMENT_DATA: Element[] = [
-    { nombreTipoPrenda: 'Top' },
-    { nombreTipoPrenda: 'Mini' },
-    { nombreTipoPrenda: 'Pantalon' },
-    { nombreTipoPrenda: 'Pantalon' }
-  ];
+
   parametroFiltrado: string = "";
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort;
 
-  displayedColumns: string[] = ['nombreTipoPrenda', 'eliminar', 'editar'];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  dataSourceOriginal;
+  displayedColumns: string[] = ['nombre', 'eliminar', 'editar'];
+  dataSource: MatTableDataSource<DTOGenAbms>;
+  dataSourceOriginal: DTOGenAbms[] = [];
   constructor(public dialog: MatDialog,
-    private funcionesGlobalesService: FuncionesGlobalesService) {
+    private funcionesGlobalesService: FuncionesGlobalesService,
+    private sharedServ: SharedService
+  ) {
     // este array va a ser sumplantado por el servicio necesario segun orgien.
-    this.dataSourceOriginal = this.ELEMENT_DATA;
+    this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
+
   }
 
 
   ngOnInit() {
-    switch (this.seccionOrigen) {
 
-      case 'tipoprenda':
-        this.muestroBuscador = true;
-        //Traigo datasource de tipos de prendas
-
-        break;
-    }
-    this.dataSource.sort = this.sort;
-    this.dataSource.sort.active = 'nombreTipoPrenda';
-    this.dataSource.sort.direction = 'asc';
+    this.getAll();
   }
   filtrar() {
-    if (this.parametroFiltrado != "") {
-      const resultadoFiltrado = this.ELEMENT_DATA.filter(elemento =>
-        elemento.nombreTipoPrenda.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
-      );
-      this.dataSource = new MatTableDataSource(resultadoFiltrado);
-      this.dataSource.sort = this.sort;
-    } else {
-      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-      this.dataSource.sort = this.sort;
-    }
+    /*  if (this.parametroFiltrado != "") {
+       const resultadoFiltrado = this.ELEMENT_DATA.filter(elemento =>
+         elemento.nombreTipoPrenda.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
+       );
+       this.dataSource = new MatTableDataSource(resultadoFiltrado);
+       this.dataSource.sort = this.sort;
+     } else {
+       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+       this.dataSource.sort = this.sort;
+     } */
   }
 
   abrirDialogAgregar() {
@@ -90,8 +81,79 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
 
   }
 
-  abrirDialogEditar(obj: any) {
-    //console.log("Vamos a editar el objeto ----> " + obj);
-    this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
+  abrirDialogEditar(obj: DTOGenAbms) {
+    const datos = {
+      seccionOrigen: this.seccionOrigen
+    };
+
+    const dialogRef = this.dialog.open(AddEditGenericoComponent, {
+      width: '250px',
+      data: {
+        origen: this.seccionOrigen,
+        editar: true,
+        textoMostrar: "Eeditar tipo de prenda",
+        textoDelObjeto: obj.nombre
+      }
+    });
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado == true) {
+        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
+      } else {
+        this.funcionesGlobalesService.abrirSnack("Error al realizar el alta.", 3000, false);
+      }
+      /* this.metodoDespuesDeCerrarDialogo(resultado); */
+    });
+
+
+
+  }
+
+  private getAll() {
+    switch (this.seccionOrigen) {
+
+      case 'tipoprenda':
+        this.muestroBuscador = true;
+
+        this.sharedServ.getAllTipoPrendas()
+          .subscribe({
+            next: (resultadoAlta) => {
+              // Aquí asignas el resultado a dataSource y puedes usar sort
+              this.dataSource = new MatTableDataSource(resultadoAlta); // Asegúrate de que esto es MatTableDataSource
+              this.dataSource.sort = this.sort;
+              // Opcional: Si deseas establecer el orden predeterminado
+              this.dataSource.sort.active = 'nombre';
+              this.dataSource.sort.direction = 'asc';
+            },
+            error: (error) => {
+            }
+          });
+
+        break;
+    }
+  }
+
+  eliminar(obj: DTOGenAbms) {
+    switch (this.seccionOrigen) {
+
+      case 'tipoprenda':
+        this.muestroBuscador = true;
+        this.sharedServ.eliminarTipoPrenda(obj.id)
+          .subscribe({
+            next: (resultadoEliminar) => {
+              if (resultadoEliminar) {
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.getAll();
+              }
+              else {
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+              }
+            },
+            error: (error) => {
+            }
+          });
+
+        break;
+    }
+    //eliminarTipoPrenda
   }
 }

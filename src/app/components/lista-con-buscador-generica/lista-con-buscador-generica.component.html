@@ -7,18 +7,18 @@
 </div>
 <mat-table [dataSource]="dataSource" matSort>
     <!-- Name Column -->
-    <ng-container matColumnDef="nombreTipoPrenda">
+    <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.nombreTipoPrenda}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.nombre}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="eliminar">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined" (click)="eliminar(element)">
                 delete
             </span></mat-cell>
     </ng-container>
     <ng-container matColumnDef="editar">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
         <mat-cell *matCellDef="let element"><span class="material-symbols-outlined"
                 (click)="abrirDialogEditar(element)">
                 edit

@@ -1,5 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { timeout } from 'rxjs';
 import { DTOTipoPrenda } from 'src/app/interfaces/tipoProducto.interface';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -14,6 +15,7 @@ export class AddEditGenericoComponent {
   origen: string;
   valorInput: string;
   resultadoAccion: string = "";
+  campoVacio: string = "";
   constructor(public dialogRef: MatDialogRef<AddEditGenericoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private sharedServ: SharedService) {
@@ -40,30 +42,33 @@ export class AddEditGenericoComponent {
     }
   }
   private darDeAlta() {
-    switch (this.origen) {
-      case 'tipoprenda':
-        const nuevoTipoPrenda: DTOTipoPrenda = {
-          IdTipoPrenda: 0,
-          NombreTipoPrenda: this.valorInput,
-          BajaLogica: false
-        };
-        this.sharedServ.altaTipoPrenda(nuevoTipoPrenda)
-          .subscribe({
-            next: (resultadoAlta) => {
-              // Si la llamada es exitosa, cerrar el diálogo con el resultado
-              this.dialogRef.close(resultadoAlta);
-            },
-            error: (error) => {
-              // En caso de error, cerrar el diálogo con el error
-              console.error('Error al dar de alta:', error);
-              this.dialogRef.close({ result: 'ALTA ERROR', error: error });
-            }
-          });
-        break;
+    if (this.valorInput != "") {
+      switch (this.origen) {
+        case 'tipoprenda':
+          const nuevoTipoPrenda: DTOTipoPrenda = {
+            IdTipoPrenda: 0,
+            NombreTipoPrenda: this.valorInput,
+            BajaLogica: false
+          };
+          this.sharedServ.altaTipoPrenda(nuevoTipoPrenda)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                this.dialogRef.close(resultadoAlta);
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                console.error('Error al dar de alta:', error);
+                this.dialogRef.close({ result: 'ALTA ERROR', error: error });
+              }
+            });
+          break;
+      }
+    } else {
+      this.campoVacio = "El campo no puede estar vacio."
     }
-
-
   }
+
 
   private editarObj() {
     switch (this.origen) {

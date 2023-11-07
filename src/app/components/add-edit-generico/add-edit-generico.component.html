@@ -1,7 +1,8 @@
 <div mat-dialog>
     <h1 mat-dialog-title>{{textoMostrar}}</h1>
     <div mat-dialog-content>
-        <input matInput [(ngModel)]="valorInput" placeholder="Texto">
+        <input matInput [(ngModel)]="valorInput" placeholder="Texto" required>
+        <span *ngIf="valorInput == '' ">{{campoVacio}}</span>
     </div>
     <div>
         <button mat-button (click)="cancel()">Cancelar</button>
