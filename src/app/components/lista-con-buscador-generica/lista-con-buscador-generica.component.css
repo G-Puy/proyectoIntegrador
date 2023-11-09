@@ -1,0 +1,8 @@
+.custom-mat-table-container {
+    display: block;
+    margin-top: 1rem;
+    max-height: 400px;
+    /* Ajusta esto según las necesidades de tu diseño */
+    overflow-y: auto;
+    /* Esto habilitará el scroll vertical */
+}

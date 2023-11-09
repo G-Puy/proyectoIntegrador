@@ -20,7 +20,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   @Input() seccionOrigen!: string;
   @Input() textoSeccion!: string;
   textoBtn: string = "Agregar nuevo";
-  muestroBuscador: boolean = false;
+
 
 
   parametroFiltrado: string = "";
@@ -35,7 +35,6 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   ) {
     // este array va a ser sumplantado por el servicio necesario segun orgien.
     this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
-
   }
 
 
@@ -44,79 +43,59 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     this.getAll();
   }
   filtrar() {
-    /*  if (this.parametroFiltrado != "") {
-       const resultadoFiltrado = this.ELEMENT_DATA.filter(elemento =>
-         elemento.nombreTipoPrenda.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
-       );
-       this.dataSource = new MatTableDataSource(resultadoFiltrado);
-       this.dataSource.sort = this.sort;
-     } else {
-       this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-       this.dataSource.sort = this.sort;
-     } */
-  }
-
-  abrirDialogAgregar() {
-    const datos = {
-      seccionOrigen: this.seccionOrigen
-    };
-
-    const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '250px',
-      data: {
-        origen: this.seccionOrigen,
-        editar: false,
-        textoMostrar: "Agregar nuevo tipo de prenda",
-        textoDelObjeto: ""
-      }
-    });
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado == true) {
-        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
-      } else {
-        this.funcionesGlobalesService.abrirSnack("Error al realizar el alta.", 3000, false);
-      }
-      /* this.metodoDespuesDeCerrarDialogo(resultado); */
-    });
-
-  }
-
-  abrirDialogEditar(obj: DTOGenAbms) {
-    const datos = {
-      seccionOrigen: this.seccionOrigen
-    };
-
-    const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '250px',
-      data: {
-        origen: this.seccionOrigen,
-        editar: true,
-        textoMostrar: "Eeditar tipo de prenda",
-        textoDelObjeto: obj.nombre
-      }
-    });
-    dialogRef.afterClosed().subscribe(resultado => {
-      if (resultado == true) {
-        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
-      } else {
-        this.funcionesGlobalesService.abrirSnack("Error al realizar el alta.", 3000, false);
-      }
-      /* this.metodoDespuesDeCerrarDialogo(resultado); */
-    });
-
-
-
+    if (this.parametroFiltrado != "") {
+      const resultadoFiltrado = this.dataSourceOriginal.filter(elemento =>
+        elemento.nombre.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
+      );
+      this.dataSource = new MatTableDataSource(resultadoFiltrado);
+      this.dataSource.sort = this.sort;
+    } else {
+      this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
+      this.dataSource.sort = this.sort;
+    }
   }
 
   private getAll() {
     switch (this.seccionOrigen) {
-
       case 'tipoprenda':
-        this.muestroBuscador = true;
-
         this.sharedServ.getAllTipoPrendas()
           .subscribe({
             next: (resultadoAlta) => {
+              this.dataSourceOriginal = resultadoAlta;
+              // Aquí asignas el resultado a dataSource y puedes usar sort
+              this.dataSource = new MatTableDataSource(resultadoAlta); // Asegúrate de que esto es MatTableDataSource
+              this.dataSource.sort = this.sort;
+              // Opcional: Si deseas establecer el orden predeterminado
+              this.dataSource.sort.active = 'nombre';
+              this.dataSource.sort.direction = 'asc';
+            },
+            error: (error) => {
+            }
+          });
+
+        break;
+      case 'colores':
+        this.sharedServ.getAllColores()
+          .subscribe({
+            next: (resultadoAlta) => {
+              this.dataSourceOriginal = resultadoAlta;
+              // Aquí asignas el resultado a dataSource y puedes usar sort
+              this.dataSource = new MatTableDataSource(resultadoAlta); // Asegúrate de que esto es MatTableDataSource
+              this.dataSource.sort = this.sort;
+              // Opcional: Si deseas establecer el orden predeterminado
+              this.dataSource.sort.active = 'nombre';
+              this.dataSource.sort.direction = 'asc';
+            },
+            error: (error) => {
+            }
+          });
+
+        break;
+      case 'talles':
+        this.sharedServ.getAllTalles()
+          .subscribe({
+            next: (resultadoAlta) => {
+              this.dataSourceOriginal = resultadoAlta;
               // Aquí asignas el resultado a dataSource y puedes usar sort
               this.dataSource = new MatTableDataSource(resultadoAlta); // Asegúrate de que esto es MatTableDataSource
               this.dataSource.sort = this.sort;
@@ -132,12 +111,97 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     }
   }
 
+  abrirDialogAgregar() {
+    const datos = {
+      seccionOrigen: this.seccionOrigen
+    };
+
+    const dialogRef = this.dialog.open(AddEditGenericoComponent, {
+      width: '250px',
+      data: {
+        origen: this.seccionOrigen,
+        editar: false,
+        textoMostrar: "Agregar nuevo",
+        objeto: null
+      }
+    });
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado.error != "") {
+        this.funcionesGlobalesService.abrirSnack(resultado.error, 3000, false);
+      } else if (resultado.result == true) {
+        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
+        this.getAll();
+      }
+    });
+  }
+
+  abrirDialogEditar(obj: DTOGenAbms) {
+    const datos = {
+      seccionOrigen: this.seccionOrigen
+    };
+
+    const dialogRef = this.dialog.open(AddEditGenericoComponent, {
+      width: '250px',
+      data: {
+        origen: this.seccionOrigen,
+        editar: true,
+        textoMostrar: "Editar",
+        objeto: obj
+      }
+    });
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado.error != "") {
+        this.funcionesGlobalesService.abrirSnack(resultado.error, 3000, false);
+      } else if (resultado.result == true) {
+        this.funcionesGlobalesService.abrirSnack("Edición exitosa.", 3000, true);
+        this.getAll();
+      }
+    });
+
+
+
+  }
+
+
+
   eliminar(obj: DTOGenAbms) {
     switch (this.seccionOrigen) {
 
       case 'tipoprenda':
-        this.muestroBuscador = true;
         this.sharedServ.eliminarTipoPrenda(obj.id)
+          .subscribe({
+            next: (resultadoEliminar) => {
+              if (resultadoEliminar) {
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.getAll();
+              }
+              else {
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+              }
+            },
+            error: (error) => {
+            }
+          });
+        break;
+      case 'colores':
+        this.sharedServ.eliminarColor(obj.id)
+          .subscribe({
+            next: (resultadoEliminar) => {
+              if (resultadoEliminar) {
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.getAll();
+              }
+              else {
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+              }
+            },
+            error: (error) => {
+            }
+          });
+
+        break;
+      case 'talles':
+        this.sharedServ.eliminarTalle(obj.id)
           .subscribe({
             next: (resultadoEliminar) => {
               if (resultadoEliminar) {
@@ -154,6 +218,5 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
 
         break;
     }
-    //eliminarTipoPrenda
   }
 }

@@ -6,6 +6,8 @@ import { LayoutEmpresaComponent } from "./pages/layout-empresa/layout-empresa.co
 import { AgregarModificarProductoComponent } from "./pages/productos/agregar-modificar-producto/agregar-modificar-producto.component";
 import { LoginComponent } from "../auth/pages/login/login.component";
 import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
+import { ColorComponent } from "./pages/colores/color.component";
+import { TallesComponent } from "./pages/talles/talles.component";
 
 const routes: Routes = [
     {
@@ -16,6 +18,8 @@ const routes: Routes = [
             { path: 'productos', component: ProductosComponent },
             { path: 'productos/amp', component: AgregarModificarProductoComponent },// AMP = Agregar Modificar Producto
             { path: 'tipoProductos', component: TipoProductoComponent },
+            { path: 'colores', component: ColorComponent },
+            { path: 'talles', component: TallesComponent },
             { path: '**', redirectTo: '' }
         ]
     }

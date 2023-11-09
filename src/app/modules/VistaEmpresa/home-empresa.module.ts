@@ -10,6 +10,7 @@ import { AgregarModificarProductoComponent } from './pages/productos/agregar-mod
 import { TallesComponent } from './pages/talles/talles.component';
 import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ColorComponent } from './pages/colores/color.component';
 
 
 
@@ -21,7 +22,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     LayoutEmpresaComponent,
     AgregarModificarProductoComponent,
     TallesComponent,
-    TipoProductoComponent
+    TipoProductoComponent,
+    ColorComponent
   ],
   imports: [
     CommonModule,

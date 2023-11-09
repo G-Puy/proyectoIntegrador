@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { timeout } from 'rxjs';
+import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { DTOTipoPrenda } from 'src/app/interfaces/tipoProducto.interface';
 import { SharedService } from 'src/app/shared/shared.service';
 
@@ -27,7 +28,7 @@ export class AddEditGenericoComponent {
     this.origen = data.origen;
     if (this.editar == true) {
       //Si el objeto es distinto de null, significa que estoy en EDITAR.
-      this.valorInput = data.textoDelObjeto;
+      this.valorInput = data.objeto.nombre;
       this.textoMostrar = data.textoMostrar;
     } else {
       this.valorInput = "";
@@ -42,40 +43,123 @@ export class AddEditGenericoComponent {
     }
   }
   private darDeAlta() {
+
     if (this.valorInput != "") {
+      const nuevo: DTOGenAbms = {
+        id: 0,
+        nombre: this.valorInput,
+        bajaLogica: false
+      };
       switch (this.origen) {
         case 'tipoprenda':
-          const nuevoTipoPrenda: DTOTipoPrenda = {
-            IdTipoPrenda: 0,
-            NombreTipoPrenda: this.valorInput,
-            BajaLogica: false
-          };
-          this.sharedServ.altaTipoPrenda(nuevoTipoPrenda)
+
+          this.sharedServ.altaTipoPrenda(nuevo)
             .subscribe({
               next: (resultadoAlta) => {
                 // Si la llamada es exitosa, cerrar el diálogo con el resultado
-                this.dialogRef.close(resultadoAlta);
+                if (resultadoAlta) {
+                  this.dialogRef.close({ result: resultadoAlta, error: "" });
+                } else {
+                  this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+                }
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                console.error('Error al dar de alta:', error);
-                this.dialogRef.close({ result: 'ALTA ERROR', error: error });
+                this.dialogRef.close({ result: false, error: "Error al editar." });
+              }
+            });
+          break;
+        case 'colores':
+          this.sharedServ.altaColor(nuevo)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                if (resultadoAlta) {
+                  this.dialogRef.close({ result: resultadoAlta, error: "" });
+                } else {
+                  this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+                }
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                this.dialogRef.close({ result: false, error: "Error al editar." });
+              }
+            });
+          break;
+        case 'talles':
+          this.sharedServ.altaTalle(nuevo)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                if (resultadoAlta) {
+                  this.dialogRef.close({ result: resultadoAlta, error: "" });
+                } else {
+                  this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+                }
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                this.dialogRef.close({ result: false, error: "Error al editar." });
               }
             });
           break;
       }
     } else {
-      this.campoVacio = "El campo no puede estar vacio."
+      this.campoVacio = "El campo no puede estar vacío."
     }
   }
 
 
   private editarObj() {
-    switch (this.origen) {
-      case 'tipoprenda':
-        console.log('EDITAR tipoprenda');
-        //llamar servicio para dar de editar
-        break;
+    if (this.valorInput != "") {
+      const objEditar: DTOGenAbms = {
+        id: this.data.objeto.id,
+        nombre: this.valorInput,
+        bajaLogica: false
+      };
+      switch (this.origen) {
+        case 'tipoprenda':
+          this.sharedServ.editarTipoPrenda(objEditar)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                this.dialogRef.close({ result: resultadoAlta, error: "" });
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                this.dialogRef.close({ result: false, error: "Error al editar" });
+              }
+            });
+          break;
+        case 'colores':
+          this.sharedServ.editarColor(objEditar)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                this.dialogRef.close({ result: resultadoAlta, error: "" });
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                this.dialogRef.close({ result: false, error: "Error al editar" });
+              }
+            });
+          break;
+        case 'talles':
+          this.sharedServ.editarTalle(objEditar)
+            .subscribe({
+              next: (resultadoAlta) => {
+                // Si la llamada es exitosa, cerrar el diálogo con el resultado
+                this.dialogRef.close({ result: resultadoAlta, error: "" });
+              },
+              error: (error) => {
+                // En caso de error, cerrar el diálogo con el error
+                this.dialogRef.close({ result: false, error: "Error al editar" });
+              }
+            });
+          break;
+      }
+    } else {
+      this.campoVacio = "El campo no puede estar vacío."
     }
   }
   cancel() {
