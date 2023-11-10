@@ -24,7 +24,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     HomeModuleClientes,
     HomeEmpresaModule,
-    RouterModule
+    RouterModule,
+
   ],
   providers: [
   ],

@@ -6,3 +6,51 @@
     overflow-y: auto;
     /* Esto habilitará el scroll vertical */
 }
+
+.contenedorMenu {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.InputLogin::focus-visible {
+    border: none !important;
+}
+
+.centerBasico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBasicoLogin {
+
+    height: 2.5rem;
+    width: 15rem;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 18px;
+    color: white;
+}
+
+.inputBasicoLogin:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    background: rgba(0, 0, 0, 0.808);
+    color: var(--rosadoQueDiosa);
+}
+
+.btnLogin {
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background-color: var(--rosadoQueDiosa);
+    border: none;
+    color: white;
+    margin-top: 1.5rem;
+}
+
+.marginBotton {
+    margin-bottom: 2rem;
+}

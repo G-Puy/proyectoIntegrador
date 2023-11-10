@@ -67,16 +67,12 @@ body {
 }
 
 .btnAddCircular {
+    /* Tus estilos existentes */
     width: 60px;
-    /* Ajusta el ancho del botón */
     height: 60px;
-    /* Ajusta la altura del botón */
     font-size: 30px;
-    /* Ajusta el tamaño del icono 'add' */
     border-radius: 50%;
-    /* Hace que el botón sea circular */
     border: none;
-    /* Elimina el borde predeterminado */
     background-color: var(--rosadoQueDiosaAl80);
     color: white;
     position: fixed;
@@ -86,5 +82,105 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* Cambia el cursor a un puntero cuando se pasa sobre el botón */
+    transition: box-shadow 0.3s, transform 0.3s;
+    /* Animación suave para sombra y transformación */
+    outline: none;
+    /* Esto eliminará el contorno que aparece al hacer clic */
+}
+
+.btnAddCircular:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra difusa más grande para efecto de elevación */
+    transform: translateY(-3px);
+    /* Mueve ligeramente hacia arriba el botón */
+}
+
+.btnAddCircular:active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(-1px);
+    /* Mueve el botón hacia abajo para simular que está siendo presionado */
+}
+
+.botonCircularSimple {
+    /* Tus estilos existentes */
+    margin-left: 1rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--rosadoQueDiosaAl80);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.1s, transform 0.1s;
+    /* Animación suave para sombra y transformación */
+}
+
+.botonCircularSimple:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra difusa para profundidad */
+    transform: translateY(2px);
+    /* Mueve el botón hacia abajo para simular presión */
+}
+
+.botonCircularSimple:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+.inputBasico {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    width: 100%;
+    max-width: 12rem;
+    /* This sets the maximum width of the input, similar to your inline style */
+    height: 1.1876em;
+    /* The height of the input field */
+    margin: 0;
+    /* Remove default margin */
+    padding: 27px 12px 10px;
+    /* Padding to match Angular Material style */
+    border: none;
+    /* Remove default border */
+    outline: none;
+    /* Remove default outline */
+    background-color: transparent;
+    /* Background should be transparent */
+    border-bottom: 1px solid #000000;
+    /* Border to match Angular Material's underline */
+    box-sizing: content-box;
+    /* Adjust box-sizing as needed */
+}
+
+.inputBasico::placeholder {
+    color: rgba(0, 0, 0, 0.38);
+    /* Placeholder text color to match Angular Material */
+}
+
+.inputBasico:focus {
+    padding-bottom: 9px;
+    /* Adjust padding on focus */
+    border-bottom: 2px solid #000000;
+    /* Underline thickness on focus */
+}
+
+/* You may need to adjust the styles for the clear button separately */
+.clear-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    /* Adjust the position as needed */
+}
+
+.clear-button .material-icons {
+    font-size: 18px;
+    /* Icon size to match Angular Material */
 }

@@ -1,9 +1,21 @@
-<div class="text-center">
-    <h1>{{textoSeccion}}</h1>
+<div class="text-center"
+    style=" background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; padding-top: 0.2rem; margin-bottom: 2.2rem;">
+    <h1 style="font-size: 2rem;">{{textoSeccion}}</h1>
 </div>
 <div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;">
-    <input matInput type="text" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo" style="max-width: 12rem;">
-    <button mat-button (click)="filtrar()">Aceptar</button>
+    <div style="position: relative; display: flex; align-items: center;">
+        <input type="text" class="inputBasicoLogin" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo">
+        <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
+            style="padding-bottom: 100px;">
+            <span class="material-icons" style="color: white; ">close</span>
+        </button>
+    </div>
+    <div style="background-color: var(--rosadoQueDiosaAl80); " (click)="filtrar()" class=" botonCircularSimple">
+        <span class="material-symbols-outlined">
+            search
+        </span>
+    </div>
+
 </div>
 <mat-table [dataSource]="dataSource" matSort class="custom-mat-table-container">
     <!-- Name Column -->
@@ -29,7 +41,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<button class=" sombra btnAddCircular" matTooltip="Agregar nuevo" (click)="abrirDialogAgregar()">
+<button class=" btnAddCircular" matTooltip="Agregar nuevo" (click)="abrirDialogAgregar()">
     <span class="material-symbols-outlined ">
         add
     </span>

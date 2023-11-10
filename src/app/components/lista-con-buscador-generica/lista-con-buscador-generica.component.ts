@@ -8,9 +8,9 @@ import { AddEditGenericoComponent } from '../add-edit-generico/add-edit-generico
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
-export interface Element {
-  nombreTipoPrenda: string;
-}
+
+
+
 @Component({
   selector: 'app-lista-con-buscador-generica',
   templateUrl: './lista-con-buscador-generica.component.html',
