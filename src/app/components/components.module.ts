@@ -4,6 +4,7 @@ import { AddEditGenericoComponent } from './add-edit-generico/add-edit-generico.
 import { ListaConBuscadorGenericaComponent } from './lista-con-buscador-generica/lista-con-buscador-generica.component';
 import { SharedModule } from '../shared/shared.module';
 import { SnackbarComponent } from './snackbar-component/snackbar-component.component';
+import { AceptarCancelarDialogComponent } from './aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 
 
 
@@ -11,7 +12,8 @@ import { SnackbarComponent } from './snackbar-component/snackbar-component.compo
   declarations: [
     AddEditGenericoComponent,
     ListaConBuscadorGenericaComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    AceptarCancelarDialogComponent
   ],
   imports: [
     CommonModule,

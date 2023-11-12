@@ -1,11 +1,28 @@
-<div mat-dialog>
+<div mat-dialog class="text-center">
     <h1 mat-dialog-title>{{textoMostrar}}</h1>
     <div mat-dialog-content>
-        <input matInput [(ngModel)]="valorInput" placeholder="Texto" required>
-        <span *ngIf="valorInput == '' ">{{campoVacio}}</span>
+        <!--       <input matInput [(ngModel)]="valorInput" placeholder="Texto" required class="BasicInput">
+        <span *ngIf="valorInput == '' ">{{campoVacio}}</span> -->
+        <div style="position: relative; display: flex; align-items: center; ">
+            <div>
+                <input type="text" class="BasicInput" [(ngModel)]="valorInput" placeholder="Buscar por tipo"
+                    style="padding-right: 2.2rem;">
+                <div>
+
+                    <span [ngClass]="{'invisible': valorInput != '', 'visible': valorInput == ''}"
+                        style="font-size: 0.8rem; color: red;">{{campoVacio}}</span>
+                </div>
+            </div>
+
+            <button *ngIf="valorInput" class="clear-button" aria-label="Clear" (click)="valorInput=''"
+                style="top: 10px;">
+                <span class="material-icons BasicBtnCruz">close</span>
+            </button>
+        </div>
     </div>
-    <div>
-        <button mat-button (click)="cancel()">Cancelar</button>
-        <button mat-button (click)="realizarAccion()">Aceptar</button>
-    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
+        <button mat-button (click)="cancel()" class="AcctionCancelar" style="width: auto;">Cancelar</button>
+        <button mat-button (click)="realizarAccion()" class="AcctionAceptar" style="width: auto;">Realizar</button>
+    </mat-dialog-actions>
+
 </div>

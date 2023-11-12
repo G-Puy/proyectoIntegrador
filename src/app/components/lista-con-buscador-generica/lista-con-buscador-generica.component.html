@@ -4,10 +4,11 @@
 </div>
 <div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;">
     <div style="position: relative; display: flex; align-items: center;">
-        <input type="text" class="inputBasicoLogin" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo">
+        <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo"
+            style="padding-right: 2.2rem;">
         <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
-            style="padding-bottom: 100px;">
-            <span class="material-icons" style="color: white; ">close</span>
+            style="top: 10px;">
+            <span class="material-icons BasicBtnCruz">close</span>
         </button>
     </div>
     <div style="background-color: var(--rosadoQueDiosaAl80); " (click)="filtrar()" class=" botonCircularSimple">
@@ -25,7 +26,8 @@
     </ng-container>
     <ng-container matColumnDef="eliminar">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined" (click)="eliminar(element)">
+        <mat-cell *matCellDef="let element"><span class="material-symbols-outlined"
+                (click)="openDialogCancelar(element)">
                 delete
             </span></mat-cell>
     </ng-container>

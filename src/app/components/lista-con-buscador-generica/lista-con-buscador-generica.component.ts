@@ -8,6 +8,7 @@ import { AddEditGenericoComponent } from '../add-edit-generico/add-edit-generico
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
+import { AceptarCancelarDialogComponent } from '../aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 
 
 
@@ -117,7 +118,8 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '250px',
+      width: '300px',
+      height: '200px',
       data: {
         origen: this.seccionOrigen,
         editar: false,
@@ -141,7 +143,8 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '250px',
+      width: '300px',
+      height: '210px',
       data: {
         origen: this.seccionOrigen,
         editar: true,
@@ -164,7 +167,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
 
 
 
-  eliminar(obj: DTOGenAbms) {
+  private eliminar(obj: DTOGenAbms) {
     switch (this.seccionOrigen) {
 
       case 'tipoprenda':
@@ -219,4 +222,25 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
         break;
     }
   }
+
+
+  openDialogCancelar(obj: DTOGenAbms) {
+
+    const dialogRef = this.dialog.open(AceptarCancelarDialogComponent, {
+      width: '300px',
+      data: { message: `¿Desea eliminar ${obj.nombre} ?` },
+      disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eliminar(obj);
+      }
+    });
+  }
+
+
+
+
+
 }

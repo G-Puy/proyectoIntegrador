@@ -24,22 +24,7 @@
     align-items: center;
 }
 
-.inputBasicoLogin {
 
-    height: 2.5rem;
-    width: 15rem;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 18px;
-    color: white;
-}
-
-.inputBasicoLogin:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-    background: rgba(0, 0, 0, 0.808);
-    color: var(--rosadoQueDiosa);
-}
 
 .btnLogin {
     width: 20rem;
