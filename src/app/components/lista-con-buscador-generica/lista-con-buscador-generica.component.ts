@@ -228,7 +228,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AceptarCancelarDialogComponent, {
       width: '300px',
-      data: { message: `¿Desea eliminar ${obj.nombre} ?` },
+      data: { message: `¿Desea eliminar ${obj.nombre}?` },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
 
