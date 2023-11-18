@@ -48,7 +48,20 @@ export class LoginComponent implements OnInit {
         if (user != null) {
           this.router.navigate(['/lEmpresa']);
         }
-      })
+      }, error => {
+        if (error.status == 400) {
+          this.errorLogin = 'Usuario o contraseña incorrecto'
+          this.resetError();
+        }
+      }
+      );
+  }
+
+  private resetError(): void {
+
+    setTimeout(() => {
+      this.errorLogin = "";
+    }, 2000);
   }
 
 

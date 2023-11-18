@@ -55,9 +55,12 @@
                 </div>
             </div>
             <div>
-                <span *ngIf="errorLogin != ''">
-                    <p></p>
-                </span>
+                <div style="height: 1.2rem;">
+
+                    <span *ngIf="errorLogin != ''">
+                        <p style="color: rgb(247, 40, 40); font-size: 1rem;"><strong>{{errorLogin}}</strong></p>
+                    </span>
+                </div>
                 <button class="btnLogin sombra" (click)="onLogin()">INGRESAR</button>
             </div>
         </form>

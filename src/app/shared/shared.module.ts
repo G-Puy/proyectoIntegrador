@@ -12,12 +12,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
   ],
   imports: [
     CommonModule,
-
     FormsModule,
     //Material
     ReactiveFormsModule,
@@ -28,9 +32,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
+    MatSelectModule,
     MatIconModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatCardModule,
+
 
 
 
@@ -50,7 +59,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSortModule,
     MatIconModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

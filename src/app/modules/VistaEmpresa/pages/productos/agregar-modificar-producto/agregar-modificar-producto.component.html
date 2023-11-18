@@ -1,1 +1,18 @@
-<p>agregar-modificar-producto works!</p>
+<div mat-dialog>
+    <div mat-dialog-content>
+        <!-- Contenedor relativo -->
+        <div style="position: relative; max-height: 15rem;">
+            <img src="{{silderImages[iteradorImg]}}" alt="" style="max-height: 15rem; min-height: 5rem; width: 100%;">
+            <!-- DIV botones con posición absoluta -->
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
+                <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()">
+                    arrow_back_ios
+                </span>
+                <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
+                    arrow_forward_ios
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

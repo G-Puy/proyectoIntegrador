@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeEmpresaComponent } from './pages/home-empresa/home-empresa.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -34,6 +34,7 @@ import { ColorComponent } from './pages/colores/color.component';
   exports: [
     NavBarGlobalEmpresaComponent,
     HomeEmpresaComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeEmpresaModule { }

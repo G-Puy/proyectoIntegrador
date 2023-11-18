@@ -17,6 +17,7 @@ export class AddEditGenericoComponent {
   valorInput: string;
   resultadoAccion: string = "";
   campoVacio: string = "";
+  nombreExiste: string = "";
   constructor(public dialogRef: MatDialogRef<AddEditGenericoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private sharedServ: SharedService) {

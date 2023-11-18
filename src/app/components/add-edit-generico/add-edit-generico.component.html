@@ -11,6 +11,8 @@
 
                     <span [ngClass]="{'invisible': valorInput != '', 'visible': valorInput == ''}"
                         style="font-size: 0.8rem; color: red;">{{campoVacio}}</span>
+                    <span [ngClass]="{'invisible': nombreExiste != '', 'visible': nombreExiste == ''}"
+                        style="font-size: 0.8rem; color: red;">{{nombreExiste}}</span>
                 </div>
             </div>
 

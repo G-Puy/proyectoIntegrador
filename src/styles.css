@@ -51,13 +51,11 @@ body {
 }
 
 
-.altoInputs {
+@import '~swiper/swiper-bundle.css';
 
-    height: 3.5rem;
-    background-color: red;
+.borderRadiusBasic {
+    border-radius: 5px;
 }
-
-
 
 
 .centradoBasico {
