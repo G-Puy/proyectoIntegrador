@@ -25,7 +25,10 @@
                 <div *ngIf="silderImages.length === 0">
                     <p>Subir imágenes</p>
                 </div>
-                <input type="file" (change)="onFileChange($event)" multiple
+                <div *ngIf="fileError != ''">
+                    <p>{{fileError}}</p>
+                </div>
+                <input type="file" (change)="onFileChange($event)" accept=".jpg, .jpeg, .png, .img, .webp" multiple
                     style="max-width: 100%; margin-top: 0.2rem;">
             </div>
         </section>
@@ -44,19 +47,22 @@
                 <option value="" disabled selected class="sinFondo">Seleccione colores</option>
                 <option *ngFor="" value=""></option>
             </select>
+            <div>
+                <div class="radio-buttons-column">
+                    <label>
+                        <input type="radio" name="opcion" value="ninguna"> Ninguna
+                    </label>
+                    <label>
+                        <input type="radio" name="opcion" value="nuevo"> Nuevo
+                    </label>
+                    <label>
+                        <input type="radio" name="opcion" value="oferta"> En oferta
+                    </label>
+                </div>
+                <input type="number" class="BasicInput" placeholder="Precio anterior" style="padding-right: 2.2rem;">
+            </div>
         </section>
         <section style="padding-top: 1rem;"> <!-- NO obligatorios -->
-            <div>
-                <label>
-                    <input type="checkbox" id="nuevoCheckbox">
-                    Nuevo
-                </label>
-                <label>
-                    <input type="checkbox" id="precioAnteriorCheckbox">
-                    En oferta
-                </label>
-            </div>
-            <input type="number" class="BasicInput" placeholder="Precio anterior" style="padding-right: 2.2rem;">
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea"
                 placeholder="Descripcion del producto"></textarea>
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>

@@ -15,23 +15,15 @@ register();
 })
 export class AgregarModificarProductoComponent implements AfterViewInit {
 
+
+
+
   ngAfterViewInit() {
-    new Swiper('.swiper', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    });
+
   }
 
-
+  //#region  Slider / elegir archivos img
+  //#endregion
   iteradorImg: number = 0;
   iterarIzquierda() {
     if (this.iteradorImg == 0) {
@@ -39,8 +31,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     } else {
       this.iteradorImg--;
     }
-
-
   }
   iterarDerecha() {
     console.log(this.iteradorImg);
@@ -48,13 +38,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       this.iteradorImg = 0;
     }
     else {
-
       this.iteradorImg++;
     }
-
   }
   silderImages: string[] = [];
 
+
+
+  fileError: string = "";
   onFileChange(event: Event) {
     // Vaciamos el arreglo para nuevos archivos
     this.silderImages = [];
@@ -63,23 +54,43 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length) {
-      const files = input.files;
+      // Validación del número máximo de archivos
+      if (input.files.length > 3) {
+        this.fileError = "Solo puedes subir un máximo de 3 imágenes.";
+        setTimeout(() => {
+          this.fileError = "";
+        }, 2000);
+        this.silderImages = [];
+        return;
+      }
+
+      const validFormats = ['image/jpeg', 'image/png'];
+      const files = Array.from(input.files);
+
+      // Verificar los formatos de los archivos
+      const allValid = files.every(file => validFormats.includes(file.type));
+      if (!allValid) {
+        this.fileError = "Solo se permiten archivos JPG, JPEG y PNG.";
+        setTimeout(() => {
+          this.fileError = "";
+        }, 2000);
+        this.silderImages = [];
+        return;
+      }
+
+      // Procesamiento de los archivos
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const reader = new FileReader();
 
-        // Asegurarse de que el tipo del evento onLoad sea correcto
         reader.onload = (e: ProgressEvent<FileReader>) => {
-          // Verificar que result no sea null
           if (e.target && e.target.result) {
             this.silderImages.push(e.target.result as string);
           }
         };
-
         reader.readAsDataURL(file);
       }
     }
-
   }
 
 
