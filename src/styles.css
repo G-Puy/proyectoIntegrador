@@ -199,9 +199,12 @@ body {
     width: 15rem;
     padding: 10px;
     border: 1px solid black;
-    border-radius: 18px;
+    border-radius: 5px;
     color: black;
+    font-size: 1rem;
 }
+
+
 
 .BasicInput:focus-visible {
     outline: none !important;
@@ -212,6 +215,55 @@ body {
     border: 2px solid black;
     background-color: var(--rosadoQueDiosaAl80);
 }
+
+.BasicSelect {
+    height: 2.5rem;
+    width: 15rem;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 1rem;
+}
+
+.BasicSelect:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    /*  background: rgba(0, 0, 0, 0.808); */
+    /*  color: var(--rosadoQueDiosa); */
+    /* border: 1px solid var(--rosadoQueDiosa); */
+    border: 2px solid black;
+    background-color: var(--rosadoQueDiosaAl80);
+}
+
+
+.BasicTextArea {
+    max-height: 15rem;
+    width: 15rem;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 1rem;
+
+}
+
+.BasicTextArea:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    /*  background: rgba(0, 0, 0, 0.808); */
+    /*  color: var(--rosadoQueDiosa); */
+    /* border: 1px solid var(--rosadoQueDiosa); */
+    border: 2px solid black;
+    background-color: var(--rosadoQueDiosaAl80);
+}
+
+
+
+
+
+
+
 
 .BasicBtnCruz {
     color: rgb(0, 0, 0);

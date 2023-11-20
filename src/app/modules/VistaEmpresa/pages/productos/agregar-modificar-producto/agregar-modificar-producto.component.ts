@@ -53,12 +53,41 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     }
 
   }
-  silderImages = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhZqPrVZHyIsGx6Xn52PDFAKymzGC7LLeBA&usqp=CAU',
-    'https://f.fcdn.app/imgs/c51350/sisi.com.uy/sisiuy/904b/original/catalogo/34609_001/440x600/colaless-tiritas-apricots-blanco.jpg'
-    , 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6lF7f1nB2hkpj40Tw7jt1MNJnMm3aMQzxHw&usqp=CAU',
-  ];
+  silderImages: string[] = [];
 
+  onFileChange(event: Event) {
+    // Vaciamos el arreglo para nuevos archivos
+    this.silderImages = [];
+
+    // Casting del evento para acceder a los archivos
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length) {
+      const files = input.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        // Asegurarse de que el tipo del evento onLoad sea correcto
+        reader.onload = (e: ProgressEvent<FileReader>) => {
+          // Verificar que result no sea null
+          if (e.target && e.target.result) {
+            this.silderImages.push(e.target.result as string);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+
+  }
+
+
+  //#region  seleccionesMultiples
+  actualizarSeleccion(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    //this.seleccionadasTipoPRenda = Array.from(selectElement.selectedOptions).map(o => o.value);
+  }
+  //#endregion
 
 }
-

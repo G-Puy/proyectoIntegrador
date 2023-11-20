@@ -1,18 +1,69 @@
 <div mat-dialog>
     <div mat-dialog-content>
-        <!-- Contenedor relativo -->
-        <div style="position: relative; max-height: 15rem;">
-            <img src="{{silderImages[iteradorImg]}}" alt="" style="max-height: 15rem; min-height: 5rem; width: 100%;">
-            <!-- DIV botones con posición absoluta -->
-            <div
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
-                <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()">
-                    arrow_back_ios
-                </span>
-                <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
-                    arrow_forward_ios
-                </span>
+
+        <section> <!-- Seccion imagenes -->
+            <div style="position: relative; max-height: 15rem;" *ngIf="silderImages.length != 0">
+                <div style="justify-content: center; align-items: center;">
+
+                    <img src="{{silderImages[iteradorImg]}}" alt=""
+                        style="max-height: 15rem; min-height: 15rem; width: 100%;">
+                </div>
+                <!-- DIV botones con posición absoluta -->
+                <div *ngIf="silderImages.length > 1"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
+                    <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()"
+                        style="margin-left: 8px;">
+                        arrow_back_ios
+                    </span>
+                    <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
+                        arrow_forward_ios
+                    </span>
+                </div>
             </div>
-        </div>
+            <div>
+                <!-- Mensaje cuando no hay imágenes -->
+                <div *ngIf="silderImages.length === 0">
+                    <p>Subir imágenes</p>
+                </div>
+                <input type="file" (change)="onFileChange($event)" multiple
+                    style="max-width: 100%; margin-top: 0.2rem;">
+            </div>
+        </section>
+        <section style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <input type="text" class="BasicInput" placeholder="Nombre producto" style="padding-right: 2.2rem;">
+            <input type="number" class="BasicInput" placeholder="Precio" style="padding-right: 2.2rem;">
+            <select class="BasicSelect " multiple (change)="actualizarSeleccion($event)">
+                <option disabled selected class="sinFondo">Seleccione un tipo</option>
+                <option *ngFor="" value=""></option>
+            </select>
+            <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
+                <option value="" disabled selected class="sinFondo">Seleccione talles</option>
+                <option *ngFor="" value=""></option>
+            </select>
+            <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
+                <option value="" disabled selected class="sinFondo">Seleccione colores</option>
+                <option *ngFor="" value=""></option>
+            </select>
+        </section>
+        <section style="padding-top: 1rem;"> <!-- NO obligatorios -->
+            <div>
+                <label>
+                    <input type="checkbox" id="nuevoCheckbox">
+                    Nuevo
+                </label>
+                <label>
+                    <input type="checkbox" id="precioAnteriorCheckbox">
+                    En oferta
+                </label>
+            </div>
+            <input type="number" class="BasicInput" placeholder="Precio anterior" style="padding-right: 2.2rem;">
+            <textarea name="" id="" cols="30" rows="10" class="BasicTextArea"
+                placeholder="Descripcion del producto"></textarea>
+            <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
+        </section>
     </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
+        <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionAceptar" style="width: auto;">Realizar</button>
+    </mat-dialog-actions>
 </div>
