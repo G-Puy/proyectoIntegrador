@@ -44,7 +44,8 @@
 
             <mat-select class="BasicSelect" multiple placeholder="Seleccione talles"
                 (change)="actualizarSeleccion($event)">
-                <mat-option *ngFor="let talle of cargaTalles" value="talle.id">{{talle.nombre}}</mat-option>
+                <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
+                    value="talle.id">{{talle.nombre}}</mat-option>
             </mat-select>
 
             <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
