@@ -91,7 +91,7 @@ export class SharedService {
   //#region TALLES
 
   getAllTalles(): Observable<DTOGenAbms[]> {
-    return this.http.get<DTOGenAbms>(`${this.apiUrl}api/Talle/TraerTalles`)
+    return this.http.get<DTOGenAbms>(`${this.apiUrl}api/Talle/TraerTodos`)
       .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))

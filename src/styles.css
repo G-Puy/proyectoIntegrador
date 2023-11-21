@@ -6,6 +6,8 @@
     --negroQueDiosa: #2C2C2C;
     --rosadoQueDiosaAl80: #f6727fe0;
     --negroQueDiosaTransparente: #2c2c2cc7;
+    --azulBasico: rgb(111, 111, 233);
+    --colorAlerta: rgb(255, 75, 75);
 }
 
 .letraRosaDiosa {
@@ -212,13 +214,13 @@ body {
     /*  background: rgba(0, 0, 0, 0.808); */
     /*  color: var(--rosadoQueDiosa); */
     /* border: 1px solid var(--rosadoQueDiosa); */
-    border: 2px solid black;
-    background-color: var(--rosadoQueDiosaAl80);
+    border: 2px solid var(--azulBasico);
+    /* background-color: var(--rosadoQueDiosaAl80); */
 }
 
 .BasicSelect {
     height: 2.5rem;
-    width: 15rem;
+    width: 15rem !important;
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
@@ -229,11 +231,10 @@ body {
 .BasicSelect:focus-visible {
     outline: none !important;
     box-shadow: none !important;
-    /*  background: rgba(0, 0, 0, 0.808); */
-    /*  color: var(--rosadoQueDiosa); */
-    /* border: 1px solid var(--rosadoQueDiosa); */
+
     border: 2px solid black;
-    background-color: var(--rosadoQueDiosaAl80);
+    border: 2px solid var(--azulBasico);
+
 }
 
 
@@ -254,8 +255,8 @@ body {
     /*  background: rgba(0, 0, 0, 0.808); */
     /*  color: var(--rosadoQueDiosa); */
     /* border: 1px solid var(--rosadoQueDiosa); */
-    border: 2px solid black;
-    background-color: var(--rosadoQueDiosaAl80);
+    border: 2px solid var(--azulBasico);
+    /*  background-color: var(--rosadoQueDiosaAl80); */
 }
 
 

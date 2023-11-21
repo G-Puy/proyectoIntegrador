@@ -26,23 +26,27 @@
                     <p>Subir imágenes</p>
                 </div>
                 <div *ngIf="fileError != ''">
-                    <p>{{fileError}}</p>
+                    <p style="color: var(--colorAlerta);">{{fileError}}</p>
                 </div>
-                <input type="file" (change)="onFileChange($event)" accept=".jpg, .jpeg, .png, .img, .webp" multiple
+                <input type="file" (change)="onFileChange($event)" accept=".jpg, .jpeg, .png, .img" multiple
                     style="max-width: 100%; margin-top: 0.2rem;">
             </div>
         </section>
+
         <section style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
             <input type="text" class="BasicInput" placeholder="Nombre producto" style="padding-right: 2.2rem;">
             <input type="number" class="BasicInput" placeholder="Precio" style="padding-right: 2.2rem;">
+
             <select class="BasicSelect " multiple (change)="actualizarSeleccion($event)">
                 <option disabled selected class="sinFondo">Seleccione un tipo</option>
                 <option *ngFor="" value=""></option>
             </select>
-            <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
-                <option value="" disabled selected class="sinFondo">Seleccione talles</option>
-                <option *ngFor="" value=""></option>
-            </select>
+
+            <mat-select class="BasicSelect" multiple placeholder="Seleccione talles"
+                (change)="actualizarSeleccion($event)">
+                <mat-option *ngFor="let talle of cargaTalles" value="talle.id">{{talle.nombre}}</mat-option>
+            </mat-select>
+
             <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
                 <option value="" disabled selected class="sinFondo">Seleccione colores</option>
                 <option *ngFor="" value=""></option>
@@ -67,6 +71,7 @@
                 placeholder="Descripcion del producto"></textarea>
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
         </section>
+
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
         <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
