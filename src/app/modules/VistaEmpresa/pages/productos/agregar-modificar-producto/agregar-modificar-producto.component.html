@@ -66,9 +66,9 @@
                         <label class="radio-button-label">
                             <input type="radio" [(ngModel)]="opcion" name="opcion" value="oferta"> En oferta
                         </label>
-                        <div *ngIf="opcion == 'oferta'">
+                        <div>
                             <input type="number" class="BasicInput" placeholder="Precio oferta"
-                                style="width: 7.1rem; margin-bottom: 0.5rem;">
+                                style="width: 7.1rem; margin-bottom: 0.5rem;" [disabled]="opcion != 'oferta'">
                         </div>
                     </div>
                 </mat-radio-group>
