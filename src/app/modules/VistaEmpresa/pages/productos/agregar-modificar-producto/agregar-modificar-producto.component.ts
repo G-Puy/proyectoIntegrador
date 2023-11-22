@@ -36,7 +36,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   cargaTalles: DTOGenAbms[] = [];
   cargaColores: DTOGenAbms[] = [];
   constructor(private sharedServ: SharedService) {
-    this.sharedServ.getAllTalles().subscribe(talles => {
+    /* this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
       console.log(talles);
     });
@@ -47,7 +47,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     this.sharedServ.getAllTipoPrendas().subscribe(tp => {
       this.cargaTiposDePrenda = tp;
       console.log(tp);
-    });
+    }); */
 
   }
   ngOnInit(): void {
