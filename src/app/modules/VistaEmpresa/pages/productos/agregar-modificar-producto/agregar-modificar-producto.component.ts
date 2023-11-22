@@ -23,7 +23,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   precio: number = -1;
   idTipo: number = -1;
   enviarStock: DTOStock[] = [];
-  opcion: string = "oferta";
+  opcion: string = "ninguna";
   precioAnterior: number = -1;
   txtAreaDescripcion: string = "";
   txtAreaGuiaTalles: string = "";
