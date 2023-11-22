@@ -23,12 +23,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   precio: number = -1;
   idTipo: number = -1;
   enviarStock: DTOStock[] = [];
-  opcion: string = "ninguna";
+  opcion: string = "oferta";
   precioAnterior: number = -1;
   txtAreaDescripcion: string = "";
   txtAreaGuiaTalles: string = "";
 
-
+  mostrarOpcion() {
+    console.log(this.opcion);
+  }
 
   cargaTiposDePrenda: DTOGenAbms[] = [];
   cargaTalles: DTOGenAbms[] = [];
@@ -38,7 +40,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       this.cargaTalles = talles;
       console.log(talles);
     });
-    console.log(this.cargaTalles);
+    this.sharedServ.getAllColores().subscribe(colores => {
+      this.cargaColores = colores;
+      console.log(colores);
+    });
+    this.sharedServ.getAllTipoPrendas().subscribe(tp => {
+      this.cargaTiposDePrenda = tp;
+      console.log(tp);
+    });
 
   }
   ngOnInit(): void {

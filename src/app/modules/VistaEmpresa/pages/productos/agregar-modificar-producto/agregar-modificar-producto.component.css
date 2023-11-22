@@ -25,3 +25,19 @@
 .sinFondo {
     background-color: transparent;
 }
+
+
+
+.radio-buttons-column {
+    display: flex;
+    /* Habilita Flexbox */
+    flex-direction: column;
+    /* Organiza los hijos en una columna */
+    align-items: flex-start;
+    /* Alinea los hijos al inicio del contenedor */
+}
+
+.radio-button-label {
+    margin-bottom: 10px;
+    /* Espacio entre cada botón de radio */
+}

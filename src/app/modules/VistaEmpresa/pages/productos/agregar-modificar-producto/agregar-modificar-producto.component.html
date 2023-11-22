@@ -37,10 +37,10 @@
             <input type="text" class="BasicInput" placeholder="Nombre producto" style="padding-right: 2.2rem;">
             <input type="number" class="BasicInput" placeholder="Precio" style="padding-right: 2.2rem;">
 
-            <select class="BasicSelect " multiple (change)="actualizarSeleccion($event)">
-                <option disabled selected class="sinFondo">Seleccione un tipo</option>
-                <option *ngFor="" value=""></option>
-            </select>
+            <mat-select class="BasicSelect" placeholder="Seleccione un tipo" ngModel="idTipo">
+                <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
+                    value="talle.id">{{tipo.nombre}}</mat-option>
+            </mat-select>
 
             <mat-select class="BasicSelect" multiple placeholder="Seleccione talles"
                 (change)="actualizarSeleccion($event)">
@@ -48,23 +48,31 @@
                     value="talle.id">{{talle.nombre}}</mat-option>
             </mat-select>
 
-            <select class="BasicSelect" multiple (change)="actualizarSeleccion($event)">
-                <option value="" disabled selected class="sinFondo">Seleccione colores</option>
-                <option *ngFor="" value=""></option>
-            </select>
-            <div>
-                <div class="radio-buttons-column">
-                    <label>
-                        <input type="radio" name="opcion" value="ninguna"> Ninguna
+            <mat-select class="BasicSelect" multiple placeholder="Seleccione colores"
+                (change)="actualizarSeleccion($event)">
+                <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
+                    value="talle.id">{{color.nombre}}</mat-option>
+            </mat-select>
+            <div style="padding-top: 0.5rem;">
+                <mat-radio-group class="radio-buttons-column">
+                    <label class="radio-button-label">
+                        <input type="radio" [(ngModel)]="opcion" name="opcion" value="ninguna"> Ninguna
                     </label>
-                    <label>
-                        <input type="radio" name="opcion" value="nuevo"> Nuevo
+                    <label class="radio-button-label">
+                        <input type="radio" [(ngModel)]="opcion" name="opcion" value="nuevo"> Nuevo
                     </label>
-                    <label>
-                        <input type="radio" name="opcion" value="oferta"> En oferta
-                    </label>
-                </div>
-                <input type="number" class="BasicInput" placeholder="Precio anterior" style="padding-right: 2.2rem;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 2rem;">
+
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcion" name="opcion" value="oferta"> En oferta
+                        </label>
+                        <div *ngIf="opcion == 'oferta'">
+                            <input type="number" class="BasicInput" placeholder="Precio oferta"
+                                style="width: 7.1rem; margin-bottom: 0.5rem;">
+                        </div>
+                    </div>
+                </mat-radio-group>
+
             </div>
         </section>
         <section style="padding-top: 1rem;"> <!-- NO obligatorios -->
@@ -75,7 +83,7 @@
 
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
-        <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionCancelar" (click)="mostrarOpcion()" style="width: auto;">Cancelar</button>
         <button mat-button class="AcctionAceptar" style="width: auto;">Realizar</button>
     </mat-dialog-actions>
 </div>
