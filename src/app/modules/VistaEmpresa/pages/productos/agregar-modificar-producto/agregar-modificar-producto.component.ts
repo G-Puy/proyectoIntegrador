@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { DTOStock } from 'src/app/interfaces/stockDTO.interface';
 import { SharedService } from 'src/app/shared/shared.service';
+import { DTOProducto } from 'src/app/interfaces/productoDTO.interface';
 // register Swiper custom elements
 register();
 
@@ -20,49 +21,60 @@ register();
 export class AgregarModificarProductoComponent implements AfterViewInit {
   archivosSeleccionados: FileList | null = null;
   txtNombre: string = "";
-  precio: number = -1;
+  precio = null;
   idTipo: number = -1;
   enviarStock: DTOStock[] = [];
   opcion: string = "ninguna";
-  precioAnterior: number = -1;
+  precioOferta = 0;
   txtAreaDescripcion: string = "";
   txtAreaGuiaTalles: string = "";
+  visibleEnWeb: boolean = true;
+  productoEnviar: DTOProducto = {
+    id: 0,
+    nombre: '',
+    descripcion: '',
+    precioActual: 0,
+    precioAnterior: 0,
+    idTipoProducto: 0,
+    visibleEnWeb: false,
+    nuevo: false,
+    bajaLogica: false,
+    guiaTalles: '',
+    stocks: [], // Puedes poner aquí un array de DTOStock
+    imagenes: [] // Esto sería un array vacío o con objetos File según sea necesario
+  };
 
-  mostrarOpcion() {
-    console.log(this.opcion);
-  }
-
+  seleccionTalles: DTOGenAbms[] = [];
+  seleccionColores: DTOGenAbms[] = [];
   cargaTiposDePrenda: DTOGenAbms[] = [];
   cargaTalles: DTOGenAbms[] = [];
   cargaColores: DTOGenAbms[] = [];
+  mostrarOpcion() {
+    this.validarCamposOBj();
+
+  }
   constructor(private sharedServ: SharedService) {
-    /* this.sharedServ.getAllTalles().subscribe(talles => {
+
+    this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
-      console.log(talles);
     });
     this.sharedServ.getAllColores().subscribe(colores => {
       this.cargaColores = colores;
-      console.log(colores);
     });
     this.sharedServ.getAllTipoPrendas().subscribe(tp => {
       this.cargaTiposDePrenda = tp;
-      console.log(tp);
-    }); */
+    });
 
   }
+
+  //#region  IMAGENES
   ngOnInit(): void {
   }
-
-
-
-
   ngAfterViewInit() {
 
 
   }
 
-  //#region  Slider / elegir archivos img
-  //#endregion
   iteradorImg: number = 0;
   iterarIzquierda() {
     if (this.iteradorImg == 0) {
@@ -81,14 +93,11 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     }
   }
   silderImages: string[] = [];
-
-
-
   fileError: string = "";
   onFileChange(event: Event) {
     // Vaciamos el arreglo para nuevos archivos
     this.silderImages = [];
-
+    this.fileError = "";
     // Casting del evento para acceder a los archivos
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length) {
@@ -138,13 +147,77 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       }
     }
   }
+  //#endregion IMAGENES
+  //#regio OBJ PARA ENVIAR
+  errorValidacion = "";
 
+  public enviarObj() {
 
-  //#region  seleccionesMultiples
-  actualizarSeleccion(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    //this.seleccionadasTipoPRenda = Array.from(selectElement.selectedOptions).map(o => o.value);
   }
-  //#endregion
+  private validarCamposOBj() {
+    if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
+      this.errorValidacion = "Debe subir almenos 1 imagen.";
+      setTimeout(() => {
+        this.errorValidacion = "";
+      }, 4000);
+
+    } else if (
+      this.txtNombre == '' ||
+      (this.precio == null || this.precio <= 0) ||
+      this.idTipo == -1 ||
+      this.seleccionTalles.length <= 0 ||
+      this.seleccionColores.length <= 0 ||
+      (this.precioOferta == null && this.opcion == 'oferta')
+    ) {
+      this.errorValidacion = "Los campos en rojo son obligatorios.";
+      setTimeout(() => {
+        this.errorValidacion = "";
+      }, 4000);
+    } else {
+      //*CARGA FOTOS
+      for (let index = 0; index < this.archivosSeleccionados!.length; index++) {
+        const element = this.archivosSeleccionados![index];
+        this.productoEnviar.imagenes.push(element);
+      }
+      //*CARGA NOMBRE
+      this.productoEnviar.nombre = this.txtNombre;
+      //*CARGA PRECIO
+      this.productoEnviar.precioActual = this.precio;
+      //*CARGA TIPO
+      this.productoEnviar.idTipoProducto = this.idTipo;
+      //*CARGA OPCION
+      if (this.opcion == "oferta") { this.productoEnviar.precioAnterior = this.precioOferta; } else { this.productoEnviar.precioAnterior = -1; }
+      if (this.opcion == "nuevo") { this.productoEnviar.nuevo = true; } else { this.productoEnviar.nuevo = false; }
+      //*CARGA VISIBLE EN WEB
+      this.productoEnviar.visibleEnWeb = this.visibleEnWeb;
+      //*CARGA DESCRIPCION
+      this.productoEnviar.descripcion = this.txtAreaDescripcion;
+      //*CARGA GUIA DE TALLES
+      this.productoEnviar.guiaTalles = this.txtAreaGuiaTalles;
+      //*CARGA STOCKS
+      for (let index = 0; index < this.seleccionTalles!.length; index++) {
+        const talleActual = this.seleccionTalles![index];
+        let unStock: DTOStock = {
+          idProducto: -1,
+          idColor: -1,
+          idTalle: talleActual.id,
+          cantidad: 0,
+          id: -1
+        }
+        for (let i = 0; i < this.seleccionColores.length; i++) {
+          const colorActual = this.seleccionColores[i];
+          unStock.idColor = colorActual.id;
+        }
+        this.productoEnviar.stocks.push(unStock);
+      }
+      console.log(this.productoEnviar);
+    }
+  }
+
+
+
+
+  //#endregion PARA ENVIAR
+
 
 }

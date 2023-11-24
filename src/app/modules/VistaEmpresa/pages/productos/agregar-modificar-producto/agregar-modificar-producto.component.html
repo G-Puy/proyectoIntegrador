@@ -2,11 +2,11 @@
     <div mat-dialog-content>
 
         <section> <!-- Seccion imagenes -->
-            <div style="position: relative; max-height: 15rem;" *ngIf="silderImages.length != 0">
+            <div style="position: relative; max-height: 17rem;" *ngIf="silderImages.length != 0">
                 <div style="justify-content: center; align-items: center;">
 
                     <img src="{{silderImages[iteradorImg]}}" alt=""
-                        style="max-height: 15rem; min-height: 15rem; width: 100%;">
+                        style="max-height: 17rem; min-height: 17rem; width: 100%;">
                 </div>
                 <!-- DIV botones con posición absoluta -->
                 <div *ngIf="silderImages.length > 1"
@@ -34,24 +34,27 @@
         </section>
 
         <section style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <input type="text" class="BasicInput" placeholder="Nombre producto" style="padding-right: 2.2rem;">
-            <input type="number" class="BasicInput" placeholder="Precio" style="padding-right: 2.2rem;">
+            <input type="text" [(ngModel)]="txtNombre" [ngClass]="{'requerido': txtNombre == ''}" class="BasicInput"
+                placeholder="Nombre producto" style="padding-right: 2.2rem;">
+            <input type="number" [(ngModel)]="precio" [ngClass]="{'requerido': precio == null}" class="BasicInput"
+                placeholder="Precio" style="padding-right: 2.2rem;">
 
-            <mat-select class="BasicSelect" placeholder="Seleccione un tipo" ngModel="idTipo">
+            <mat-select class="BasicSelect " required placeholder="Seleccione un tipo" [(ngModel)]="idTipo"
+                [ngClass]="{'requerido': idTipo == -1}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
-                    value="talle.id">{{tipo.nombre}}</mat-option>
+                    value="tipo.id">{{tipo.nombre}}</mat-option>
             </mat-select>
 
-            <mat-select class="BasicSelect" multiple placeholder="Seleccione talles"
-                (change)="actualizarSeleccion($event)">
+            <mat-select class="BasicSelect" multiple placeholder="Seleccione talles" [(ngModel)]="seleccionTalles"
+                [ngClass]="{'requerido': seleccionTalles.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
-                    value="talle.id">{{talle.nombre}}</mat-option>
+                    [value]=talle>{{talle.nombre}}</mat-option>
             </mat-select>
 
-            <mat-select class="BasicSelect" multiple placeholder="Seleccione colores"
-                (change)="actualizarSeleccion($event)">
+            <mat-select class="BasicSelect" multiple placeholder="Seleccione colores" [(ngModel)]="seleccionColores"
+                [ngClass]="{'requerido': seleccionColores.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
-                    value="talle.id">{{color.nombre}}</mat-option>
+                    [value]=color>{{color.nombre}}</mat-option>
             </mat-select>
             <div style="padding-top: 0.5rem;">
                 <mat-radio-group class="radio-buttons-column">
@@ -67,12 +70,19 @@
                             <input type="radio" [(ngModel)]="opcion" name="opcion" value="oferta"> En oferta
                         </label>
                         <div>
+                            <!-- precioOferta -->
                             <input type="number" class="BasicInput" placeholder="Precio oferta"
-                                style="width: 7.1rem; margin-bottom: 0.5rem;" [disabled]="opcion != 'oferta'">
+                                style="width: 7.1rem; margin-bottom: 0.5rem;" [disabled]="opcion != 'oferta'"
+                                [(ngModel)]="precioOferta"
+                                [ngClass]="{'requerido': precioOferta == 0 && opcion == 'oferta'}">
                         </div>
                     </div>
+                    <div>
+                        <input type="checkbox" id="checkvisibleWeb" style="margin-right: 0.3rem;"
+                            [(ngModel)]="visibleEnWeb">
+                        <label for="checkvisibleWeb" style=" margin: 0; padding: 0;">Visible en la web</label>
+                    </div>
                 </mat-radio-group>
-
             </div>
         </section>
         <section style="padding-top: 1rem;"> <!-- NO obligatorios -->
@@ -81,6 +91,9 @@
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
         </section>
 
+    </div>
+    <div class="text-center" style="font-size: 1rem; padding: 1rem; ">
+        <span style="color: var(--colorAlerta);">{{errorValidacion}}</span>
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
         <button mat-button class="AcctionCancelar" (click)="mostrarOpcion()" style="width: auto;">Cancelar</button>

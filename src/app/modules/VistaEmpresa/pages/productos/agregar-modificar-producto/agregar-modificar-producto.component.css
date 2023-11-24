@@ -41,3 +41,8 @@
     margin-bottom: 10px;
     /* Espacio entre cada botón de radio */
 }
+
+
+.requerido {
+    border: var(--colorAlerta) solid 1px;
+}
