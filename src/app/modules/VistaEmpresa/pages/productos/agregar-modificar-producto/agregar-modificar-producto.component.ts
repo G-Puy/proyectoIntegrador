@@ -51,6 +51,10 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   cargaTiposDePrenda: DTOGenAbms[] = [];
   cargaTalles: DTOGenAbms[] = [];
   cargaColores: DTOGenAbms[] = [];
+  cargarStock: boolean = false;
+
+
+  //TODO: ELIMINAR ESTE METODO
   mostrarOpcion() {
     this.validarCamposOBj();
 

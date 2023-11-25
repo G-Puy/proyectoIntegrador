@@ -21,6 +21,7 @@
 
 
 
+
 .fuenteLetra {
     font-family: 'Audiowide';
 }
@@ -332,4 +333,8 @@ body {
 .AcctionCancelar::selection {
     border: 1px solid grey;
 
+}
+
+.requerido {
+    border: var(--colorAlerta) solid 1px;
 }

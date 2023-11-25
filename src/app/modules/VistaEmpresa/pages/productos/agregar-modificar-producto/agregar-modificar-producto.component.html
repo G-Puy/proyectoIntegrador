@@ -34,25 +34,25 @@
         </section>
 
         <section style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <input type="text" [(ngModel)]="txtNombre" [ngClass]="{'requerido': txtNombre == ''}" class="BasicInput"
-                placeholder="Nombre producto" style="padding-right: 2.2rem;">
-            <input type="number" [(ngModel)]="precio" [ngClass]="{'requerido': precio == null}" class="BasicInput"
-                placeholder="Precio" style="padding-right: 2.2rem;">
+            <input type="text" [(ngModel)]="txtNombre" [ngClass]="{'requerido': txtNombre == ''}"
+                class="marginBot BasicInput" placeholder="Nombre producto" style="padding-right: 2.2rem;">
+            <input type="number" [(ngModel)]="precio" [ngClass]="{'requerido': precio == null}"
+                class="marginBot BasicInput" placeholder="Precio" style="padding-right: 2.2rem;">
 
-            <mat-select class="BasicSelect " required placeholder="Seleccione un tipo" [(ngModel)]="idTipo"
+            <mat-select class="marginBot BasicSelect " required placeholder="Seleccione un tipo" [(ngModel)]="idTipo"
                 [ngClass]="{'requerido': idTipo == -1}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
                     [value]=tipo.id>{{tipo.nombre}}</mat-option>
             </mat-select>
 
-            <mat-select class="BasicSelect" multiple placeholder="Seleccione talles" [(ngModel)]="seleccionTalles"
-                [ngClass]="{'requerido': seleccionTalles.length <= 0}">
+            <mat-select class="marginBot BasicSelect" multiple placeholder="Seleccione talles"
+                [(ngModel)]="seleccionTalles" [ngClass]="{'requerido': seleccionTalles.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
                     [value]=talle>{{talle.nombre}}</mat-option>
             </mat-select>
 
-            <mat-select class="BasicSelect" multiple placeholder="Seleccione colores" [(ngModel)]="seleccionColores"
-                [ngClass]="{'requerido': seleccionColores.length <= 0}">
+            <mat-select class="marginBot BasicSelect" multiple placeholder="Seleccione colores"
+                [(ngModel)]="seleccionColores" [ngClass]="{'requerido': seleccionColores.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
                     [value]=color>{{color.nombre}}</mat-option>
             </mat-select>
@@ -89,14 +89,35 @@
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea"
                 placeholder="Descripcion del producto"></textarea>
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
+            <div style="display: flex; align-items: center;">
+                <mat-slide-toggle [(ngModel)]="cargarStock"></mat-slide-toggle>
+                <span>¿Cargar stock?</span>
+            </div>
+        </section>
+        <section *ngIf="cargarStock == true"> <!-- CARGAR STOCK -->
+            <p>mapeando stock</p>
         </section>
 
     </div>
     <div class="text-center" style="font-size: 1rem; padding: 1rem; ">
         <span style="color: var(--colorAlerta);">{{errorValidacion}}</span>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
-        <button mat-button class="AcctionCancelar" (click)="mostrarOpcion()" style="width: auto;">Cancelar</button>
-        <button mat-button class="AcctionAceptar" style="width: auto;">Realizar</button>
+        <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionAceptar" (click)="mostrarOpcion()" style="width: auto;">Aceptar</button>
     </mat-dialog-actions>
 </div>
