@@ -66,7 +66,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar." });
+                this.dialogRef.close({ result: false, error: "Error en el alta." });
               }
             });
           break;
@@ -83,7 +83,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar." });
+                this.dialogRef.close({ result: false, error: "Error en el alta." });
               }
             });
           break;
@@ -100,7 +100,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar." });
+                this.dialogRef.close({ result: false, error: "Error en el alta." });
               }
             });
           break;

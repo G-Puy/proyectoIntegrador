@@ -42,7 +42,7 @@
             <mat-select class="BasicSelect " required placeholder="Seleccione un tipo" [(ngModel)]="idTipo"
                 [ngClass]="{'requerido': idTipo == -1}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
-                    value="tipo.id">{{tipo.nombre}}</mat-option>
+                    [value]=tipo.id>{{tipo.nombre}}</mat-option>
             </mat-select>
 
             <mat-select class="BasicSelect" multiple placeholder="Seleccione talles" [(ngModel)]="seleccionTalles"

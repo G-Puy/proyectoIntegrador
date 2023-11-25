@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { DTOTipoPrenda } from '../interfaces/tipoProducto.interface';
 import { DTOGenAbms } from '../interfaces/objGenericoParaABMS.interface';
+import { DTOProducto } from '../interfaces/productoDTO.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -123,6 +124,20 @@ export class SharedService {
   }
 
   //#endregion TALLES
+
+  //#region  PRODUCTO
+
+  altaProducto(dataEnvio: FormData): Observable<boolean> {
+    return this.http.post<DTOGenAbms>(`${this.apiUrl}api/Producto/alta`, dataEnvio)
+      .pipe(
+        tap(resp => of(resp)),
+        catchError(err => of(err))
+      )
+  }
+
+  //#endregion PRODUCTO
+
+
 }
 
 

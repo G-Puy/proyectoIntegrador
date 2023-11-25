@@ -9,6 +9,8 @@ import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { DTOStock } from 'src/app/interfaces/stockDTO.interface';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DTOProducto } from 'src/app/interfaces/productoDTO.interface';
+import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
+import { MatDialogRef } from '@angular/material/dialog';
 // register Swiper custom elements
 register();
 
@@ -43,7 +45,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     stocks: [], // Puedes poner aquí un array de DTOStock
     imagenes: [] // Esto sería un array vacío o con objetos File según sea necesario
   };
-
+  archivos: File[] = [];
   seleccionTalles: DTOGenAbms[] = [];
   seleccionColores: DTOGenAbms[] = [];
   cargaTiposDePrenda: DTOGenAbms[] = [];
@@ -53,7 +55,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     this.validarCamposOBj();
 
   }
-  constructor(private sharedServ: SharedService) {
+  constructor(private sharedServ: SharedService,
+    public dialogRef: MatDialogRef<AddEditGenericoComponent>) {
 
     this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
@@ -94,7 +97,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   }
   silderImages: string[] = [];
   fileError: string = "";
-  onFileChange(event: Event) {
+  onFileChange(event: any) {
     // Vaciamos el arreglo para nuevos archivos
     this.silderImages = [];
     this.fileError = "";
@@ -102,6 +105,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length) {
       this.archivosSeleccionados = input.files;
+      this.archivos = event.target.files;
     }
 
 
@@ -174,11 +178,11 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         this.errorValidacion = "";
       }, 4000);
     } else {
-      //*CARGA FOTOS
+      /* //*CARGA FOTOS
       for (let index = 0; index < this.archivosSeleccionados!.length; index++) {
         const element = this.archivosSeleccionados![index];
         this.productoEnviar.imagenes.push(element);
-      }
+      } */
       //*CARGA NOMBRE
       this.productoEnviar.nombre = this.txtNombre;
       //*CARGA PRECIO
@@ -210,11 +214,42 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         }
         this.productoEnviar.stocks.push(unStock);
       }
-      console.log(this.productoEnviar);
+      //TODO: ENVIAR EL PRODUCTO A BACK PARA EL ALTA O PARA MODIFCIAR
+      //console.log(this.productoEnviar);
+
+      const formData = new FormData();
+      for (let archivo of this.archivos) {
+        formData.append('imagenes', archivo, archivo.name);
+      }
+      formData.append('producto', JSON.stringify(this.productoEnviar));
+
+      this.agregarOModificar(formData);
     }
   }
 
+  private agregarOModificar(dataEnvio: FormData) {
+    if ('alta' == 'alta') {
+      this.sharedServ.altaProducto(dataEnvio).subscribe({
+        next: (resultadoAlta) => {
+          // Si la llamada es exitosa, cerrar el diálogo con el resultado
+          if (resultadoAlta) {
+            // this.dialogRef.close({ result: resultadoAlta, error: "" });
+          } else {
+            // this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+          }
+        },
+        error: (error) => {
+          // En caso de error, cerrar el diálogo con el error
+          //this.dialogRef.close({ result: false, error: "Error en el alta." });
+        }
+      });
 
+    }
+
+
+
+
+  }
 
 
   //#endregion PARA ENVIAR

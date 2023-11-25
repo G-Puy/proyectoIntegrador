@@ -8,14 +8,14 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
-    /*  canActivate: [PublicGuard],
-     canMatch: [PublicGuard] */
+    canActivate: [PublicGuard],
+    canMatch: [PublicGuard]
   },
   {
     path: 'lEmpresa',
     loadChildren: () => import('./modules/VistaEmpresa/home-empresa.module').then(m => m.HomeEmpresaModule),
-    /* canActivate: [AuthGuard],
-    canMatch: [AuthGuard] */
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard]
   },
   {
     path: 'store',
