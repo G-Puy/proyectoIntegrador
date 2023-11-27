@@ -46,13 +46,15 @@
             </mat-select>
 
             <mat-select class="marginBot BasicSelect" multiple placeholder="Seleccione talles"
-                [(ngModel)]="seleccionTalles" [ngClass]="{'requerido': seleccionTalles.length <= 0}">
+                [(ngModel)]="seleccionTalles" (valueChange)="cargarStock = false"
+                [ngClass]="{'requerido': seleccionTalles.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
                     [value]=talle>{{talle.nombre}}</mat-option>
             </mat-select>
 
             <mat-select class="marginBot BasicSelect" multiple placeholder="Seleccione colores"
-                [(ngModel)]="seleccionColores" [ngClass]="{'requerido': seleccionColores.length <= 0}">
+                [(ngModel)]="seleccionColores" (valueChange)="cargarStock = false"
+                [ngClass]="{'requerido': seleccionColores.length <= 0}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
                     [value]=color>{{color.nombre}}</mat-option>
             </mat-select>
@@ -89,35 +91,39 @@
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea"
                 placeholder="Descripcion del producto"></textarea>
             <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
+
+        </section>
+        <section *ngIf="validarVisualizacionCargarStock()"> <!-- CARGAR STOCK -->
+
             <div style="display: flex; align-items: center;">
-                <mat-slide-toggle [(ngModel)]="cargarStock"></mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="cargarStock"
+                    (click)="inicializarStockConLoSeleccionado()"></mat-slide-toggle>
                 <span>¿Cargar stock?</span>
             </div>
-        </section>
-        <section *ngIf="cargarStock == true"> <!-- CARGAR STOCK -->
-            <p>mapeando stock</p>
+            <div *ngIf="validarCargaStock()">
+                <div *ngFor="let talle of productoEnviar.stocks.talles">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2>Talle {{talle.nombreTalle}}</h2>
+                    </div>
+
+                    <div *ngFor="let color of talle.colores">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label for="">Cantidad {{color.nombreColor}}</label>
+                            <input type="number" class="BasicInput" style="width: 3rem; margin-bottom: 0.5rem;"
+                                [(ngModel)]="color.cantidad"
+                                [ngClass]="{'requerido': precioOferta == 0 && opcion == 'oferta'}">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
     <div class="text-center" style="font-size: 1rem; padding: 1rem; ">
         <span style="color: var(--colorAlerta);">{{errorValidacion}}</span>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
         <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
-        <button mat-button class="AcctionAceptar" (click)="mostrarOpcion()" style="width: auto;">Aceptar</button>
+        <button mat-button class="AcctionAceptar" (click)="realizarAccion()" style="width: auto;">Aceptar</button>
     </mat-dialog-actions>
 </div>

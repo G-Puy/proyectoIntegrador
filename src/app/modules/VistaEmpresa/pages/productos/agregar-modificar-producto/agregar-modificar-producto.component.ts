@@ -6,11 +6,13 @@ import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
-import { DTOStock } from 'src/app/interfaces/stockDTO.interface';
+import { DTOStock } from 'src/app/interfaces/DtosCargarStock/stockDTO.interface';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DTOProducto } from 'src/app/interfaces/productoDTO.interface';
 import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DTOTalleEnvio } from 'src/app/interfaces/DtosCargarStock/talleEnvio.interface';
+import { DTOColorEnvio } from 'src/app/interfaces/DtosCargarStock/colorEnvio.interface';
 // register Swiper custom elements
 register();
 
@@ -42,9 +44,16 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     nuevo: false,
     bajaLogica: false,
     guiaTalles: '',
-    stocks: [], // Puedes poner aquí un array de DTOStock
+    stocks: {
+      id: -1,
+      idProducto: -1,
+      cantidadTotal: 0,
+      talles: [],
+      cargado: false,
+    }, // Puedes poner aquí un array de DTOStock
     imagenes: [] // Esto sería un array vacío o con objetos File según sea necesario
   };
+
   archivos: File[] = [];
   seleccionTalles: DTOGenAbms[] = [];
   seleccionColores: DTOGenAbms[] = [];
@@ -56,7 +65,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
   //TODO: ELIMINAR ESTE METODO
   mostrarOpcion() {
-    this.validarCamposOBj();
 
   }
   constructor(private sharedServ: SharedService,
@@ -159,10 +167,11 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   //#regio OBJ PARA ENVIAR
   errorValidacion = "";
 
-  public enviarObj() {
-
+  public realizarAccion() {
+    this.altaProducto();
+    //console.log(this.productoEnviar);
   }
-  private validarCamposOBj() {
+  private altaProducto() {
     if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
       this.errorValidacion = "Debe subir almenos 1 imagen.";
       setTimeout(() => {
@@ -202,24 +211,10 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       this.productoEnviar.descripcion = this.txtAreaDescripcion;
       //*CARGA GUIA DE TALLES
       this.productoEnviar.guiaTalles = this.txtAreaGuiaTalles;
-      //*CARGA STOCKS
-      for (let index = 0; index < this.seleccionTalles!.length; index++) {
-        const talleActual = this.seleccionTalles![index];
-        let unStock: DTOStock = {
-          idProducto: -1,
-          idColor: -1,
-          idTalle: talleActual.id,
-          cantidad: 0,
-          id: -1
-        }
-        for (let i = 0; i < this.seleccionColores.length; i++) {
-          const colorActual = this.seleccionColores[i];
-          unStock.idColor = colorActual.id;
-        }
-        this.productoEnviar.stocks.push(unStock);
-      }
+      //*INCIALIZO STOCKS en 0 cantidad
+      this.inicializarStockConLoSeleccionado();
       //TODO: ENVIAR EL PRODUCTO A BACK PARA EL ALTA O PARA MODIFCIAR
-      //console.log(this.productoEnviar);
+
 
       const formData = new FormData();
       for (let archivo of this.archivos) {
@@ -227,7 +222,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       }
       formData.append('producto', JSON.stringify(this.productoEnviar));
 
-      this.agregarOModificar(formData);
+      // this.agregarOModificar(formData);
     }
   }
 
@@ -255,8 +250,94 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
   }
 
+  public inicializarStockConLoSeleccionado() {
+    //*CARGA STOCKS
+    if (this.productoEnviar.stocks.cargado == false) {
+      //*CARGA STOCKS
+      this.productoEnviar.stocks.talles = [];
+      for (let index = 0; index < this.seleccionTalles!.length; index++) {
+        const talleActual = this.seleccionTalles![index];
+        let unTalle: DTOTalleEnvio = {
+          id: talleActual.id,
+          nombreTalle: talleActual.nombre,
+          idProducto: -0,
+          cantidad: 0,
+          colores: [],
+        }
+        for (let i = 0; i < this.seleccionColores.length; i++) {
+          const colorActual = this.seleccionColores[i];
+          let unColor: DTOColorEnvio = {
+            id: colorActual.id,
+            cantidad: 0,
+            nombreColor: colorActual.nombre
+          }
+          unTalle.colores.push(unColor);
+        }
+        this.productoEnviar.stocks.talles.push(unTalle);
+      }
+      this.productoEnviar.stocks.cargado = true;
+    } else if (this.cargarStock == true) {
+      //*CARGA STOCKS
+      this.productoEnviar.stocks.talles = [];
+
+      for (let index = 0; index < this.seleccionTalles!.length; index++) {
+        const talleActual = this.seleccionTalles![index];
+        let unTalle: DTOTalleEnvio = {
+          id: talleActual.id,
+          nombreTalle: talleActual.nombre,
+          idProducto: -0,
+          cantidad: 0,
+          colores: [],
+        }
+        for (let i = 0; i < this.seleccionColores.length; i++) {
+          const colorActual = this.seleccionColores[i];
+          let unColor: DTOColorEnvio = {
+            id: colorActual.id,
+            cantidad: 0,
+            nombreColor: colorActual.nombre
+          }
+          unTalle.colores.push(unColor);
+        }
+        this.productoEnviar.stocks.talles.push(unTalle);
+      }
+      this.productoEnviar.stocks.cargado = true;
+    }
+
+  }
+
+  //#region  //*CARGAR STOCK PARA ENVIAR
+  validarCargaStock(): boolean {
+    let valido: boolean = false;
+    if (this.cargarStock == true) { valido = true; }
+    return valido;
+  }
+
+  validarVisualizacionCargarStock(): boolean {
+    let valido: boolean = false;
+    if ('alta' == 'alta') {
+      if (this.seleccionTalles.length > 0) {
+        if (this.seleccionColores.length > 0) {
+          valido = true;
+        }
+      }
+    }
+    return valido;
+  }
+
+  //#endregion //*CARGAR STOCK PARA ENVIAR
+
+
+
+
+
+
 
   //#endregion PARA ENVIAR
+
+
+
+
+
 
 
 }
