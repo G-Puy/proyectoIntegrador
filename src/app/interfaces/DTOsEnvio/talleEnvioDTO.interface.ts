@@ -1,4 +1,4 @@
-import { DTOColorEnvio } from "./colorEnvio.interface";
+import { DTOColorEnvio } from "./colorEnvioDTO.interface";
 
 export interface DTOTalleEnvio {
     id: number;

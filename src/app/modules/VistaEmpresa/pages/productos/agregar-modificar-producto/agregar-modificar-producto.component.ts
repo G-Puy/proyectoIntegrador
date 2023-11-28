@@ -6,13 +6,13 @@ import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
-import { DTOStock } from 'src/app/interfaces/DtosCargarStock/stockDTO.interface';
+import { DTOStockEnvio } from 'src/app/interfaces/DTOsEnvio/stockEnvioDTO.interface';
 import { SharedService } from 'src/app/shared/shared.service';
-import { DTOProducto } from 'src/app/interfaces/productoDTO.interface';
+import { DTOProductoEnvio } from 'src/app/interfaces/DTOsEnvio/productoEnvioDTO.interface';
 import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DTOTalleEnvio } from 'src/app/interfaces/DtosCargarStock/talleEnvio.interface';
-import { DTOColorEnvio } from 'src/app/interfaces/DtosCargarStock/colorEnvio.interface';
+import { DTOTalleEnvio } from 'src/app/interfaces/DTOsEnvio/talleEnvioDTO.interface';
+import { DTOColorEnvio } from 'src/app/interfaces/DTOsEnvio/colorEnvioDTO.interface';
 // register Swiper custom elements
 register();
 
@@ -27,13 +27,13 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   txtNombre: string = "";
   precio = null;
   idTipo: number = -1;
-  enviarStock: DTOStock[] = [];
+  enviarStock: DTOStockEnvio[] = [];
   opcion: string = "ninguna";
   precioOferta = 0;
   txtAreaDescripcion: string = "";
   txtAreaGuiaTalles: string = "";
   visibleEnWeb: boolean = true;
-  productoEnviar: DTOProducto = {
+  productoEnviar: DTOProductoEnvio = {
     id: 0,
     nombre: '',
     descripcion: '',
@@ -44,14 +44,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     nuevo: false,
     bajaLogica: false,
     guiaTalles: '',
-    stocks: {
+    stock: {
       id: -1,
       idProducto: -1,
       cantidadTotal: 0,
       talles: [],
       cargado: false,
     }, // Puedes poner aquí un array de DTOStock
-    imagenes: [] // Esto sería un array vacío o con objetos File según sea necesario
+    // Esto sería un array vacío o con objetos File según sea necesario
   };
 
   archivos: File[] = [];
@@ -191,11 +191,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         this.errorValidacion = "";
       }, 4000);
     } else {
-      /* //*CARGA FOTOS
-      for (let index = 0; index < this.archivosSeleccionados!.length; index++) {
-        const element = this.archivosSeleccionados![index];
-        this.productoEnviar.imagenes.push(element);
-      } */
       //*CARGA NOMBRE
       this.productoEnviar.nombre = this.txtNombre;
       //*CARGA PRECIO
@@ -222,7 +217,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       }
       formData.append('producto', JSON.stringify(this.productoEnviar));
 
-      // this.agregarOModificar(formData);
+      this.agregarOModificar(formData);
     }
   }
 
@@ -244,17 +239,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       });
 
     }
-
-
-
-
   }
 
   public inicializarStockConLoSeleccionado() {
     //*CARGA STOCKS
-    if (this.productoEnviar.stocks.cargado == false) {
+    if (this.productoEnviar.stock.cargado == false) {
       //*CARGA STOCKS
-      this.productoEnviar.stocks.talles = [];
+      console.log("ENTRO CUANDO NO TENGO QUE ENTRAR");
+      this.productoEnviar.stock.talles = [];
       for (let index = 0; index < this.seleccionTalles!.length; index++) {
         const talleActual = this.seleccionTalles![index];
         let unTalle: DTOTalleEnvio = {
@@ -273,12 +265,13 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
           }
           unTalle.colores.push(unColor);
         }
-        this.productoEnviar.stocks.talles.push(unTalle);
+        this.productoEnviar.stock.talles.push(unTalle);
       }
-      this.productoEnviar.stocks.cargado = true;
+      this.productoEnviar.stock.cargado = true;
     } else if (this.cargarStock == true) {
       //*CARGA STOCKS
-      this.productoEnviar.stocks.talles = [];
+      this.productoEnviar.stock.talles = [];
+      console.log("ENTRO CUANDO NO TENGO QUE ENTRAR 2.0");
 
       for (let index = 0; index < this.seleccionTalles!.length; index++) {
         const talleActual = this.seleccionTalles![index];
@@ -298,9 +291,9 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
           }
           unTalle.colores.push(unColor);
         }
-        this.productoEnviar.stocks.talles.push(unTalle);
+        this.productoEnviar.stock.talles.push(unTalle);
       }
-      this.productoEnviar.stocks.cargado = true;
+      this.productoEnviar.stock.cargado = true;
     }
 
   }

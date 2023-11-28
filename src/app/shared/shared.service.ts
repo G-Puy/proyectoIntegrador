@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { DTOTipoPrenda } from '../interfaces/tipoProducto.interface';
 import { DTOGenAbms } from '../interfaces/objGenericoParaABMS.interface';
-import { DTOProducto } from '../interfaces/productoDTO.interface';
+import { DTOProductoEnvio } from '../interfaces/DTOsEnvio/productoEnvioDTO.interface';
 
 @Injectable({
   providedIn: 'root'

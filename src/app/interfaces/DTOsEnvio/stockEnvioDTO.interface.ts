@@ -1,6 +1,6 @@
-import { DTOTalleEnvio } from "./talleEnvio.interface";
+import { DTOTalleEnvio } from "./talleEnvioDTO.interface";
 
-export interface DTOStock {
+export interface DTOStockEnvio {
     id: number;
     idProducto: number;
     talles: DTOTalleEnvio[];

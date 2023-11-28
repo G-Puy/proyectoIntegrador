@@ -101,7 +101,7 @@
                 <span>¿Cargar stock?</span>
             </div>
             <div *ngIf="validarCargaStock()">
-                <div *ngFor="let talle of productoEnviar.stocks.talles">
+                <div *ngFor="let talle of productoEnviar.stock.talles">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <h2>Talle {{talle.nombreTalle}}</h2>
                     </div>
@@ -123,7 +123,7 @@
         <span style="color: var(--colorAlerta);">{{errorValidacion}}</span>
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem;">
-        <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionCancelar" [mat-dialog-close]="false" style="width: auto;">Cancelar</button>
         <button mat-button class="AcctionAceptar" (click)="realizarAccion()" style="width: auto;">Aceptar</button>
     </mat-dialog-actions>
 </div>

@@ -1,5 +1,5 @@
-import { DTOStock } from "./DtosCargarStock/stockDTO.interface";
-export interface DTOProducto {
+import { DTOStockEnvio } from "./stockEnvioDTO.interface";
+export interface DTOProductoEnvio {
     id: number;
     nombre: string;
     descripcion: string;
@@ -10,6 +10,5 @@ export interface DTOProducto {
     nuevo: boolean;
     bajaLogica: boolean;
     guiaTalles: string;
-    stocks: DTOStock;
-    imagenes: File[];
+    stock: DTOStockEnvio;
 }

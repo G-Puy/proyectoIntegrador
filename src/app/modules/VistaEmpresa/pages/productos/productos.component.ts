@@ -14,10 +14,10 @@ export class ProductosComponent {
 
   }
   ngOnInit(): void {
-    this.openDialogCancelar();
+    this.openDialogAgregarEditar();
 
   }
-  openDialogCancelar() {
+  openDialogAgregarEditar() {
 
     const dialogRef = this.dialog.open(AgregarModificarProductoComponent, {
       width: '300px',
