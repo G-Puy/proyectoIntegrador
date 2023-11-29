@@ -207,7 +207,9 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       //*CARGA GUIA DE TALLES
       this.productoEnviar.guiaTalles = this.txtAreaGuiaTalles;
       //*INCIALIZO STOCKS en 0 cantidad
-      this.inicializarStockConLoSeleccionado();
+      if (this.productoEnviar.stock.cargado == false) {
+        this.inicializarStockConLoSeleccionado();
+      }
       //TODO: ENVIAR EL PRODUCTO A BACK PARA EL ALTA O PARA MODIFCIAR
 
 
