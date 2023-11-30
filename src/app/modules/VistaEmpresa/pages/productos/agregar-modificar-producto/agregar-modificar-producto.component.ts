@@ -1,4 +1,4 @@
-import { AfterViewInit } from '@angular/core';
+import { AfterViewInit, Inject } from '@angular/core';
 import Swiper from 'swiper';
 
 import { Component } from '@angular/core';
@@ -10,7 +10,7 @@ import { DTOStockEnvio } from 'src/app/interfaces/DTOsEnvio/stockEnvioDTO.interf
 import { SharedService } from 'src/app/shared/shared.service';
 import { DTOProductoEnvio } from 'src/app/interfaces/DTOsEnvio/productoEnvioDTO.interface';
 import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DTOTalleEnvio } from 'src/app/interfaces/DTOsEnvio/talleEnvioDTO.interface';
 import { DTOColorEnvio } from 'src/app/interfaces/DTOsEnvio/colorEnvioDTO.interface';
 // register Swiper custom elements
@@ -68,7 +68,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
   }
   constructor(private sharedServ: SharedService,
-    public dialogRef: MatDialogRef<AddEditGenericoComponent>) {
+    public dialogRef: MatDialogRef<AddEditGenericoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
@@ -79,6 +80,18 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     this.sharedServ.getAllTipoPrendas().subscribe(tp => {
       this.cargaTiposDePrenda = tp;
     });
+
+    console.log(data.soyAgregar);
+
+    if (data.soyAgregar == false) {
+      //Cargo los datos del producto
+    }
+
+
+
+
+
+
 
   }
 
@@ -99,7 +112,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     }
   }
   iterarDerecha() {
-    console.log(this.iteradorImg);
     if (this.iteradorImg + 1 == this.silderImages.length) {
       this.iteradorImg = 0;
     }
@@ -168,10 +180,9 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   errorValidacion = "";
 
   public realizarAccion() {
-    this.altaProducto();
-    //console.log(this.productoEnviar);
+    this.accionProducto();
   }
-  private altaProducto() {
+  private accionProducto() {
     if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
       this.errorValidacion = "Debe subir almenos 1 imagen.";
       setTimeout(() => {
@@ -210,9 +221,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       if (this.productoEnviar.stock.cargado == false) {
         this.inicializarStockConLoSeleccionado();
       }
-      //TODO: ENVIAR EL PRODUCTO A BACK PARA EL ALTA O PARA MODIFCIAR
-
-
       const formData = new FormData();
       for (let archivo of this.archivos) {
         formData.append('imagenes', archivo, archivo.name);
@@ -224,14 +232,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   }
 
   private agregarOModificar(dataEnvio: FormData) {
-    if ('alta' == 'alta') {
+    if (this.data.soyAgregar == true) {
       this.sharedServ.altaProducto(dataEnvio).subscribe({
         next: (resultadoAlta) => {
           // Si la llamada es exitosa, cerrar el diálogo con el resultado
           if (resultadoAlta) {
-            // this.dialogRef.close({ result: resultadoAlta, error: "" });
+            this.dialogRef.close({ result: resultadoAlta, error: "" });
           } else {
-            // this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+            this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
           }
         },
         error: (error) => {
@@ -247,7 +255,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     //*CARGA STOCKS
     if (this.productoEnviar.stock.cargado == false) {
       //*CARGA STOCKS
-      console.log("ENTRO CUANDO NO TENGO QUE ENTRAR");
       this.productoEnviar.stock.talles = [];
       for (let index = 0; index < this.seleccionTalles!.length; index++) {
         const talleActual = this.seleccionTalles![index];
@@ -273,7 +280,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     } else if (this.cargarStock == true) {
       //*CARGA STOCKS
       this.productoEnviar.stock.talles = [];
-      console.log("ENTRO CUANDO NO TENGO QUE ENTRAR 2.0");
 
       for (let index = 0; index < this.seleccionTalles!.length; index++) {
         const talleActual = this.seleccionTalles![index];
@@ -309,12 +315,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
   validarVisualizacionCargarStock(): boolean {
     let valido: boolean = false;
-    if ('alta' == 'alta') {
+    if (this.data.soyAgregar == true) {
       if (this.seleccionTalles.length > 0) {
         if (this.seleccionColores.length > 0) {
           valido = true;
         }
       }
+    } else {
+      valido = false;
     }
     return valido;
   }

@@ -15,12 +15,18 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.letraRosaDiosa180 {
+    color: var(--rosadoQueDiosaAl80);
+}
+
 .custom-dialog {
     background: blue;
 }
 
 
-
+.sizePrecio {
+    font-size: 20px;
+}
 
 .fuenteLetra {
     font-family: 'Audiowide';
@@ -51,6 +57,12 @@ body {
     -webkit-box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
     box-shadow: 7px 7px 14px -7px rgba(0, 0, 0, 0.75);
+}
+
+.sombra2 {
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
 }
 
 

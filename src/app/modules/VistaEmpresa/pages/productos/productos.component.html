@@ -2,7 +2,45 @@
     <div>
         <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
             class="d-flex align-items-center sombra justify-content-between p-2">
-            <span class="" (click)="openDialogAgregarEditar()">PRODUCTOS</span>
+            <span class="">PRODUCTOS</span>
         </div>
+        <div style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
+            <div
+                style="border-radius: 5px; padding: 0.5rem; display: flex; gap: 0.5rem; background-color: var(--negroQueDiosa);">
+                <div class="text-center">
+                    <div class="sombra2"
+                        style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem;border-radius: 5px; text-align: center; margin-bottom: 0.5rem;">
+                        <img style="max-width: 6rem; max-height: 7rem;"
+                            src="https://m.media-amazon.com/images/I/51ewObm6GKL._AC_UY445_.jpg" alt="">
+                    </div>
+                    <span class="letraRosaDiosa180">Nuevo</span><!-- Segun si lo tiene o no -->
+                </div>
+                <div style="display: flex;">
+                    <div>
+                        <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+                            <span class="letraRosaDiosa180" style="margin-bottom: 4px;">Producto: </span>
+                            <span style="color: white; font-size: 18px;">Vestido estilizado negro</span>
+                        </div>
+                        <div>
+                            <span class="letraRosaDiosa180">Precio: </span>
+                            <span style="color: white; font-size: 18px;">$1300</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;">delete</span>
+                        <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;">edit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
 </div>
+<button class=" btnAddCircular" matTooltip="Agregar nuevo" (click)="openDialogAgregarEditar(true)">
+    <span class="material-symbols-outlined ">
+        add
+    </span>
+</button>

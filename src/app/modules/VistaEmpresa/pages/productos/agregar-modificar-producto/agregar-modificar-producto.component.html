@@ -87,10 +87,10 @@
             </div>
         </section>
         <section style="padding-top: 1rem;"> <!-- NO obligatorios -->
-            <textarea name="" id="" cols="30" rows="10" class="BasicTextArea"
+            <textarea name="" id="" cols="30" rows="10" [(ngModel)]="txtAreaDescripcion" class="BasicTextArea"
                 placeholder="Descripcion del producto"></textarea>
-            <textarea name="" id="" cols="30" rows="10" class="BasicTextArea" placeholder="Guia de talles"></textarea>
-
+            <textarea name="" id="" cols="30" rows="10" [(ngModel)]="txtAreaGuiaTalles" class="BasicTextArea"
+                placeholder="Guia de talles"></textarea>
         </section>
         <section *ngIf="validarVisualizacionCargarStock()"> <!-- CARGAR STOCK -->
 

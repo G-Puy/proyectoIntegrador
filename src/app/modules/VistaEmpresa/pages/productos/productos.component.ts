@@ -14,14 +14,14 @@ export class ProductosComponent {
 
   }
   ngOnInit(): void {
-    this.openDialogAgregarEditar();
+    //this.openDialogAgregarEditar();
 
   }
-  openDialogAgregarEditar() {
+  openDialogAgregarEditar(agregar: boolean) {
 
     const dialogRef = this.dialog.open(AgregarModificarProductoComponent, {
       width: '300px',
-      data: { message: `¿Desea eliminar ` },
+      data: { soyAgregar: agregar },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
 
