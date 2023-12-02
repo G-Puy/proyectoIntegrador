@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, of, tap, throwError } from 'rxjs';
 import { DTOTipoPrenda } from '../interfaces/tipoProducto.interface';
 import { DTOGenAbms } from '../interfaces/objGenericoParaABMS.interface';
 import { DTOProductoEnvio } from '../interfaces/DTOsEnvio/productoEnvioDTO.interface';
+import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -135,6 +136,13 @@ export class SharedService {
       )
   }
 
+  getImage(idProducto: number): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}api/Producto/PRUEBATraerImagenes?idProducto=${idProducto}`);
+  }
+
+  traerTodosLosProductos(): Observable<recibirProductoDTOBack[]> {
+    return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos2`);
+  }
   //#endregion PRODUCTO
 
 
