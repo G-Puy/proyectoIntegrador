@@ -141,7 +141,7 @@ export class SharedService {
   }
 
   traerTodosLosProductos(): Observable<recibirProductoDTOBack[]> {
-    return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos2`);
+    return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos`);
   }
   //#endregion PRODUCTO
 

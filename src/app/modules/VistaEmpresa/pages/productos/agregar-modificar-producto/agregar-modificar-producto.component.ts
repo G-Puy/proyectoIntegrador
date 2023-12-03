@@ -13,6 +13,7 @@ import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/a
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DTOTalleEnvio } from 'src/app/interfaces/DTOsEnvio/talleEnvioDTO.interface';
 import { DTOColorEnvio } from 'src/app/interfaces/DTOsEnvio/colorEnvioDTO.interface';
+import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 // register Swiper custom elements
 register();
 
@@ -69,7 +70,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   }
   constructor(private sharedServ: SharedService,
     public dialogRef: MatDialogRef<AddEditGenericoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private funcionesGlobalesService: FuncionesGlobalesService) {
 
     this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;

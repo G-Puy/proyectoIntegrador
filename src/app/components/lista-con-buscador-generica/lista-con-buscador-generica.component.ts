@@ -160,8 +160,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
         this.funcionesGlobalesService.abrirSnack("Edición exitosa.", 3000, true);
         this.getAll();
       }
-      console.log("NO ENTRO A NNINGUNO");
-      console.log(resultado);
+
     });
 
 
