@@ -11,6 +11,7 @@ import { TallesComponent } from './pages/talles/talles.component';
 import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ColorComponent } from './pages/colores/color.component';
+import { StocksComponent } from './pages/stocks/stocks.component';
 
 
 
@@ -23,7 +24,8 @@ import { ColorComponent } from './pages/colores/color.component';
     AgregarModificarProductoComponent,
     TallesComponent,
     TipoProductoComponent,
-    ColorComponent
+    ColorComponent,
+    StocksComponent
   ],
   imports: [
     CommonModule,

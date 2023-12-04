@@ -8,6 +8,7 @@ import { LoginComponent } from "../auth/pages/login/login.component";
 import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
 import { ColorComponent } from "./pages/colores/color.component";
 import { TallesComponent } from "./pages/talles/talles.component";
+import { StocksComponent } from "./pages/stocks/stocks.component";
 
 const routes: Routes = [
     {
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: 'tipoProductos', component: TipoProductoComponent },
             { path: 'colores', component: ColorComponent },
             { path: 'talles', component: TallesComponent },
+            { path: 'stocks', component: StocksComponent },
             { path: '**', redirectTo: '' }
         ]
     }

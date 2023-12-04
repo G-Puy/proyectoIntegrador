@@ -1,0 +1,72 @@
+<div class="col-md-12 p-0" style="padding-bottom: 0.8rem !important;">
+    <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; margin-bottom: 1rem;"
+        class="d-flex align-items-center sombra justify-content-between p-2">
+        <span class="">STOCK</span>
+    </div>
+    <div>
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo"
+                    style="padding-right: 2.2rem;">
+                <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
+                    style="top: 10px;">
+                    <span class="material-icons BasicBtnCruz">close</span>
+                </button>
+            </div>
+            <div style="background-color: var(--rosadoQueDiosaAl80); " (click)="filtrar()" class=" botonCircularSimple">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+            </div>
+
+        </div>
+        <div class="text-center">
+            <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
+            <mat-radio-group class="radio-buttons-column"
+                style="font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                <label class="radio-button-label">
+                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
+                </label>
+                <label class="radio-button-label">
+                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Nombre"> Nombre
+                </label>
+                <label class="radio-button-label">
+                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Tipo"> Tipo producto
+                </label>
+            </mat-radio-group>
+        </div>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort class="custom-mat-table-container">
+        <!-- Name Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="producto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.nombre}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="foto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let productoActual" class="text-center">
+                <div class="text-cente"
+                    style="background-color: rgb(255, 255, 255); min-width: 3rem !important; height: 3rem !important; border-radius: 5px;">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" [src]="cargarSrc(productoActual)" alt="">
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="tipo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.tipoprenda}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="editar">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let productoActual"><span class="material-symbols-outlined">
+                    edit
+                </span></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
