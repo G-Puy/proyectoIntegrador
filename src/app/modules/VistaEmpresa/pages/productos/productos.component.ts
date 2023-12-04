@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { AgregarModificarProductoComponent } from './agregar-modificar-producto/agregar-modificar-producto.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { SharedService } from 'src/app/shared/shared.service';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { NgFor } from '@angular/common';
 import { AceptarCancelarDialogComponent } from 'src/app/components/aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
+import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
 
 @Component({
   selector: 'app-productos',
@@ -21,7 +22,7 @@ export class ProductosComponent {
     public dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
-    private funcionesGlobalesService: FuncionesGlobalesService,) {
+    private funcionesGlobalesService: FuncionesGlobalesService) {
     /*    this.todosLosProductos = {
          id: 0,
          nombre: '',
@@ -75,6 +76,7 @@ export class ProductosComponent {
   }
 
   private traerTodasLosProductos() {
+    this.todosLosProductos = [];
     this.sharedServ.traerTodosLosProductos().subscribe(data => {
       if (data) {
         for (let index = 0; index < data.length; index++) {
@@ -90,20 +92,8 @@ export class ProductosComponent {
     return `data:image/${producto.imagenes[0].nomExtensionbre};base64,${producto.imagenes[0].imagen}`;
   }
 
-  imageSrc: string = "";
-  //imageSrc: SafeUrl | null = null;
-  loadImage() {
-    this.sharedServ.getImage(12).subscribe(base64Image => {
-      this.imageSrc = `data:image/png;base64,${base64Image}`;
-    }, error => {
-      console.error('Error al cargar la imagen:', error);
-    });
-  }
 
-  eliminarProducto(producto: recibirProductoDTOBack) {
-
-  }
-  openDialogCancelar(producto: recibirProductoDTOBack) {
+  openDialogEliminar(producto: recibirProductoDTOBack) {
 
     const dialogRef = this.dialog.open(AceptarCancelarDialogComponent, {
       width: '300px',
@@ -119,7 +109,7 @@ export class ProductosComponent {
   }
 
   private eliminar(idProducto: number) {
-    this.sharedServ.eliminarTipoPrenda(idProducto)
+    this.sharedServ.eliminarProducto(idProducto)
       .subscribe({
         next: (resultadoEliminar) => {
           if (resultadoEliminar) {

@@ -1,57 +1,52 @@
-<div class="col-md-12 p-0  ">
-    <div>
-        <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
-            class="d-flex align-items-center sombra justify-content-between p-2">
-            <span class="">PRODUCTOS</span>
+<div class="col-md-12 p-0" style="padding-bottom: 0.8rem !important;">
+
+    <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
+        class="d-flex align-items-center sombra justify-content-between p-2">
+        <span class="">PRODUCTOS</span>
+        <div>
+            <span class="material-symbols-outlined " (click)="openDialogAgregarEditar(true)" style="font-size: 2.5rem;">
+                add
+            </span>
         </div>
-        <div *ngFor="let producto of todosLosProductos"
-            style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
-            <div
-                style="border-radius: 5px; padding: 0.5rem; display: flex; justify-content: space-between;  gap: 0.5rem; background-color: var(--negroQueDiosa);">
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <div class="text-center"
-                        style="background-color: rgb(255, 255, 255); min-width: 6rem; height: 7rem; border-radius: 5px;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" [src]="cargarSrc(producto)" alt="">
+    </div>
+    <div *ngFor="let producto of todosLosProductos" style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
+        <div
+            style="border-radius: 5px; padding: 0.5rem; display: flex; justify-content: space-between;  gap: 0.5rem; background-color: var(--negroQueDiosa);">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div class="text-center"
+                    style="background-color: rgb(255, 255, 255); min-width: 6rem; height: 7rem; border-radius: 5px;">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" [src]="cargarSrc(producto)" alt="">
+                </div>
+                <div style="padding-left: 5px;">
+
+                    <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+                        <span class="letraRosaDiosa180" style="margin-bottom: 4px;">Nombre: </span>
+                        <div style="color: white; font-size: 18px;">{{producto.nombre}}</div>
                     </div>
-                    <div style="padding-left: 5px;">
-
-                        <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
-                            <span class="letraRosaDiosa180" style="margin-bottom: 4px;">Producto: </span>
-                            <div style="color: white; font-size: 18px;">{{producto.nombre}}</div>
-                        </div>
-                        <div>
-                            <span class="letraRosaDiosa180">Precio: </span>
-                            <span style="color: white; font-size: 18px;">${{producto.precioActual}}</span>
-                        </div>
-
-                        <div style="display: flex; justify-content: start; align-items: center;">
-                            <span *ngIf="producto.nuevo" class="material-symbols-outlined"
-                                style="font-size: 2rem; color: white;">
-                                fiber_new
-                            </span>
-                            <div *ngIf="producto.precioAnterior > 0" style="color: white;  font-size: 18px;">
-                                Precio oferta ${{producto.precioAnterior}}
-                            </div>
-                        </div>
+                    <div>
+                        <span class="letraRosaDiosa180">Precio: </span>
+                        <span style="color: white; font-size: 18px;">${{producto.precioActual}}</span>
                     </div>
 
+                    <div style="display: flex; justify-content: start; align-items: center;">
+                        <span *ngIf="producto.nuevo" class="material-symbols-outlined"
+                            style="font-size: 2rem; color: white;">
+                            fiber_new
+                        </span>
+                        <div *ngIf="producto.precioAnterior > 0" style="color: white;  font-size: 18px;">
+                            Precio oferta ${{producto.precioAnterior}}
+                        </div>
+                    </div>
                 </div>
-                <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;"
-                        matTooltip="Eliminar producto" (click)="openDialogCancelar(producto)">close</span>
-                    <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;"
-                        matTooltip="Editar producto" (click)="openDialogAgregarEditar(false)">edit</span>
-                </div>
+
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;"
+                    matTooltip="Eliminar producto" (click)="openDialogEliminar(producto)">close</span>
+                <span class="material-symbols-outlined" style="color: white; font-size: 1.8rem;"
+                    matTooltip="Editar producto" (click)="openDialogAgregarEditar(false)">edit</span>
             </div>
         </div>
-
-
-
-
     </div>
+
 </div>
-<button class=" btnAddCircular" matTooltip="Agregar nuevo" (click)="openDialogAgregarEditar(true)">
-    <span class="material-symbols-outlined ">
-        add
-    </span>
-</button>

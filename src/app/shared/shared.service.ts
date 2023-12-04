@@ -136,12 +136,14 @@ export class SharedService {
       )
   }
 
-  getImage(idProducto: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}api/Producto/PRUEBATraerImagenes?idProducto=${idProducto}`);
-  }
-
   traerTodosLosProductos(): Observable<recibirProductoDTOBack[]> {
     return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos`);
+  }
+
+
+  eliminarProducto(idEliminar: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}api/Producto/eliminar?id=${idEliminar}`)
+
   }
   //#endregion PRODUCTO
 
