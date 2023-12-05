@@ -6,8 +6,13 @@
     <div>
         <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
             <div style="position: relative; display: flex; align-items: center;">
-                <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo"
-                    style="padding-right: 2.2rem;">
+                <input *ngIf="opcionBusqueda != 'Tipo'" type="text" class="BasicInput" [(ngModel)]="parametroFiltrado"
+                    placeholder="Buscar" style="padding-right: 2.2rem;">
+                <mat-select *ngIf="opcionBusqueda == 'Tipo'" class="marginBot BasicSelect " required
+                    placeholder="Seleccione un tipo" [(ngModel)]="tipoPrenda">
+                    <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
+                        [value]=tipo.nombre>{{tipo.nombre}}</mat-option>
+                </mat-select>
                 <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
                     style="top: 10px;">
                     <span class="material-icons BasicBtnCruz">close</span>
@@ -18,50 +23,64 @@
                     search
                 </span>
             </div>
-
+            <span class="material-symbols-outlined" style="margin-left: 0.8rem; font-size: 2rem;"
+                (click)="vaciarFiltros()" matTooltip="Eliminar filtrado">
+                delete
+            </span>
         </div>
         <div class="text-center">
             <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
             <mat-radio-group class="radio-buttons-column"
                 style="font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
-                <label class="radio-button-label">
+                <!--                 <label class="radio-button-label">
                     <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
-                </label>
+                </label> -->
                 <label class="radio-button-label">
                     <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Nombre"> Nombre
                 </label>
                 <label class="radio-button-label">
                     <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Tipo"> Tipo producto
                 </label>
+
             </mat-radio-group>
         </div>
     </div>
     <mat-table [dataSource]="dataSource" matSort class="custom-mat-table-container">
         <!-- Name Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-            <mat-cell *matCellDef="let productoActual">{{productoActual.id}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="producto">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
-            <mat-cell *matCellDef="let productoActual">{{productoActual.nombre}}</mat-cell>
-        </ng-container>
         <ng-container matColumnDef="foto">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell *matCellDef="let productoActual" class="text-center">
                 <div class="text-cente"
-                    style="background-color: rgb(255, 255, 255); min-width: 3rem !important; height: 3rem !important; border-radius: 5px;">
+                    style="background-color: rgb(255, 255, 255); min-width: 2rem !important; height: 2rem !important; border-radius: 5px;">
                     <img style="width: 100%; height: 100%; object-fit: cover;" [src]="cargarSrc(productoActual)" alt="">
                 </div>
             </mat-cell>
         </ng-container>
+        <!--       <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.id}}</mat-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="producto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Prod</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.nombre}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cant</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{ cantidad(productoActual.stock) }} <span
+                    *ngIf="cantidad(productoActual.stock) <= 0" class="material-symbols-outlined"
+                    style="color: red; font-size: 18px;">
+                    priority_high
+                </span> </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="tipo">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
-            <mat-cell *matCellDef="let productoActual">{{productoActual.tipoprenda}}</mat-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.tipoProductoNombre}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="editar">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-            <mat-cell *matCellDef="let productoActual"><span class="material-symbols-outlined">
+            <mat-cell *matCellDef="let productoActual"><span class="material-symbols-outlined"
+                    (click)="openDialogEditarStock(productoActual.stock)">
                     edit
                 </span></mat-cell>
         </ng-container>

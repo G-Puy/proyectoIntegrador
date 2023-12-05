@@ -48,7 +48,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     stock: {
       id: -1,
       idProducto: -1,
-      cantidadTotal: 0,
+      cantidad: 0,
       talles: [],
       cargado: false,
     }, // Puedes poner aquí un array de DTOStock

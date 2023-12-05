@@ -13,5 +13,7 @@ export interface recibirProductoDTOBack {
     guiaTalles: string;
     stock: DTOStockEnvio;
     imagenes: DTOImagen[];
+    tipoProductoNombre: string;
+
 
 }

@@ -4,6 +4,6 @@ export interface DTOStockEnvio {
     id: number;
     idProducto: number;
     talles: DTOTalleEnvio[];
-    cantidadTotal: number;
+    cantidad: number;
     cargado: boolean;
 }
