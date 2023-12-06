@@ -1,0 +1,22 @@
+<div mat-dialog>
+    <div mat-dialog-content>
+        <section>
+            <div *ngFor="let talle of data.stockCompleto.talles">
+                <div
+                    style="display: flex; align-items: center; background-color: rgb(240, 240, 240); height: 2rem; margin: 0;">
+                    <h2 style="margin: 0; margin-left: px;">Talle {{talle.nombreTalle}}</h2>
+                </div>
+                <div *ngFor="let color of talle.colores" style="padding: 5px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label for="">Cantidad {{color.nombreColor}}</label>
+                        <input type="number" class="BasicInput" style="width: 3rem;" [(ngModel)]="color.cantidad">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 5rem;">
+        <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionAceptar" style="width: auto;">Actualizar stock</button>
+    </mat-dialog-actions>
+</div>

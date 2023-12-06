@@ -12,6 +12,7 @@ import { TipoProductoComponent } from './pages/tipo-producto/tipo-producto.compo
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ColorComponent } from './pages/colores/color.component';
 import { StocksComponent } from './pages/stocks/stocks.component';
+import { EditarstockComponent } from './pages/stocks/editarstock/editarstock.component';
 
 
 
@@ -25,7 +26,8 @@ import { StocksComponent } from './pages/stocks/stocks.component';
     TallesComponent,
     TipoProductoComponent,
     ColorComponent,
-    StocksComponent
+    StocksComponent,
+    EditarstockComponent
   ],
   imports: [
     CommonModule,

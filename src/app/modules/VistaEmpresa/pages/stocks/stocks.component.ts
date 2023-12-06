@@ -7,6 +7,7 @@ import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/re
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
+import { EditarstockComponent } from './editarstock/editarstock.component';
 
 @Component({
   selector: 'app-stocks',
@@ -113,9 +114,9 @@ export class StocksComponent implements OnInit {
   public openDialogEditarStock(stock: DTOStockEnvio): void {
 
 
-    /* const dialogRef = this.dialog.open(AgregarModificarProductoComponent, {
-      width: '300px',
-      data: { soyAgregar: agregar },
+    const dialogRef = this.dialog.open(EditarstockComponent, {
+      width: '500px',
+      data: { stockCompleto: stock },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
 
@@ -127,7 +128,7 @@ export class StocksComponent implements OnInit {
         this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 3000, true);
         this.traerTodasLosProductos();
       }
-    }); */
+    });
 
   }
   private editarStock() {
