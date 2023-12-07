@@ -124,15 +124,11 @@ export class StocksComponent implements OnInit {
       if (result.error != "") {
         this.funcionesGlobalesService.abrirSnack(result.error, 3000, false);
       } else if (result.result == true) {
-        console.log("hay error");
         this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 3000, true);
         this.traerTodasLosProductos();
       }
     });
 
   }
-  private editarStock() {
 
-
-  }
 }

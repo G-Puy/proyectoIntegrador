@@ -8,6 +8,7 @@ import { NgFor } from '@angular/common';
 import { AceptarCancelarDialogComponent } from 'src/app/components/aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
+import { DTOProductoEnvio } from 'src/app/interfaces/DTOsEnvio/productoEnvioDTO.interface';
 
 @Component({
   selector: 'app-productos',
@@ -56,11 +57,11 @@ export class ProductosComponent {
   }
 
   url = window.URL.createObjectURL(new Blob([], { type: 'image/png' }));
-  openDialogAgregarEditar(agregar: boolean) {
+  openDialogAgregarEditar(agregar: boolean, productoEditar: DTOProductoEnvio | null) {
 
     const dialogRef = this.dialog.open(AgregarModificarProductoComponent, {
-      width: '300px',
-      data: { soyAgregar: agregar },
+      width: '500px',
+      data: { soyAgregar: agregar, productoEdit: productoEditar },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
 

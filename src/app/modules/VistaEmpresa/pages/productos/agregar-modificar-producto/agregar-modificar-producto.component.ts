@@ -75,6 +75,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
     this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
+      console.log(this.cargaTalles)
     });
     this.sharedServ.getAllColores().subscribe(colores => {
       this.cargaColores = colores;
@@ -82,11 +83,43 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     this.sharedServ.getAllTipoPrendas().subscribe(tp => {
       this.cargaTiposDePrenda = tp;
     });
-
-    console.log(data.soyAgregar);
-
     if (data.soyAgregar == false) {
       //Cargo los datos del producto
+
+      console.log(this.data.productoEdit);
+
+      //*CARGA NOMBRE
+      this.txtNombre = this.data.productoEdit.nombre;
+      //*CARGA PRECIO
+      this.precio = this.data.productoEdit.precioActual;
+      //*CARGA TIPO
+      this.idTipo = this.data.productoEdit.idTipoProducto;
+      //*CARGA VISIBLE EN WEB
+      this.visibleEnWeb = this.data.productoEdit.visibleEnWeb;
+      //*CARGA DESCRIPCION
+      this.txtAreaDescripcion = this.data.productoEdit.descripcion;
+      //*CARGA GUIA DE TALLES
+      this.txtAreaGuiaTalles = this.data.productoEdit.guiaTalles;
+      //*CARGA OPCION
+      if (this.data.productoEdit.precioAnterior > -1) { this.opcion = "oferta"; this.precioOferta = this.data.productoEdit.precioAnterior; }
+      if (this.data.productoEdit.nuevo == true) { this.opcion = "nuevo" }
+
+      //TODO: Cargar select talles
+      //TODO: Cargar select colores
+      const coloresBack: string[] = [];
+      const tallesBack: string[] = [];
+      for (let index = 0; index < this.data.productoEdit.stock.talles.length; index++) {
+        const talleActual = this.data.productoEdit.stock.talles[index];
+      }
+      this.seleccionColores = this.cargaColores.filter(talle => this.data.productoEdit.stock.talles.includes(talle.id.toString()));
+
+      console.log(this.data.productoEdit.stock.talles);
+
+      //*INCIALIZO STOCKS en 0 cantidad
+      if (this.productoEnviar.stock.cargado == false) {
+        this.inicializarStockConLoSeleccionado();
+      }
+
     }
 
 
@@ -99,6 +132,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
   //#region  IMAGENES
   ngOnInit(): void {
+    console.log(this.cargaColores);
   }
   ngAfterViewInit() {
 

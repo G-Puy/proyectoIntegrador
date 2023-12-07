@@ -17,6 +17,6 @@
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 5rem;">
         <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cancelar</button>
-        <button mat-button class="AcctionAceptar" style="width: auto;">Actualizar stock</button>
+        <button mat-button class="AcctionAceptar" (click)="actualizarStock()" style="width: auto;">Actualizar</button>
     </mat-dialog-actions>
 </div>

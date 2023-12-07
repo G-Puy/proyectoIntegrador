@@ -5,6 +5,7 @@ import { DTOTipoPrenda } from '../interfaces/tipoProducto.interface';
 import { DTOGenAbms } from '../interfaces/objGenericoParaABMS.interface';
 import { DTOProductoEnvio } from '../interfaces/DTOsEnvio/productoEnvioDTO.interface';
 import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
+import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -146,6 +147,19 @@ export class SharedService {
 
   }
   //#endregion PRODUCTO
+
+
+
+  //#region  STOCK
+
+  editarStock(dtoStock: DTOStockEnvio): Observable<boolean> {
+    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Stock/modificar`, dtoStock)
+      .pipe(
+        tap(resp => of(resp)),
+        catchError(err => of(err))
+      )
+  }
+  //#endregion STOCK
 
 
 }
