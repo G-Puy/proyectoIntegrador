@@ -75,7 +75,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
     this.sharedServ.getAllTalles().subscribe(talles => {
       this.cargaTalles = talles;
-      console.log(this.cargaTalles)
     });
     this.sharedServ.getAllColores().subscribe(colores => {
       this.cargaColores = colores;
@@ -108,17 +107,11 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       //TODO: Cargar select colores
       const coloresBack: string[] = [];
       const tallesBack: string[] = [];
-      for (let index = 0; index < this.data.productoEdit.stock.talles.length; index++) {
-        const talleActual = this.data.productoEdit.stock.talles[index];
-      }
-      this.seleccionColores = this.cargaColores.filter(talle => this.data.productoEdit.stock.talles.includes(talle.id.toString()));
 
-      console.log(this.data.productoEdit.stock.talles);
 
-      //*INCIALIZO STOCKS en 0 cantidad
-      if (this.productoEnviar.stock.cargado == false) {
-        this.inicializarStockConLoSeleccionado();
-      }
+
+
+
 
     }
 
@@ -129,10 +122,45 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
 
   }
+  ngOnInit(): void {
+    if (!this.data.soyAgregar) {
+      setTimeout(() => {
+        // Asumiendo que `todosLosTalles` y `this.data.productoEdit.stock.talles` contienen objetos con la misma estructura
+        this.seleccionTalles = this.cargaTalles.filter(talleDisponible =>
+          this.data.productoEdit.stock.talles.some((talleSeleccionado: DTOGenAbms) =>
+            talleSeleccionado.id === talleDisponible.id
+          )
+        );
+        this.seleccionColores = this.cargaColores.filter(colorDisponible =>
+          this.data.productoEdit.stock.talles[0].colores.some((colorSeleccionado: DTOGenAbms) =>
+            colorSeleccionado.id === colorDisponible.id
+          )
+        );
+      }, 200)
+    }
+
+  }
 
   //#region  IMAGENES
-  ngOnInit(): void {
-    console.log(this.cargaColores);
+  /*   ngOnInit(): void {
+  
+      if (this.data.soyAgregar == false) {
+        setTimeout(() => {
+  
+  
+  
+          let tallesDelEditar = [];
+          for (let index = 0; index < this.data.productoEdit.stock.talles.length; index++) {
+            const talleActual = this.data.productoEdit.stock.talles[index];
+            tallesDelEditar.push(talleActual);
+          }
+          this.cargaTalles = tallesDelEditar;
+        }, 200);
+      }
+    } */
+  clickeando() {
+    console.log("probando");
+    console.log(this.seleccionTalles);
   }
   ngAfterViewInit() {
 
@@ -306,7 +334,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
           let unColor: DTOColorEnvio = {
             id: colorActual.id,
             cantidad: 0,
-            nombreColor: colorActual.nombre
+            nombreColor: colorActual.nombre,
+            idStock: 0
           }
           unTalle.colores.push(unColor);
         }
@@ -331,7 +360,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
           let unColor: DTOColorEnvio = {
             id: colorActual.id,
             cantidad: 0,
-            nombreColor: colorActual.nombre
+            nombreColor: colorActual.nombre,
+            idStock: 0
           }
           unTalle.colores.push(unColor);
         }
