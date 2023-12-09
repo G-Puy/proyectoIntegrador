@@ -4,17 +4,15 @@
         <!--       <input matInput [(ngModel)]="valorInput" placeholder="Texto" required class="BasicInput">
         <span *ngIf="valorInput == '' ">{{campoVacio}}</span> -->
         <div style="position: relative; display: flex; align-items: center; ">
+            <input type="text" class="BasicInput" [(ngModel)]="valorInput" placeholder="Ingrese nombre">
             <div>
-                <input type="text" class="BasicInput" [(ngModel)]="valorInput" placeholder="Ingrese nombre"
-                    style="padding-right: 2.2rem;">
-                <div>
 
-                    <span [ngClass]="{'invisible': valorInput != '', 'visible': valorInput == ''}"
-                        style="font-size: 0.8rem; color: red;">{{campoVacio}}</span>
-                    <span [ngClass]="{'invisible': nombreExiste != '', 'visible': nombreExiste == ''}"
-                        style="font-size: 0.8rem; color: red;">{{nombreExiste}}</span>
-                </div>
+                <span [ngClass]="{'invisible': valorInput != '', 'visible': valorInput == ''}"
+                    style="font-size: 0.8rem; color: red;">{{campoVacio}}</span>
+                <span [ngClass]="{'invisible': nombreExiste != '', 'visible': nombreExiste == ''}"
+                    style="font-size: 0.8rem; color: red;">{{nombreExiste}}</span>
             </div>
+
 
             <button *ngIf="valorInput" class="clear-button" aria-label="Clear" (click)="valorInput=''"
                 style="top: 10px;">

@@ -9,6 +9,7 @@ import { AceptarCancelarDialogComponent } from 'src/app/components/aceptar-cance
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { AddEditGenericoComponent } from 'src/app/components/add-edit-generico/add-edit-generico.component';
 import { DTOProductoEnvio } from 'src/app/interfaces/DTOsEnvio/productoEnvioDTO.interface';
+import { DTOImagen } from 'src/app/interfaces/DTOImagen.interface';
 
 @Component({
   selector: 'app-productos',
@@ -90,14 +91,15 @@ export class ProductosComponent {
     });
   }
   public cargarSrc(producto: recibirProductoDTOBack): string {
-    return `data:image/${producto.imagenes[0].nomExtensionbre};base64,${producto.imagenes[0].imagen}`;
+    return `data:image/${producto.imagenes[0].extension};base64,${producto.imagenes[0].imagen}`;
+
   }
 
 
   openDialogEliminar(producto: recibirProductoDTOBack) {
 
     const dialogRef = this.dialog.open(AceptarCancelarDialogComponent, {
-      width: '300px',
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
       data: { message: `¿Desea eliminar ${producto.nombre}?` },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
@@ -125,4 +127,16 @@ export class ProductosComponent {
         }
       });
   }
+
+
+
+
+
+
+
+
+
+
+
+
 }

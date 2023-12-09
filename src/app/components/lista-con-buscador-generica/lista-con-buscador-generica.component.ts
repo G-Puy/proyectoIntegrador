@@ -118,7 +118,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '300px',
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
       height: '200px',
       data: {
         origen: this.seccionOrigen,
@@ -143,7 +143,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     };
 
     const dialogRef = this.dialog.open(AddEditGenericoComponent, {
-      width: '300px',
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
       height: '210px',
       data: {
         origen: this.seccionOrigen,

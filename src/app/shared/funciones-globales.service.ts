@@ -23,6 +23,9 @@ export class FuncionesGlobalesService {
     }
   }
 
-
+  //*ESTE METODO RETORNA EL TAMA:O MAXIMO PAR ALOS DIALOGOS DE MOBILE
+  tamMaxDialogMobile(): string {
+    return "500px";
+  }
 
 }

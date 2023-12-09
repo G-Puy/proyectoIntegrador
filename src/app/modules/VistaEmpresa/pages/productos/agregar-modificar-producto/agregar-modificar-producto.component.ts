@@ -14,6 +14,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DTOTalleEnvio } from 'src/app/interfaces/DTOsEnvio/talleEnvioDTO.interface';
 import { DTOColorEnvio } from 'src/app/interfaces/DTOsEnvio/colorEnvioDTO.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
+import { DTOImagen } from 'src/app/interfaces/DTOImagen.interface';
 // register Swiper custom elements
 register();
 
@@ -54,7 +55,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     }, // Puedes poner aquí un array de DTOStock
     // Esto sería un array vacío o con objetos File según sea necesario
   };
-
+  silderImages: string[] = [];
+  fileError: string = "";
   archivos: File[] = [];
   seleccionTalles: DTOGenAbms[] = [];
   seleccionColores: DTOGenAbms[] = [];
@@ -85,7 +87,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     if (data.soyAgregar == false) {
       //Cargo los datos del producto
 
-      console.log(this.data.productoEdit);
+
 
       //*CARGA NOMBRE
       this.txtNombre = this.data.productoEdit.nombre;
@@ -103,14 +105,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       if (this.data.productoEdit.precioAnterior > -1) { this.opcion = "oferta"; this.precioOferta = this.data.productoEdit.precioAnterior; }
       if (this.data.productoEdit.nuevo == true) { this.opcion = "nuevo" }
 
-      //TODO: Cargar select talles
-      //TODO: Cargar select colores
-      const coloresBack: string[] = [];
-      const tallesBack: string[] = [];
-
-
-
-
+      this.archivos = this.convertImagesToFiles(this.data.productoEdit.imagenes);
 
 
     }
@@ -136,9 +131,15 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
             colorSeleccionado.id === colorDisponible.id
           )
         );
+        for (let index = 0; index < this.data.productoEdit.imagenes.length; index++) {
+          const element = this.data.productoEdit.imagenes[index];
+          this.silderImages.push(this.cargarSrc(element));
+        }
       }, 200)
     }
-
+  }
+  public cargarSrc(img: DTOImagen): string {
+    return `data:image/${img.extension};base64,${img.imagen}`;
   }
 
   //#region  IMAGENES
@@ -159,8 +160,8 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       }
     } */
   clickeando() {
-    console.log("probando");
-    console.log(this.seleccionTalles);
+    console.log(this.archivos);
+    console.log(this.silderImages);
   }
   ngAfterViewInit() {
 
@@ -183,8 +184,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       this.iteradorImg++;
     }
   }
-  silderImages: string[] = [];
-  fileError: string = "";
+
   onFileChange(event: any) {
     // Vaciamos el arreglo para nuevos archivos
     this.silderImages = [];
@@ -404,7 +404,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   //#endregion PARA ENVIAR
 
 
-
+  public convertImagesToFiles(images: DTOImagen[]): File[] {
+    return images.map((imgObj: DTOImagen, index: number): File => {
+      // Ya que imgObj.imagen es un Blob, lo utilizamos directamente
+      const filename: string = `NOMODIFICAR${index}.${imgObj.extension}`;
+      const file: File = new File([imgObj.imagen], filename, { type: `image/${imgObj.extension}` });
+      return file;
+    });
+  }
 
 
 

@@ -67,7 +67,7 @@ export class StocksComponent implements OnInit {
     });
   }
   public cargarSrc(producto: recibirProductoDTOBack): string {
-    return `data:image/${producto.imagenes[0].nomExtensionbre};base64,${producto.imagenes[0].imagen}`;
+    return `data:image/${producto.imagenes[0].extension};base64,${producto.imagenes[0].imagen}`;
   }
   public cantidad(stock: DTOStockEnvio): number {
     return stock.cantidad;
@@ -115,7 +115,7 @@ export class StocksComponent implements OnInit {
 
 
     const dialogRef = this.dialog.open(EditarstockComponent, {
-      width: '500px',
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
       data: { stockCompleto: stock },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
