@@ -107,7 +107,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
       this.archivos = this.convertImagesToFiles(this.data.productoEdit.imagenes);
 
-
     }
 
 
@@ -247,13 +246,18 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     this.accionProducto();
   }
   private accionProducto() {
-    if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
-      this.errorValidacion = "Debe subir almenos 1 imagen.";
-      setTimeout(() => {
-        this.errorValidacion = "";
-      }, 4000);
+    if (this.data.soyAgregar == true) {
 
-    } else if (
+
+      if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
+        this.errorValidacion = "Debe subir almenos 1 imagen.";
+        setTimeout(() => {
+          this.errorValidacion = "";
+        }, 4000);
+
+      }
+    }
+    if (
       this.txtNombre == '' ||
       (this.precio == null || this.precio <= 0) ||
       this.idTipo == -1 ||
@@ -290,7 +294,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         formData.append('imagenes', archivo, archivo.name);
       }
       formData.append('producto', JSON.stringify(this.productoEnviar));
-
       this.agregarOModificar(formData);
     }
   }
@@ -304,6 +307,23 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
             this.dialogRef.close({ result: resultadoAlta, error: "" });
           } else {
             this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+          }
+        },
+        error: (error) => {
+          // En caso de error, cerrar el diálogo con el error
+          //this.dialogRef.close({ result: false, error: "Error en el alta." });
+        }
+      });
+
+    } else {
+      console.log(dataEnvio);
+      this.sharedServ.modificarProducto(dataEnvio).subscribe({
+        next: (reusltadoModificar) => {
+          // Si la llamada es exitosa, cerrar el diálogo con el resultado
+          if (reusltadoModificar) {
+            this.dialogRef.close({ result: reusltadoModificar, error: "" });
+          } else {
+            this.dialogRef.close({ result: reusltadoModificar, error: "No se pudo modificar el producto." });
           }
         },
         error: (error) => {

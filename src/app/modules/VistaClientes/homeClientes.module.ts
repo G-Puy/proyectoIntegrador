@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { HomeClientesComponent } from './pages/home-cliente/home.component';
 import { HomeClienteModuleRoutingModule } from './home-Cliente-routing.module';
+import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HomeClienteModuleRoutingModule } from './home-Cliente-routing.module';
     HomeClientesComponent,
     MenuComponent,
     NavBarGlobalComponent,
+    LayoutClientesComponent,
   ],
   imports: [
     CommonModule,

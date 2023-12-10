@@ -351,3 +351,7 @@ body {
 .requerido {
     border: var(--colorAlerta) solid 1px;
 }
+
+.BasicImg {
+    max-width: 100%;
+}

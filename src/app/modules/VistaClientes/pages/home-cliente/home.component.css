@@ -1,0 +1,5 @@
+.Section1>div:nth-child(2) {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}

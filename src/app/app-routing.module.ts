@@ -22,8 +22,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/VistaClientes/homeClientes.module').then(m => m.HomeModuleClientes),
 
   },
-  { path: '', redirectTo: '/lEmpresa', pathMatch: 'full' }, // Ruta predeterminada
-  { path: '**', redirectTo: '/lEmpresa' },
+  { path: '', redirectTo: '/store', pathMatch: 'full' }, // Ruta predeterminada
+  { path: '**', redirectTo: '/store' },
 ];
 
 @NgModule({

@@ -146,6 +146,14 @@ export class SharedService {
     return this.http.delete<boolean>(`${this.apiUrl}api/Producto/eliminar?id=${idEliminar}`)
 
   }
+
+  modificarProducto(dataEnvio: FormData): Observable<boolean> {
+    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Producto/modificar`, dataEnvio)
+      .pipe(
+        tap(resp => of(resp)),
+        catchError(err => of(err))
+      )
+  }
   //#endregion PRODUCTO
 
 
