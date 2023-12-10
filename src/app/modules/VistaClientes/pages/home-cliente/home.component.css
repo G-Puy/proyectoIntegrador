@@ -1,5 +1,39 @@
-.Section1>div:nth-child(2) {
+.Section1 {
+    position: relative;
+    /* Esto asegura que los hijos absolutamente posicionados se coloquen en relación a este elemento */
+}
+
+
+
+
+.div-encima {
+    display: flex;
+    /* Establece el contenedor como un flexbox */
+    justify-content: center;
+    /* Centra horizontalmente el contenido */
+    align-items: center;
+    /* Centra verticalmente el contenido */
     position: absolute;
+    top: 50%;
+    left: 0;
     width: 100%;
-    text-align: center;
+    transform: translateY(-50%);
+    /* Ajusta la posición vertical */
+    z-index: 10;
+    /* Asegúrate de que este valor sea mayor que cualquier otro z-index en elementos hermanos */
+    height: 5rem;
+    /* Altura fija para el contenedor del span */
+    /* Color de fondo */
+    font-size: 2.2rem;
+    height: 5rem;
+    background-color: var(--rosadoQueDiosaAl80);
+}
+
+.div-encima span {
+    width: 100%;
+    font-size: 2.2rem;
+    color: white;
+    padding: 0.5em;
+    box-sizing: border-box;
+
 }
