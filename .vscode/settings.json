@@ -1,4 +1,8 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/59ba82ba-ec15-4683-a132-a350a9e317dc/resourceGroups/QuediosaWeb_group/providers/Microsoft.Web/sites/QuediosaWeb",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
 }
