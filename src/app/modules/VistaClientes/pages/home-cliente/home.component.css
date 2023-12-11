@@ -89,3 +89,65 @@
         width: 100%;
     }
 }
+
+
+/*Region Grid*/
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.grid-item {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    /* Bordes redondeados */
+}
+
+/* Colores distintos para cada ítem */
+.vestidos {
+    background-color: #ff9999;
+}
+
+/* Color rosa */
+.tops {
+    background-color: #99ccff;
+}
+
+/* Color azul claro */
+.pantalones {
+    background-color: #ffcc99;
+}
+
+/* Color melocotón */
+.shorts {
+    background-color: #99ff99;
+}
+
+/* Color verde claro */
+
+/* Cambio de layout para pantallas más pequeñas */
+@media (max-width: 991px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*Region Grid*/
+
+
+
+
+/* REGION NEW*/
+.SectionNEW {
+    background-color: var(--negroQueDiosa);
+}
+
+/* REGION NEW*/

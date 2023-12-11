@@ -39,7 +39,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatCheckboxModule,
     MatButtonModule,
     MatCardModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+
 
 
 

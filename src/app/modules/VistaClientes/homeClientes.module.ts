@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HomeClientesComponent } from './pages/home-cliente/home.component';
 import { HomeClienteModuleRoutingModule } from './home-Cliente-routing.module';
 import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes.component';
+import { CardProductoComponent } from 'src/app/components/CardProducto/card-producto.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes
     MenuComponent,
     NavBarGlobalComponent,
     LayoutClientesComponent,
+    CardProductoComponent
   ],
   imports: [
     CommonModule,
