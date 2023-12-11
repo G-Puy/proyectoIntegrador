@@ -3,8 +3,19 @@
     /* Esto asegura que los hijos absolutamente posicionados se coloquen en relación a este elemento */
 }
 
+.ContainerHome {
+    @media (max-width: 600px) {
+        width: 500px;
+    }
+}
 
-
+.divBanner {
+    @media (min-width: 992px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 .div-encima {
     display: flex;
@@ -21,7 +32,6 @@
     /* Ajusta la posición vertical */
     z-index: 10;
     /* Asegúrate de que este valor sea mayor que cualquier otro z-index en elementos hermanos */
-    height: 5rem;
     /* Altura fija para el contenedor del span */
     /* Color de fondo */
     height: 5rem;
@@ -36,4 +46,46 @@
     box-sizing: border-box;
     text-align: center;
 
+}
+
+.saleAndNew {
+    padding: 1rem;
+    height: 18rem;
+
+    @media (max-width: 600px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    @media (min-width: 992px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+}
+
+.saleAndNewDivs {
+    background-color: var(--negroQueDiosa);
+    color: var(--rosadoQueDiosaAl80);
+    height: 8rem;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-shadow: rgb(0, 0, 0) 1px 0 5px;
+
+    @media (max-width: 600px) {
+        min-width: 100%;
+
+    }
+
+    @media (min-width: 992px) {
+        width: 100%;
+    }
 }
