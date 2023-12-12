@@ -87,8 +87,9 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     if (data.soyAgregar == false) {
       //Cargo los datos del producto
 
-
-
+      //*CARGO ID PRODUCTO
+      this.productoEnviar.id = this.data.productoEdit.id;
+      console.log(this.data.productoEdit);
       //*CARGA NOMBRE
       this.txtNombre = this.data.productoEdit.nombre;
       //*CARGA PRECIO
@@ -106,6 +107,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       if (this.data.productoEdit.nuevo == true) { this.opcion = "nuevo" }
 
       this.archivos = this.convertImagesToFiles(this.data.productoEdit.imagenes);
+
 
     }
 

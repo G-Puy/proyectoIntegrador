@@ -13,6 +13,7 @@ import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
 export class SharedService {
 
   apiUrl = 'https://localhost:7202/';
+  //apiUrl = 'https://quediosa.azurewebsites.net/swagger/index.html';
   constructor(private http: HttpClient) {
 
   }

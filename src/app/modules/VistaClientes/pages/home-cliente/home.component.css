@@ -148,6 +148,17 @@
 /* REGION NEW*/
 .SectionNEW {
     background-color: var(--negroQueDiosa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.SectionNEW div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* REGION NEW*/

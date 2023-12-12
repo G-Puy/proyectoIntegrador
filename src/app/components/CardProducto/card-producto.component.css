@@ -1,34 +1,93 @@
 @media screen and (max-width: 768px) {
 
     .cardProducto {
-        width: 80%;
-        height: 25rem;
-        background-color: red;
+        width: 11rem;
+        height: 20rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.2rem;
+        padding-top: 1rem;
+    }
 
+    .tamImgCard {
+        height: 12rem;
+        border-radius: 5px;
+    }
+
+    .divContenedorTxtCardProd {
+        color: white;
+        padding-left: 8px;
+        padding-top: 4px;
+    }
+
+    .divContenedorTxtCardProd>div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    .BtnCardProducto {
+
+        height: 1.4rem;
+        width: 90%;
+        padding: 10px;
+        /*  border: 2px solid rgb(34, 167, 34); */
+        border-radius: 18px;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--rosadoQueDiosaAl80);
+        font-size: 1rem;
+        border: none;
+
+    }
+
+    .BtnCardProducto:active {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+        /* Sombra más pequeña para efecto de estar presionado */
+        transform: translateY(4px);
+        border: none;
+
+        /* Mueve aún más hacia abajo para simular que se está presionando */
     }
 }
 
-.BtnCardProducto {
 
-    height: 2rem;
-    padding: 10px;
-    /*  border: 2px solid rgb(34, 167, 34); */
-    border-radius: 18px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--rosadoQueDiosaAl80);
-    font-size: 1rem;
-    border: none;
+@media screen and (min-width:769px) {
 
-}
+    .tamImgCard {
+        max-height: 17rem;
+        min-height: 17rem;
+        width: 80%;
+    }
 
-.BtnCardProducto:active {
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-    /* Sombra más pequeña para efecto de estar presionado */
-    transform: translateY(4px);
-    border: none;
+    .BtnCardProducto {
 
-    /* Mueve aún más hacia abajo para simular que se está presionando */
+        height: 2rem;
+        padding: 10px;
+        /*  border: 2px solid rgb(34, 167, 34); */
+        border-radius: 18px;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--rosadoQueDiosaAl80);
+        font-size: 1rem;
+        border: none;
+
+    }
+
+    .BtnCardProducto:active {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+        /* Sombra más pequeña para efecto de estar presionado */
+        transform: translateY(4px);
+        border: none;
+
+        /* Mueve aún más hacia abajo para simular que se está presionando */
+    }
+
 }
