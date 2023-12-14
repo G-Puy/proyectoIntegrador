@@ -1,0 +1,43 @@
+<div class="containerUnProducto">
+    <h1 class="text-center backGroundRosaQD">{{objetoProducto?.nombre}}</h1>
+    <img [src]="darSrcProducto()" alt="" class="tamImgCard">
+    <hr class="backGroundRosaQD">
+    <div class="divsContenedoresDuos">
+        <p class="marginAlineadorTexto">Precio:</p>
+        <div class="contenedorPrecios">
+            <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
+            <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;">
+                ${{objetoProducto?.precioAnterior}}</p>
+            <!-- ACA VA EL PRECIO ANTERIOR -->
+            <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+        </div>
+    </div>
+    <div class="divsContenedoresDuos">
+        <p class="marginAlineadorTexto">Talle:</p>
+        <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione talles" [(ngModel)]="seleccionTalle"
+            [ngClass]="{'requerido': seleccionTalle == undefined}">
+            <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
+                [value]=talle>{{talle.nombre}}</mat-option>
+        </mat-select>
+    </div>
+
+    <div class="divsContenedoresDuos">
+        <p>Color:</p>
+        <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione colores" [(ngModel)]="seleccionColor"
+            [ngClass]="{'requerido': seleccionColor == undefined}">
+            <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
+                [value]=color>{{color.nombre}}</mat-option>
+        </mat-select>
+    </div>
+    <div class="divsContenedoresDuos">
+        <p class="marginAlineadorTexto">Cantidad:</p>
+    </div>
+    <div>
+        <p>Descripción</p>
+        <p style=" font-size: 17px;">{{objetoProducto?.descripcion}}</p>
+    </div>
+    <div>
+        <p>Guia de talles</p>
+        <p style=" font-size: 17px;">{{objetoProducto?.guiaTalles}}</p>
+    </div>
+</div>

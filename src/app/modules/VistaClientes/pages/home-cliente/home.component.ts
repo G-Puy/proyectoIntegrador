@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
-import { DialogmenuComponent } from '../dialogmenu/dialogmenu.component';
+import { DialogUnProductoComponent } from '../DialogUnProducto/DialogUnProducto.component';
 
 @Component({
   selector: 'app-home',
@@ -52,7 +52,13 @@ export class HomeClientesComponent {
 
 
 
+  //#region DIALOGS
 
+
+
+
+
+  //#endregion DIALOGS
 
 
 

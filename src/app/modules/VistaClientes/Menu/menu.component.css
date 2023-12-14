@@ -38,6 +38,7 @@
     /* Establece el color de la barra de desplazamiento */
     /*  scroll-behavior: smooth !important; */
     /* Agrega scroll suave */
+    scroll-behavior: smooth;
 }
 
 /* Establece el color de fondo de la barra de desplazamiento para que coincida con el fondo */

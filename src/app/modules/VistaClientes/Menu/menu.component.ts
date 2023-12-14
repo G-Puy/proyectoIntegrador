@@ -14,6 +14,8 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class MenuComponent {
   overlayRef: OverlayRef | undefined;
   cargaTiposDePrenda: DTOGenAbms[] = [];
+
+
   constructor(public oaverlayRef: Overlay,
     public dialog: MatDialog,
     private sanitizer: DomSanitizer,

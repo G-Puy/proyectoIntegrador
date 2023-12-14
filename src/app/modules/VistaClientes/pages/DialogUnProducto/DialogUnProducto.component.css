@@ -1,0 +1,59 @@
+.containerUnProducto {
+    padding: 0.6rem;
+    height: 620px;
+    padding-bottom: 1rem;
+}
+
+.backGroundRosaQD {
+    background-color: var(--rosadoQueDiosaAl80);
+    border-radius: 5px;
+}
+
+.tamImgCard {
+    height: 18rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.contenedorPrecios {
+    display: flex;
+    justify-content: center;
+    gap: 1.7rem;
+    margin-top: 0.5rem;
+}
+
+.contenedorPrecios p {
+    margin: 0px;
+}
+
+
+
+.BasicSelectUnProducto {
+    height: 2rem;
+    width: 7rem;
+    padding-top: 4px !important;
+    padding-left: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.BasicSelectUnProducto:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 2px solid black;
+    border: 2px solid var(--azulBasico);
+
+}
+
+.divsContenedoresDuos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.marginAlineadorTexto {
+    margin-top: 0.7rem
+}

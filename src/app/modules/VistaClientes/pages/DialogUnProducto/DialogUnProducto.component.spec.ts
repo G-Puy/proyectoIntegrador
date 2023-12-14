@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogmenuComponent } from './dialogmenu.component';
+import { DialogUnProductoComponent } from './DialogUnProducto.component';
 
 describe('DialogmenuComponent', () => {
-  let component: DialogmenuComponent;
-  let fixture: ComponentFixture<DialogmenuComponent>;
+  let component: DialogUnProductoComponent;
+  let fixture: ComponentFixture<DialogUnProductoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DialogmenuComponent]
+      declarations: [DialogUnProductoComponent]
     });
-    fixture = TestBed.createComponent(DialogmenuComponent);
+    fixture = TestBed.createComponent(DialogUnProductoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
