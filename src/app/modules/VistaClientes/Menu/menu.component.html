@@ -11,61 +11,30 @@
            max-width: 100%; 
            margin-top: 0.8rem;
            padding-bottom: 4rem;" class="scrollable-list">
-        <li class="">
+        <li>
             <span>Categorias</span>
-            <ul>
-                <li><a href="">Todas las categorias</a></li>
-                <li><a href="">Vestidos</a></li>
-                <li><a href="">Shorts</a></li>
-                <li><a href="">Tops</a></li>
-                <li><a href="">Pantalones</a></li>
-                <li><a href="">Remeras</a></li>
-                <li><a href="">Minis</a></li>
+            <ul *ngFor="let categoria of cargaTiposDePrenda">
+                <li><a href="">{{categoria.nombre}}</a></li>
             </ul>
         </li>
         <li>
-            <span>Informacion</span>
+            <span>Metodos</span>
             <ul>
-                <li><a href="">Medios de pago</a></li>
+                <li><a href="">Metodos</a></li>
                 <li><a href="">Envio</a></li>
-            </ul>
-        </li>
-        <li class="">
-            <span>Categorias</span>
-            <ul>
-                <li><a href="">Todas las categorias</a></li>
-                <li><a href="">Vestidos</a></li>
-                <li><a href="">Shorts</a></li>
-                <li><a href="">Tops</a></li>
-                <li><a href="">Pantalones</a></li>
-                <li><a href="">Remeras</a></li>
-                <li><a href="">Minis</a></li>
             </ul>
         </li>
         <li>
-            <span>Informacion</span>
+            <span>Envios</span>
             <ul>
-                <li><a href="">Medios de pago</a></li>
-                <li><a href="">Envio</a></li>
-            </ul>
-        </li>
-        <li class="">
-            <span>Categorias</span>
-            <ul>
-                <li><a href="">Todas las categorias</a></li>
-                <li><a href="">Vestidos</a></li>
-                <li><a href="">Shorts</a></li>
-                <li><a href="">Tops</a></li>
-                <li><a href="">Pantalones</a></li>
-                <li><a href="">Remeras</a></li>
-                <li><a href="">Minis</a></li>
+                <li><a href="">Envios</a></li>
             </ul>
         </li>
         <li>
-            <span>Informacion</span>
+            <span>Contactos</span>
             <ul>
-                <li><a href="">Medios de pago</a></li>
-                <li><a href="">Envio</a></li>
+                <li><a href="">Instagram</a></li>
+                <li><a href="">Whatsaap</a></li>
             </ul>
         </li>
     </ul>

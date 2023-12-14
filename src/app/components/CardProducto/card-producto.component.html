@@ -1,11 +1,18 @@
 <div class="cardProducto">
-    <img src="../../../assets/imgs/CamperaCueroBanner.png" alt="" class="tamImgCard">
-    <div class="divContenedorTxtCardProd">
-        <p style="font-size: 18px;">Campera de cuero</p>
-        <div>
-            <p style="font-size: 18px;  text-decoration-line: line-through;">$1190</p>
-            <p>$790</p>
+    <div>
+        <img [src]="darSrcProducto()" alt="" class="tamImgCard">
+        <p class="P">{{objetoProducto?.nombre}}</p>
+        <div class="">
+            <div class="contenedorPrecios">
+                <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
+                <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;">
+                    ${{objetoProducto?.precioAnterior}}</p>
+                <!-- ACA VA EL PRECIO ANTERIOR -->
+                <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+            </div>
         </div>
     </div>
-    <button mat-button class="BtnCardProducto">Aceptar</button>
+    <div class="divContenedorBTN">
+        <button mat-button class="BtnCardProducto">Ver</button>
+    </div>
 </div>

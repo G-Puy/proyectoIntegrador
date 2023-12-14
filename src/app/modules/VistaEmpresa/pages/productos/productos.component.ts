@@ -52,7 +52,6 @@ export class ProductosComponent {
 
   }
   ngOnInit(): void {
-    //this.openDialogAgregarEditar();
     this.traerTodasLosProductos();
 
   }

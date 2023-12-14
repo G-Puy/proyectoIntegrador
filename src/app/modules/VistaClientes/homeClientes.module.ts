@@ -11,6 +11,7 @@ import { HomeClientesComponent } from './pages/home-cliente/home.component';
 import { HomeClienteModuleRoutingModule } from './home-Cliente-routing.module';
 import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes.component';
 import { CardProductoComponent } from 'src/app/components/CardProducto/card-producto.component';
+import { DialogmenuComponent } from './pages/dialogmenu/dialogmenu.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CardProductoComponent } from 'src/app/components/CardProducto/card-prod
     MenuComponent,
     NavBarGlobalComponent,
     LayoutClientesComponent,
-    CardProductoComponent
+    CardProductoComponent,
+    DialogmenuComponent
   ],
   imports: [
     CommonModule,

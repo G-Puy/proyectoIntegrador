@@ -27,33 +27,9 @@
             <div class="grid-item pantalones">PANTALONES</div>
             <div class="grid-item shorts">SHORTS</div>
         </div>
-
-
-
     </section>
-    <section #new>
-        <div class="SectionNEW">
-            <div>
-                <app-card-producto></app-card-producto>
-                <app-card-producto></app-card-producto>
-            </div>
-            <div>
-                <app-card-producto></app-card-producto>
-                <app-card-producto></app-card-producto>
-            </div>
-            <div>
-                <app-card-producto></app-card-producto>
-                <app-card-producto></app-card-producto>
-            </div>
-            <div>
-                <app-card-producto></app-card-producto>
-                <app-card-producto></app-card-producto>
-            </div>
-        </div>
-
-
-
-
+    <section #new class="SectionNEW" *ngFor="let producto of todosLosProductos">
+        <app-card-producto [objetoProducto]="producto" style="margin-top: 4rem;"></app-card-producto>
     </section>
     <section #Info></section>
     <footer #DatosFooter></footer>

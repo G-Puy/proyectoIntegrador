@@ -1,5 +1,10 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
+import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,10 +13,31 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class MenuComponent {
   overlayRef: OverlayRef | undefined;
-  constructor(public oaverlayRef: Overlay) { }
+  cargaTiposDePrenda: DTOGenAbms[] = [];
+  constructor(public oaverlayRef: Overlay,
+    public dialog: MatDialog,
+    private sanitizer: DomSanitizer,
+    private sharedServ: SharedService,
+    private funcionesGlobalesService: FuncionesGlobalesService) {
+
+
+    this.sharedServ.getAllTipoPrendas().subscribe(tp => {
+      this.cargaTiposDePrenda = tp;
+    });
+
+  }
   @Output() cerrarOverlay: EventEmitter<void> = new EventEmitter<void>();
+
   cerrar() {
     this.cerrarOverlay.emit();
     // this.overlayRef?.detach();
   }
+
+
+
+
+
+
+
+
 }
