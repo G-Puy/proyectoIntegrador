@@ -143,6 +143,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     return `data:image/${img.extension};base64,${img.imagen}`;
   }
 
+
   //#region  IMAGENES
   /*   ngOnInit(): void {
   

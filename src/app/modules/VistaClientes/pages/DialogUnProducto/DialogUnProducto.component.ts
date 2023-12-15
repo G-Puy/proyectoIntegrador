@@ -63,4 +63,11 @@ export class DialogUnProductoComponent {
     }
   }
 
+  miNumero: number = 0;
+
+  validarNumero(): void {
+    if (this.miNumero < 0) {
+      this.miNumero = 0;
+    }
+  }
 }
