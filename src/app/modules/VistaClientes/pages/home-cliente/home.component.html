@@ -28,8 +28,16 @@
             <div class="grid-item shorts">SHORTS</div>
         </div>
     </section>
-    <section #new class="SectionNEW" *ngFor="let producto of todosLosProductos">
-        <app-card-producto [objetoProducto]="producto" style="margin-top: 4rem;"></app-card-producto>
+    <section class="SectionNEW">
+        <h2 style="
+        font-size: 30px;
+        color: var(--rosadoQueDiosaAl80);
+        padding-top: 2rem;">LO NUEVO</h2>
+        <div #new *ngFor="let producto of todosLosProductos">
+            <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->
+                <app-card-producto [objetoProducto]="producto" style="margin-top: 4rem;"></app-card-producto>
+            </div>
+        </div>
     </section>
     <section #Info></section>
     <footer #DatosFooter></footer>

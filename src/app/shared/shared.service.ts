@@ -11,13 +11,31 @@ import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
   providedIn: 'root'
 })
 export class SharedService {
-
+  todosLosProductos: recibirProductoDTOBack[] = [];
   apiUrl = 'https://localhost:7202/';
   //apiUrl = 'https://quediosa.azurewebsites.net/swagger/index.html';
   constructor(private http: HttpClient) {
-
   }
 
+  public cargarTodasLosProductos() {
+    this.todosLosProductos = [];
+    this.traerTodosLosProductos().subscribe(data => {
+      if (data) {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          this.todosLosProductos.push(element);
+        }
+      }
+    }, error => {
+      console.error('Error al cargar la imagen:', error);
+    });
+  }
+
+  public obtenerProductosCargados(): recibirProductoDTOBack[] {
+
+    return this.todosLosProductos;
+
+  }
   //#region  TIPO PRENDA
 
   getAllTipoPrendas(): Observable<DTOGenAbms[]> {
@@ -139,6 +157,10 @@ export class SharedService {
   }
 
   traerTodosLosProductos(): Observable<recibirProductoDTOBack[]> {
+    return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos`);
+  }
+
+  cargarTodosLosProductos(): Observable<recibirProductoDTOBack[]> {
     return this.http.get<recibirProductoDTOBack[]>(`${this.apiUrl}api/Producto/TraerTodos`);
   }
 

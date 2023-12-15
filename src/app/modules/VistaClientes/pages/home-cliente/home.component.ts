@@ -23,7 +23,9 @@ export class HomeClientesComponent {
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService) {
-    this.traerTodasLosProductos();
+    this.sharedServ.cargarTodasLosProductos();
+    this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
+    //this.traerTodasLosProductos();
   }
 
 
