@@ -1,7 +1,5 @@
 .containerUnProducto {
-    padding: 0.6rem;
     height: 620px;
-    padding-bottom: 5rem;
 }
 
 .backGroundRosaQD {
@@ -56,4 +54,30 @@
 
 .marginAlineadorTexto {
     margin-top: 0.7rem
+}
+
+
+.AcctionAceptar {
+    height: 2rem;
+    padding: 10px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(111, 111, 233);
+    font-size: 1rem;
+    border: 1px solid grey;
+
+
+}
+
+.AcctionAceptar:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: 1px solid grey;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
 }

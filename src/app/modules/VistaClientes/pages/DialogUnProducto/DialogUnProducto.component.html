@@ -1,43 +1,71 @@
-<div class="containerUnProducto">
-    <h1 class="text-center backGroundRosaQD">{{objetoProducto?.nombre}}</h1>
-    <img [src]="darSrcProducto()" alt="" class="tamImgCard">
-    <hr class="backGroundRosaQD">
-    <div class="divsContenedoresDuos">
-        <p class="marginAlineadorTexto">Precio:</p>
-        <div class="contenedorPrecios">
-            <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
-            <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;">
-                ${{objetoProducto?.precioAnterior}}</p>
-            <!-- ACA VA EL PRECIO ANTERIOR -->
-            <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+<div mat-dialog class="containerUnProducto">
+    <div mat-dialog-content style="color: black;">
+
+        <h1 class="text-center backGroundRosaQD">{{objetoProducto?.nombre}}</h1>
+        <hr class="backGroundRosaQD">
+        <div style="position: relative; max-height: 17rem;" *ngIf="silderImages.length != 0">
+            <div style="justify-content: center; align-items: center;">
+
+                <img src="{{silderImages[iteradorImg]}}" alt=""
+                    style="max-height: 17rem; min-height: 17rem; width: 100%;">
+            </div>
+            <!-- DIV botones con posición absoluta -->
+            <div *ngIf="silderImages.length > 1"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
+                <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()"
+                    style="margin-left: 8px;">
+                    arrow_back_ios
+                </span>
+                <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
+                    arrow_forward_ios
+                </span>
+            </div>
+        </div>
+        <!-- <img [src]="darSrcProducto()" alt="" class="tamImgCard"> -->
+        <hr class="backGroundRosaQD">
+        <div class="divsContenedoresDuos">
+            <p class="marginAlineadorTexto"><strong>Precio:</strong></p>
+            <div class="contenedorPrecios">
+                <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
+                <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;">
+                    ${{objetoProducto?.precioAnterior}}</p>
+                <!-- ACA VA EL PRECIO ANTERIOR -->
+                <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+            </div>
+        </div>
+        <div class="divsContenedoresDuos">
+            <p class="marginAlineadorTexto"><Strong>Talle:</Strong> </p>
+            <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione talles"
+                [(ngModel)]="seleccionTalle" [ngClass]="{'requerido': seleccionTalle == undefined}">
+                <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
+                    [value]=talle>{{talle.nombre}}</mat-option>
+            </mat-select>
+        </div>
+
+        <div class="divsContenedoresDuos">
+            <p><strong>Color:</strong></p>
+            <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione colores"
+                [(ngModel)]="seleccionColor" [ngClass]="{'requerido': seleccionColor == undefined}">
+                <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
+                    [value]=color>{{color.nombre}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="divsContenedoresDuos">
+            <p class="marginAlineadorTexto"><strong>Cantidad:</strong> </p>
+        </div>
+        <div>
+            <p><strong>Descripción</strong></p>
+            <p style=" font-size: 17px;">{{objetoProducto?.descripcion}}</p>
+        </div>
+        <div style="padding-bottom: 1rem;">
+            <p><strong>Guia de talles</strong> </p>
+            <p style=" font-size: 17px;">{{objetoProducto?.guiaTalles}}</p>
         </div>
     </div>
-    <div class="divsContenedoresDuos">
-        <p class="marginAlineadorTexto">Talle:</p>
-        <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione talles" [(ngModel)]="seleccionTalle"
-            [ngClass]="{'requerido': seleccionTalle == undefined}">
-            <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
-                [value]=talle>{{talle.nombre}}</mat-option>
-        </mat-select>
-    </div>
 
-    <div class="divsContenedoresDuos">
-        <p>Color:</p>
-        <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione colores" [(ngModel)]="seleccionColor"
-            [ngClass]="{'requerido': seleccionColor == undefined}">
-            <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
-                [value]=color>{{color.nombre}}</mat-option>
-        </mat-select>
-    </div>
-    <div class="divsContenedoresDuos">
-        <p class="marginAlineadorTexto">Cantidad:</p>
-    </div>
-    <div>
-        <p>Descripción</p>
-        <p style=" font-size: 17px;">{{objetoProducto?.descripcion}}</p>
-    </div>
-    <div>
-        <p>Guia de talles</p>
-        <p style=" font-size: 17px;">{{objetoProducto?.guiaTalles}}</p>
-    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center; height: 5rem; gap: 2rem;">
+        <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
+        <button mat-button class="AcctionAceptar" style="width: auto;">Agregar al carrito</button>
+    </mat-dialog-actions>
+
 </div>
