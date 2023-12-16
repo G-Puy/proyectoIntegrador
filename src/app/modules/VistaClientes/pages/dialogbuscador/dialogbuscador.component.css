@@ -2,6 +2,14 @@
 
     .containerUnProducto {
         height: 620px;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 3rem;
+    }
+
+    .containerListaResult {
+        height: 500px;
+
     }
 
     .backGroundRosaQD {
@@ -15,37 +23,9 @@
         border-radius: 5px;
     }
 
-    .contenedorPrecios {
-        display: flex;
-        justify-content: center;
-        gap: 1.7rem;
-        margin-top: 0.5rem;
-    }
 
     .contenedorPrecios p {
         margin: 0px;
-    }
-
-
-
-    .BasicSelectUnProducto {
-        height: 2rem;
-        width: 7rem;
-        padding-top: 4px !important;
-        padding-left: 2px;
-        border: 1px solid black;
-        border-radius: 5px;
-        color: black;
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    .BasicSelectUnProducto:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
-        border: 2px solid black;
-        border: 2px solid var(--azulBasico);
-
     }
 
     .divsContenedoresDuos {
@@ -58,16 +38,12 @@
         margin-top: 0.7rem
     }
 
-
     .AcctionAceptar {
-        height: 2rem;
+        height: 1rem;
         padding: 10px;
         /*  border: 2px solid rgb(34, 167, 34); */
         border-radius: 18px;
         color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: center;
         background-color: rgb(111, 111, 233);
         font-size: 1rem;
         border: 1px solid grey;
@@ -80,7 +56,6 @@
         /* Sombra más pequeña para efecto de estar presionado */
         transform: translateY(4px);
         border: 1px solid grey;
-
         /* Mueve aún más hacia abajo para simular que se está presionando */
     }
 

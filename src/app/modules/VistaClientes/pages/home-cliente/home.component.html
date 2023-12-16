@@ -35,7 +35,7 @@
         padding-top: 2rem;">LO NUEVO</h2>
         <div #new *ngFor="let producto of todosLosProductos">
             <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->
-                <app-card-producto [objetoProducto]="producto" style="margin-top: 4rem;"></app-card-producto>
+                <app-card-producto [objetoProducto]="producto"></app-card-producto>
             </div>
         </div>
     </section>

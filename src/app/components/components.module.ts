@@ -5,7 +5,7 @@ import { ListaConBuscadorGenericaComponent } from './lista-con-buscador-generica
 import { SharedModule } from '../shared/shared.module';
 import { SnackbarComponent } from './snackbar-component/snackbar-component.component';
 import { AceptarCancelarDialogComponent } from './aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
-import { DialogbuscadorComponent } from './dialogbuscador/dialogbuscador.component';
+import { DialogbuscadorComponent } from '../modules/VistaClientes/pages/dialogbuscador/dialogbuscador.component';
 
 
 

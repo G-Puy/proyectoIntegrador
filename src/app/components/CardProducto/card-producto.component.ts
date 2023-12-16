@@ -32,7 +32,7 @@ export class CardProductoComponent {
   openUnProducto() {
     const dialogRef = this.dialog.open(DialogUnProductoComponent, {
       width: this.funcionesGlobalesService.tamMaxDialogMobile(),
-      data: { producto: this.objetoProducto },
+      data: { producto: this.objetoProducto, },
       disableClose: false  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
   }

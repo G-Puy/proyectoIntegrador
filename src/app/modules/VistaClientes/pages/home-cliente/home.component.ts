@@ -47,24 +47,4 @@ export class HomeClientesComponent {
 
   }
 
-
-
-
-
-
-
-
-  //#region DIALOGS
-
-
-
-
-
-  //#endregion DIALOGS
-
-
-
-
-
-
 }

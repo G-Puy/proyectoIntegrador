@@ -119,8 +119,8 @@ body {
 .botonCircularSimple {
     /* Tus estilos existentes */
     margin-left: 1rem;
-    width: 45px;
-    height: 45px;
+    width: 38px;
+    height: 35px;
     border-radius: 50%;
     border: none;
     background-color: var(--rosadoQueDiosaAl80);

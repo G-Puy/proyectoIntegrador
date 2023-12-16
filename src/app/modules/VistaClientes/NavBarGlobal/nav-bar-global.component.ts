@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SharedService } from 'src/app/shared/shared.service';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { DialogUnProductoComponent } from '../pages/DialogUnProducto/DialogUnProducto.component';
+import { DialogbuscadorComponent } from '../pages/dialogbuscador/dialogbuscador.component';
 
 
 @Component({
@@ -52,7 +53,12 @@ export class NavBarGlobalComponent {
 
 
 
-
+  openBuscadorProductos() {
+    const dialogRef = this.dialog.open(DialogbuscadorComponent, {
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
+      disableClose: false  // Esto evita que el diálogo se cierre al hacer clic fuera de él
+    });
+  }
 
 
 

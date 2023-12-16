@@ -1,0 +1,64 @@
+<div class="containerUnProducto">
+    <div>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; position: sticky;">
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="text" class="BasicInput" [(ngModel)]="txtBuscar" placeholder="Buscar producto"
+                    style="padding-right: 2.2rem;">
+                <button *ngIf="txtBuscar" class="clear-button" aria-label="Clear" (click)="vaciarTxtYBorrarBusqueda()"
+                    style="top: 10px;">
+                    <span class="material-icons BasicBtnCruz">close</span>
+                </button>
+            </div>
+            <div style="background-color: var(--rosadoQueDiosaAl80); border-radius: 50%; " (click)="filtrar()"
+                class=" botonCircularSimple">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
+            </div>
+
+        </div>
+        <div>
+            <div *ngFor="let producto of productosFiltrados" style=" padding-top: 0.3rem;">
+                <div style="background-color: var(--negroQueDiosa);">
+                    <div style="display: flex; align-items: center;">
+                        <div
+                            style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem; border-radius: 5px;">
+                            <img style="width: 6rem; height: 7rem; object-fit: cover;" [src]="cargaSrc(producto)"
+                                alt="">
+                        </div>
+                        <div style=" 
+                        width: 100%; 
+                        width: 100%;
+                        height: 7rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;">
+                            <div style="padding: 0.3rem;">
+                                <div>
+                                    <div>
+                                        <div style="color: white; font-size: 18px;">{{producto.nombre}}</div>
+                                    </div>
+                                    <div>
+                                        <span style="color: white; font-size: 18px;">Precio
+                                            ${{producto.precioActual}}</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: start; align-items: center;">
+                                    <p style="font-size: 18px;  text-decoration-line: line-through; color: grey;"
+                                        *ngIf="producto?.precioAnterior! > 0">
+                                        Precio oferta ${{producto?.precioAnterior}}</p>
+                                </div>
+                            </div>
+                            <div class="text-center" style="padding-bottom: 0.2rem;">
+                                <button mat-button class="AcctionAceptar" style="color: white;"
+                                    (click)="openUnProducto(producto)">Ver producto</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

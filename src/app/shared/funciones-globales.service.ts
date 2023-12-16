@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../components/snackbar-component/snackbar-component.component';
+import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +27,11 @@ export class FuncionesGlobalesService {
   //*ESTE METODO RETORNA EL TAMA:O MAXIMO PAR ALOS DIALOGOS DE MOBILE
   tamMaxDialogMobile(): string {
     return "500px";
+  }
+
+  public cargarSrc(producto: recibirProductoDTOBack): string {
+    return `data:image/${producto.imagenes[0].extension};base64,${producto.imagenes[0].imagen}`;
+
   }
 
 }
