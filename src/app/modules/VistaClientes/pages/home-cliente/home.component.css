@@ -50,7 +50,7 @@
 
 .saleAndNew {
     padding: 1rem;
-    height: 18rem;
+    height: 12rem;
 
     @media (max-width: 768px) {
         display: flex;
@@ -70,10 +70,11 @@
 }
 
 .saleAndNewDivs {
+    padding-top: 1rem;
     background-color: var(--negroQueDiosa);
     color: var(--rosadoQueDiosaAl80);
-    height: 8rem;
-    font-size: 4rem;
+    height: 5rem;
+    font-size: 3.2rem;
     display: flex;
     justify-content: center;
     align-items: center;

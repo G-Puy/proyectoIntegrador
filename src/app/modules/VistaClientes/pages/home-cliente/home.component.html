@@ -21,11 +21,16 @@
         </div>
     </section>
     <section #Categorias>
-        <div class="grid-container">
-            <div class="grid-item vestidos">VESTIDOS</div>
-            <div class="grid-item tops">TOPS</div>
-            <div class="grid-item pantalones">PANTALONES</div>
-            <div class="grid-item shorts">SHORTS</div>
+        <div class="">
+
+            <div class="row" style="background-color: blue; width: 100%;margin: auto;">
+                <div class="col-12">
+
+                    VESTIDOS</div>
+                <div class="col-6">TOPS</div>
+                <div class="col-6">PANTALONES</div>
+                <div class="col-12">SHORTS</div>
+            </div>
         </div>
     </section>
     <section class="SectionNEW">
@@ -35,7 +40,7 @@
         padding-top: 2rem;">LO NUEVO</h2>
         <div #new *ngFor="let producto of todosLosProductos">
             <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->
-                <app-card-producto [objetoProducto]="producto"></app-card-producto>
+                <app-card-producto [objetoProducto]="producto" style="margin-top: 1.5rem;"></app-card-producto>
             </div>
         </div>
     </section>
