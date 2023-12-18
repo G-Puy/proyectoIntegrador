@@ -3,6 +3,7 @@
     /* Esto asegura que los hijos absolutamente posicionados se coloquen en relación a este elemento */
 }
 
+
 .ContainerHome {
     @media (max-width: 768px) {
         width: 500px;
@@ -92,59 +93,24 @@
 }
 
 
-/*Region Grid*/
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 10px;
-}
 
-.grid-item {
-    height: 200px;
+
+/* REGION OFERTA*/
+.SectionOFERTA {
+    background-color: var(--negroQueDiosa);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 8px;
-    /* Bordes redondeados */
+    flex-direction: column;
 }
 
-/* Colores distintos para cada ítem */
-.vestidos {
-    background-color: #ff9999;
+.SectionOFERTA div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Color rosa */
-.tops {
-    background-color: #99ccff;
-}
-
-/* Color azul claro */
-.pantalones {
-    background-color: #ffcc99;
-}
-
-/* Color melocotón */
-.shorts {
-    background-color: #99ff99;
-}
-
-/* Color verde claro */
-
-/* Cambio de layout para pantallas más pequeñas */
-@media (max-width: 991px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/*Region Grid*/
-
-
-
+/* REGION OFERTA*/
 
 /* REGION NEW*/
 .SectionNEW {
@@ -153,7 +119,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .SectionNEW div {
@@ -163,3 +128,55 @@
 }
 
 /* REGION NEW*/
+
+.texto-sobre-imagen {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo negro con transparencia */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.6rem;
+    margin: 0;
+}
+
+
+
+/* INFO */
+.sectionInfo {
+    padding: 0.8rem;
+}
+
+.divInfo {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+
+.spanInfo {
+    margin-right: 1rem;
+    font-size: 5rem;
+}
+
+/* INFO */
+
+/* FOOTER */
+.datosFooter {
+    background-color: var(--negroQueDiosa);
+    color: white;
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+.datosFooter h2 {
+    /*  text-decoration: underline; */
+    /* Esto aplica el subrayado */
+
+}
+
+.datosFooter ul {
+    text-decoration: none;
+}
+
+
+/* FOOTER */

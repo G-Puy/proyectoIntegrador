@@ -1,5 +1,5 @@
 <ng-container class="ContainerHome">
-    <section #Banner class="Section1">
+    <section #Banner class="Section1 ">
         <div class="divBanner">
             <div>
                 <img class="BasicImg" src="../../../../../assets/imgs/CamperaCueroBanner.png" alt="">
@@ -12,7 +12,7 @@
             <span>ENVIOS A TODO EL PAIS</span>
         </div>
     </section>
-    <section #Sale&New class="saleAndNew">
+    <section #Sale&New class="saleAndNew ">
         <div class="saleAndNewDivs sombra">
             <p>OFERTAS</p>
         </div>
@@ -20,20 +20,42 @@
             <p>LO NUEVO</p>
         </div>
     </section>
-    <section #Categorias>
+    <section #Categorias class="">
         <div class="">
-
-            <div class="row" style="background-color: blue; width: 100%;margin: auto;">
-                <div class="col-12">
-
-                    VESTIDOS</div>
-                <div class="col-6">TOPS</div>
-                <div class="col-6">PANTALONES</div>
-                <div class="col-12">SHORTS</div>
+            <div class="row" style="width: 100%;margin: auto;">
+                <div class="col-6  col-lg-3" style="padding: 0;">
+                    <img style="width: 100%;" src="../../../../../assets/imgs/Grid pantalon.png" alt="">
+                    <div class="texto-sobre-imagen"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+                        <p>Pantalones</p>
+                    </div>
+                </div>
+                <div class="col-6  col-lg-3" style="padding: 0;">
+                    <img style="width: 100%;" src="../../../../../assets/imgs/GridShort.png" alt="">
+                    <div class="texto-sobre-imagen"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+                        <p>Shorts</p>
+                    </div>
+                </div>
+                <div class="col-6  col-lg-3" style="padding: 0;">
+                    <img style="width: 100%;" src="../../../../../assets/imgs/GridVestido.png" alt="">
+                    <div class="texto-sobre-imagen"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+                        <p>Vestidos</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" style="padding: 0;">
+                    <img style="width: 100%;" src="../../../../../assets/imgs/GridTop.png" alt="">
+                    <div class="texto-sobre-imagen"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+                        <p>Tops</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section class="SectionNEW">
+
+    <section class="SectionNEW ">
         <h2 style="
         font-size: 30px;
         color: var(--rosadoQueDiosaAl80);
@@ -44,6 +66,65 @@
             </div>
         </div>
     </section>
-    <section #Info></section>
-    <footer #DatosFooter></footer>
+    <section #Info class="sectionInfo ">
+        <div class="divInfo">
+            <span class="material-symbols-outlined spanInfo spanInfo">
+                credit_card
+            </span>
+            <div class="divInfoContenedorInfo" style="margin-top: 0.6rem;">
+                <p style="margin: 0;">Medios de pago</p>
+                <img src="../../../../../assets/imgs/Mercado-Pago-Logo.png" alt="" style="width: 6rem; height: 4rem;">
+            </div>
+        </div>
+        <div class="divInfo">
+            <span class="material-symbols-outlined spanInfo">
+                local_shipping
+            </span>
+            <div class="divInfoContenedorInfo" style="margin-top: 0.6rem;">
+                <p style="margin: 0;">Envíos a todo el pais</p>
+                <p style="font-size: 0.8rem;">Trabajamos con todas las agencias.</p>
+            </div>
+        </div>
+        <div class="divInfo">
+            <span class="material-symbols-outlined spanInfo">
+                published_with_changes
+            </span>
+            <div class="divInfoContenedorInfo" style="margin-top: 0.6rem; ">
+                <p style="margin: 0;">Tenes 30 días para cambiar tu compra</p>
+                <p style="font-size: 0.8rem;">No válido para ofertas.</p>
+            </div>
+        </div>
+    </section>
+    <footer #DatosFooter class="datosFooter">
+        <div id="informacion">
+            <h2>UBICACIÓN</h2>
+            <p>Marcelino berthelot 1780</p>
+
+            <h2>CONTACTO</h2>
+            <ul>
+                <li>
+                    <img src="../../../../../assets/imgs/iconPngWP.png" alt="" style="height: 3rem; width: 3rem;">
+                    098 000 000
+                </li>
+                <li>
+                    <img src="../../../../../assets/imgs/iconPngGmail.png" alt="" style="width: 2rem; height: 1.5rem;">
+                    quediosa@gmail.com
+                </li>
+                <li>
+                    <img src="../../../../../assets/imgs/iconPngInstagram.png" alt=""
+                        style="height: 1.9rem; width: 2.1rem;">
+                    <a href="https://www.instagram.com/quediosa.uy/?hl=es-la" target="_blank"></a> @quediosa
+                </li>
+            </ul>
+
+            <h2>INFORMACIÓN</h2>
+            <ul>
+                <li>Envíos</li>
+                <li>Medios de pago</li>
+                <li>Cambios</li>
+            </ul>
+        </div>
+
+
+    </footer>
 </ng-container>
