@@ -12,8 +12,8 @@ import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
 })
 export class SharedService {
   todosLosProductos: recibirProductoDTOBack[] = [];
-  apiUrl = 'https://localhost:7202/';
-  //apiUrl = 'https://quediosa.azurewebsites.net/';
+  // apiUrl = 'https://localhost:7202/';
+  apiUrl = 'https://quediosa.azurewebsites.net/';
   constructor(private http: HttpClient) {
   }
 
