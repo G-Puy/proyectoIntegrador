@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
   ],
@@ -40,7 +41,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatCardModule,
     MatSlideToggleModule,
-
+    MatRadioModule
 
 
 
@@ -66,7 +67,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

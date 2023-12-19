@@ -12,6 +12,7 @@ import { HomeClienteModuleRoutingModule } from './home-Cliente-routing.module';
 import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes.component';
 import { CardProductoComponent } from 'src/app/components/CardProducto/card-producto.component';
 import { DialogUnProductoComponent } from './pages/DialogUnProducto/DialogUnProducto.component';
+import { TodoslosproductosComponent } from './pages/todoslosproductos/todoslosproductos.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DialogUnProductoComponent } from './pages/DialogUnProducto/DialogUnProd
     NavBarGlobalComponent,
     LayoutClientesComponent,
     CardProductoComponent,
-    DialogUnProductoComponent
+    DialogUnProductoComponent,
+    TodoslosproductosComponent
   ],
   imports: [
     CommonModule,
