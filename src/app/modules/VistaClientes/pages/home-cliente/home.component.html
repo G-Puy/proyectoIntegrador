@@ -20,7 +20,7 @@
             <p>LO NUEVO</p>
         </div>
     </section>
-    <section #Categorias class="">
+    <section #Categorias style="margin-bottom: 1rem;">
         <div class="">
             <div class="row" style="width: 100%;margin: auto;">
                 <div class="col-6  col-lg-3" style="padding: 0;">
@@ -56,10 +56,10 @@
     </section>
 
     <section class="SectionNEW ">
-        <h2 style="
+        <!--  <h2 style="
         font-size: 30px;
         color: var(--rosadoQueDiosaAl80);
-        padding-top: 2rem;">LO NUEVO</h2>
+        padding-top: 2rem;">LO NUEVO</h2> -->
         <div #new *ngFor="let producto of todosLosProductos">
             <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->
                 <app-card-producto [objetoProducto]="producto" style="margin-top: 1.5rem;"></app-card-producto>
@@ -103,7 +103,7 @@
             <h2>CONTACTO</h2>
             <ul>
                 <li>
-                    <img src="../../../../../assets/imgs/iconPngWP.png" alt="" style="height: 3rem; width: 3rem;">
+                    <img src="../../../../../assets/imgs/iconPngWP.png" alt="" style="height: 2.2rem; width: 2.2rem;">
                     098 000 000
                 </li>
                 <li>
@@ -119,12 +119,15 @@
 
             <h2>INFORMACIÓN</h2>
             <ul>
-                <li>Envíos</li>
                 <li>Medios de pago</li>
+                <li>Envíos</li>
                 <li>Cambios</li>
             </ul>
         </div>
-
+        <div class="text-center">
+            <img src="../../../../../assets/imgs/logoSinTexto.png" alt="" style="width: 15rem; height: 15rem;">
+        </div>
+        <div class="text-center">©Todos los derechos reservados Que diosa 2024.</div>
 
     </footer>
 </ng-container>

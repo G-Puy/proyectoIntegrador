@@ -1,3 +1,7 @@
+.BasicImg {
+    max-width: 100%;
+}
+
 .Section1 {
     position: relative;
     /* Esto asegura que los hijos absolutamente posicionados se coloquen en relación a este elemento */
@@ -119,6 +123,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-bottom: 1.8rem;
 }
 
 .SectionNEW div {
@@ -168,15 +173,12 @@
     font-size: 1rem;
 }
 
-.datosFooter h2 {
-    /*  text-decoration: underline; */
-    /* Esto aplica el subrayado */
-
-}
-
-.datosFooter ul {
+.datosFooter li {
     text-decoration: none;
+    list-style: none;
+    margin-bottom: 0.8rem;
 }
+
 
 
 /* FOOTER */
