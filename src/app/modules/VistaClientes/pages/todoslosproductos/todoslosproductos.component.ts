@@ -12,6 +12,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./todoslosproductos.component.css']
 })
 export class TodoslosproductosComponent {
+  txtBuscar: string = "";
   cargaTiposDePrenda: DTOGenAbms[] = [];
   opcionBusqueda: string = "Nombre";
   panelOpenState = false;
@@ -27,7 +28,7 @@ export class TodoslosproductosComponent {
   }
   vaciarTxtYBorrarBusqueda() {
     this.productosFiltrados = [];
-
+    this.txtBuscar = "";
   }
   filtrar() {
     this.productosFiltrados = [];

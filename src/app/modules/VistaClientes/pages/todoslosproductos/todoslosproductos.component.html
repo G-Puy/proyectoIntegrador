@@ -1,38 +1,65 @@
 <div class="SectionNEW">
-    <div class="">
-        <mat-accordion>
+    <div>
+        <mat-accordion style="width: 360px; margin-top: 2rem;">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Self aware panel
+                        Filtrar
                     </mat-panel-title>
-                    <mat-panel-description>
-                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                    </mat-panel-description>
+                    <!-- <mat-panel-description>
+                        Eliminar filtros 
+                    </mat-panel-description> -->
                 </mat-expansion-panel-header>
-                <p>I'm visible because I am open</p>
-                <p>I'm visible because I am open</p>
-                <p>I'm visible because I am open</p>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; ">
+                    <!--  <p style="font-size: 1.2rem;">Modalidad de busquedas</p> -->
+                    <mat-radio-group class="radio-buttons-column">
+                        <div>
+                            <label class="radio-button-label">
+                                <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="nombre">
+                                Nombre producto
+                            </label>
+                            <div style="position: relative; display: flex; align-items: center;">
+                                <input type="text" class="BasicInput" [(ngModel)]="txtBuscar"
+                                    placeholder="Buscar producto" style="padding-right: 2.2rem;">
+                                <button *ngIf="txtBuscar" class="clear-button" aria-label="Clear"
+                                    (click)="vaciarTxtYBorrarBusqueda()" style="top: 10px;">
+                                    <span class="material-icons BasicBtnCruz">close</span>
+                                </button>
+                            </div>
+                        </div>
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="nuevo">
+                            Nuevos
+                        </label>
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="ofertas">
+                            Ofertas
+                        </label>
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="categoria">
+                            Categorias
+                        </label>
+                    </mat-radio-group>
+                    <div style="
+                    margin: 0.5rem;
+                    width: 25rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-right: 6rem;">
+
+                        <button class="BtnEliminarFiltros"><span class="material-symbols-outlined">
+                                delete
+                            </span></button>
+                        <button class="BtnFiltrar">Filtrar<span class="material-symbols-outlined">
+                                search
+                            </span></button>
+                    </div>
+                </div>
             </mat-expansion-panel>
 
         </mat-accordion>
-        <!--  <div class="text-center">
-            <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
 
-            <mat-radio-group class="radio-buttons-column"
-                style="font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
-                <label class="radio-button-label">
-                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
-                </label>
-                <label class="radio-button-label">
-                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Nombre"> Nombre
-                </label>
-                <label class="radio-button-label">
-                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Tipo"> Tipo producto
-                </label>
-
-            </mat-radio-group>
-        </div> -->
     </div>
     <div #new *ngFor="let producto of todosLosProductos">
         <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->

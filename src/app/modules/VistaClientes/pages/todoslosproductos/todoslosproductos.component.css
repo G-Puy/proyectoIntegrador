@@ -26,3 +26,55 @@
     margin-bottom: 10px;
     /* Espacio entre cada botón de radio */
 }
+
+.BtnEliminarFiltros {
+
+    height: 1.4rem;
+    width: 1rem;
+    padding: 15px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    font-size: 1rem;
+    border: none;
+
+}
+
+.BtnEliminarFiltros:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: none;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+.BtnFiltrar {
+
+    height: 1.4rem;
+    width: 6rem;
+    padding: 15px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azulBasico);
+    font-size: 1rem;
+    border: none;
+
+}
+
+.BtnFiltrar:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: none;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
