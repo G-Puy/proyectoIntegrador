@@ -6,7 +6,7 @@
             <div class="contenedorPrecios">
                 <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
                 <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;"
-                    *ngIf="objetoProducto?.precioAnterior != -1">
+                    *ngIf="objetoProducto?.precioAnterior! > 0">
                     ${{objetoProducto?.precioAnterior}}</p>
                 <!-- ACA VA EL PRECIO ANTERIOR -->
                 <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->

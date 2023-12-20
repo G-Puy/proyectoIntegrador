@@ -6,7 +6,6 @@
         <div style="position: relative; display: flex; align-items: center; ">
             <input type="text" class="BasicInput" [(ngModel)]="valorInput" placeholder="Ingrese nombre">
             <div>
-
                 <span [ngClass]="{'invisible': valorInput != '', 'visible': valorInput == ''}"
                     style="font-size: 0.8rem; color: red;">{{campoVacio}}</span>
                 <span [ngClass]="{'invisible': nombreExiste != '', 'visible': nombreExiste == ''}"

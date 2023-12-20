@@ -13,12 +13,17 @@
                 <div style="display: flex; flex-direction: column; align-items: flex-start; ">
                     <!--  <p style="font-size: 1.2rem;">Modalidad de busquedas</p> -->
                     <mat-radio-group class="radio-buttons-column">
-                        <div>
+                        <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;">
                             <label class="radio-button-label">
                                 <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="nombre">
                                 Nombre producto
                             </label>
-                            <div style="position: relative; display: flex; align-items: center;">
+                            <div *ngIf="opcionBusqueda == 'nombre'"
+                                style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
                                 <input type="text" class="BasicInput" [(ngModel)]="txtBuscar"
                                     placeholder="Buscar producto" style="padding-right: 2.2rem;">
                                 <button *ngIf="txtBuscar" class="clear-button" aria-label="Clear"
@@ -27,6 +32,21 @@
                                 </button>
                             </div>
                         </div>
+                        <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;">
+                            <label class="radio-button-label">
+                                <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="tipo">
+                                Categorias
+                            </label>
+                            <mat-select *ngIf="opcionBusqueda == 'tipo'" class="marginBot BasicSelect " required
+                                style="margin-bottom: 1rem;" placeholder="Seleccione un tipo" [(ngModel)]="tipoPrenda">
+                                <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
+                                    [value]=tipo.nombre>{{tipo.nombre}}</mat-option>
+                            </mat-select>
+                        </div>
                         <label class="radio-button-label">
                             <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="nuevo">
                             Nuevos
@@ -34,10 +54,6 @@
                         <label class="radio-button-label">
                             <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="ofertas">
                             Ofertas
-                        </label>
-                        <label class="radio-button-label">
-                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="categoria">
-                            Categorias
                         </label>
                     </mat-radio-group>
                     <div style="
@@ -48,10 +64,11 @@
                     align-items: center;
                     padding-right: 6rem;">
 
-                        <button class="BtnEliminarFiltros"><span class="material-symbols-outlined">
+                        <button class="BtnEliminarFiltros" (click)="eliminarFiltros()"><span
+                                class="material-symbols-outlined">
                                 delete
                             </span></button>
-                        <button class="BtnFiltrar">Filtrar<span class="material-symbols-outlined">
+                        <button class="BtnFiltrar" (click)="filtrar()">Filtrar<span class="material-symbols-outlined">
                                 search
                             </span></button>
                     </div>
@@ -61,7 +78,7 @@
         </mat-accordion>
 
     </div>
-    <div #new *ngFor="let producto of todosLosProductos">
+    <div #new *ngFor="let producto of productosFiltrados">
         <div><!-- AGREGAR CONDICION PARA QUE SOLO AGARRE LO NUEVO -->
             <app-card-producto [objetoProducto]="producto" style="margin-top: 1.5rem;"></app-card-producto>
         </div>
