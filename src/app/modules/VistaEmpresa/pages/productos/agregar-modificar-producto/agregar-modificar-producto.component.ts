@@ -110,13 +110,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
 
     }
-
-
-
-
-
-
-
   }
   ngOnInit(): void {
     if (!this.data.soyAgregar) {
@@ -136,7 +129,7 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
           const element = this.data.productoEdit.imagenes[index];
           this.silderImages.push(this.cargarSrc(element));
         }
-      }, 200)
+      }, 500)
     }
   }
   public cargarSrc(img: DTOImagen): string {
