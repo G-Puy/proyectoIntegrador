@@ -31,7 +31,6 @@ export class TodoslosproductosComponent implements OnInit {
     this.cargarTP();
     this.objParaTodosLosProductos = this.sharedServ.obtenerDatosParaTodosLosProductos();
 
-    console.log(this.objParaTodosLosProductos);
   }
   ngOnInit(): void {
     //this.soloSiVengoCargado();
@@ -43,11 +42,6 @@ export class TodoslosproductosComponent implements OnInit {
     this.sharedServ.traerTodosLosProductos().subscribe(data => {
       if (data) {
         this.todosLosProductos = data;
-        /*  for (let index = 0; index < data.length; index++) {
-           const element = data[index];
-           this.todosLosProductos.push(element);
-         } */
-        console.log(this.objParaTodosLosProductos);
       }
       this.soloSiVengoCargado();
     }, error => {
@@ -66,12 +60,10 @@ export class TodoslosproductosComponent implements OnInit {
 
       } else if (this.objParaTodosLosProductos.tipoDeFiltro == "nuevo") {
         this.opcionBusqueda = 'nuevo';
-        console.log('ENTRO nuevo');
         this.filtrar();
 
       } else if (this.objParaTodosLosProductos.tipoDeFiltro == "oferta") {
         this.opcionBusqueda = 'oferta';
-        console.log('ENTRO oferta');
         this.filtrar();
 
       }
@@ -95,7 +87,6 @@ export class TodoslosproductosComponent implements OnInit {
         this.productosFiltrados = this.todosLosProductos;
       }
     } else if (this.opcionBusqueda == "tipo") {
-      console.log(this.tipoPrenda);
       const resultadoFiltradoTipo = this.todosLosProductos.filter(elemento =>
         elemento.tipoProductoNombre.toLowerCase().includes(this.tipoPrenda.toLowerCase())
       );
