@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { single, timestamp } from 'rxjs';
 import { DTODataTodosLosProductos } from 'src/app/interfaces/DTODataTodosLosProductos.interface';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
@@ -26,32 +27,42 @@ export class TodoslosproductosComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService) {
-    this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
+    //this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
     this.cargarTP();
     this.objParaTodosLosProductos = this.sharedServ.obtenerDatosParaTodosLosProductos();
-    console.log(this.todosLosProductos);
 
-
-
-
+    console.log(this.objParaTodosLosProductos);
   }
   ngOnInit(): void {
-    this.soloSiVengoCargado();
-
+    //this.soloSiVengoCargado();
+    this.cargarTodasLosProductos();
   }
 
-
+  private cargarTodasLosProductos() {
+    this.todosLosProductos = [];
+    this.sharedServ.traerTodosLosProductos().subscribe(data => {
+      if (data) {
+        this.todosLosProductos = data;
+        /*  for (let index = 0; index < data.length; index++) {
+           const element = data[index];
+           this.todosLosProductos.push(element);
+         } */
+        console.log(this.objParaTodosLosProductos);
+      }
+      this.soloSiVengoCargado();
+    }, error => {
+      console.error('Error al cargar la imagen:', error);
+    });
+  }
 
   private soloSiVengoCargado() {
-    if (this.todosLosProductos.length == 0) {
-      this.sharedServ.cargarTodasLosProductos();
-      this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
-    }
+
     if (this.objParaTodosLosProductos != undefined) {
       if (this.objParaTodosLosProductos.tipoDeFiltro == "tipo") {
+        this.opcionBusqueda = 'tipo';
         //Partimos de la base que no existen 2 tipos de prenda con el mismo nombre
         this.tipoPrenda = this.objParaTodosLosProductos?.tipoProductoBuscado;
-        this.opcionBusqueda = 'tipo';
+        this.filtrar();
 
       } else if (this.objParaTodosLosProductos.tipoDeFiltro == "nuevo") {
         this.opcionBusqueda = 'nuevo';
@@ -84,6 +95,7 @@ export class TodoslosproductosComponent implements OnInit {
         this.productosFiltrados = this.todosLosProductos;
       }
     } else if (this.opcionBusqueda == "tipo") {
+      console.log(this.tipoPrenda);
       const resultadoFiltradoTipo = this.todosLosProductos.filter(elemento =>
         elemento.tipoProductoNombre.toLowerCase().includes(this.tipoPrenda.toLowerCase())
       );
