@@ -52,7 +52,6 @@ export class NavBarGlobalComponent {
 
 
 
-
   openBuscadorProductos() {
     const dialogRef = this.dialog.open(DialogbuscadorComponent, {
       width: this.funcionesGlobalesService.tamMaxDialogMobile(),

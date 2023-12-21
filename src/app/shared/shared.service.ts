@@ -6,17 +6,24 @@ import { DTOGenAbms } from '../interfaces/objGenericoParaABMS.interface';
 import { DTOProductoEnvio } from '../interfaces/DTOsEnvio/productoEnvioDTO.interface';
 import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
+import { DTODataTodosLosProductos } from '../interfaces/DTODataTodosLosProductos.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
   todosLosProductos: recibirProductoDTOBack[] = [];
+  objParaTodosLosProductos: DTODataTodosLosProductos | undefined;
   // apiUrl = 'https://localhost:7202/';
   apiUrl = 'https://quediosa.azurewebsites.net/';
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router) {
   }
 
+
+  //#region 
   public cargarTodasLosProductos() {
     this.todosLosProductos = [];
     this.traerTodosLosProductos().subscribe(data => {
@@ -32,10 +39,27 @@ export class SharedService {
   }
 
   public obtenerProductosCargados(): recibirProductoDTOBack[] {
-
     return this.todosLosProductos;
-
   }
+
+
+  public cargarDatosParaTodosLosProductos(categoria: string, tipoAccion: string) {
+    this.objParaTodosLosProductos = {
+      tipoDeFiltro: tipoAccion,
+      tipoProductoBuscado: categoria
+    }
+    this.router.navigate(['store/productos']);
+  }
+
+  public obtenerDatosParaTodosLosProductos(): DTODataTodosLosProductos {
+    return this.objParaTodosLosProductos!;
+  }
+
+  //#endregion
+
+
+
+
   //#region  TIPO PRENDA
 
   getAllTipoPrendas(): Observable<DTOGenAbms[]> {

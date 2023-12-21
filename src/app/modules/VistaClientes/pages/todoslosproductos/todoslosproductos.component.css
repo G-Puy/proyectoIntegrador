@@ -1,4 +1,4 @@
-.SectionNEW {
+.SectionTodosLosProductos {
     background-color: var(--negroQueDiosa);
     display: flex;
     align-items: center;
@@ -7,7 +7,7 @@
     padding-bottom: 1.8rem;
 }
 
-.SectionNEW div {
+.SectionTodosLosProductos div {
     display: flex;
     justify-content: center;
     align-items: center;

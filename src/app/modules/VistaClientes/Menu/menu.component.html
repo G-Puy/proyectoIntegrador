@@ -1,4 +1,4 @@
-<div class="rosa " style="width: 100vw; display: block; justify-content: center;">
+<div class="rosa" style="width: 100vw; display: block; justify-content: center;">
     <!--  style="width: 100vw;" -->
     <div style="display: flex; justify-content: end; margin-top: 0.6rem;">
         <span class="material-symbols-outlined" style="color: white; font-size: 2rem;" (click)="cerrar()">
@@ -14,7 +14,8 @@
         <li>
             <span>Categorias</span>
             <ul *ngFor="let categoria of cargaTiposDePrenda">
-                <li><a href="">{{categoria.nombre}}</a></li>
+                <li><a (click)="redirigirATodosLosProductos(categoria.nombre,'tipo')">{{categoria.nombre}}</a>
+                </li>
             </ul>
         </li>
         <li>

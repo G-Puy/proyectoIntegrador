@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { DTODataTodosLosProductos } from 'src/app/interfaces/DTODataTodosLosProductos.interface';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
@@ -11,7 +12,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   templateUrl: './todoslosproductos.component.html',
   styleUrls: ['./todoslosproductos.component.css']
 })
-export class TodoslosproductosComponent {
+export class TodoslosproductosComponent implements OnInit {
   tipoPrenda: string = '';
   txtBuscar: string = "";
   cargaTiposDePrenda: DTOGenAbms[] = [];
@@ -19,16 +20,55 @@ export class TodoslosproductosComponent {
   panelOpenState = false;
   productosFiltrados: recibirProductoDTOBack[] = [];
   todosLosProductos: recibirProductoDTOBack[] = [];
+  objParaTodosLosProductos: DTODataTodosLosProductos | undefined;
+
   constructor(public dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService) {
-    this.sharedServ.cargarTodasLosProductos();
     this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
-    this.productosFiltrados = this.todosLosProductos;
     this.cargarTP();
-    //this.traerTodasLosProductos();
+    this.objParaTodosLosProductos = this.sharedServ.obtenerDatosParaTodosLosProductos();
+    console.log(this.todosLosProductos);
+
+
+
+
   }
+  ngOnInit(): void {
+    this.soloSiVengoCargado();
+
+  }
+
+
+
+  private soloSiVengoCargado() {
+    if (this.todosLosProductos.length == 0) {
+      this.sharedServ.cargarTodasLosProductos();
+      this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
+    }
+    if (this.objParaTodosLosProductos != undefined) {
+      if (this.objParaTodosLosProductos.tipoDeFiltro == "tipo") {
+        //Partimos de la base que no existen 2 tipos de prenda con el mismo nombre
+        this.tipoPrenda = this.objParaTodosLosProductos?.tipoProductoBuscado;
+        this.opcionBusqueda = 'tipo';
+
+      } else if (this.objParaTodosLosProductos.tipoDeFiltro == "nuevo") {
+        this.opcionBusqueda = 'nuevo';
+        console.log('ENTRO nuevo');
+        this.filtrar();
+
+      } else if (this.objParaTodosLosProductos.tipoDeFiltro == "oferta") {
+        this.opcionBusqueda = 'oferta';
+        console.log('ENTRO oferta');
+        this.filtrar();
+
+      }
+    } else {
+      this.productosFiltrados = this.todosLosProductos;
+    }
+  }
+
   vaciarTxtYBorrarBusqueda() {
     // this.productosFiltrados = [];
     this.txtBuscar = "";
@@ -50,7 +90,7 @@ export class TodoslosproductosComponent {
       this.productosFiltrados = resultadoFiltradoTipo;
     } else if (this.opcionBusqueda == "oferta") {
       const resultadoFiltradoTipo = this.todosLosProductos.filter(elemento =>
-        elemento.precioAnterior > 0
+        elemento.precioAnterior != -1
       );
       this.productosFiltrados = resultadoFiltradoTipo;
     } else if (this.opcionBusqueda == "nuevo") {

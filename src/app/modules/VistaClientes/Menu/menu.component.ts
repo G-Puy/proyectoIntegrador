@@ -2,6 +2,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -20,7 +21,8 @@ export class MenuComponent {
     public dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
-    private funcionesGlobalesService: FuncionesGlobalesService) {
+    private funcionesGlobalesService: FuncionesGlobalesService,
+    private router: Router) {
 
 
     this.sharedServ.getAllTipoPrendas().subscribe(tp => {
@@ -34,6 +36,11 @@ export class MenuComponent {
     this.cerrarOverlay.emit();
     // this.overlayRef?.detach();
   }
+  redirigirATodosLosProductos(categoria: string, tipoAccion: string) {
+
+    this.sharedServ.cargarDatosParaTodosLosProductos(categoria, tipoAccion);
+  }
+
 
 
 

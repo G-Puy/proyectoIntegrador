@@ -43,4 +43,9 @@ export class HomeClientesComponent {
 
   }
 
+  redirigirATodosLosProductos(categoria: string, tipoAccion: string) {
+
+    this.sharedServ.cargarDatosParaTodosLosProductos(categoria, tipoAccion);
+  }
+
 }
