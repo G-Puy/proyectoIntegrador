@@ -244,13 +244,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
   private accionProducto() {
     if (this.data.soyAgregar == true) {
 
-
-      if (this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) {
+      console.group("ARCHIVO SELECCIONADO");
+      console.log(this.archivosSeleccionados);
+      if ((this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) && FileList.length == 0) {
         this.errorValidacion = "Debe subir almenos 1 imagen.";
         setTimeout(() => {
           this.errorValidacion = "";
         }, 4000);
-
+        return;
       }
     }
     if (
