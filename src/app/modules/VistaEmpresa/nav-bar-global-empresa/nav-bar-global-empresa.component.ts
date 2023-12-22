@@ -27,7 +27,7 @@ export class NavBarGlobalEmpresaComponent {
       this.mostrarRuta = event.url;
       if (this.mostrarRuta == "/lEmpresa") this.icono = "account_circle";
       else this.icono = "arrow_back_ios";
-      console.log(this.mostrarRuta);
+      //console.log(this.mostrarRuta);
     });
   }
 

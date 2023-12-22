@@ -8,7 +8,9 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { DialogUnProductoComponent } from '../pages/DialogUnProducto/DialogUnProducto.component';
 import { DialogbuscadorComponent } from '../pages/dialogbuscador/dialogbuscador.component';
-
+import { Subscription, filter } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar-global',
@@ -16,19 +18,58 @@ import { DialogbuscadorComponent } from '../pages/dialogbuscador/dialogbuscador.
   styleUrls: ['./nav-bar-global.component.css']
 })
 export class NavBarGlobalComponent {
-
+  private subscription: Subscription
   constructor(
     private overlay: Overlay,
     public dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
-    private funcionesGlobalesService: FuncionesGlobalesService
-  ) { }
+    private funcionesGlobalesService: FuncionesGlobalesService,
+    private router: Router,
+    private location: Location
+  ) {
+    this.subscription = new Subscription();
+  }
+  icono: string = "menu";
+  mostrarRuta: string = "/store";
+  ngOnInit() {
+    this.subscription = this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.mostrarRuta = event.url;
+      if (this.mostrarRuta == "/productos") this.icono = "account_circle";
+      else this.icono = "arrow_back_ios";
+      if (this.mostrarRuta == "/store") {
+        this.icono = "menu";
+
+      }
+      console.log(this.mostrarRuta);
+    });
+  }
+  ngOnDestroy(): void {
+    // Asegúrate de desuscribirte para evitar fugas de memoria
+    this.subscription.unsubscribe();
+  }
+  accion() {
+
+
+    switch (this.mostrarRuta) {
+      case "/store/productos":
+        this.location.back();
+        // this.router.navigate(['/lEmpresa']); //Aca tiene que ser al perfil personal.
+        break;
+      case "/store":
+        this.openOberlay();
+        break;
+    }
 
 
 
-  abrirMenu() {
 
+    //overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+  }
+
+  private openOberlay() {
     const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
       backdropClass: 'colorclass',
@@ -46,8 +87,6 @@ export class NavBarGlobalComponent {
       overlayRef.detach();
     });
 
-
-    //overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 
 

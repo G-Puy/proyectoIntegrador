@@ -31,7 +31,6 @@ export class AuthService {
         tap(user => {
           if (user != null) {
             localStorage.setItem('token', user.contrasenia.toString());
-            console.log(localStorage.getItem('token'));
             localStorage.setItem('username', user.nombreDeUsuario.toString());
           }
         })

@@ -29,7 +29,6 @@ export class DialogbuscadorComponent {
   }
   filtrar() {
     this.productosFiltrados = [];
-    console.log(this.todosLosProductos);
     if (this.txtBuscar != "") {
       this.productosFiltrados = this.todosLosProductos.filter(elemento =>
         elemento.nombre.toLowerCase().includes(this.txtBuscar.toLowerCase())
