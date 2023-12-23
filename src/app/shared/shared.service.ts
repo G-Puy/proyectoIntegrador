@@ -217,6 +217,20 @@ export class SharedService {
   //#endregion STOCK
 
 
+  //#region  PRODUCTOS EN CARRITO
+  private storageKey = 'carrito';
+  agregarProducto(producto: recibirProductoDTOBack) {
+    let carrito: recibirProductoDTOBack[] = this.obtenerCarrito();
+    carrito.push(producto);
+    localStorage.setItem(this.storageKey, JSON.stringify(carrito));
+  }
+
+  obtenerCarrito(): recibirProductoDTOBack[] {
+    const carrito = localStorage.getItem(this.storageKey);
+    return carrito ? JSON.parse(carrito) : [];
+  }
+  //#endregion
+
 }
 
 

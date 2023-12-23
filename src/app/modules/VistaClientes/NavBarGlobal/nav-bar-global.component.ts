@@ -11,6 +11,7 @@ import { DialogbuscadorComponent } from '../pages/dialogbuscador/dialogbuscador.
 import { Subscription, filter } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { DialogCarritoComponent } from '../pages/carrito/dialog-carrito/dialog-carrito.component';
 
 @Component({
   selector: 'app-nav-bar-global',
@@ -83,18 +84,16 @@ export class NavBarGlobalComponent {
     });
 
   }
-
-
-
   openBuscadorProductos() {
     const dialogRef = this.dialog.open(DialogbuscadorComponent, {
       width: this.funcionesGlobalesService.tamMaxDialogMobile(),
       disableClose: false  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
   }
-
-
-
-
-
+  openCarrito() {
+    const dialogRef = this.dialog.open(DialogCarritoComponent, {
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
+      disableClose: false  // Esto evita que el diálogo se cierre al hacer clic fuera de él
+    });
+  }
 }

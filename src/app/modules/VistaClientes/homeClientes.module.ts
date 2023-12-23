@@ -13,6 +13,7 @@ import { LayoutClientesComponent } from './pages/layout-clientes/layout-clientes
 import { CardProductoComponent } from 'src/app/components/CardProducto/card-producto.component';
 import { DialogUnProductoComponent } from './pages/DialogUnProducto/DialogUnProducto.component';
 import { TodoslosproductosComponent } from './pages/todoslosproductos/todoslosproductos.component';
+import { DialogCarritoComponent } from './pages/carrito/dialog-carrito/dialog-carrito.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TodoslosproductosComponent } from './pages/todoslosproductos/todoslospr
     LayoutClientesComponent,
     CardProductoComponent,
     DialogUnProductoComponent,
-    TodoslosproductosComponent
+    TodoslosproductosComponent,
+    DialogCarritoComponent
   ],
   imports: [
     CommonModule,

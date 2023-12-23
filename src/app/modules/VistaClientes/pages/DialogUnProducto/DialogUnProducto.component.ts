@@ -70,4 +70,11 @@ export class DialogUnProductoComponent {
       this.miNumero = 0;
     }
   }
+
+
+
+  agregarAlCarrito() {
+    console.log('AGREGANDO AL CARRITO');
+    this.sharedServ.agregarProducto(this.objetoProducto!);
+  }
 }
