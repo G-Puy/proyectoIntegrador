@@ -147,6 +147,12 @@
 
 
 
+
+
+
+
+
+
 /* INFO */
 .sectionInfo {
     padding: 0.8rem;
@@ -182,3 +188,53 @@
 
 
 /* FOOTER */
+
+
+@media screen and (max-width: 768px) {
+
+    /* PRODUCTOS */
+    .SectionppRODUCTOS {
+        background-color: var(--negroQueDiosa);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 1.8rem;
+    }
+
+    .SectionppRODUCTOS div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* PRODUCTOS */
+
+
+
+
+}
+
+@media screen and (min-width: 769px) {
+
+    /* PRODUCTOS */
+    .SectionppRODUCTOS {
+        background-color: var(--negroQueDiosa);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1.8rem;
+    }
+
+    .SectionppRODUCTOS div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* PRODUCTOS */
+
+
+
+
+}

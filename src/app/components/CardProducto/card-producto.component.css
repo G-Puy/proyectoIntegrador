@@ -1,68 +1,69 @@
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) { */
 
-    .cardProducto {
-        min-height: 23.4rem;
-        max-height: 24rem rem;
-        width: 15rem;
-        color: white;
-        background-color: rgb(0 0 0 / 9%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem;
-        border-radius: 5px;
-    }
-
-    .P {
-        margin-top: 0.5rem;
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .contenedorPrecios {
-        display: flex;
-        justify-content: center;
-        gap: 1.7rem;
-    }
-
-    .tamImgCard {
-        height: 16rem;
-        width: 14rem;
-        border-radius: 5px;
-    }
-
-    .divContenedorBTN {
-        display: flex;
-        justify-content: center;
-    }
-
-    .BtnCardProducto {
-
-        height: 1.4rem;
-        width: 100%;
-        padding: 15px;
-        /*  border: 2px solid rgb(34, 167, 34); */
-        border-radius: 18px;
-        color: rgb(255, 255, 255) !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--rosadoQueDiosaAl80);
-        font-size: 1rem;
-        border: none;
-
-    }
-
-    .BtnCardProducto:active {
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-        /* Sombra más pequeña para efecto de estar presionado */
-        transform: translateY(4px);
-        border: none;
-
-        /* Mueve aún más hacia abajo para simular que se está presionando */
-    }
+.cardProducto {
+    min-height: 23.4rem;
+    max-height: 24rem rem;
+    width: 15rem;
+    color: white;
+    background-color: rgb(0 0 0 / 9%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
+
+.P {
+    margin-top: 0.5rem;
+    font-size: 20px;
+    text-align: center;
+}
+
+.contenedorPrecios {
+    display: flex;
+    justify-content: center;
+    gap: 1.7rem;
+}
+
+.tamImgCard {
+    height: 16rem;
+    width: 14rem;
+    border-radius: 5px;
+}
+
+.divContenedorBTN {
+    display: flex;
+    justify-content: center;
+}
+
+.BtnCardProducto {
+
+    height: 1.4rem;
+    width: 100%;
+    padding: 15px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: rgb(255, 255, 255) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--rosadoQueDiosaAl80);
+    font-size: 1rem;
+    border: none;
+
+}
+
+.BtnCardProducto:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: none;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+/* } */
 
 
 @media screen and (min-width:769px) {}
