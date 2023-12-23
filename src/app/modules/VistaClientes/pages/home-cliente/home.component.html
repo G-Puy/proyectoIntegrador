@@ -23,14 +23,15 @@
     <section #Categorias style="margin-bottom: 1rem;">
         <div class="">
             <div class="row" style="width: 100%;margin: auto;">
-                <div class="col-6  col-lg-3" style="padding: 0;">
+                <div class="col-6  col-lg-3" style="padding: 0;"
+                    (click)="redirigirATodosLosProductos('pantalon','tipo')">
                     <img style="width: 100%;" src="../../../../../assets/imgs/Grid pantalon.png" alt="">
                     <div class="texto-sobre-imagen"
                         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
                         <p>Pantalones</p>
                     </div>
                 </div>
-                <div class="col-6  col-lg-3" style="padding: 0;">
+                <div class="col-6  col-lg-3" style="padding: 0;" (click)="redirigirATodosLosProductos('short','tipo')">
                     <img style="width: 100%;" src="../../../../../assets/imgs/GridShort.png" alt="">
                     <div class="texto-sobre-imagen"
                         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
@@ -45,7 +46,7 @@
                         <p>Vestidos</p>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3" style="padding: 0;">
+                <div class="col-6 col-lg-3" style="padding: 0;" (click)="redirigirATodosLosProductos('top','tipo')">
                     <img style="width: 100%;" src="../../../../../assets/imgs/GridTop.png" alt="">
                     <div class="texto-sobre-imagen"
                         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
@@ -114,7 +115,9 @@
                 <li>
                     <img src="../../../../../assets/imgs/iconPngInstagram.png" alt=""
                         style="height: 1.9rem; width: 2.1rem;">
-                    <a href="https://www.instagram.com/quediosa.uy/?hl=es-la" target="_blank"></a> @quediosa
+                    <a href="https://www.instagram.com/quediosa.uy/" target="_blank" style="    color: white;
+                    text-decoration: none;
+                    padding-left: 3px;">quediosa</a>
                 </li>
             </ul>
 
