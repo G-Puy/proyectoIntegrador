@@ -43,7 +43,6 @@ export class NavBarGlobalComponent {
         this.icono = "menu";
 
       }
-      console.log(this.mostrarRuta);
     });
   }
   ngOnDestroy(): void {
@@ -62,10 +61,6 @@ export class NavBarGlobalComponent {
         this.openOberlay();
         break;
     }
-
-
-
-
     //overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 

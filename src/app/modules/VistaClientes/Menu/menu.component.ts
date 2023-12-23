@@ -37,7 +37,7 @@ export class MenuComponent {
     // this.overlayRef?.detach();
   }
   redirigirATodosLosProductos(categoria: string, tipoAccion: string) {
-
+    this.cerrar();
     this.sharedServ.cargarDatosParaTodosLosProductos(categoria, tipoAccion);
   }
 
