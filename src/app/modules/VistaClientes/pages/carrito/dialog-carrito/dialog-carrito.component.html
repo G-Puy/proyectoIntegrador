@@ -2,11 +2,12 @@
     <div mat-dialog-content>
         <div *ngFor="let producto of productosDelCarrito">
             <input type="text" readonly [value]='producto.nombre'>
+            <input type="text" readonly [value]='producto.stock'>
         </div>
         <div *ngIf="productosDelCarrito.length == 0">Nada para mostrar.</div>
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;gap: 2rem;">
         <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
-        <button mat-button class="AcctionAceptar" style="width: auto;">Agregar al carrito</button>
+        <button mat-button class="btnFinalizarCompra" style="width: auto;">Agregar al carrito</button>
     </mat-dialog-actions>
 </div>
