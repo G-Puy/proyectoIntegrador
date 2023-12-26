@@ -20,5 +20,8 @@ export class DialogCarritoComponent {
     this.productosDelCarrito = sharedServ.obtenerCarrito();
     console.log(this.productosDelCarrito);
   }
+  cargaSrc(producto: objCarritoYProcesoDeCompra) {
+    return this.funcionesGlobalesService.cargarSrcCompras(producto);
+  }
 
 }

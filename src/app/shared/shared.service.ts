@@ -233,8 +233,8 @@ export class SharedService {
 
 
   quitarProducto(idProducto: number) {
-    let carrito: recibirProductoDTOBack[] = this.obtenerCarrito();
-    carrito = carrito.filter(producto => producto.id !== idProducto);
+    let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
+    carrito = carrito.filter(producto => producto.idProducto !== idProducto);
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
   }
 

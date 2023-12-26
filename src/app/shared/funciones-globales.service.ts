@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../components/snackbar-component/snackbar-component.component';
 import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
+import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,11 @@ export class FuncionesGlobalesService {
 
   public cargarSrc(producto: recibirProductoDTOBack): string {
     return `data:image/${producto.imagenes[0].extension};base64,${producto.imagenes[0].imagen}`;
+
+  }
+
+  public cargarSrcCompras(producto: objCarritoYProcesoDeCompra): string {
+    return `data:image/${producto.imagen.extension};base64,${producto.imagen.imagen}`;
 
   }
 
