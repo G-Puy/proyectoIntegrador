@@ -8,6 +8,7 @@ import { recibirProductoDTOBack } from '../interfaces/DTOsTraerTodosBack/recibir
 import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
 import { DTODataTodosLosProductos } from '../interfaces/DTODataTodosLosProductos.interface';
 import { Router } from '@angular/router';
+import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -219,13 +220,13 @@ export class SharedService {
 
   //#region  PRODUCTOS EN CARRITO
   private storageKey = 'carrito';
-  agregarProducto(producto: recibirProductoDTOBack) {
-    let carrito: recibirProductoDTOBack[] = this.obtenerCarrito();
+  agregarProducto(producto: objCarritoYProcesoDeCompra) {
+    let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
     carrito.push(producto);
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
   }
 
-  obtenerCarrito(): recibirProductoDTOBack[] {
+  obtenerCarrito(): objCarritoYProcesoDeCompra[] {
     const carrito = localStorage.getItem(this.storageKey);
     return carrito ? JSON.parse(carrito) : [];
   }

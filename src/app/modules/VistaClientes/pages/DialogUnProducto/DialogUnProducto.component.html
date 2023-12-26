@@ -36,8 +36,8 @@
         </div>
         <div class="divsContenedoresDuos">
             <p class="marginAlineadorTexto"><Strong>Talle:</Strong> </p>
-            <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione talles"
-                [(ngModel)]="seleccionTalle" [ngClass]="{'requerido': seleccionTalle == undefined}">
+            <mat-select class="BasicSelectUnProducto" placeholder="Seleccione talles" [(ngModel)]="seleccionTalle"
+                [ngClass]="{'requerido': seleccionTalle == undefined}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let talle of cargaTalles"
                     [value]=talle>{{talle.nombre}}</mat-option>
             </mat-select>
@@ -45,15 +45,15 @@
 
         <div class="divsContenedoresDuos">
             <p><strong>Color:</strong></p>
-            <mat-select class="BasicSelectUnProducto" multiple placeholder="Seleccione colores"
-                [(ngModel)]="seleccionColor" [ngClass]="{'requerido': seleccionColor == undefined}">
+            <mat-select class="BasicSelectUnProducto" placeholder="Seleccione colores" [(ngModel)]="seleccionColor"
+                [ngClass]="{'requerido': seleccionColor == undefined}">
                 <mat-option style="font-size: 0.8rem;" *ngFor="let color of cargaColores"
                     [value]=color>{{color.nombre}}</mat-option>
             </mat-select>
         </div>
         <div class="divsContenedoresDuos">
             <p class="marginAlineadorTexto"><strong>Cantidad:</strong> </p>
-            <input type="number" class="BasicSelectUnProducto" min="0" max="20" [(ngModel)]="miNumero"
+            <input type="number" class="BasicSelectUnProducto" min="0" max="20" [(ngModel)]="cantidad"
                 (ngModelChange)="validarNumero()">
         </div>
         <div>

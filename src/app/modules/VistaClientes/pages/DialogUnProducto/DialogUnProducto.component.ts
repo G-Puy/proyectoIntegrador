@@ -3,6 +3,7 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DTOImagen } from 'src/app/interfaces/DTOImagen.interface';
+import { objCarritoYProcesoDeCompra } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
@@ -15,7 +16,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class DialogUnProductoComponent {
   objetoProducto: recibirProductoDTOBack | undefined;
-
+  objProductoParaElCarrito: objCarritoYProcesoDeCompra | undefined;
   seleccionTalle: DTOGenAbms | undefined;
   seleccionColor: DTOGenAbms | undefined;
   cargaTalles: DTOGenAbms[] = [];
@@ -63,18 +64,30 @@ export class DialogUnProductoComponent {
     }
   }
 
-  miNumero: number = 0;
+  cantidad: number = 0;
 
   validarNumero(): void {
-    if (this.miNumero < 0) {
-      this.miNumero = 0;
+    if (this.cantidad < 0) {
+      this.cantidad = 0;
     }
   }
 
-
-
   agregarAlCarrito() {
     console.log('AGREGANDO AL CARRITO');
-    this.sharedServ.agregarProducto(this.objetoProducto!);
+    this.objProductoParaElCarrito = {
+      idProducto: this.objetoProducto!.id,
+      nombreProducto: this.objetoProducto!.nombre,
+      precio: this.objetoProducto?.precioActual!,
+      oferta: false,
+      imagen: this.objetoProducto?.imagenes[0]!,
+      idStock: this.objetoProducto?.stock.id!,
+      talle: this.seleccionTalle!,
+      color: this.seleccionColor!,
+      cantidad: this.cantidad
+    }
+    if (this.objetoProducto?.precioAnterior! > 0) {
+      this.objProductoParaElCarrito.oferta = true;
+    }
+    this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
   }
 }

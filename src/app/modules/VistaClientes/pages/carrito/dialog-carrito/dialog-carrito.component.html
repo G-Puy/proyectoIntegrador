@@ -1,7 +1,7 @@
 <div mat-dialog>
     <div mat-dialog-content>
         <div *ngFor="let producto of productosDelCarrito">
-            <input type="text" readonly [value]='producto.nombre'>
+            <input type="text" readonly [value]='producto.nombreProducto'>
         </div>
         <div *ngIf="productosDelCarrito.length == 0">Nada para mostrar.</div>
     </div>
