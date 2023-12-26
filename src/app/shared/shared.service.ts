@@ -229,6 +229,19 @@ export class SharedService {
     const carrito = localStorage.getItem(this.storageKey);
     return carrito ? JSON.parse(carrito) : [];
   }
+
+
+  quitarProducto(idProducto: number) {
+    let carrito: recibirProductoDTOBack[] = this.obtenerCarrito();
+    carrito = carrito.filter(producto => producto.id !== idProducto);
+    localStorage.setItem(this.storageKey, JSON.stringify(carrito));
+  }
+
+  vaciarCarrito() {
+    localStorage.setItem(this.storageKey, JSON.stringify([]));
+  }
+
+
   //#endregion
 
 }

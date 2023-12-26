@@ -26,18 +26,11 @@ export class DialogUnProductoComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogUnProductoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private funcionesGlobalesService: FuncionesGlobalesService) {
-    /*  this.sharedServ.getAllTalles().subscribe(talles => {
-       this.cargaTalles = talles;
-     });
-     this.sharedServ.getAllColores().subscribe(colores => {
-       this.cargaColores = colores;
-     }); */
     this.objetoProducto = data.producto;
     for (let index = 0; index < this.data.producto.imagenes.length; index++) {
       const element = this.data.producto.imagenes[index];
       this.silderImages.push(this.cargarSrc(element));
     }
-    console.log(this.objetoProducto);
   }
   ngOnInit(): void {
     this.cargarTallesYColoresDelProducto();
@@ -45,8 +38,6 @@ export class DialogUnProductoComponent implements OnInit {
 
 
   private cargarTallesYColoresDelProducto() {
-    console.log('stock');
-    console.log(this.objetoProducto?.stock);
     if (this.objetoProducto?.stock.cantidad! > 0) {
       this.objetoProducto?.stock.talles.forEach(talleActual => {
         //TODO: HSACER QUE LA CONDICION SEA MAYOR A  0.
@@ -56,8 +47,6 @@ export class DialogUnProductoComponent implements OnInit {
             nombre: talleActual.nombreTalle,
             bajaLogica: false
           };
-          console.log('NUEVO TALLE');
-          console.log(nuevoTalle);
           this.cargaTalles.push(nuevoTalle);
         }
       });
@@ -68,8 +57,6 @@ export class DialogUnProductoComponent implements OnInit {
           nombre: colorActual.nombreColor,
           bajaLogica: false
         };
-        console.log('NUEVO color');
-        console.log(nuevoColor);
         this.cargaColores.push(nuevoColor);
       }
     }
@@ -109,11 +96,7 @@ export class DialogUnProductoComponent implements OnInit {
       this.miNumero = 0;
     }
   }
-
-
-
   agregarAlCarrito() {
-    console.log('AGREGANDO AL CARRITO');
     this.sharedServ.agregarProducto(this.objetoProducto!);
   }
 }

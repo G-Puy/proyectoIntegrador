@@ -23,4 +23,12 @@
     /* Mueve aún más hacia abajo para simular que se está presionando */
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+    .contenedorDialogCarrito {
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1rem;
+    }
+}
