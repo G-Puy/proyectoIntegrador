@@ -38,11 +38,11 @@ export class DialogUnProductoComponent implements OnInit {
   }
 
 
+
   private cargarTallesYColoresDelProducto() {
     if (this.objetoProducto?.stock.cantidad! > 0) {
       this.objetoProducto?.stock.talles.forEach(talleActual => {
-        //TODO: HSACER QUE LA CONDICION SEA MAYOR A  0.
-        if (talleActual.cantidad == 0) {
+        if (talleActual.cantidad > 0) {
           let nuevoTalle: DTOGenAbms = {
             id: talleActual.id,
             nombre: talleActual.nombreTalle,
@@ -51,14 +51,18 @@ export class DialogUnProductoComponent implements OnInit {
           this.cargaTalles.push(nuevoTalle);
         }
       });
-      for (let index = 0; index < this.objetoProducto!.stock.talles[0].colores.length; index++) {
-        const colorActual = this.objetoProducto!.stock.talles[0].colores[index];
-        const nuevoColor: DTOGenAbms = {
-          id: colorActual.id,
-          nombre: colorActual.nombreColor,
-          bajaLogica: false
-        };
-        this.cargaColores.push(nuevoColor);
+
+      if (this.cargaTalles.length > 0) {
+
+        for (let index = 0; index < this.objetoProducto!.stock.talles[0].colores.length; index++) {
+          const colorActual = this.objetoProducto!.stock.talles[0].colores[index];
+          const nuevoColor: DTOGenAbms = {
+            id: colorActual.id,
+            nombre: colorActual.nombreColor,
+            bajaLogica: false
+          };
+          this.cargaColores.push(nuevoColor);
+        }
       }
     }
 
@@ -101,21 +105,24 @@ export class DialogUnProductoComponent implements OnInit {
 
 
   agregarAlCarrito() {
-    console.log('AGREGANDO AL CARRITO');
-    this.objProductoParaElCarrito = {
-      idProducto: this.objetoProducto!.id,
-      nombreProducto: this.objetoProducto!.nombre,
-      precio: this.objetoProducto?.precioActual!,
-      oferta: false,
-      imagen: this.objetoProducto?.imagenes[0]!,
-      idStock: this.objetoProducto?.stock.id!,
-      talle: this.seleccionTalle!,
-      color: this.seleccionColor!,
-      cantidad: this.cantidad
+    if (this.seleccionTalle != undefined && this.seleccionColor != undefined) {
+      this.objProductoParaElCarrito = {
+        idProducto: this.objetoProducto!.id,
+        nombreProducto: this.objetoProducto!.nombre,
+        precio: this.objetoProducto?.precioActual!,
+        oferta: false,
+        imagen: this.objetoProducto?.imagenes[0]!,
+        idStock: this.objetoProducto?.stock.id!,
+        talle: this.seleccionTalle!,
+        color: this.seleccionColor!,
+        cantidad: this.cantidad
+      }
+      if (this.objetoProducto?.precioAnterior! > 0) {
+        this.objProductoParaElCarrito.oferta = true;
+      }
+      this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
+    } else {
+      alert("No puedo agregar");
     }
-    if (this.objetoProducto?.precioAnterior! > 0) {
-      this.objProductoParaElCarrito.oferta = true;
-    }
-    this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
   }
 }
