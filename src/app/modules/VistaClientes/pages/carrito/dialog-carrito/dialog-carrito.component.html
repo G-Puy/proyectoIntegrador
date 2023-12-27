@@ -29,8 +29,8 @@
             </div>
 
         </div>
-        <div *ngIf="productosDelCarrito.length == 0">Nada para mostrar.</div>
-        <div class="vaciarCarrito">
+        <div *ngIf="productosDelCarrito.length == 0" class="text-center">Nada para mostrar.</div>
+        <div class="vaciarCarrito" *ngIf="productosDelCarrito.length > 0">
             <p>Vaciar carrito</p>
             <span class="material-symbols-outlined">
                 delete
