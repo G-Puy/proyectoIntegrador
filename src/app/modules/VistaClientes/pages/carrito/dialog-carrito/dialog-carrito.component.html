@@ -1,22 +1,49 @@
 <div mat-dialog class="contenedorDialogCarrito">
-    <div mat-dialog-content>
+    <div style="min-width: 100%;" class="text-center">
+        <h1 style="background-color: var(--rosadoQueDiosaAl80);">Mi Carrito</h1>
+    </div>
+    <div mat-dialog-content class="estilosMatDialogContent">
         <div *ngFor="let producto of productosDelCarrito">
-            <div>
-                <div style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem; border-radius: 5px;">
-                    <img style="width: 6rem; height: 7rem; object-fit: cover;" [src]="cargaSrc(producto)" alt="">
+            <div class="esitlosContenedorDivCardProducto">
+                <div class="estilosCardProducto">
+                    <div style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem; border-radius: 5px;">
+                        <img style="width: 6rem; height: 7rem; object-fit: cover;" [src]="cargaSrc(producto)" alt="">
+                    </div>
+                    <div class="contenedorP">
+                        <p> {{producto.nombreProducto}}</p>
+                        <p> C/u $ {{producto.precio}}</p>
+                        <p>Color: {{producto.color.nombre}}</p>
+                        <div style="display: flex; gap: 1rem; ">
+                            <p>Cantidad: </p>
+                            <input type="number" [value]="producto.cantidad" (change)="onCantidadChange()"
+                                class="inputBasico">
+                        </div>
+                    </div>
                 </div>
                 <div>
-                    <input type="text" readonly [value]='producto.nombreProducto'>
+                    <span class="material-symbols-outlined papelera" matTooltip="Eliminar del carrito">
+                        delete
+                    </span>
                 </div>
-                <div></div>
 
             </div>
 
         </div>
         <div *ngIf="productosDelCarrito.length == 0">Nada para mostrar.</div>
+        <div class="vaciarCarrito">
+            <p>Vaciar carrito</p>
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+        </div>
     </div>
-    <mat-dialog-actions style="display: flex; justify-content: center;gap: 2rem;">
-        <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
-        <button mat-button class="btnFinalizarCompra" style="width: auto;">Agregar al carrito</button>
+    <mat-dialog-actions>
+        <div style="width: 100%;" class="text-center">
+            <p>TOTAL: {{total}}</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem; margin: auto;" class="text-center">
+            <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
+            <button mat-button class="btnFinalizarCompra" style="width: auto;">Finalizar compra</button>
+        </div>
     </mat-dialog-actions>
 </div>

@@ -23,12 +23,96 @@
     /* Mueve aún más hacia abajo para simular que se está presionando */
 }
 
+.inputBasico {
+
+
+    margin: 0;
+    height: 1rem;
+
+    padding: 6px 0px 3px 10px;
+    margin-left: 1rem;
+    background: rgb(230, 230, 230);
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000000;
+    box-sizing: content-box;
+    border-radius: 5px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    width: 2rem;
+
+}
+
+.inputBasico::placeholder {
+    color: rgba(0, 0, 0, 0.38);
+    /* Placeholder text color to match Angular Material */
+}
+
+.inputBasico:focus {
+    /* Adjust padding on focus */
+    border-bottom: 4px solid var(--rosadoQueDiosaAl80);
+    /* Underline thickness on focus */
+}
+
+
 @media screen and (max-width: 768px) {
     .contenedorDialogCarrito {
         height: 600px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 1rem;
+        justify-content: space-between;
+    }
+
+    .estilosMatDialogContent {
+        height: 100%;
+        width: 100%;
+        max-height: 100%;
+        padding: 0px 8px 20px 8px;
+    }
+
+    .esitlosContenedorDivCardProducto {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--negroQueDiosa);
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .estilosCardProducto {
+        color: white;
+        display: flex;
+        padding-left: 3px;
+        align-items: center;
+    }
+
+    .contenedorP {}
+
+    .contenedorP p {
+        margin: 4px;
+
+    }
+
+    .papelera {
+        margin-top: 0.5rem;
+        margin-right: 0.5rem;
+        color: white;
+    }
+
+    .papelera:hover {
+
+        color: var(--azulBasico);
+    }
+
+    .vaciarCarrito {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    .vaciarCarrito p {
+        margin: 0;
     }
 }
