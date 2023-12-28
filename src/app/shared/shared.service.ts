@@ -237,6 +237,16 @@ export class SharedService {
     carrito = carrito.filter(producto => producto.idProducto !== idProducto);
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
   }
+  existeProductoEnCarrito(idProducto: number): boolean {
+    let existeProducto = false;
+    let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
+    carrito.forEach(producto => {
+      if (producto.idProducto == idProducto) {
+        existeProducto = true;
+      }
+    });
+    return existeProducto;
+  }
 
   vaciarCarrito() {
     localStorage.setItem(this.storageKey, JSON.stringify([]));

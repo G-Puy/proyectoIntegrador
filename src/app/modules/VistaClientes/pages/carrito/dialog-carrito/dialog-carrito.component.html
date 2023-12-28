@@ -6,8 +6,10 @@
         <div *ngFor="let producto of productosDelCarrito">
             <div class="esitlosContenedorDivCardProducto">
                 <div class="estilosCardProducto">
-                    <div style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem; border-radius: 5px;">
-                        <img style="width: 6rem; height: 7rem; object-fit: cover;" [src]="cargaSrc(producto)" alt="">
+                    <div
+                        style="background-color: rgb(255, 255, 255); width: 6rem; height: 7rem; border-radius: 5px; margin-right: 3px">
+                        <img style="width: 6rem; height: 7rem; object-fit: cover; border-radius: 5px; "
+                            [src]="cargaSrc(producto)" alt="">
                     </div>
                     <div class="contenedorP">
                         <p> {{producto.nombreProducto}}</p>

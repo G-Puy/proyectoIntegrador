@@ -106,23 +106,27 @@ export class DialogUnProductoComponent implements OnInit {
 
   agregarAlCarrito() {
     if (this.seleccionTalle != undefined && this.seleccionColor != undefined && this.cantidad > 0) {
-      this.objProductoParaElCarrito = {
-        idProducto: this.objetoProducto!.id,
-        nombreProducto: this.objetoProducto!.nombre,
-        precio: this.objetoProducto?.precioActual!,
-        oferta: false,
-        imagen: this.objetoProducto?.imagenes[0]!,
-        idStock: this.objetoProducto?.stock.id!,
-        talle: this.seleccionTalle!,
-        color: this.seleccionColor!,
-        cantidad: this.cantidad
+      if (this.sharedServ.existeProductoEnCarrito(this.objetoProducto!.id)!) {
+        this.objProductoParaElCarrito = {
+          idProducto: this.objetoProducto!.id,
+          nombreProducto: this.objetoProducto!.nombre,
+          precio: this.objetoProducto?.precioActual!,
+          oferta: false,
+          imagen: this.objetoProducto?.imagenes[0]!,
+          idStock: this.objetoProducto?.stock.id!,
+          talle: this.seleccionTalle!,
+          color: this.seleccionColor!,
+          cantidad: this.cantidad
+        }
+        if (this.objetoProducto?.precioAnterior! > 0) {
+          this.objProductoParaElCarrito.oferta = true;
+        }
+        this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
+        this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 3000, true);
+        this.dialogRef.close();
+      } else {
+        this.funcionesGlobalesService.abrirSnack('Ya existe el producto en el carrito', 3000, false);
       }
-      if (this.objetoProducto?.precioAnterior! > 0) {
-        this.objProductoParaElCarrito.oferta = true;
-      }
-      this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
-      this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 3000, true);
-      this.dialogRef.close();
     } else {
       this.funcionesGlobalesService.abrirSnack('Verifique talle, color y cantidad', 3000, false);
 
