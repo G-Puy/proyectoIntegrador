@@ -23,6 +23,10 @@
     /* Mueve aún más hacia abajo para simular que se está presionando */
 }
 
+.btnFinalizarCompra:disabled {
+    background-color: rgb(173, 173, 173);
+}
+
 .inputBasico {
 
 
@@ -53,6 +57,8 @@
     border-bottom: 4px solid var(--rosadoQueDiosaAl80);
     /* Underline thickness on focus */
 }
+
+
 
 
 @media screen and (max-width: 768px) {

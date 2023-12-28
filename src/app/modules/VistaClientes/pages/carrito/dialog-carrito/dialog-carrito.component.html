@@ -15,13 +15,14 @@
                         <p>Color: {{producto.color.nombre}}</p>
                         <div style="display: flex; gap: 1rem; ">
                             <p>Cantidad: </p>
-                            <input type="number" [value]="producto.cantidad" (change)="onCantidadChange()"
+                            <input type="number" [(ngModel)]="producto.cantidad" (change)="onCantidadChange()"
                                 class="inputBasico">
                         </div>
                     </div>
                 </div>
                 <div>
-                    <span class="material-symbols-outlined papelera" matTooltip="Eliminar del carrito">
+                    <span (click)="openDialogCancelar(producto)" class="material-symbols-outlined papelera"
+                        matTooltip="Eliminar del carrito">
                         delete
                     </span>
                 </div>
@@ -30,7 +31,7 @@
 
         </div>
         <div *ngIf="productosDelCarrito.length == 0" class="text-center">Nada para mostrar.</div>
-        <div class="vaciarCarrito" *ngIf="productosDelCarrito.length > 0">
+        <div class="vaciarCarrito" *ngIf="productosDelCarrito.length > 0" (click)="vaciarCarrito()">
             <p>Vaciar carrito</p>
             <span class="material-symbols-outlined">
                 delete
@@ -43,7 +44,8 @@
         </div>
         <div style="display: flex; justify-content: center; gap: 2rem; margin: auto;" class="text-center">
             <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
-            <button mat-button class="btnFinalizarCompra" style="width: auto;">Finalizar compra</button>
+            <button mat-button class="btnFinalizarCompra" style="width: auto;"
+                [disabled]="this.productosDelCarrito.length <= 0">Finalizar compra</button>
         </div>
     </mat-dialog-actions>
 </div>

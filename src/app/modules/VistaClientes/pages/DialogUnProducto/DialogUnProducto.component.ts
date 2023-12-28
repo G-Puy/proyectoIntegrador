@@ -105,7 +105,7 @@ export class DialogUnProductoComponent implements OnInit {
 
 
   agregarAlCarrito() {
-    if (this.seleccionTalle != undefined && this.seleccionColor != undefined) {
+    if (this.seleccionTalle != undefined && this.seleccionColor != undefined && this.cantidad > 0) {
       this.objProductoParaElCarrito = {
         idProducto: this.objetoProducto!.id,
         nombreProducto: this.objetoProducto!.nombre,
@@ -121,8 +121,11 @@ export class DialogUnProductoComponent implements OnInit {
         this.objProductoParaElCarrito.oferta = true;
       }
       this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
+      this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 3000, true);
+      this.dialogRef.close();
     } else {
-      alert("No puedo agregar");
+      this.funcionesGlobalesService.abrirSnack('Verifique talle, color y cantidad', 3000, false);
+
     }
   }
 }

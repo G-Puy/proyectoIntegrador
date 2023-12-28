@@ -16,8 +16,8 @@ import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeC
 export class SharedService {
   todosLosProductos: recibirProductoDTOBack[] = [];
   objParaTodosLosProductos: DTODataTodosLosProductos | undefined;
-  // apiUrl = 'https://localhost:7202/';
-  apiUrl = 'https://quediosa.azurewebsites.net/';
+  apiUrl = 'https://localhost:7202/';
+  // apiUrl = 'https://quediosa.azurewebsites.net/';
   constructor(
     private http: HttpClient,
     private router: Router) {
@@ -232,7 +232,7 @@ export class SharedService {
   }
 
 
-  quitarProducto(idProducto: number) {
+  quitarProductoDeCarrito(idProducto: number) {
     let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
     carrito = carrito.filter(producto => producto.idProducto !== idProducto);
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
