@@ -255,6 +255,17 @@ export class SharedService {
 
   //#endregion
 
+
+
+
+
+
+  //#region PAGOS
+
+  createPreference(orderData: any) {
+    return this.http.post('tu_endpoint_backend/create_preference', orderData);
+  }
+  //#endregion PAGOS
 }
 
 

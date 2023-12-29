@@ -14,6 +14,7 @@ import { CardProductoComponent } from 'src/app/components/CardProducto/card-prod
 import { DialogUnProductoComponent } from './pages/DialogUnProducto/DialogUnProducto.component';
 import { TodoslosproductosComponent } from './pages/todoslosproductos/todoslosproductos.component';
 import { DialogCarritoComponent } from './pages/carrito/dialog-carrito/dialog-carrito.component';
+import { PagosComponent } from './pages/pagos/pagos.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DialogCarritoComponent } from './pages/carrito/dialog-carrito/dialog-ca
     CardProductoComponent,
     DialogUnProductoComponent,
     TodoslosproductosComponent,
-    DialogCarritoComponent
+    DialogCarritoComponent,
+    PagosComponent
   ],
   imports: [
     CommonModule,

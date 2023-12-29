@@ -1,0 +1,25 @@
+<div class="payment-container">
+    <h2>Proceso de Pago</h2>
+
+    <!-- Formulario de Pago -->
+    <form (ngSubmit)="processPayment()">
+        <!-- Detalles del Producto -->
+        <div class="product-details">
+            <label>Producto:</label>
+            <input type="text" [(ngModel)]="orderData.productTitle" name="productTitle">
+        </div>
+
+        <div class="product-details">
+            <label>Cantidad:</label>
+            <input type="number" [(ngModel)]="orderData.quantity" name="quantity">
+        </div>
+
+        <div class="product-details">
+            <label>Precio Unitario:</label>
+            <input type="number" [(ngModel)]="orderData.unitPrice" name="unitPrice">
+        </div>
+
+        <!-- Botón de Pago -->
+        <button type="submit">Pagar</button>
+    </form>
+</div>
