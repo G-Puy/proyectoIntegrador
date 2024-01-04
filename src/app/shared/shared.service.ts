@@ -9,6 +9,7 @@ import { DTOStockEnvio } from '../interfaces/DTOsEnvio/stockEnvioDTO.interface';
 import { DTODataTodosLosProductos } from '../interfaces/DTODataTodosLosProductos.interface';
 import { Router } from '@angular/router';
 import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
+import { objOrderData } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOOrderData.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -262,8 +263,9 @@ export class SharedService {
 
   //#region PAGOS
 
-  createPreference(orderData: any) {
-    return this.http.post('tu_endpoint_backend/create_preference', orderData);
+  createPaymentPreference(orderList: objOrderData[]): Observable<string> {
+    // Reemplaza con la URL de tu endpoint que crea la preferencia de pago
+    return this.http.post<string>('/api/create_preference', {});
   }
   //#endregion PAGOS
 }

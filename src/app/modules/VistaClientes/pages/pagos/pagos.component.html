@@ -1,25 +1,56 @@
-<div class="payment-container">
-    <h2>Proceso de Pago</h2>
-
-    <!-- Formulario de Pago -->
-    <form (ngSubmit)="processPayment()">
-        <!-- Detalles del Producto -->
-        <div class="product-details">
-            <label>Producto:</label>
-            <input type="text" [(ngModel)]="orderData.productTitle" name="productTitle">
+<div class="divDelForm">
+    <mat-radio-group [(ngModel)]="tipoEnvio" (ngModelChange)="ngOnChanges()">
+        <mat-radio-button value="retira">Retira en el local</mat-radio-button>
+        <mat-radio-button value="paraEnviar">Para enviar</mat-radio-button>
+    </mat-radio-group>
+    <form [formGroup]="personaForm">
+        <!-- Campo Nombre -->
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" formControlName="nombre">
         </div>
 
-        <div class="product-details">
-            <label>Cantidad:</label>
-            <input type="number" [(ngModel)]="orderData.quantity" name="quantity">
+        <!-- Campo Apellido -->
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" formControlName="apellido">
         </div>
 
-        <div class="product-details">
-            <label>Precio Unitario:</label>
-            <input type="number" [(ngModel)]="orderData.unitPrice" name="unitPrice">
+        <!-- Campos que dependen del tipo de envío -->
+        <div *ngIf="tipoEnvio === 'paraEnviar'">
+            <!-- Campos adicionales para 'Para enviar' -->
+            <div>
+                <label for="departamento">Departamento:</label>
+                <input type="text" id="departamento" formControlName="departamento">
+            </div>
+            <div>
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" formControlName="ciudad">
+            </div>
+            <div>
+                <label for="barrio">Barrio:</label>
+                <input type="text" id="barrio" formControlName="barrio">
+            </div>
+            <div>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" formControlName="direccion">
+            </div>
         </div>
-
-        <!-- Botón de Pago -->
-        <button type="submit">Pagar</button>
+        <!-- Campos Mail y Teléfono -->
+        <div>
+            <label for="mail">Mail:</label>
+            <input type="email" id="mail" formControlName="mail">
+        </div>
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" formControlName="telefono">
+        </div>
     </form>
+    <div *ngIf="preferenceId == ''">
+        <button [disabled]="!personaForm.valid" (click)="processPayment()">Proceder con el pago</button>
+    </div>
+</div>
+<div *ngIf="preferenceId != ''" class="payment-container">
+    <div id="payment-container" style="max-width: 10rem;">
+    </div>
 </div>

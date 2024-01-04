@@ -1,40 +1,95 @@
 // pagos.component.ts
-import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/shared/shared.service';
+import { Component, OnInit, AfterViewInit, SimpleChanges } from '@angular/core';
+import { SharedService } from '../../../../shared/shared.service';
+import { objOrderDataProducto } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOOrderData.interface';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 declare var MercadoPago: any;
-
-interface PreferenceResponse {
-  preferenceId: string;
-}
 
 @Component({
   selector: 'app-pagos',
   templateUrl: './pagos.component.html',
   styleUrls: ['./pagos.component.css']
 })
-export class PagosComponent implements OnInit {
-  orderData = {
-    productTitle: '',
-    quantity: 1,
-    unitPrice: 0
-  };
+export class PagosComponent implements OnInit, AfterViewInit {
+  personaForm: FormGroup;
+  orderList: objOrderDataProducto[] = [];
+  tipoEnvio: string = 'retira';
+  preferenceId: string = '';
+  public mp = new MercadoPago('TEST-583f205e-a018-4414-94c5-fc9d00faf360', {
+    locale: 'es-UY'
+  });
 
-  constructor(private sharedServices: SharedService) { }
+  constructor(private sharedService: SharedService) {
+    this.personaForm = new FormGroup({
+      nombre: new FormControl('', Validators.required),
+      apellido: new FormControl('', Validators.required),
+      departamento: new FormControl(''),
+      ciudad: new FormControl(''),
+      barrio: new FormControl(''),
+      direccion: new FormControl(''),
+      mail: new FormControl('', Validators.required),
+      telefono: new FormControl('', Validators.required),
+    });
+  }
+  ngOnChanges(): void {
+    console.log("Entro a cambios");
+    this.personaForm.reset();
+    // Revisa si 'tipoEnvio' ha cambiado
 
-  ngOnInit(): void { }
-  processPayment() { }
-  // processPayment(): void {
-  //   this.sharedServices.createPreference(this.orderData)
-  //     .subscribe((response: PreferenceResponse) => {
-  //       new MercadoPago('TU_PUBLIC_KEY', {
-  //         locale: 'es-UY'
-  //       }).checkout({
-  //         preference: {
-  //           id: response.preferenceId
-  //         },
-  //         autoOpen: true
-  //       });
-  //     });
-  // }
+    if (this.tipoEnvio === 'paraEnviar') {
+      this.personaForm.get('departamento')?.setValidators(Validators.required);
+      this.personaForm.get('ciudad')?.setValidators(Validators.required);
+      this.personaForm.get('barrio')?.setValidators(Validators.required);
+      this.personaForm.get('direccion')?.setValidators(Validators.required);
+    } else {
+      this.personaForm.get('departamento')?.clearValidators();
+      this.personaForm.get('ciudad')?.clearValidators();
+      this.personaForm.get('barrio')?.clearValidators();
+      this.personaForm.get('direccion')?.clearValidators();
+    }
+
+  }
+
+
+
+
+  ajustarValidaciones(tipoEnvio: string) {
+    // Campos obligatorios para 'paraEnviar'
+    const camposObligatoriosParaEnviar = ['departamento', 'ciudad', 'barrio', 'direccion'];
+    // Campos obligatorios comunes (para ambas opciones)
+    const camposObligatoriosComunes = ['nombre', 'apellido', 'mail', 'telefono'];
+    // Itera sobre los campos para 'paraEnviar'
+    camposObligatoriosParaEnviar.forEach(campo => {
+      const control = this.personaForm.get(campo);
+      if (tipoEnvio === 'paraEnviar') {
+        control!.setValidators(Validators.required);
+      } else {
+        control!.clearValidators();
+      }
+      control!.updateValueAndValidity();
+    });
+    // Asegúrate de que los campos comunes siempre tengan validación
+    camposObligatoriosComunes.forEach(campo => {
+      const control = this.personaForm.get(campo);
+      control!.setValidators(Validators.required);
+      control!.updateValueAndValidity();
+    });
+  }
+  ngOnInit(): void {
+  }
+  ngAfterViewInit(): void {
+  }
+
+
+
+  processPayment() {
+    this.preferenceId = '128881622-a6b63cf1-2a58-42ed-a798-0c6c769c8935';
+    this.mp.bricks().create("wallet", "payment-container", {
+      initialization: {
+        preferenceId: '128881622-a6b63cf1-2a58-42ed-a798-0c6c769c8935'
+      },
+    });
+
+  }
 }
