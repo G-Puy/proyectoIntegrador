@@ -1,0 +1,50 @@
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.formPersona {
+    padding: 0.5rem;
+    padding-top: 0;
+    padding-bottom: 0.8rem;
+}
+
+.formPersona label {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.acomodoLabel {
+    margin: 0 !important;
+
+}
+
+.btnFinalizarCompra {
+    height: 2rem;
+    padding: 10px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(111, 111, 233);
+    font-size: 1rem;
+    border: 1px solid grey;
+
+
+}
+
+.btnFinalizarCompra:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: 1px solid grey;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+.btnFinalizarCompra:disabled {
+    background-color: rgb(207, 207, 207);
+    border: none;
+}

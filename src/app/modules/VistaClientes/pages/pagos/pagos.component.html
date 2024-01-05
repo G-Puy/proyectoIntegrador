@@ -1,62 +1,122 @@
-<div>
-    <h1>Articulos seleccionados</h1>
-    <div>
+<div class="row" style="width: 100%; margin: auto; padding-top: 2rem; padding-bottom: 2rem;">
+
+    <div class="text-center col-12">
+        <h1>Proceso de compra</h1>
+    </div>
+
+
+
+    <div class="divDelForm col-12 col-md-6">
+        <div class="text-center col-12">
+            <p>Informacion</p>
+        </div>
+        <div class="text-center">
+            <mat-radio-group [(ngModel)]="tipoEnvio" (ngModelChange)="ngOnChanges()">
+                <mat-radio-button value="retira">Retira en el local</mat-radio-button>
+                <mat-radio-button value="paraEnviar">Para enviar</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row" style="width: 100%; margin: auto;">
+            <form [formGroup]="personaForm" class="formPersona col-12 col-md-8 offset-md-2">
+                <div class="row">
+                    <!-- Campo Nombre -->
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <label for="nombre"><span style="color: red;">*</span> Nombre:</label>
+                        <input type="text" class="BasicInput" id="nombre" formControlName="nombre">
+                    </div>
+
+                    <!-- Campo Apellido -->
+                    <div class="col-12  col-md-12 col-lg-6">
+                        <label for="apellido"><span style="color: red;">*</span> Apellido:</label>
+                        <input type="text" class="BasicInput" id="apellido" formControlName="apellido">
+                    </div>
+                    <!-- Campos Mail y Teléfono -->
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <label for="mail"><span style="color: red;">*</span> Mail:</label>
+                        <input type="email" class="BasicInput" id="mail" formControlName="mail">
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <label for="telefono"><span style="color: red;">*</span> Teléfono:</label>
+                        <input type="tel" class="BasicInput" id="telefono" formControlName="telefono">
+                    </div>
+
+                    <!-- Campos adicionales para 'Para enviar' -->
+                    <div *ngIf="tipoEnvio === 'paraEnviar'" class="col-12 col-md-12 col-lg-6">
+                        <label for="departamento"><span style="color: red;">*</span> Departamento:</label>
+                        <input type="text" class="BasicInput" id="departamento" formControlName="departamento">
+                    </div>
+                    <div *ngIf="tipoEnvio === 'paraEnviar'" class="col-12 col-md-12 col-lg-6">
+                        <label for="ciudad"><span style="color: red;">*</span> Ciudad:</label>
+                        <input type="text" class="BasicInput" id="ciudad" formControlName="ciudad">
+                    </div>
+                    <div *ngIf="tipoEnvio === 'paraEnviar'" class="col-12 col-md-12 col-lg-6">
+                        <label for="barrio"><span style="color: red;">*</span> Barrio:</label>
+                        <input type="text" class="BasicInput" id="barrio" formControlName="barrio">
+                    </div>
+                    <div *ngIf="tipoEnvio === 'paraEnviar'" class="col-12 col-md-12 col-lg-6">
+                        <label for="direccion"><span style="color: red;">*</span> Dirección:</label>
+                        <input type="text" class="BasicInput" id="direccion" formControlName="direccion">
+                    </div>
+                </div>
+            </form>
+        </div>
+
 
     </div>
-</div>
-<div class="divDelForm">
-    <mat-radio-group [(ngModel)]="tipoEnvio" (ngModelChange)="ngOnChanges()">
-        <mat-radio-button value="retira">Retira en el local</mat-radio-button>
-        <mat-radio-button value="paraEnviar">Para enviar</mat-radio-button>
-    </mat-radio-group>
-    <form [formGroup]="personaForm">
-        <!-- Campo Nombre -->
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" formControlName="nombre">
+    <div class="col-12 col-md-6" style="
+    max-height: 460px;">
+
+        <div class="text-center" style="padding-top: 0.4rem;">
+            <span>Productos seleccionados</span>
+            <mat-table [dataSource]=" dataSource" matSort class="custom-mat-table-container"
+                style="padding-top: 1.5rem;">
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombreProducto">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                        style="min-width: 200px;">Producto</mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="min-width: 190px;">{{element.nombreProducto}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="precio">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="centrado">Precio</mat-header-cell>
+                    <mat-cell *matCellDef=" let element" class="centrado">{{element.precio}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="cantidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header class="centrado">Unid</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="centrado">{{element.cantidad}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <div
+            style="display: flex; justify-content: flex-start; background-color: gainsboro; margin: 0; margin-top: 1rem; border-radius: 5px;">
+            <p style="padding: 0.5rem; margin: 0;">Total a pagar: $ {{total}}</p>
+
         </div>
 
-        <!-- Campo Apellido -->
-        <div>
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" formControlName="apellido">
+    </div>
+    <div class="col-12">
+
+        <div *ngIf="preferenceId == ''" style="   
+        margin-top: 2rem; display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;">
+            <div class=" text-center">
+                <p style="font-size: 1rem;">Todos los campos con (<span style="color: red;">*</span>) son requeridos</p>
+            </div>
+            <button [disabled]="!personaForm.valid" (click)="processPayment()" class="btnFinalizarCompra">Proceder con
+                el pago</button>
         </div>
 
-        <!-- Campos que dependen del tipo de envío -->
-        <div *ngIf="tipoEnvio === 'paraEnviar'">
-            <!-- Campos adicionales para 'Para enviar' -->
-            <div>
-                <label for="departamento">Departamento:</label>
-                <input type="text" id="departamento" formControlName="departamento">
-            </div>
-            <div>
-                <label for="ciudad">Ciudad:</label>
-                <input type="text" id="ciudad" formControlName="ciudad">
-            </div>
-            <div>
-                <label for="barrio">Barrio:</label>
-                <input type="text" id="barrio" formControlName="barrio">
-            </div>
-            <div>
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" formControlName="direccion">
-            </div>
-        </div>
-        <!-- Campos Mail y Teléfono -->
-        <div>
-            <label for="mail">Mail:</label>
-            <input type="email" id="mail" formControlName="mail">
-        </div>
-        <div>
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" formControlName="telefono">
-        </div>
-    </form>
-    <div *ngIf="preferenceId == ''">
-        <button [disabled]="!personaForm.valid" (click)="processPayment()">Proceder con el pago</button>
     </div>
-</div>
-<div *ngIf="preferenceId != ''" class="payment-container">
-    <div id="payment-container" style="max-width: 10rem;">
+    <div *ngIf="preferenceId != ''" class="payment-container col-12" style="display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;">
+        <div id="payment-container" style="width: 100%;">
+        </div>
     </div>
+
+
 </div>

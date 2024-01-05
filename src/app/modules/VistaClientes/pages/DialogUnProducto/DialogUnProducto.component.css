@@ -1,7 +1,13 @@
 @media screen and (max-width: 768px) {
+    .mat-mdc-dialog-content {
+        max-height: 100%;
+    }
 
     .containerUnProducto {
         height: 620px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .backGroundRosaQD {

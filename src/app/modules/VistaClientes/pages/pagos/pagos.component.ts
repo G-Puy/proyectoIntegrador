@@ -1,8 +1,11 @@
 // pagos.component.ts
-import { Component, OnInit, AfterViewInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, SimpleChanges, ViewChild } from '@angular/core';
 import { SharedService } from '../../../../shared/shared.service';
 import { objOrderDataProducto } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOOrderData.interface';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { objCarritoYProcesoDeCompra } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 declare var MercadoPago: any;
 
@@ -14,8 +17,13 @@ declare var MercadoPago: any;
 export class PagosComponent implements OnInit, AfterViewInit {
   personaForm: FormGroup;
   orderList: objOrderDataProducto[] = [];
-  tipoEnvio: string = 'retira';
+  tipoEnvio: string = 'paraEnviar';
   preferenceId: string = '';
+  @ViewChild(MatSort) sort!: MatSort;
+  dataSource: MatTableDataSource<objCarritoYProcesoDeCompra>;
+  productosDelCarrito: objCarritoYProcesoDeCompra[] = [];
+  displayedColumns: string[] = ['nombreProducto', 'precio', 'cantidad'];
+  total: number = 0;
   public mp = new MercadoPago('TEST-583f205e-a018-4414-94c5-fc9d00faf360', {
     locale: 'es-UY'
   });
@@ -31,6 +39,8 @@ export class PagosComponent implements OnInit, AfterViewInit {
       mail: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.required),
     });
+    this.dataSource = new MatTableDataSource(this.productosDelCarrito);
+
   }
   ngOnChanges(): void {
     console.log("Entro a cambios");
@@ -50,7 +60,6 @@ export class PagosComponent implements OnInit, AfterViewInit {
     }
 
   }
-
 
 
 
@@ -77,10 +86,21 @@ export class PagosComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit(): void {
+    this.cargarProductosDeLocalStorage();
   }
   ngAfterViewInit(): void {
+
+    this.dataSource.sort = this.sort;
+
   }
 
+  private cargarProductosDeLocalStorage() {
+    this.productosDelCarrito = this.sharedService.obtenerCarrito();
+    this.dataSource = new MatTableDataSource(this.productosDelCarrito);
+    this.productosDelCarrito.forEach(element => {
+      this.total += element.precio;
+    });
+  }
 
 
   processPayment() {
