@@ -238,11 +238,11 @@ export class SharedService {
     carrito = carrito.filter(producto => producto.idProducto !== idProducto);
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
   }
-  existeProductoEnCarrito(idProducto: number): boolean {
+  existeProductoEnCarrito(productoAdd: objCarritoYProcesoDeCompra): boolean {
     let existeProducto = false;
     let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
     carrito.forEach(producto => {
-      if (producto.idProducto == idProducto) {
+      if (producto.idProducto == productoAdd.idProducto && producto.color.id == productoAdd.color.id && producto.talle.id == productoAdd.talle.id) {
         existeProducto = true;
       }
     });

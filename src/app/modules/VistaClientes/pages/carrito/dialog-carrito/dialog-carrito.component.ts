@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AceptarCancelarDialogComponent } from 'src/app/components/aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 import { objCarritoYProcesoDeCompra } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
@@ -19,6 +20,7 @@ export class DialogCarritoComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogCarritoComponent>,
     private funcionesGlobalesService: FuncionesGlobalesService,
     public dialog: MatDialog,
+    private router: Router
   ) {
     this.cargarProductosDeLocalStorage()
   }
@@ -70,4 +72,8 @@ export class DialogCarritoComponent implements OnInit {
     });
   }
 
+  navegarAfinalizarCompra() {
+    this.router.navigate(['store/pagos']);
+    this.dialogRef.close();
+  }
 }

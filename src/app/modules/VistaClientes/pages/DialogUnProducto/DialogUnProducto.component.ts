@@ -106,21 +106,22 @@ export class DialogUnProductoComponent implements OnInit {
 
   agregarAlCarrito() {
     if (this.seleccionTalle != undefined && this.seleccionColor != undefined && this.cantidad > 0) {
-      if (!this.sharedServ.existeProductoEnCarrito(this.objetoProducto!.id)) {
-        this.objProductoParaElCarrito = {
-          idProducto: this.objetoProducto!.id,
-          nombreProducto: this.objetoProducto!.nombre,
-          precio: this.objetoProducto?.precioActual!,
-          oferta: false,
-          imagen: this.objetoProducto?.imagenes[0]!,
-          idStock: this.objetoProducto?.stock.id!,
-          talle: this.seleccionTalle!,
-          color: this.seleccionColor!,
-          cantidad: this.cantidad
-        }
-        if (this.objetoProducto?.precioAnterior! > 0) {
-          this.objProductoParaElCarrito.oferta = true;
-        }
+      this.objProductoParaElCarrito = {
+        idProducto: this.objetoProducto!.id,
+        nombreProducto: this.objetoProducto!.nombre,
+        precio: this.objetoProducto?.precioActual!,
+        oferta: false,
+        imagen: this.objetoProducto?.imagenes[0]!,
+        idStock: this.objetoProducto?.stock.id!,
+        talle: this.seleccionTalle!,
+        color: this.seleccionColor!,
+        cantidad: this.cantidad
+      }
+      if (this.objetoProducto?.precioAnterior! > 0) {
+        this.objProductoParaElCarrito.oferta = true;
+      }
+      if (!this.sharedServ.existeProductoEnCarrito(this.objProductoParaElCarrito)) {
+
         this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
         this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 3000, true);
         this.dialogRef.close();
