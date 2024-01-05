@@ -106,7 +106,7 @@ export class DialogUnProductoComponent implements OnInit {
 
   agregarAlCarrito() {
     if (this.seleccionTalle != undefined && this.seleccionColor != undefined && this.cantidad > 0) {
-      if (this.sharedServ.existeProductoEnCarrito(this.objetoProducto!.id)!) {
+      if (!this.sharedServ.existeProductoEnCarrito(this.objetoProducto!.id)) {
         this.objProductoParaElCarrito = {
           idProducto: this.objetoProducto!.id,
           nombreProducto: this.objetoProducto!.nombre,
