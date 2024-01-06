@@ -263,9 +263,10 @@ export class SharedService {
 
   //#region PAGOS
 
-  createPaymentPreference(orderList: objOrderData[]): Observable<string> {
-    // Reemplaza con la URL de tu endpoint que crea la preferencia de pago
-    return this.http.post<string>('/api/create_preference', {});
+  createPaymentPreference(orderList: objOrderData): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}api/MercadoPago/crearPreferencia`, orderList, {
+      responseType: 'text' as 'json' // Cast 'text' to the expected type 'json'
+    });
   }
   //#endregion PAGOS
 }

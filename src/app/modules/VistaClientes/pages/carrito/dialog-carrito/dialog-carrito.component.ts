@@ -43,7 +43,16 @@ export class DialogCarritoComponent implements OnInit {
 
   }
 
-  onCantidadChange() {
+  onChange() {
+    //Borrar local storage
+    this.sharedServ.vaciarCarrito();
+    //Cargar nuevos productos
+    this.productosDelCarrito.forEach(productoAdd => {
+      this.sharedServ.agregarProducto(productoAdd);
+    });
+    //Cargar nueva Lista al local Storage
+    this.cargarProductosDeLocalStorage();
+    //Contar nuevamente el total
     this.contarTotal();
   }
 

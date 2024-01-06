@@ -10,11 +10,14 @@ export interface objOrderDataPersona {
     barrio: string,
     direccion: string,
     mail: string,
-    telefono: string
+    telefono: string,
+    enviar: boolean
 }
 export interface objOrderDataProducto {
     id: number,
-    quantity: number,
+    idColor: number,
+    idTalle: number,
+    cantidad: number,
 }
 
 
