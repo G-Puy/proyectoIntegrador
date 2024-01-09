@@ -15,6 +15,9 @@ import { DialogUnProductoComponent } from './pages/DialogUnProducto/DialogUnProd
 import { TodoslosproductosComponent } from './pages/todoslosproductos/todoslosproductos.component';
 import { DialogCarritoComponent } from './pages/carrito/dialog-carrito/dialog-carrito.component';
 import { PagosComponent } from './pages/pagos/pagos.component';
+import { SuccessComponent } from './pages/pagos/paginasredireccionpagos/success/success.component';
+import { FailureComponent } from './pages/pagos/paginasredireccionpagos/failure/failure.component';
+import { PendingComponent } from './pages/pagos/paginasredireccionpagos/pending/pending.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { PagosComponent } from './pages/pagos/pagos.component';
     DialogUnProductoComponent,
     TodoslosproductosComponent,
     DialogCarritoComponent,
-    PagosComponent
+    PagosComponent,
+    SuccessComponent,
+    FailureComponent,
+    PendingComponent
   ],
   imports: [
     CommonModule,

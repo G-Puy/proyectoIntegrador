@@ -15,7 +15,7 @@
                         <p> {{producto.nombreProducto}}</p>
                         <p> C/u $ {{producto.precio}}</p>
                         <p>Color: {{producto.color.nombre}}</p>
-                        <p>Color: {{producto.talle.nombre}}</p>
+                        <p>Talle: {{producto.talle.nombre}}</p>
                         <div style="display: flex; gap: 1rem; ">
                             <p>Cantidad: </p>
                             <input type="number" [(ngModel)]="producto.cantidad" (change)="onChange()"

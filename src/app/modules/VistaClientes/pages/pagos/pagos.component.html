@@ -105,15 +105,15 @@
             <div class=" text-center">
                 <p style="font-size: 1rem;">Todos los campos con (<span style="color: red;">*</span>) son requeridos</p>
             </div>
-            <button [disabled]="!personaForm.valid" (click)="processPayment()" class="btnFinalizarCompra">Proceder con
+            <button *ngIf="ocultarProceder == false" [disabled]="!personaForm.valid || productosDelCarrito.length == 0"
+                (click)="processPayment()" class="btnFinalizarCompra">Proceder con
                 el pago</button>
         </div>
 
     </div>
     <div class="payment-container col-12" style="display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 2rem;">
+    align-items: center;">
         <div id="payment-container" style="width: 100%;">
         </div>
     </div>

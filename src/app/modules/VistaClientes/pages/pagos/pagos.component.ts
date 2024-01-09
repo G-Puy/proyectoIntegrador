@@ -25,6 +25,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
   productosDelCarrito: objCarritoYProcesoDeCompra[] = [];
   displayedColumns: string[] = ['nombreProducto', 'precio', 'cantidad'];
   total: number = 0;
+  ocultarProceder: boolean = false;
   public mp = new MercadoPago('TEST-583f205e-a018-4414-94c5-fc9d00faf360', {
     locale: 'es-UY'
   });
@@ -151,6 +152,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
                 preferenceId: codigo
               },
             });
+            this.ocultarProceder = true;
           }
         },
         error: (error) => {

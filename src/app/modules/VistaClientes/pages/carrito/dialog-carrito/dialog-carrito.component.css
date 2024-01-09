@@ -54,7 +54,7 @@
 
 .inputBasico:focus {
     /* Adjust padding on focus */
-    border-bottom: 4px solid var(--rosadoQueDiosaAl80);
+    border-bottom: 4px solid var(--azulBasico);
     /* Underline thickness on focus */
 }
 

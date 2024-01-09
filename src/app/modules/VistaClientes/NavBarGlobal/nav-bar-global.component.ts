@@ -9,7 +9,7 @@ import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.serv
 import { DialogUnProductoComponent } from '../pages/DialogUnProducto/DialogUnProducto.component';
 import { DialogbuscadorComponent } from '../pages/dialogbuscador/dialogbuscador.component';
 import { Subscription, filter } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DialogCarritoComponent } from '../pages/carrito/dialog-carrito/dialog-carrito.component';
 
@@ -27,36 +27,55 @@ export class NavBarGlobalComponent {
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private activatedRoute: ActivatedRoute
   ) {
     this.subscription = new Subscription();
   }
+  mostrarCarrito: boolean = true;
+  mostrarBuscador: boolean = true;
   icono: string = "menu";
   mostrarRuta: string = "/store";
   ngOnInit() {
+    this.analizarRutas(this.router.url);
     this.subscription = this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.mostrarRuta = event.url;
-      if (this.mostrarRuta == "/productos") this.icono = "account_circle";
-      else this.icono = "arrow_back_ios";
-      if (this.mostrarRuta == "/store") {
-        this.icono = "menu";
-
-      }
+      this.analizarRutas(this.mostrarRuta);
     });
+  }
+
+  private analizarRutas(rutaActual: string) {
+    //if (rutaActual == "/productos") this.icono = "account_circle";
+    if (rutaActual != "/store/productos") {
+      this.icono = "arrow_back_ios";
+      this.mostrarCarrito = true;
+      this.mostrarBuscador = true;
+    }
+    if (rutaActual == "/store") {
+      this.icono = "menu";
+      this.mostrarCarrito = true;
+      this.mostrarBuscador = true;
+    }
+    if (rutaActual == "/store/failure" || rutaActual == "/store/pending" || rutaActual == "/store/success" || rutaActual == "/store/pagos" || this.mostrarRuta == "/productos") {
+      this.mostrarCarrito = false;
+      this.mostrarBuscador = false;
+    }
   }
   ngOnDestroy(): void {
     // Asegúrate de desuscribirte para evitar fugas de memoria
     this.subscription.unsubscribe();
   }
   accion() {
-
+    this.mostrarRuta = this.router.url;
 
     switch (this.mostrarRuta) {
       case "/store/productos":
         this.location.back();
-        // this.router.navigate(['/lEmpresa']); //Aca tiene que ser al perfil personal.
+        break;
+      case "/store/pagos":
+        this.location.back();
         break;
       case "/store":
         this.openOberlay();
