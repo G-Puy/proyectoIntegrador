@@ -21,16 +21,18 @@ export class NavBarGlobalEmpresaComponent {
   mostrarRuta: string = "/lEmpresa";
 
   ngOnInit() {
+    this.analizarRutas(this.router.url);
     this.subscription = this.router.events.pipe(
       filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.mostrarRuta = event.url;
-      if (this.mostrarRuta == "/lEmpresa") this.icono = "account_circle";
-      else this.icono = "arrow_back_ios";
-      console.log(this.mostrarRuta);
+      this.analizarRutas(this.mostrarRuta);
     });
   }
-
+  private analizarRutas(rutaActual: string) {
+    if (rutaActual == "/lEmpresa") this.icono = "account_circle";
+    else this.icono = "arrow_back_ios";
+  }
 
   ngOnDestroy(): void {
     // Asegúrate de desuscribirte para evitar fugas de memoria
@@ -43,6 +45,7 @@ export class NavBarGlobalEmpresaComponent {
   }
 
   action() {
+    this.mostrarRuta = this.router.url;
     switch (this.mostrarRuta) {
       case "lEmpresa":
         // this.router.navigate(['/lEmpresa']); //Aca tiene que ser al perfil personal.
