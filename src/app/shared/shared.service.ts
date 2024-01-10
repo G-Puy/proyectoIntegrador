@@ -256,11 +256,6 @@ export class SharedService {
 
   //#endregion
 
-
-
-
-
-
   //#region PAGOS
 
   createPaymentPreference(orderList: objOrderData): Observable<string> {
@@ -269,6 +264,15 @@ export class SharedService {
     });
   }
   //#endregion PAGOS
+
+
+
+  //#region  Perfil colaborador
+  obtenerUsernameLogeado(): string {
+    const username = localStorage.getItem('username');
+    return username ? username : "";
+  }
+  //#endregion
 }
 
 

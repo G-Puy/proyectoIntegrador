@@ -3,6 +3,8 @@ import { NavigationEnd, Router, Event, ActivatedRoute } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
 import { Location } from '@angular/common';
+import { PerfilPersonaComponent } from '../pages/perfil-persona/perfil-persona.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-nav-bar-global-empresa',
   templateUrl: './nav-bar-global-empresa.component.html',
@@ -14,7 +16,8 @@ export class NavBarGlobalEmpresaComponent {
   constructor(private router: Router,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute,
-    private location: Location) {
+    private location: Location,
+    public dialog: MatDialog) {
     this.subscription = new Subscription();
   }
   icono: string = "account_circle";
@@ -47,9 +50,8 @@ export class NavBarGlobalEmpresaComponent {
   action() {
     this.mostrarRuta = this.router.url;
     switch (this.mostrarRuta) {
-      case "lEmpresa":
-        // this.router.navigate(['/lEmpresa']); //Aca tiene que ser al perfil personal.
-
+      case "/lEmpresa":
+        this.openDialogPerfil();
         break;
       default:
         if (this.mostrarRuta !== "/lEmpresa") this.location.back();
@@ -58,6 +60,13 @@ export class NavBarGlobalEmpresaComponent {
   }
   goBack(): void {
     this.location.back();
+  }
+  openDialogPerfil() {
+    const dialogRef = this.dialog.open(PerfilPersonaComponent, {
+      width: '500px',
+      data: {},
+      disableClose: true
+    });
   }
 
 }

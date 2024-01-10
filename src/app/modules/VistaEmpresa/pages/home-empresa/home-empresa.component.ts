@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PerfilPersonaComponent } from '../perfil-persona/perfil-persona.component';
 
 
 @Component({
@@ -13,6 +15,5 @@ export class HomeEmpresaComponent {
 
 
   }
-  onLogout() { }
 
 }

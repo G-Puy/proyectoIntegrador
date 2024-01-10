@@ -16,6 +16,7 @@ import { EditarstockComponent } from './pages/stocks/editarstock/editarstock.com
 import { BandejastockComponent } from './pages/bandejastock/bandejastock.component';
 import { BandejaventasComponent } from './pages/bandejaventas/bandejaventas.component';
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
+import { PerfilPersonaComponent } from './pages/perfil-persona/perfil-persona.component';
 
 
 
@@ -33,7 +34,8 @@ import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.comp
     EditarstockComponent,
     BandejastockComponent,
     BandejaventasComponent,
-    ColaboradoresComponent
+    ColaboradoresComponent,
+    PerfilPersonaComponent
   ],
   imports: [
     CommonModule,

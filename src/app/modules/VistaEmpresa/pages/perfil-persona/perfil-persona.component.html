@@ -1,0 +1,21 @@
+<div mat-dialog style="height: 23.2rem; padding: 10px; border-radius: 15px;">
+    <div mat-dialog-content>
+        <div class="text-center">
+            <p>Nombre de usuario: </p>
+            <span>{{username}}</span>
+        </div>
+        <div class=" text-center" style="margin-top: 1rem;">
+            <p>Cambiar contraseña</p>
+            <input type="password" class="BasicInput" [(ngModel)]="pass1">
+            <input type="password" class="BasicInput" [(ngModel)]="pass2" style="margin-top: 0.5rem;">
+            <span *ngIf="errorValidacionPassass != '' "> {{errorValidacionPassass}}</span>
+            <div style="margin-top: 0.5rem;">
+                <button mat-button class="AcctionCancelar" style="width: auto;">Cancelar</button>
+                <button mat-button class="AcctionAceptar" style="width: auto;">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 5rem;">
+        <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cerrar</button>
+    </mat-dialog-actions>
+</div>
