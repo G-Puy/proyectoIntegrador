@@ -1,8 +1,17 @@
-<div class="text-center"
-    style=" background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; padding-top: 0.2rem; margin-bottom: 2.2rem;">
-    <h1 style="font-size: 2rem;">{{textoSeccion}}</h1>
+<div>
+    <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
+        class="d-flex align-items-center sombra justify-content-between p-2">
+        <span class="">{{textoSeccion}}</span>
+        <div>
+            <span class="material-symbols-outlined efectoBoton " style="font-size: 2.5rem;" matTooltip="Agregar nuevo"
+                (click)="abrirDialogAgregar()">
+                add
+            </span>
+        </div>
+    </div>
 </div>
-<div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;">
+<div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;     margin-top: 2rem;
+">
     <div style="position: relative; display: flex; align-items: center;">
         <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo"
             style="padding-right: 2.2rem;">
@@ -42,9 +51,3 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-
-<button class=" btnAddCircular" matTooltip="Agregar nuevo" (click)="abrirDialogAgregar()">
-    <span class="material-symbols-outlined ">
-        add
-    </span>
-</button>

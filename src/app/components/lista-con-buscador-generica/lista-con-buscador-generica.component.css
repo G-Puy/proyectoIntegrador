@@ -39,3 +39,23 @@
 .marginBotton {
     margin-bottom: 2rem;
 }
+
+
+.efectoBoton {
+    /* Estilos básicos para el botón */
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 1s ease;
+}
+
+.efectoBoton:hover {
+    /* Cambios sutiles cuando el ratón pasa por encima */
+    opacity: 0.8;
+}
+
+.efectoBoton:active {
+    /* Estilos para cuando el botón está siendo presionado */
+    transform: scale(0.50);
+    /* Hace el botón ligeramente más pequeño */
+    opacity: 0.6;
+}
