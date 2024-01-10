@@ -8,7 +8,7 @@ import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/re
 import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
-
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-dialogmenu',
   templateUrl: './DialogUnProducto.component.html',
@@ -21,6 +21,9 @@ export class DialogUnProductoComponent implements OnInit {
   seleccionColor: DTOGenAbms | undefined;
   cargaTalles: DTOGenAbms[] = [];
   cargaColores: DTOGenAbms[] = [];
+  private cantidadSubject = new Subject<number>();
+  cantidad$ = this.cantidadSubject.asObservable();
+  public cantidad: number = 1;
 
   constructor(
     private sharedServ: SharedService,
@@ -35,6 +38,22 @@ export class DialogUnProductoComponent implements OnInit {
   }
   ngOnInit(): void {
     this.cargarTallesYColoresDelProducto();
+    this.cantidad$.subscribe(value => {
+      this.validarNumero(value);
+    });
+  }
+  actualizarCantidad(nuevaCantidad: number): void {
+    this.cantidadSubject.next(nuevaCantidad); // Esto emitirá el nuevo valor
+  }
+  validarNumero(value: number): void {
+    console.log('Validar numero llamado con:', value);
+    if (value == null) {
+      this.cantidad = 1;
+    } else if (value < 1) {
+      this.cantidad = 1;
+    } else if (value > 20) {
+      this.cantidad = 20;
+    }
   }
 
 
@@ -94,13 +113,7 @@ export class DialogUnProductoComponent implements OnInit {
     }
   }
 
-  cantidad: number = 0;
 
-  validarNumero(): void {
-    if (this.cantidad < 0) {
-      this.cantidad = 0;
-    }
-  }
 
 
 

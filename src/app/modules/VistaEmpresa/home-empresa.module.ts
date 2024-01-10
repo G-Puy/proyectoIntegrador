@@ -13,6 +13,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { ColorComponent } from './pages/colores/color.component';
 import { StocksComponent } from './pages/stocks/stocks.component';
 import { EditarstockComponent } from './pages/stocks/editarstock/editarstock.component';
+import { BandejastockComponent } from './pages/bandejastock/bandejastock.component';
+import { BandejaventasComponent } from './pages/bandejaventas/bandejaventas.component';
+import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 
 
 
@@ -27,7 +30,10 @@ import { EditarstockComponent } from './pages/stocks/editarstock/editarstock.com
     TipoProductoComponent,
     ColorComponent,
     StocksComponent,
-    EditarstockComponent
+    EditarstockComponent,
+    BandejastockComponent,
+    BandejaventasComponent,
+    ColaboradoresComponent
   ],
   imports: [
     CommonModule,

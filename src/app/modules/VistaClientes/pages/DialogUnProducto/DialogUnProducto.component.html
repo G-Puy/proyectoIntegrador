@@ -53,8 +53,8 @@
         </div>
         <div class="divsContenedoresDuos">
             <p class="marginAlineadorTexto"><strong>Cantidad:</strong> </p>
-            <input type="number" class="BasicSelectUnProducto" min="0" max="20" [(ngModel)]="cantidad"
-                (ngModelChange)="validarNumero()">
+            <input type="number" class="BasicSelectUnProducto" [(ngModel)]="cantidad"
+                (change)="actualizarCantidad(cantidad)">
         </div>
         <div>
             <p><strong>Descripción</strong></p>

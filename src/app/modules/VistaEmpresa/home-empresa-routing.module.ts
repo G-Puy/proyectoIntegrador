@@ -9,6 +9,9 @@ import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.compo
 import { ColorComponent } from "./pages/colores/color.component";
 import { TallesComponent } from "./pages/talles/talles.component";
 import { StocksComponent } from "./pages/stocks/stocks.component";
+import { BandejastockComponent } from "./pages/bandejastock/bandejastock.component";
+import { BandejaventasComponent } from "./pages/bandejaventas/bandejaventas.component";
+import { ColaboradoresComponent } from "./pages/colaboradores/colaboradores.component";
 
 const routes: Routes = [
     {
@@ -22,6 +25,9 @@ const routes: Routes = [
             { path: 'colores', component: ColorComponent },
             { path: 'talles', component: TallesComponent },
             { path: 'stocks', component: StocksComponent },
+            { path: 'bandejaStocks', component: BandejastockComponent },
+            { path: 'bandejaVentas', component: BandejaventasComponent },
+            { path: 'colaboradores', component: ColaboradoresComponent },
             { path: '**', redirectTo: '' }
         ]
     }

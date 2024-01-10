@@ -62,6 +62,13 @@ export class NavBarGlobalComponent {
       this.mostrarCarrito = false;
       this.mostrarBuscador = false;
     }
+    if (rutaActual == "/store/productos") {
+      this.icono = "arrow_back_ios";
+
+      this.mostrarCarrito = true;
+      this.mostrarBuscador = true;
+
+    }
   }
   ngOnDestroy(): void {
     // Asegúrate de desuscribirte para evitar fugas de memoria
