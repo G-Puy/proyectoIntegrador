@@ -14,21 +14,21 @@
     }
 }
 
-.divBanner {
-    @media (min-width: 992px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+
+.enviosTodoElPais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 100%;
+    background-color: var(--rosadoQueDiosaAl80);
+    color: white;
 }
 
 .div-encima {
     display: flex;
-    /* Establece el contenedor como un flexbox */
     justify-content: center;
-    /* Centra horizontalmente el contenido */
     align-items: center;
-    /* Centra verticalmente el contenido */
     position: absolute;
     top: 50%;
     left: 0;
@@ -188,11 +188,34 @@
 
 
 /* FOOTER */
+@media screen and (max-width: 425px) {
 
 
-@media screen and (max-width: 768px) {
+    .SectionppRODUCTOS {
+        background-color: var(--negroQueDiosa);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1.8rem;
+    }
 
-    /* PRODUCTOS */
+    .SectionppRODUCTOS div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divBanner {
+        display: block;
+    }
+
+    .divBanner2 {
+        display: none;
+    }
+
+}
+
+/* @media screen and (max-width: 768px) {
     .SectionppRODUCTOS {
         background-color: var(--negroQueDiosa);
         display: flex;
@@ -208,14 +231,17 @@
         align-items: center;
     }
 
-    /* PRODUCTOS */
+    .divBanner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} */
 
 
 
 
-}
-
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 426px) {
 
     /* PRODUCTOS */
     .SectionppRODUCTOS {
@@ -232,9 +258,39 @@
         align-items: center;
     }
 
-    /* PRODUCTOS */
+    .divBanner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+
+    }
+
+    .divBanner {
+        display: none;
+    }
+
+    .divBanner2 {
+        display: block;
+        padding: 2rem;
+        width: 100%;
+        /* Hace que el div ocupe todo el ancho disponible */
+        height: auto;
+        /* Ajusta la altura automáticamente */
+        text-align: center;
+        /* Centra el contenido (en este caso, la imagen) */
+    }
 
 
-
+    .BasicImg {
+        width: 100%;
+        /* Hace que la imagen ocupe todo el ancho del div */
+        height: auto;
+        /* Mantiene la proporción de la imagen */
+        border-radius: 15px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    }
 
 }
+
+@media screen and (min-width: 1024px) {}

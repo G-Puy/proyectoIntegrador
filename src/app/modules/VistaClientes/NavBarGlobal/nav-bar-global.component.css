@@ -1,0 +1,11 @@
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .posicionTxtQueDiosa {
+        margin-right: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .posicionTxtQueDiosa {
+        margin-right: 5rem;
+    }
+}
