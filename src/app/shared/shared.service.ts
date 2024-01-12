@@ -10,6 +10,7 @@ import { DTODataTodosLosProductos } from '../interfaces/DTODataTodosLosProductos
 import { Router } from '@angular/router';
 import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { objOrderData } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOOrderData.interface';
+import { DTOPreferencia } from '../interfaces/DTOPreferencia.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -258,11 +259,39 @@ export class SharedService {
 
   //#region PAGOS
 
-  createPaymentPreference(orderList: objOrderData): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}api/MercadoPago/crearPreferencia`, orderList, {
+  createPaymentPreference(orderList: objOrderData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}api/MercadoPago/crearPreferencia`, orderList, {
       responseType: 'text' as 'json' // Cast 'text' to the expected type 'json'
     });
   }
+  createPaymentPreference2(orderList: objOrderData): Observable<DTOPreferencia> {
+    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/crearPreferencia`, orderList)
+  }
+
+
+  //#region  VENTA
+
+  guardarIdVenta(idVenta: number): void {
+    localStorage.setItem('idVenta', idVenta.toString());
+  }
+  //*Validar del otro lado, convertirlo en number
+  obtenerIdVenta(): string {
+    const idVenta = localStorage.getItem('idVenta');
+    return idVenta ? idVenta : "";
+  }
+
+  eliminarIdVenta(): void {
+    localStorage.removeItem('idVenta');
+  }
+
+  confirmarCompra(idVenta: number): Observable<any> {
+    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/confirmarCompra`, idVenta)
+  }
+  cancelarCompra(idVenta: number): Observable<any> {
+    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/cancelarCompra`, idVenta)
+  }
+  //#endregion VENTA
+
   //#endregion PAGOS
 
 
@@ -273,6 +302,9 @@ export class SharedService {
     return username ? username : "";
   }
   //#endregion
+
+
+
 }
 
 

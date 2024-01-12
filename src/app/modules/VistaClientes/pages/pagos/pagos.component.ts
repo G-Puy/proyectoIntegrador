@@ -142,17 +142,19 @@ export class PagosComponent implements OnInit, AfterViewInit {
       this.orderDataEnvio!.datosProductos.push(productoAdd);
     });
 
-    this.sharedService.createPaymentPreference(this.orderDataEnvio!)
+    this.sharedService.createPaymentPreference2(this.orderDataEnvio!)
       .subscribe({
-        next: (codigo) => {
-          console.log(codigo);
-          if (codigo != null && codigo != undefined && codigo != '') {
-            this.mp.bricks().create("wallet", "payment-container", {
-              initialization: {
-                preferenceId: codigo
-              },
-            });
-            this.ocultarProceder = true;
+        next: (response) => {
+          if (response != null && response != undefined) {
+            if (response.idPreferencia != "" && response.idVenta > 0) {
+              this.sharedService.guardarIdVenta(response.idVenta);
+              this.mp.bricks().create("wallet", "payment-container", {
+                initialization: {
+                  preferenceId: response.idPreferencia
+                },
+              });
+              this.ocultarProceder = true;
+            }
           }
         },
         error: (error) => {
