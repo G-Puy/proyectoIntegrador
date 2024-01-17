@@ -285,10 +285,10 @@ export class SharedService {
   }
 
   confirmarCompra(idVenta: number): Observable<any> {
-    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/confirmarCompra`, idVenta)
+    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/confirmarCompra?idVenta=${idVenta}`, {})
   }
   cancelarCompra(idVenta: number): Observable<any> {
-    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/cancelarCompra`, idVenta)
+    return this.http.post<DTOPreferencia>(`${this.apiUrl}api/MercadoPago/cancelarCompra?idVenta=${idVenta}`, {})
   }
   //#endregion VENTA
 
