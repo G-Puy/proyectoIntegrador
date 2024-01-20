@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class SuccessComponent implements OnInit {
   idVenta: number = 0;
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private router: Router) {
   }
   ngOnInit(): void {
     this.idVenta = Number(this.sharedService.obtenerIdVenta());
@@ -27,4 +28,7 @@ export class SuccessComponent implements OnInit {
     }
   }
 
+  navegarAHome() {
+    this.router.navigate(['store']);
+  }
 }

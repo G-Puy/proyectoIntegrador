@@ -34,6 +34,7 @@ export class NavBarGlobalComponent {
   }
   mostrarCarrito: boolean = true;
   mostrarBuscador: boolean = true;
+  mostrarIcono: boolean = true;
   icono: string = "menu";
   mostrarRuta: string = "/store";
   ngOnInit() {
@@ -52,21 +53,27 @@ export class NavBarGlobalComponent {
       this.icono = "arrow_back_ios";
       this.mostrarCarrito = true;
       this.mostrarBuscador = true;
+      this.mostrarIcono = true;
+
     }
     if (rutaActual == "/store") {
       this.icono = "menu";
       this.mostrarCarrito = true;
       this.mostrarBuscador = true;
+      this.mostrarIcono = true;
+
     }
     if (rutaActual == "/store/failure" || rutaActual == "/store/pending" || rutaActual == "/store/success" || rutaActual == "/store/pagos" || this.mostrarRuta == "/productos") {
       this.mostrarCarrito = false;
       this.mostrarBuscador = false;
+      this.mostrarIcono = false;
     }
     if (rutaActual == "/store/productos") {
       this.icono = "arrow_back_ios";
 
       this.mostrarCarrito = true;
       this.mostrarBuscador = true;
+      this.mostrarIcono = true;
 
     }
   }

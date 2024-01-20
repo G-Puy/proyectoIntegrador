@@ -26,9 +26,12 @@ export class PagosComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombreProducto', 'precio', 'cantidad'];
   total: number = 0;
   ocultarProceder: boolean = false;
-  public mp = new MercadoPago('TEST-583f205e-a018-4414-94c5-fc9d00faf360', {
+  /* public mp = new MercadoPago('TEST-583f205e-a018-4414-94c5-fc9d00faf360', {
     locale: 'es-UY'
-  });
+  }); */ //*CREDENCIALES DE PRUEBA CON GULUS
+  public mp = new MercadoPago('TEST-ec29df86-8fa2-4cd3-8cc8-0fa2e6d8dec9', {
+    locale: 'es-UY'
+  });//*Credenciales de prueba VendedorQuediosa
 
   constructor(private sharedService: SharedService) {
     this.personaForm = new FormGroup({
