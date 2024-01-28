@@ -5,4 +5,51 @@
             <span class="">Alertas de stock</span>
         </div>
     </div>
+    <div *ngIf="alertas.length == 0" class="text-center" style="margin-top: 2rem;">
+        <span>No hay alertas para mostrar</span>
+    </div>
+    <div *ngFor="let item of alertas">
+
+        <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;" class="sombraCard"
+            *ngIf="alertas.length > 0">
+            <div class="spanAlerta color colorBajo" *ngIf="item.cantidad > 0">
+                <span class="material-symbols-outlined">
+                    warning
+                </span>
+                <span style="padding-left:0.5rem;">Stock bajo</span>
+            </div>
+            <div class="spanAlerta color colorSin" *ngIf="item.cantidad == 0">
+                <span class="material-symbols-outlined">
+                    warning
+                </span>
+                <span style="padding-left:0.5rem;">Sin stock</span>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Id producto: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.idProducto}}</p>
+                </div>
+                <div>
+                    <span>Nombre producto: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.nombreProducto}}</p>
+                </div>
+                <div>
+                    <span>Color: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.nombreColor}}</p>
+                </div>
+                <div>
+                    <span>Talle: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.nombreTalle}}</p>
+                </div>
+                <div>
+                    <span>Cantidad: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.cantidad}}</p>
+                </div>
+
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center;"><button mat-button
+                    class="btnFinalizarCompra" (click)="leerAlerta(item)">Confirmar lectura</button></div>
+        </div>
+    </div>
+
 </div>

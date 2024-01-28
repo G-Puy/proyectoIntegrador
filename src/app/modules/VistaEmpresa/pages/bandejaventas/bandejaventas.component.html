@@ -5,4 +5,135 @@
             <span class="">Pedidos</span>
         </div>
     </div>
+    <mat-accordion style="width: 360px; margin-top: 2rem;">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Filtrar
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                    Eliminar filtros 
+                </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+                <!--  <p style="font-size: 1.2rem;">Modalidad de busquedas</p> -->
+                <div
+                    style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 100%;">
+                    <div
+                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem; width: 327px;">
+                        <input type="number" class="BasicInput" placeholder="Codigo venta"
+                            style="padding-right: 2.2rem;" [(ngModel)]="codigoVenta">
+                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                            (click)="vaciarCampo('idVenta')">
+                            <span class="material-icons BasicBtnCruz">close</span>
+                        </button>
+                    </div>
+                    <div
+                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;  width: 327px;">
+                        <input type="text" class="BasicInput" placeholder="Nombre cliente"
+                            style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.nombre">
+                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                            (click)="vaciarCampo('nombreCliente')">
+                            <span class="material-icons BasicBtnCruz">close</span>
+                        </button>
+                    </div>
+                    <div
+                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;  width: 327px;">
+                        <input type="text" class="BasicInput" placeholder="Apellido cliente"
+                            style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.apellido">
+                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                            (click)="vaciarCampo('apellidoCliente')">
+                            <span class="material-icons BasicBtnCruz">close</span>
+                        </button>
+                    </div>
+                    <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
+                        placeholder="Estado del pedido" [(ngModel)]="filtroAlertas.realizado">
+                        <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
+                        <mat-option style="font-size: 0.8rem;" value="realizado">Realizado</mat-option>
+                        <mat-option style="font-size: 0.8rem;" value="noRealizado">No realizado</mat-option>
+                    </mat-select>
+                    <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
+                        placeholder="Modalidad de entrega" [(ngModel)]="filtroAlertas.envioRetiro">
+                        <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
+                        <mat-option style="font-size: 0.8rem;" value="enviar">Enviar</mat-option>
+                        <mat-option style="font-size: 0.8rem;" value="retira">Retira en local</mat-option>
+                    </mat-select>
+                </div>
+
+                <div style="
+                margin: 0.5rem;
+                width: 25rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 6rem;">
+
+                    <button class="BtnEliminarFiltros" (click)="vaciarFiltros();"><span
+                            class="material-symbols-outlined">
+                            delete
+                        </span></button>
+                    <button class="BtnFiltrar" (click)="cargarAlertas()">Filtrar<span class="material-symbols-outlined"
+                            style="margin-left: 0.4rem;">
+                            search
+                        </span></button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div *ngIf="alertas.length == 0" class="text-center" style="margin-top: 2rem;">
+        <!-- <span>No hay pedidos pendientes</span> -->
+        <span>Debe filtrar para mostrar los pendientes.</span>
+    </div>
+    <div *ngIf="alertas.length > 0">
+        <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;" class="sombraCard"
+            *ngFor="let alertaActual of alertas">
+            <div class="spanAlerta color" style="background-color:  rgba(111, 111, 233, 0.651);">
+                <span class="material-symbols-outlined">
+                    Bolt
+                </span>
+                <span style="padding-left:0.5rem;">Pedido: {{alertaActual.idVenta}}</span>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Monto: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{alertaActual.montoTotal}} </p>
+                </div>
+                <div>
+                    <span>Para enviar: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;" *ngIf="alertaActual.envio">Enviar</p>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;" *ngIf="!alertaActual.envio">Retira</p>
+                </div>
+                <div>
+                    <span>Nombre: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.nombre}}</p>
+                </div>
+                <div>
+                    <span>Apellido: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.apellido}}</p>
+                </div>
+                <div>
+                    <span>Telefono: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.telefono}}</p>
+                </div>
+                <div>
+                    <span>Direccion: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.direccion}}</p>
+                </div>
+                <div>
+                    <span>Estado: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;" *ngIf="alertaActual.realizado">
+                        Realizado</p>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;" *ngIf="!alertaActual.realizado">No
+                        realizado</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+                <button mat-button class="btnFinalizarCompra" *ngIf="alertaActual.realizado != true">Confirmar
+                    realizado</button>
+                <button mat-button class="btnFinalizarCompra" (click)="abrirDialogEditar(alertaActual.idVenta)">Ver
+                    pedido</button>
+            </div>
+        </div>
+    </div>
 </div>

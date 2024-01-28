@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 import { objCarritoYProcesoDeCompra } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { objOrderData } from '../interfaces/DTOsCarritoYProcesoDeCompra/DTOOrderData.interface';
 import { DTOPreferencia } from '../interfaces/DTOPreferencia.interface';
+import { DTOAlertaStock } from '../interfaces/Alertas/Stock/DTOAlertaStock.interface';
+import { DTOAlertaPedido } from '../interfaces/Alertas/Ventas/DTOAlertaPedido.interface';
+import { DTOFiltroAlertasPedidos } from '../interfaces/Alertas/Ventas/DTOFiltroAlertasPedidos.interface';
+import { DTODetallePedido } from '../interfaces/Alertas/Ventas/DTODetallePedido.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -303,6 +307,31 @@ export class SharedService {
   }
   //#endregion
 
+
+
+  //#region  Alertas stock
+  traerAlertasStock(): Observable<DTOAlertaStock[]> {
+    return this.http.get<DTOAlertaStock[]>(`${this.apiUrl}api/AlertaStock/TraerTodos`)
+  }
+  leerAlertaStock(idAlerta: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}api/AlertaStock/Leida?idAlerta=${idAlerta}`)
+  }
+  //#endregion Alertas stock
+
+  //#region Alertas pedidos
+  traerAlertasPedidosFiltradas(filtro: DTOFiltroAlertasPedidos): Observable<DTOAlertaPedido[]> {
+    return this.http.post<DTOAlertaPedido[]>(`${this.apiUrl}api/AlertaPedido/TraerFiltrados`, filtro)
+  }
+
+  confirmarAlertasPedidosFiltradas(idAlerta: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}api/AlertaPedido/Realizado?idAlerta=${idAlerta}`)
+  }
+
+
+  traerDetalleVentaAlertasPedidosFiltradas(idVenta: number): Observable<DTODetallePedido[]> {
+    return this.http.get<DTODetallePedido[]>(`${this.apiUrl}api/Venta/TraerDetallePedido?idVenta=${idVenta}`)
+  }
+  //#endregion Alertas pedidos
 
 
 }

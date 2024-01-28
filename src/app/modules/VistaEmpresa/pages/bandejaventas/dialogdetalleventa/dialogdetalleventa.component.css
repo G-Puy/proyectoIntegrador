@@ -1,0 +1,51 @@
+.sombraCard {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.contenidoCard {}
+
+.contenidoCard div {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+
+
+.spanAlerta {
+    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+
+
+
+    .backGroundBlue {
+        background-color: rgba(111, 111, 233, 0.651);
+        border-radius: 5px;
+    }
+
+}
+
+.contenedorDialog {
+    display: flex;
+    flex-direction: column;
+    /* Alinea los elementos en una columna */
+    justify-content: space-between;
+    /* Espaciado entre contenido y botones */
+    height: 620px;
+    /* Altura fija, pero puedes ajustar según necesites */
+}
+
+mat-dialog-content {
+    overflow-y: auto;
+    /* Permite desplazamiento si el contenido es muy largo */
+    flex-grow: 1;
+    /* Permite que el contenido crezca para ocupar el espacio disponible */
+}

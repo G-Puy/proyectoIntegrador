@@ -1,0 +1,42 @@
+<div mat-dialog class="contenedorDialog">
+    <div mat-dialog-content style="color: black; min-height: 90%;">
+        <h1 class=" text-center backGroundBlue">Id pedido: {{data.idVenta}}</h1>
+        <hr class="backGroundBlue">
+        <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;     background-color: #80808017;"
+            class="sombraCard" *ngFor="let producto of detalleSource">
+            <div class="contenidoCard">
+                <div>
+                    <span>Nombre: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{producto.nombreProducto}} </p>
+                </div>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Id: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{producto.idProducto}} </p>
+                </div>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Cantidad: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{producto.cantidad}} </p>
+                </div>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Talle: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{producto.nombreTalle}} </p>
+                </div>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Color: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{producto.nombreColor}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;gap: 2rem;">
+        <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
+    </mat-dialog-actions>
+</div>
