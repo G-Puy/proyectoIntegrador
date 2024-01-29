@@ -122,9 +122,9 @@ export class StocksComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.error != "") {
-        this.funcionesGlobalesService.abrirSnack(result.error, 3000, false);
+        this.funcionesGlobalesService.abrirSnack(result.error, 2000, false);
       } else if (result.result == true) {
-        this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 3000, true);
+        this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 2000, true);
         this.traerTodasLosProductos();
       }
     });

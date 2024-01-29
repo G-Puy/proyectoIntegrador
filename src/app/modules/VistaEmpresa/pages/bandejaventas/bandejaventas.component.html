@@ -83,7 +83,7 @@
     </mat-accordion>
     <div *ngIf="alertas.length == 0" class="text-center" style="margin-top: 2rem;">
         <!-- <span>No hay pedidos pendientes</span> -->
-        <span>Debe filtrar para mostrar los pendientes.</span>
+        <span>No hay pedidos pendientes.</span>
     </div>
     <div *ngIf="alertas.length > 0">
         <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;" class="sombraCard"
@@ -129,7 +129,8 @@
                 </div>
             </div>
             <div style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
-                <button mat-button class="btnFinalizarCompra" *ngIf="alertaActual.realizado != true">Confirmar
+                <button mat-button class="btnFinalizarCompra" (click)="realizarPedido(alertaActual.id)"
+                    *ngIf="alertaActual.realizado != true">Confirmar
                     realizado</button>
                 <button mat-button class="btnFinalizarCompra" (click)="abrirDialogEditar(alertaActual.idVenta)">Ver
                     pedido</button>

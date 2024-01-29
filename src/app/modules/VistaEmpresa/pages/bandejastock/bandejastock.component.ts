@@ -31,14 +31,14 @@ export class BandejastockComponent {
       next: (dataAlertasStock) => {
 
         if (dataAlertasStock) {
-          this.funcionesGlobalesService.abrirSnack("Alerta leida.", 3000, true);
+          this.funcionesGlobalesService.abrirSnack("Alerta leida.", 2000, true);
           this.cargarAlertas();
         } else {
-          this.funcionesGlobalesService.abrirSnack("La alerta no pudo ser leida correctamente.", 3000, false);
+          this.funcionesGlobalesService.abrirSnack("La alerta no pudo ser leida correctamente.", 2000, false);
         }
       },
       error: (error) => {
-        this.funcionesGlobalesService.abrirSnack(error, 3000, false);
+        this.funcionesGlobalesService.abrirSnack(error, 2000, false);
 
       }
     })

@@ -313,8 +313,15 @@ export class SharedService {
   traerAlertasStock(): Observable<DTOAlertaStock[]> {
     return this.http.get<DTOAlertaStock[]>(`${this.apiUrl}api/AlertaStock/TraerTodos`)
   }
+
+
   leerAlertaStock(idAlerta: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}api/AlertaStock/Leida?idAlerta=${idAlerta}`)
+  }
+
+
+  traerCantidadAlertasStock(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}api/AlertaStock/Contar`)
   }
   //#endregion Alertas stock
 
@@ -330,6 +337,11 @@ export class SharedService {
 
   traerDetalleVentaAlertasPedidosFiltradas(idVenta: number): Observable<DTODetallePedido[]> {
     return this.http.get<DTODetallePedido[]>(`${this.apiUrl}api/Venta/TraerDetallePedido?idVenta=${idVenta}`)
+  }
+
+
+  traerCantidadPedidosPendientes(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}api/AlertaPedido/Contar`)
   }
   //#endregion Alertas pedidos
 

@@ -136,13 +136,13 @@ export class DialogUnProductoComponent implements OnInit {
       if (!this.sharedServ.existeProductoEnCarrito(this.objProductoParaElCarrito)) {
 
         this.sharedServ.agregarProducto(this.objProductoParaElCarrito!);
-        this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 3000, true);
+        this.funcionesGlobalesService.abrirSnack('El producto fue agregado correctamente al carrito', 2000, true);
         this.dialogRef.close();
       } else {
-        this.funcionesGlobalesService.abrirSnack('Ya existe el producto en el carrito', 3000, false);
+        this.funcionesGlobalesService.abrirSnack('Ya existe el producto en el carrito', 2000, false);
       }
     } else {
-      this.funcionesGlobalesService.abrirSnack('Verifique talle, color y cantidad', 3000, false);
+      this.funcionesGlobalesService.abrirSnack('Verifique talle, color y cantidad', 2000, false);
 
     }
   }

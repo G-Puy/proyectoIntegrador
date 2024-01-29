@@ -129,9 +129,9 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado.error != "") {
-        this.funcionesGlobalesService.abrirSnack(resultado.error, 3000, false);
+        this.funcionesGlobalesService.abrirSnack(resultado.error, 2000, false);
       } else if (resultado.result == true) {
-        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 3000, true);
+        this.funcionesGlobalesService.abrirSnack("El alta fue exitosa.", 2000, true);
         this.getAll();
       }
     });
@@ -154,10 +154,10 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado.error != "") {
-        this.funcionesGlobalesService.abrirSnack(resultado.error, 3000, false);
+        this.funcionesGlobalesService.abrirSnack(resultado.error, 2000, false);
       } else if (resultado.result == true) {
         console.log("hay error");
-        this.funcionesGlobalesService.abrirSnack("Edición exitosa.", 3000, true);
+        this.funcionesGlobalesService.abrirSnack("Edición exitosa.", 2000, true);
         this.getAll();
       }
 
@@ -177,11 +177,11 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
           .subscribe({
             next: (resultadoEliminar) => {
               if (resultadoEliminar) {
-                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 2000, true);
                 this.getAll();
               }
               else {
-                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 2000, true);
               }
             },
             error: (error) => {
@@ -193,11 +193,11 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
           .subscribe({
             next: (resultadoEliminar) => {
               if (resultadoEliminar) {
-                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 2000, true);
                 this.getAll();
               }
               else {
-                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 2000, true);
               }
             },
             error: (error) => {
@@ -210,11 +210,11 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
           .subscribe({
             next: (resultadoEliminar) => {
               if (resultadoEliminar) {
-                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 2000, true);
                 this.getAll();
               }
               else {
-                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+                this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 2000, true);
               }
             },
             error: (error) => {

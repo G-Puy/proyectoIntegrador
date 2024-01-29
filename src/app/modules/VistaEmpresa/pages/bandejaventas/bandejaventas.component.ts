@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DTOAlertaPedido } from 'src/app/interfaces/Alertas/Ventas/DTOAlertaPedido.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -11,7 +11,7 @@ import { DTOFiltroAlertasPedidos } from 'src/app/interfaces/Alertas/Ventas/DTOFi
   templateUrl: './bandejaventas.component.html',
   styleUrls: ['./bandejaventas.component.css']
 })
-export class BandejaventasComponent {
+export class BandejaventasComponent implements OnInit {
   filtroAlertas: DTOFiltroAlertasPedidos = {
     idVenta: -1,
     realizado: '',
@@ -26,6 +26,10 @@ export class BandejaventasComponent {
   constructor(private sharedServ: SharedService, private funcionesGlobalesService: FuncionesGlobalesService, public dialog: MatDialog) {
 
   }
+  ngOnInit(): void {
+    this.cargarAlertasSinRealizar();
+  }
+
   cargarAlertas() {
     this.alertas = [];
     if (this.codigoVenta == null) this.filtroAlertas.idVenta = -1;
@@ -39,6 +43,23 @@ export class BandejaventasComponent {
       error: (error) => {
       }
     })
+  }
+
+  private cargarAlertasSinRealizar() {
+    this.alertas = [];
+    if (this.codigoVenta == null) this.filtroAlertas.idVenta = -1;
+    else this.filtroAlertas.idVenta = this.codigoVenta;
+    this.filtroAlertas.realizado = 'noRealizado';
+    this.sharedServ.traerAlertasPedidosFiltradas(this.filtroAlertas).subscribe({
+      next: (dataAlertasStock) => {
+        if (dataAlertasStock.length > 0) {
+          this.alertas = dataAlertasStock;
+        }
+      },
+      error: (error) => {
+      }
+    })
+
   }
   abrirDialogEditar(idVenta: number) {
     const dialogRef = this.dialog.open(DialogdetalleventaComponent, {
@@ -74,5 +95,23 @@ export class BandejaventasComponent {
     };
 
   }
+  realizarPedido(idVenta: number) {
+    console.log(idVenta);
+    this.sharedServ.confirmarAlertasPedidosFiltradas(idVenta).subscribe({
+      next: (response) => {
 
+        if (response) {
+          this.funcionesGlobalesService.abrirSnack("El pedido fue realizado correctamente.", 2000, true);
+          this.cargarAlertas();
+        } else {
+          this.funcionesGlobalesService.abrirSnack("Error al realizar pedido", 2000, false);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        this.funcionesGlobalesService.abrirSnack("Error al realizar el pedido", 2000, false);
+
+      }
+    })
+  }
 }

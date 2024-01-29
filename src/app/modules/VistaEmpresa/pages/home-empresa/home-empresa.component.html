@@ -10,11 +10,14 @@
                 <span class=" material-symbols-outlined" style="color: black; margin-right: 1rem; font-size: 2rem;">
                     inbox
                 </span>
-                <span>Alertas ventas</span>
+                <span>Pedidos</span>
             </div>
-            <span class="material-symbols-outlined" style="color:rgb(255, 0, 0); font-size: 2rem;">
-                notifications_active
-            </span>
+            <div *ngIf="cantAlertaPedidos > 0">
+                <span style="color:rgb(255, 0, 0);">{{cantAlertaPedidos}}</span>
+                <span class="material-symbols-outlined" style="color:rgb(255, 0, 0); font-size: 2rem;">
+                    notifications_active
+                </span>
+            </div>
         </div>
         <div class="p-2" routerLink="/lEmpresa/bandejaStocks"
             style="display: flex; align-self: center;  justify-content: space-between;">
@@ -24,9 +27,12 @@
                 </span>
                 <span>Alertas stock</span>
             </div>
-            <span class="material-symbols-outlined" style="color:rgb(255, 0, 0); font-size: 2rem;">
-                notifications_active
-            </span>
+            <div *ngIf="cantAlertaStock > 0">
+                <span style="color:rgb(255, 0, 0);">{{cantAlertaStock}}</span>
+                <span class="material-symbols-outlined" style="color:rgb(255, 0, 0); font-size: 2rem;">
+                    notifications_active
+                </span>
+            </div>
         </div>
     </div>
     <div>

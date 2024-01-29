@@ -67,9 +67,9 @@ export class ProductosComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.error != "") {
-        this.funcionesGlobalesService.abrirSnack(result.error, 3000, false);
+        this.funcionesGlobalesService.abrirSnack(result.error, 2000, false);
       } else if (result.result == true) {
-        this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 3000, true);
+        this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 2000, true);
         this.traerTodasLosProductos();
       }
     });
@@ -114,11 +114,11 @@ export class ProductosComponent {
       .subscribe({
         next: (resultadoEliminar) => {
           if (resultadoEliminar) {
-            this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 3000, true);
+            this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 2000, true);
             this.traerTodasLosProductos();
           }
           else {
-            this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 3000, true);
+            this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 2000, true);
           }
         },
         error: (error) => {

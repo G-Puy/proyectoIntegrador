@@ -1,5 +1,5 @@
 export interface DTOAlertaPedido {
-    idAlertaPedido: number;
+    id: number;
     idVenta: number;
     montoTotal: number;
     envio: boolean;
