@@ -10,4 +10,39 @@
             </div>
         </div>
     </div>
+    <div>
+        <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;" class="sombraCard"
+            *ngFor="let colaboradorActual of colaboradores">
+            <div class="spanAlerta color" style="background-color:  rgba(111, 111, 233, 0.651);">
+                <span class="material-symbols-outlined">
+                    Bolt
+                </span>
+                <span style="padding-left:0.5rem;">Id: {{colaboradorActual.idUsuario}} Usuario:
+                    {{colaboradorActual.nombreDeUsuario}}</span>
+            </div>
+            <div class="contenidoCard">
+                <div>
+                    <span>Nombre: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.nombre}} </p>
+                </div>
+                <div>
+                    <span>Apellido: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.apellido}} </p>
+                </div>
+                <div>
+                    <span>Telefono: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.telefono}} </p>
+                </div>
+                <div>
+                    <span>Mail: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.Correo}} </p>
+                </div>
+                <div>
+                    <span>Tipo usuario: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.tipoUsuario}} </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

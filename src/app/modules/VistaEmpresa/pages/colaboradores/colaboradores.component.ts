@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DTOUsuario } from 'src/app/interfaces/usuario.interfce';
 
 @Component({
   selector: 'app-colaboradores',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./colaboradores.component.css']
 })
 export class ColaboradoresComponent {
+  colaboradores: DTOUsuario[] = [];
 
 }

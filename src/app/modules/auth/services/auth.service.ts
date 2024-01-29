@@ -32,6 +32,7 @@ export class AuthService {
           if (user != null) {
             localStorage.setItem('token', user.contrasenia.toString());
             localStorage.setItem('username', user.nombreDeUsuario.toString());
+            localStorage.setItem('tipoUsuario', user.tipoUsuario.toString());
           }
         })
 

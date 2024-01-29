@@ -11,19 +11,19 @@ import { SharedService } from 'src/app/shared/shared.service';
 })
 export class HomeEmpresaComponent {
 
-
+  tipoUsuario: string = '0';
   cantAlertaPedidos: number = 0;
   cantAlertaStock: number = 0;
   constructor(private sharedServ: SharedService) {
     this.traerCantidadAlrtStock();
     this.traerCantidadAlrtPedidos();
+    console.log(localStorage.getItem('tipoUsuario'));
+    this.tipoUsuario = localStorage.getItem('tipoUsuario')!;
   }
 
   traerCantidadAlrtPedidos() {
     this.sharedServ.traerCantidadPedidosPendientes().subscribe({
       next: (response) => {
-        console.log("Cant alertas pedidos");
-        console.log(response);
         this.cantAlertaPedidos = response;
       },
       error: (error) => {
@@ -34,8 +34,6 @@ export class HomeEmpresaComponent {
   traerCantidadAlrtStock() {
     this.sharedServ.traerCantidadAlertasStock().subscribe({
       next: (response) => {
-        console.log("Cant alertas stock");
-        console.log(response);
         this.cantAlertaStock = response;
       },
       error: (error) => {
