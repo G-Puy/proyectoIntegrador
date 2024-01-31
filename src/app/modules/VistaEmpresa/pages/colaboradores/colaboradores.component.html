@@ -1,9 +1,9 @@
-<div>
+<div style="padding-bottom: 0.5rem;">
     <div>
         <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
             class="d-flex align-items-center sombra justify-content-between p-2">
             <span class="">Colaboradores</span>
-            <div>
+            <div (click)="openDialogAgregarEditar(true,null);">
                 <span class="material-symbols-outlined " style="font-size: 2.5rem;">
                     add
                 </span>
@@ -13,14 +13,19 @@
     <div>
         <div style="padding: 0.5rem;  border-radius: 5px; margin: 0.5rem;" class="sombraCard"
             *ngFor="let colaboradorActual of colaboradores">
-            <div class="spanAlerta color" style="background-color:  rgba(111, 111, 233, 0.651);">
+            <div class="spanAlerta color"
+                style="background-color:  var(--negroQueDiosa); color: var(--rosadoQueDiosaAl80);;">
                 <span class="material-symbols-outlined">
-                    Bolt
+                    badge
                 </span>
-                <span style="padding-left:0.5rem;">Id: {{colaboradorActual.idUsuario}} Usuario:
+                <span style="padding-left:0.5rem;">Usuario:
                     {{colaboradorActual.nombreDeUsuario}}</span>
             </div>
             <div class="contenidoCard">
+                <div>
+                    <span>Id: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.idUsuario}} </p>
+                </div>
                 <div>
                     <span>Nombre: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.nombre}} </p>
@@ -35,13 +40,19 @@
                 </div>
                 <div>
                     <span>Mail: </span>
-                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.Correo}} </p>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.correo}} </p>
                 </div>
                 <div>
                     <span>Tipo usuario: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{colaboradorActual.tipoUsuario}} </p>
                 </div>
 
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                <span class="material-symbols-outlined" style=" font-size: 1.8rem;" matTooltip="Eliminar colaborador"
+                    (click)="openDialogCancelar(colaboradorActual)">delete</span>
+                <span class="material-symbols-outlined" style=" font-size: 1.8rem;" matTooltip="Editar colaborador"
+                    (click)="openDialogAgregarEditar(false,colaboradorActual)">edit</span>
             </div>
         </div>
     </div>

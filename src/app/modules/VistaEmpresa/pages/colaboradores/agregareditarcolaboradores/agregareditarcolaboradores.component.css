@@ -1,0 +1,6 @@
+.spanAlerta {
+    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}

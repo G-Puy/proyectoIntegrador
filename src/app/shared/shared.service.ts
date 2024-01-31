@@ -15,6 +15,7 @@ import { DTOAlertaStock } from '../interfaces/Alertas/Stock/DTOAlertaStock.inter
 import { DTOAlertaPedido } from '../interfaces/Alertas/Ventas/DTOAlertaPedido.interface';
 import { DTOFiltroAlertasPedidos } from '../interfaces/Alertas/Ventas/DTOFiltroAlertasPedidos.interface';
 import { DTODetallePedido } from '../interfaces/Alertas/Ventas/DTODetallePedido.interface';
+import { DTOUsuario } from '../interfaces/usuario.interfce';
 
 @Injectable({
   providedIn: 'root'
@@ -346,6 +347,18 @@ export class SharedService {
   //#endregion Alertas pedidos
 
 
+
+  //#region COLABORADORES
+  traerTodosLosColaboradores(): Observable<DTOUsuario[]> {
+    return this.http.get<DTOUsuario[]>(`${this.apiUrl}api/Usuario/traerTodos`)
+  }
+
+
+
+  eliminarColaborador(idColaborador: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}api/Usuario/eliminar?id=${idColaborador}`)
+  }
+  //#endregion COLABORADORES
 }
 
 

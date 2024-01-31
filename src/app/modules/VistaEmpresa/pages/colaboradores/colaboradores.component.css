@@ -1,0 +1,109 @@
+.sombraCard {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btnFinalizarCompra {
+    margin-top: 0.8rem;
+    height: 2rem;
+    padding: 10px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    /* color: rgb(255, 255, 255) !important; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(111, 111, 233, 0.164); */
+    font-size: 1rem;
+    border: 1px solid grey;
+
+
+}
+
+.btnFinalizarCompra:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: 1px solid grey;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+.btnFinalizarCompra:disabled {
+    background-color: rgb(207, 207, 207);
+    border: none;
+}
+
+.contenidoCard {}
+
+.contenidoCard div {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+
+
+.spanAlerta {
+    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.colorBajo {
+    background-color: rgb(255, 255, 152);
+}
+
+.colorSin {
+    background-color: rgb(255, 96, 96);
+}
+
+.BtnEliminarFiltros {
+
+    height: 1.4rem;
+    width: 1rem;
+    padding: 15px;
+    /*  border: 2px solid rgb(34, 167, 34); */
+    border-radius: 18px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    font-size: 1rem;
+    border: none;
+
+}
+
+.BtnEliminarFiltros:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    /* Sombra más pequeña para efecto de estar presionado */
+    transform: translateY(4px);
+    border: none;
+
+    /* Mueve aún más hacia abajo para simular que se está presionando */
+}
+
+.BtnFiltrar {
+
+    height: 1.4rem;
+    width: 6rem;
+    padding: 15px;
+    border-radius: 18px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azulBasico);
+    font-size: 1rem;
+    border: none;
+
+}
+
+.BtnFiltrar:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px);
+    border: none;
+}

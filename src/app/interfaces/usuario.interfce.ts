@@ -6,7 +6,7 @@ export interface DTOUsuario {
     nombre: string;
     apellido: string;
     telefono: string;
-    Correo: string;
+    correo: string;
     bajaLogica: boolean;
     tipoUsuario: number;
 }

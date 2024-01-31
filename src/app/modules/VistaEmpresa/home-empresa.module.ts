@@ -18,6 +18,7 @@ import { BandejaventasComponent } from './pages/bandejaventas/bandejaventas.comp
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 import { PerfilPersonaComponent } from './pages/perfil-persona/perfil-persona.component';
 import { DialogdetalleventaComponent } from './pages/bandejaventas/dialogdetalleventa/dialogdetalleventa.component';
+import { AgregareditarcolaboradoresComponent } from './pages/colaboradores/agregareditarcolaboradores/agregareditarcolaboradores.component';
 
 
 
@@ -37,7 +38,8 @@ import { DialogdetalleventaComponent } from './pages/bandejaventas/dialogdetalle
     BandejaventasComponent,
     ColaboradoresComponent,
     PerfilPersonaComponent,
-    DialogdetalleventaComponent
+    DialogdetalleventaComponent,
+    AgregareditarcolaboradoresComponent
   ],
   imports: [
     CommonModule,

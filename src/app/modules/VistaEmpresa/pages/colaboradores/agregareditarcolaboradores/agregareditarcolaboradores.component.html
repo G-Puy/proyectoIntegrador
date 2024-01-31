@@ -1,0 +1,45 @@
+<div mat-dialog [formGroup]="colaboradorForm">
+    <div mat-dialog-content>
+        <div class="spanAlerta color"
+            style="background-color:  var(--negroQueDiosa); color: var(--rosadoQueDiosaAl80);;">
+            <span class="material-symbols-outlined">
+                badge
+            </span>
+            <span *ngIf="data.soyAgregar == false" style="padding-left:0.5rem;">Usuario:
+            </span>
+            <span *ngIf="data.soyAgregar" style="padding-left:0.5rem;">Alta colaborador
+            </span>
+        </div>
+        <div *ngIf="data.soyAgregar == false" style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <input type="text" class="marginBot BasicInput" placeholder="Id" readonly formControlName="id"
+                style="padding-right: 2.2rem;">
+        </div>
+        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+            <input type="text" class="marginBot BasicInput" placeholder="Nombre" formControlName="nombre"
+                style="padding-right: 2.2rem;">
+        </div>
+        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+            <input type="text" class="marginBot BasicInput" placeholder="Apellido" formControlName="apellido"
+                style="padding-right: 2.2rem;">
+        </div>
+        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+            <input type="text" class="marginBot BasicInput" placeholder="Mail" formControlName="mail"
+                style="padding-right: 2.2rem;">
+        </div>
+        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
+            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+            <input type="text" class="marginBot BasicInput" placeholder="Telefono" formControlName="telefono"
+                style="padding-right: 2.2rem;">
+        </div>
+    </div>
+    <div *ngIf="validandoForm()" class="text-center" style="font-size: 0.8rem;">
+        <span style="color:  var(--colorAlerta)">Todos los campos son obligatorios</span>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 5rem;">
+        <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cancelar</button>
+        <button mat-button class="AcctionAceptar" [disabled]="validandoForm()" style="width: auto;">Aceptar</button>
+    </mat-dialog-actions>
+</div>
