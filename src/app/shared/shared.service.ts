@@ -25,6 +25,7 @@ export class SharedService {
   objParaTodosLosProductos: DTODataTodosLosProductos | undefined;
   // apiUrl = 'https://localhost:7202/';
   apiUrl = 'https://quediosa.azurewebsites.net/';
+
   constructor(
     private http: HttpClient,
     private router: Router) {

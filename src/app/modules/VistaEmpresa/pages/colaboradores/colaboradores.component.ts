@@ -21,7 +21,6 @@ export class ColaboradoresComponent implements OnInit {
   }
   ngOnInit(): void {
     this.traerTodosLosColaboradores();
-    this.openDialogAgregarEditar(true, null);
   }
 
   traerTodosLosColaboradores() {

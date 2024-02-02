@@ -84,30 +84,32 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
     this.colaborador.apellido = this.colaboradorForm.get('apellido')?.value;
     this.colaborador.telefono = this.colaboradorForm.get('telefono')?.value;
     this.colaborador.correo = this.colaboradorForm.get('mail')?.value;
+    this.colaborador.nombreDeUsuario = this.colaboradorForm.get('nombreDeUsuario')?.value;
     if (!this.data.soyAgregar) {
       this.colaborador.idUsuario = this.colaboradorForm.get('id')?.value;
       this.colaborador.contrasenia = this.colaboradorForm.get('pass')?.value;
+      this.colaborador.tipoUsuario = this.data.colaborador.tipoUsuario;
+
       this.editar();
     } else {
       this.alta();
     }
   }
   private alta() {
-    console.log(this.colaborador);
-
-    /*  this.sharedServ.altaColaborador(this.colaborador)
-       .subscribe({
-         next: (resultadoAlta) => {
-           if (resultadoAlta) {
-             this.formatearColaborador();
-             this.dialogRef.close({ result: resultadoAlta, error: "" });
-           } else {
-             this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
-           }
-         },
-         error: (error) => {
-         }
-       }); */
+    this.sharedServ.altaColaborador(this.colaborador)
+      .subscribe({
+        next: (resultadoAlta) => {
+          if (resultadoAlta) {
+            this.formatearColaborador();
+            this.dialogRef.close({ result: resultadoAlta, error: "Alta exitosa" });
+          } else {
+            this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
+          }
+        },
+        error: (error) => {
+          this.dialogRef.close({ result: error, error: "No se pudo realizar el alta" });
+        }
+      });
   }
   private editar() {
     this.sharedServ.modificarColaborador(this.colaborador)
@@ -115,12 +117,16 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
         next: (resultadoEdit) => {
           if (resultadoEdit) {
             this.formatearColaborador();
-            this.dialogRef.close({ result: resultadoEdit, error: "" });
+            this.dialogRef.close({ result: resultadoEdit, error: "Modificado correctamente" });
           } else {
-            this.dialogRef.close({ result: resultadoEdit, error: "No se pudo editar correctamente" });
+            this.dialogRef.close({ result: resultadoEdit, error: "No se pudo modificar correctamente" });
           }
         },
         error: (error) => {
+          console.log(error.error);
+          let er = 'No se pudo modificar el colaborador';
+          if (error == "Contrasenia invalida") er = 'Contraseña invalida'
+          this.dialogRef.close({ result: error, error: er });
         }
       });
 
