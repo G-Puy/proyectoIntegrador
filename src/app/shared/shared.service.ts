@@ -358,6 +358,16 @@ export class SharedService {
   eliminarColaborador(idColaborador: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}api/Usuario/eliminar?id=${idColaborador}`)
   }
+
+
+  altaColaborador(nuevoUsuario: DTOUsuario): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}api/Usuario/alta`, nuevoUsuario)
+  }
+  modificarColaborador(modificarUsuario: DTOUsuario): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}api/Usuario/modificar`, modificarUsuario)
+  }
+
+
   //#endregion COLABORADORES
 }
 

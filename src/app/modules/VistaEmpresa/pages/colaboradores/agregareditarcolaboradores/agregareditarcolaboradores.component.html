@@ -14,24 +14,28 @@
             <input type="text" class="marginBot BasicInput" placeholder="Id" readonly formControlName="id"
                 style="padding-right: 2.2rem;">
         </div>
-        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+        <div style="padding-top: 1rem;" *ngIf="data.soyAgregar">
+            <input type="text" class="marginBot BasicInput" placeholder="Nombre de usuario"
+                formControlName="nombreDeUsuario" style="padding-right: 2.2rem;">
+        </div>
+        <div style="padding-top: 1rem;">
             <input type="text" class="marginBot BasicInput" placeholder="Nombre" formControlName="nombre"
                 style="padding-right: 2.2rem;">
         </div>
-        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+        <div style="padding-top: 1rem;">
             <input type="text" class="marginBot BasicInput" placeholder="Apellido" formControlName="apellido"
                 style="padding-right: 2.2rem;">
         </div>
-        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+        <div style="padding-top: 1rem;">
             <input type="text" class="marginBot BasicInput" placeholder="Mail" formControlName="mail"
                 style="padding-right: 2.2rem;">
         </div>
-        <div style="padding-top: 1rem;"><!-- Datos Requeridos del producto -->
-            <!-- [ngClass]="{'requerido': txtNombre == ''}" -->
+        <div style="padding-top: 1rem;">
             <input type="text" class="marginBot BasicInput" placeholder="Telefono" formControlName="telefono"
+                style="padding-right: 2.2rem;">
+        </div>
+        <div *ngIf="data.soyAgregar == false" style="padding-top: 1rem;">
+            <input type="text" class="marginBot BasicInput" placeholder="Contraseña" formControlName="pass"
                 style="padding-right: 2.2rem;">
         </div>
     </div>
@@ -40,6 +44,7 @@
     </div>
     <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 5rem;">
         <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cancelar</button>
-        <button mat-button class="AcctionAceptar" [disabled]="validandoForm()" style="width: auto;">Aceptar</button>
+        <button mat-button class="AcctionAceptar" [disabled]="validandoForm()" (click)="realizarAccion();"
+            style="width: auto;">Aceptar</button>
     </mat-dialog-actions>
 </div>
