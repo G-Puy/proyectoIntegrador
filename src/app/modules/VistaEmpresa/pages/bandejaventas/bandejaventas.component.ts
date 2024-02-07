@@ -62,12 +62,12 @@ export class BandejaventasComponent implements OnInit {
 
   }
   abrirDialogEditar(idVenta: number) {
-    /*  const dialogRef = this.dialog.open(DialogdetalleventaComponent, {
-       width: '90vh',
-       data: {
-         idVenta: idVenta
-       }
-     }); */
+    const dialogRef = this.dialog.open(DialogdetalleventaComponent, {
+      width: '90vh',
+      data: {
+        idVenta: idVenta
+      }
+    });
   }
   vaciarCampo(cualVacio: string) {
 
@@ -95,20 +95,20 @@ export class BandejaventasComponent implements OnInit {
 
   }
   realizarPedido(idVenta: number) {
-    /*  this.sharedServ.confirmarAlertasPedidosFiltradas(idVenta).subscribe({
-       next: (response) => {
- 
-         if (response) {
-           this.funcionesGlobalesService.abrirSnack("El pedido fue realizado correctamente.", 2000, true);
-           this.cargarAlertas();
-         } else {
-           this.funcionesGlobalesService.abrirSnack("Error al realizar pedido", 2000, false);
-         }
-       },
-       error: (error) => {
-         this.funcionesGlobalesService.abrirSnack("Error al realizar el pedido", 2000, false);
- 
-       }
-     }) */
+    this.sharedServ.confirmarAlertasPedidosFiltradas(idVenta).subscribe({
+      next: (response) => {
+
+        if (response) {
+          this.funcionesGlobalesService.abrirSnack("El pedido fue realizado correctamente.", 2000, true);
+          this.cargarAlertas();
+        } else {
+          this.funcionesGlobalesService.abrirSnack("Error al realizar pedido", 2000, false);
+        }
+      },
+      error: (error) => {
+        this.funcionesGlobalesService.abrirSnack("Error al realizar el pedido", 2000, false);
+
+      }
+    })
   }
 }
