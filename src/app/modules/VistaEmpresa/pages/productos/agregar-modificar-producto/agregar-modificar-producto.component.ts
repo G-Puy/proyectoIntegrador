@@ -89,7 +89,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
 
       //*CARGO ID PRODUCTO
       this.productoEnviar.id = this.data.productoEdit.id;
-      console.log(this.data.productoEdit);
       //*CARGA NOMBRE
       this.txtNombre = this.data.productoEdit.nombre;
       //*CARGA PRECIO
@@ -155,8 +154,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       }
     } */
   clickeando() {
-    console.log(this.archivos);
-    console.log(this.silderImages);
   }
   ngAfterViewInit() {
 
@@ -245,7 +242,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
     if (this.data.soyAgregar == true) {
 
       console.group("ARCHIVO SELECCIONADO");
-      console.log(this.archivosSeleccionados);
       if ((this.archivosSeleccionados == null || this.archivosSeleccionados!?.length <= 0) && FileList.length == 0) {
         this.errorValidacion = "Debe subir almenos 1 imagen.";
         setTimeout(() => {
@@ -313,7 +309,6 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
       });
 
     } else {
-      console.log(dataEnvio);
       this.sharedServ.modificarProducto(dataEnvio).subscribe({
         next: (reusltadoModificar) => {
           // Si la llamada es exitosa, cerrar el diálogo con el resultado

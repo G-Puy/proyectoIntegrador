@@ -38,7 +38,6 @@ export class DialogCarritoComponent implements OnInit {
     this.total = 0;
     this.productosDelCarrito.forEach(producto => {
       this.total += (producto.precio * producto.cantidad);
-      console.log(this.total);
     });
 
   }

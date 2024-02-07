@@ -48,7 +48,6 @@ export class PagosComponent implements OnInit, AfterViewInit {
 
   }
   ngOnChanges(): void {
-    console.log("Entro a cambios");
     this.personaForm.reset();
     // Revisa si 'tipoEnvio' ha cambiado
 
@@ -161,9 +160,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
           }
         },
         error: (error) => {
-          console.log(error);
-          // Manejo de errores
-          // Si hubo un error con la petición, lo manejas aquí
+
         }
       });
   }

@@ -17,7 +17,6 @@ export class HomeEmpresaComponent {
   constructor(private sharedServ: SharedService) {
     this.traerCantidadAlrtStock();
     this.traerCantidadAlrtPedidos();
-    console.log(localStorage.getItem('tipoUsuario'));
     this.tipoUsuario = localStorage.getItem('tipoUsuario')!;
   }
 
@@ -27,7 +26,6 @@ export class HomeEmpresaComponent {
         this.cantAlertaPedidos = response;
       },
       error: (error) => {
-        console.log(error);
       }
     })
   }
@@ -37,7 +35,6 @@ export class HomeEmpresaComponent {
         this.cantAlertaStock = response;
       },
       error: (error) => {
-        console.log(error);
       }
     })
   }

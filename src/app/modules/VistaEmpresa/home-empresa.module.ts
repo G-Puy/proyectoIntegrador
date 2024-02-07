@@ -19,6 +19,7 @@ import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.comp
 import { PerfilPersonaComponent } from './pages/perfil-persona/perfil-persona.component';
 import { DialogdetalleventaComponent } from './pages/bandejaventas/dialogdetalleventa/dialogdetalleventa.component';
 import { AgregareditarcolaboradoresComponent } from './pages/colaboradores/agregareditarcolaboradores/agregareditarcolaboradores.component';
+import { CambioContrasniaComponent } from './pages/perfil-persona/cambioContrasenia/cambio-contrasnia.component';
 
 
 
@@ -39,7 +40,8 @@ import { AgregareditarcolaboradoresComponent } from './pages/colaboradores/agreg
     ColaboradoresComponent,
     PerfilPersonaComponent,
     DialogdetalleventaComponent,
-    AgregareditarcolaboradoresComponent
+    AgregareditarcolaboradoresComponent,
+    CambioContrasniaComponent
   ],
   imports: [
     CommonModule,

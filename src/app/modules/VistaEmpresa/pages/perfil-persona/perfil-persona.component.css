@@ -1,0 +1,15 @@
+.spanAlerta {
+    padding: 0.5rem 0.2rem 0.5rem 0.2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenidoCard {}
+
+.contenidoCard div {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}

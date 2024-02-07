@@ -63,7 +63,8 @@ export class NavBarGlobalEmpresaComponent {
   }
   openDialogPerfil() {
     const dialogRef = this.dialog.open(PerfilPersonaComponent, {
-      width: '500px',
+      width: '350px',
+      height: '380px',
       data: {},
       disableClose: true
     });

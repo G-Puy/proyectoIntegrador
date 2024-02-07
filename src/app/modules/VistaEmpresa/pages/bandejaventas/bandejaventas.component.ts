@@ -70,8 +70,7 @@ export class BandejaventasComponent implements OnInit {
      }); */
   }
   vaciarCampo(cualVacio: string) {
-    console.log("cualVacio");
-    console.log(cualVacio);
+
     switch (cualVacio) {
       case 'idVenta':
         this.codigoVenta = null;
@@ -107,7 +106,6 @@ export class BandejaventasComponent implements OnInit {
          }
        },
        error: (error) => {
-         console.log(error);
          this.funcionesGlobalesService.abrirSnack("Error al realizar el pedido", 2000, false);
  
        }

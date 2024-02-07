@@ -19,7 +19,6 @@ export class EditarstockComponent {
     private funcionesGlobalesService: FuncionesGlobalesService
   ) {
 
-    console.log(this.data);
 
 
 

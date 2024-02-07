@@ -1,0 +1,23 @@
+<div mat-dialog
+    style=" height: 100%; padding: 10px; border-radius: 15px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div mat-dialog-content>
+        <div class="spanAlerta color"
+            style="background-color:  var(--negroQueDiosa); color: var(--rosadoQueDiosaAl80);;">
+            <strong style="padding-left:0.5rem;">
+                Cambiar contraseña</strong>
+        </div>
+        <div class=" text-center" style="margin-top: 1rem;">
+            <input type="password" class="BasicInput" [(ngModel)]="passActual" placeholder="Contraseña actual">
+            <input type="password" class="BasicInput" [(ngModel)]="passNueva1" placeholder="Nueva contraseña"
+                style="margin-top: 0.5rem;">
+            <input type="password" class="BasicInput" [(ngModel)]="passNueva2" placeholder="Nueva contraseña"
+                style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            <span *ngIf="errorValidacionPassass != '' " style="color: var(--colorAlerta);">
+                {{errorValidacionPassass}}</span>
+        </div>
+    </div>
+    <mat-dialog-actions style="display: flex; justify-content: center;  gap: 4rem; height: 2rem;">
+        <button mat-button class="AcctionCancelar" [mat-dialog-close]="" style="width: auto;">Cerrar</button>
+        <button mat-button class="AcctionAceptar" style="width: auto;" (click)="aceptar()">Aceptar</button>
+    </mat-dialog-actions>
+</div>

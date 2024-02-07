@@ -30,7 +30,6 @@ export class ColaboradoresComponent implements OnInit {
           .filter(colaborador => colaborador.nombreDeUsuario !== localStorage.getItem('username'));
       },
       error: (error) => {
-        console.log(error);
       }
     })
   }

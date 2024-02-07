@@ -16,6 +16,7 @@ import { DTOAlertaPedido } from '../interfaces/Alertas/Ventas/DTOAlertaPedido.in
 import { DTOFiltroAlertasPedidos } from '../interfaces/Alertas/Ventas/DTOFiltroAlertasPedidos.interface';
 import { DTODetallePedido } from '../interfaces/Alertas/Ventas/DTODetallePedido.interface';
 import { DTOUsuario } from '../interfaces/usuario.interfce';
+import { DTOCambioPass } from '../interfaces/DTOCambioPass.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -370,6 +371,17 @@ export class SharedService {
 
 
   //#endregion COLABORADORES
+
+  //#region  PERFIL PERSONA 
+  modificarMiPass(modificarUsuario: DTOCambioPass): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}api/Usuario/modificarPass`, modificarUsuario)
+  }
+
+  cargarColaboradorPorId(idColaborador: number): Observable<DTOUsuario> {
+    return this.http.get<DTOUsuario>(`${this.apiUrl}api/Usuario/buscarPorId?id=${idColaborador}`)
+  }
+  //#endregion PERFIL PERSONA
+
 }
 
 

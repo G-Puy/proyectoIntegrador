@@ -123,7 +123,6 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
           }
         },
         error: (error) => {
-          console.log(error.error);
           let er = 'No se pudo modificar el colaborador';
           if (error == "Contrasenia invalida") er = 'Contraseña invalida'
           this.dialogRef.close({ result: error, error: er });

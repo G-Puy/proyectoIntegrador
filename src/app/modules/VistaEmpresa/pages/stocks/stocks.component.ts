@@ -54,7 +54,6 @@ export class StocksComponent implements OnInit {
           this.dataSourceOriginal.push(element);
         }
 
-        console.log(this.dataSourceOriginal);
         // Aquí asignas el resultado a dataSource y puedes usar sort
         this.dataSource = new MatTableDataSource(this.dataSourceOriginal); // Asegúrate de que esto es MatTableDataSource
         this.dataSource.sort = this.sort;

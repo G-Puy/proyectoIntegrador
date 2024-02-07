@@ -156,7 +156,6 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
       if (resultado.error != "") {
         this.funcionesGlobalesService.abrirSnack(resultado.error, 2000, false);
       } else if (resultado.result == true) {
-        console.log("hay error");
         this.funcionesGlobalesService.abrirSnack("Edición exitosa.", 2000, true);
         this.getAll();
       }

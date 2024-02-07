@@ -34,6 +34,7 @@ export class AuthService {
             localStorage.setItem('token', user.contrasenia.toString());
             localStorage.setItem('username', user.nombreDeUsuario.toString());
             localStorage.setItem('tipoUsuario', user.tipoUsuario.toString());
+            localStorage.setItem('idUsuario', user.idUsuario.toString());
           }
         })
 

@@ -46,7 +46,6 @@ export class DialogUnProductoComponent implements OnInit {
     this.cantidadSubject.next(nuevaCantidad); // Esto emitirá el nuevo valor
   }
   validarNumero(value: number): void {
-    console.log('Validar numero llamado con:', value);
     if (value == null) {
       this.cantidad = 1;
     } else if (value < 1) {
