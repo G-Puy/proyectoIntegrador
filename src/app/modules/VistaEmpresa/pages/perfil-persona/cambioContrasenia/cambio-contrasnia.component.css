@@ -4,3 +4,19 @@
     display: flex;
     align-items: center;
 }
+
+.noBorder :active {
+    border: none !important;
+}
+
+.noBorder :hover {
+    border: none !important;
+}
+
+.noBorder :focus {
+    border: none !important;
+}
+
+.noBorder :focus-visible {
+    border: none !important;
+}

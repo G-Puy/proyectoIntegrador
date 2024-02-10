@@ -23,6 +23,9 @@ export class CambioContrasniaComponent {
     contrasenia: '',
     contraseniaNueva: ''
   }
+  mostrarActual: boolean = false;
+  mostrarNueva1: boolean = false;
+  mostrarNueva2: boolean = false;
 
   errorValidacionPassass: string = "";
 
