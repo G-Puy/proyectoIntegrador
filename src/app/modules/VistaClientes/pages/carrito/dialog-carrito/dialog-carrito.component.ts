@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { AceptarCancelarDialogComponent } from 'src/app/components/aceptar-cancelar-dialog/aceptar-cancelar-dialog.component';
 import { objCarritoYProcesoDeCompra } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { recibirProductoDTOBack } from 'src/app/interfaces/DTOsTraerTodosBack/recibirProductoDTOBack.interface';
@@ -15,6 +16,13 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class DialogCarritoComponent implements OnInit {
   productosDelCarrito: objCarritoYProcesoDeCompra[] = [];
   total: number = 0;
+
+
+  private cantidadSubject = new Subject<number>();
+  cantidad$ = this.cantidadSubject.asObservable();
+  public cantidad: number = 1;
+
+
   constructor(
     private sharedServ: SharedService,
     public dialogRef: MatDialogRef<DialogCarritoComponent>,
@@ -26,6 +34,18 @@ export class DialogCarritoComponent implements OnInit {
   }
   ngOnInit(): void {
     this.contarTotal();
+    this.cantidad$.subscribe(value => {
+      this.validarNumero(value);
+    });
+  }
+  validarNumero(value: number): void {
+    if (value == null) {
+      this.cantidad = 1;
+    } else if (value < 1) {
+      this.cantidad = 1;
+    } else if (value > 20) {
+      this.cantidad = 20;
+    }
   }
   cargaSrc(producto: objCarritoYProcesoDeCompra) {
     return this.funcionesGlobalesService.cargarSrcCompras(producto);
@@ -47,6 +67,7 @@ export class DialogCarritoComponent implements OnInit {
     this.sharedServ.vaciarCarrito();
     //Cargar nuevos productos
     this.productosDelCarrito.forEach(productoAdd => {
+      if (productoAdd.cantidad <= 0) { productoAdd.cantidad = 1; }
       this.sharedServ.agregarProducto(productoAdd);
     });
     //Cargar nueva Lista al local Storage
