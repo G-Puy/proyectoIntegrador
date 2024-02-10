@@ -9,8 +9,8 @@ import { environment } from '../../../../environments/environment';
 })
 export class AuthService {
 
-  //apiUrl = 'https://localhost:7202/';
-  apiUrl = 'https://quediosa.azurewebsites.net/';
+  apiUrl = 'https://localhost:7202/';
+  //apiUrl = 'https://quediosa.azurewebsites.net/';
 
 
   private usuarioLogin: DTOUsuarioLogin | null = null;
