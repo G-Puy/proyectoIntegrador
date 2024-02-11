@@ -240,10 +240,16 @@ export class SharedService {
     return carrito ? JSON.parse(carrito) : [];
   }
 
-
-  quitarProductoDeCarrito(idProducto: number) {
+  /* //!ACA ESTA EL PROBLEMA */
+  quitarProductoDeCarrito(productoEliminar: objCarritoYProcesoDeCompra) {
+    console.log(productoEliminar);
     let carrito: objCarritoYProcesoDeCompra[] = this.obtenerCarrito();
-    carrito = carrito.filter(producto => producto.idProducto !== idProducto);
+    console.log(carrito);
+
+    carrito = carrito.filter(producto =>
+      !(producto.idProducto === productoEliminar.idProducto
+        && producto.color.id === productoEliminar.color.id
+        && producto.talle.id === productoEliminar.talle.id));
     localStorage.setItem(this.storageKey, JSON.stringify(carrito));
   }
   existeProductoEnCarrito(productoAdd: objCarritoYProcesoDeCompra): boolean {

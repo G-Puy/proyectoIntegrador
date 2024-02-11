@@ -81,8 +81,8 @@ export class DialogCarritoComponent implements OnInit {
     this.cargarProductosDeLocalStorage();
     this.total = 0;
   }
-  private sacarProductoDeCarrito(idProducto: number) {
-    this.sharedServ.quitarProductoDeCarrito(idProducto);
+  private sacarProductoDeCarrito(prod: objCarritoYProcesoDeCompra) {
+    this.sharedServ.quitarProductoDeCarrito(prod);
     this.cargarProductosDeLocalStorage();
     this.contarTotal();
   }
@@ -96,7 +96,7 @@ export class DialogCarritoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.sacarProductoDeCarrito(obj.idProducto);
+        this.sacarProductoDeCarrito(obj);
       }
     });
   }
