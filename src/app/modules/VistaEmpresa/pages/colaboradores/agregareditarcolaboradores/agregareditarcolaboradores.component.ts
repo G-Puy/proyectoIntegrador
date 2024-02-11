@@ -38,7 +38,7 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
       pass: new FormControl(''),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
-      telefono: new FormControl('', Validators.required),
+      telefono: new FormControl('', [Validators.required, Validators.pattern('^0{1}9{1}[0-9]{7}$')]),
       mail: new FormControl('', [Validators.required, Validators.email])
     });
   }
@@ -116,8 +116,6 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
       .subscribe({
         next: (resultadoEdit) => {
 
-          console.log("Resultado NEXT");
-          console.log(resultadoEdit);
           this.formatearColaborador();
           this.dialogRef.close({ result: true, error: "" });
         },
