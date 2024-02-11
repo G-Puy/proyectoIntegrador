@@ -60,38 +60,22 @@ export class CambioContrasniaComponent {
     return true;
   }
 
-  private analizarRequisitosPass() {
 
-
-    /*  this.errorValidacionPassass = "La contraseña nueva no cumple los requisitos";
-     setTimeout(() => {
-       this.errorValidacionPassass = "";
-     }, 3000); */
-
-
-    return true;
-  }
 
   aceptar() {
     if (this.controles() == false) {
       return;
-    } else if (this.analizarRequisitosPass() == false) {
-      return;
-    } else {
+    }
+    else {
       this.objCambiarPass.id = this.data.personaData.idUsuario;
       this.objCambiarPass.contrasenia = this.passActual;
       this.objCambiarPass.contraseniaNueva = this.passNueva1;
       this.objCambiarPass.nombreDeUsuario = this.data.personaData.nombreDeUsuario;
       this.sharedServ.modificarMiPass(this.objCambiarPass)
         .subscribe({
-          next: (resultadoEliminar) => {
-            if (resultadoEliminar) {
-              this.funcionesGlobalesService.abrirSnack("El cambio fue exitoso.", 3000, true);
-              this.dialogRef.close();
-            }
-            else {
-              this.funcionesGlobalesService.abrirSnack("No se pudo realizar el cambio", 3000, true);
-            }
+          next: (resultadoModificarMiPas) => {
+            this.funcionesGlobalesService.abrirSnack("El cambio fue exitoso.", 3000, true);
+            this.dialogRef.close();
           },
           error: (error) => {
             this.funcionesGlobalesService.abrirSnack(error.error, 3000, false);

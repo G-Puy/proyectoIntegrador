@@ -101,7 +101,7 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
         next: (resultadoAlta) => {
           if (resultadoAlta) {
             this.formatearColaborador();
-            this.dialogRef.close({ result: resultadoAlta, error: "Alta exitosa" });
+            this.dialogRef.close({ result: true, error: "" });
           } else {
             this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
           }
@@ -115,17 +115,18 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
     this.sharedServ.modificarColaborador(this.colaborador)
       .subscribe({
         next: (resultadoEdit) => {
-          if (resultadoEdit) {
-            this.formatearColaborador();
-            this.dialogRef.close({ result: resultadoEdit, error: "Modificado correctamente" });
-          } else {
-            this.dialogRef.close({ result: resultadoEdit, error: "No se pudo modificar correctamente" });
-          }
+
+          console.log("Resultado NEXT");
+          console.log(resultadoEdit);
+          this.formatearColaborador();
+          this.dialogRef.close({ result: true, error: "" });
         },
         error: (error) => {
-          let er = 'No se pudo modificar el colaborador';
-          if (error == "Contrasenia invalida") er = 'Contraseña invalida'
-          this.dialogRef.close({ result: error, error: er });
+          /*  console.log("Resultado error");
+           console.log(error);
+           let er = 'No se pudo modificar el colaborador';
+           if (error == "Contrasenia invalida") er = 'Contraseña invalida' */
+          this.dialogRef.close({ result: error, error: error.mensaje });
         }
       });
 

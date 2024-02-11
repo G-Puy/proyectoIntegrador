@@ -72,6 +72,7 @@ export class ColaboradoresComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result.error);
       if (result.error != "") {
         this.funcionesGlobalesService.abrirSnack(result.error, 2000, false);
       } else if (result.result == true) {

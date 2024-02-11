@@ -24,8 +24,8 @@ import { DTOCambioPass } from '../interfaces/DTOCambioPass.interface';
 export class SharedService {
   todosLosProductos: recibirProductoDTOBack[] = [];
   objParaTodosLosProductos: DTODataTodosLosProductos | undefined;
-  apiUrl = 'https://localhost:7202/';
-  // apiUrl = 'https://quediosa.azurewebsites.net/';
+  // apiUrl = 'https://localhost:7202/';
+  apiUrl = 'https://quediosa.azurewebsites.net/';
 
   constructor(
     private http: HttpClient,
@@ -365,8 +365,8 @@ export class SharedService {
   altaColaborador(nuevoUsuario: DTOUsuario): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}api/Usuario/alta`, nuevoUsuario)
   }
-  modificarColaborador(modificarUsuario: DTOUsuario): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}api/Usuario/modificar`, modificarUsuario)
+  modificarColaborador(modificarUsuario: DTOUsuario): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}api/Usuario/modificar`, modificarUsuario)
   }
 
 
