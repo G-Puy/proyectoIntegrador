@@ -19,7 +19,7 @@ export class HomeClientesComponent {
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService) {
-    this.sharedServ.cargarTodasLosProductos();
+    this.sharedServ.cargarTodasLosProductos('homeProductos');
     this.todosLosProductos = this.sharedServ.obtenerProductosCargados();
     //this.traerTodasLosProductos();
   }
@@ -31,7 +31,9 @@ export class HomeClientesComponent {
       if (data) {
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
-          this.todosLosProductos.push(element);
+          if (element.visibleEnWeb == true) {
+            this.todosLosProductos.push(element);
+          }
         }
       }
     }, error => {

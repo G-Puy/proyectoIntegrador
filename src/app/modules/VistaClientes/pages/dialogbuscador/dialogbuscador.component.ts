@@ -41,7 +41,8 @@ export class DialogbuscadorComponent {
 
   openUnProducto(producto: recibirProductoDTOBack) {
     const dialogRef = this.dialog.open(DialogUnProductoComponent, {
-      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
+      // width: this.funcionesGlobalesService.tamMaxDialogMobile(),
+      width: '400px',
       data: { producto: producto },
       disableClose: false  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });

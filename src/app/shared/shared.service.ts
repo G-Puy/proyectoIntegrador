@@ -34,13 +34,17 @@ export class SharedService {
 
 
   //#region
-  public cargarTodasLosProductos() {
+  public cargarTodasLosProductos(origen: string = '') {
     this.todosLosProductos = [];
     this.traerTodosLosProductos().subscribe(data => {
       if (data) {
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
-          this.todosLosProductos.push(element);
+          if (origen == "homeProductos" && element.visibleEnWeb == true) {
+            this.todosLosProductos.push(element);
+          } else if (origen == '') {
+            this.todosLosProductos.push(element);
+          }
         }
       }
     }, error => {

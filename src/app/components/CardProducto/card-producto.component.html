@@ -1,15 +1,21 @@
 <div class="cardProducto">
     <div>
-        <img [src]="darSrcProducto()" alt="" class="tamImgCard">
+        <div class="contenedorImagen" style="position: relative;">
+            <img [src]="darSrcProducto()" alt="" class="tamImgCard">
+            <div class="divSuperpuesto" *ngIf="objetoProducto?.nuevo == true">
+                <div>
+                    <p>NUEVO</p>
+                </div>
+            </div>
+        </div>
         <p class="P">{{objetoProducto?.nombre}}</p>
         <div class="">
             <div class="contenedorPrecios">
-                <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
                 <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;"
                     *ngIf="objetoProducto?.precioAnterior! > 0">
-                    ${{objetoProducto?.precioAnterior}}</p>
-                <!-- ACA VA EL PRECIO ANTERIOR -->
-                <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+                    ${{objetoProducto?.precioActual}}</p>
+                <p *ngIf="objetoProducto?.precioAnterior! > 0">${{objetoProducto?.precioAnterior}}</p>
+                <p *ngIf="objetoProducto?.precioAnterior! <= 0">${{objetoProducto?.precioActual}}</p>
             </div>
         </div>
     </div>

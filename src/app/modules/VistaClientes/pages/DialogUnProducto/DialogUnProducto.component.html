@@ -1,37 +1,43 @@
 <div mat-dialog class="containerUnProducto">
-    <div mat-dialog-content style="color: black;">
-
+    <div mat-dialog-content style="color: black; width: 100%;">
         <h1 class=" text-center backGroundRosaQD">{{objetoProducto?.nombre}}</h1>
         <hr class="backGroundRosaQD">
-        <div style="position: relative; max-height: 17rem;" *ngIf="silderImages.length != 0">
-            <div style="justify-content: center; align-items: center;">
-
-                <img src="{{silderImages[iteradorImg]}}" alt=""
-                    style="max-height: 17rem; min-height: 17rem; width: 100%;">
-            </div>
-            <!-- DIV botones con posición absoluta -->
-            <div *ngIf="silderImages.length > 1"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
-                <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()"
-                    style="margin-left: 8px;">
-                    arrow_back_ios
-                </span>
-                <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
-                    arrow_forward_ios
-                </span>
+        <div class="text-center">
+            <div class="contenedorImagen" *ngIf="silderImages.length != 0">
+                <div style="justify-content: center; align-items: center;">
+                    <!-- style="max-height: 17rem; min-height: 17rem; width: 100%;" -->
+                    <img src="{{silderImages[iteradorImg]}}" alt=""
+                        style="max-height: 18rem; min-height: 17rem; width: 100%;" class="tamImgCard">
+                    <div class="divSuperpuesto" *ngIf="objetoProducto?.nuevo == true">
+                        <div>
+                            <p>NUEVO</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- DIV botones con posición absoluta -->
+                <div *ngIf="silderImages.length > 1"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; background-color: transparent;">
+                    <span class="material-symbols-outlined estiloFlechas" (click)="iterarIzquierda()"
+                        style="margin-left: 8px;">
+                        arrow_back_ios
+                    </span>
+                    <span class="material-symbols-outlined estiloFlechas" (click)="iterarDerecha()">
+                        arrow_forward_ios
+                    </span>
+                </div>
             </div>
         </div>
+
         <!-- <img [src]="darSrcProducto()" alt="" class="tamImgCard"> -->
         <hr class="backGroundRosaQD">
         <div class="divsContenedoresDuos">
             <p class="marginAlineadorTexto"><strong>Precio:</strong></p>
             <div class="contenedorPrecios">
-                <!-- Agregar condicion cuando tiene precio oferta el precio anterior tiene que aprecer en gris -->
                 <p style="font-size: 16px;  text-decoration-line: line-through; color: grey;"
                     *ngIf="objetoProducto?.precioAnterior! > 0">
-                    ${{objetoProducto?.precioAnterior}}</p>
-
-                <p>${{objetoProducto?.precioActual}}</p><!-- Aca el precio actual -->
+                    ${{objetoProducto?.precioActual}}</p>
+                <p *ngIf="objetoProducto?.precioAnterior! > 0">${{objetoProducto?.precioAnterior}}</p>
+                <p *ngIf="objetoProducto?.precioAnterior! <= 0">${{objetoProducto?.precioActual}}</p>
             </div>
         </div>
         <div class="divsContenedoresDuos">
@@ -62,7 +68,7 @@
         </div>
         <div style="padding-bottom: 1rem;"><!-- DIV2 -->
             <p><strong>Guia de talles</strong> </p>
-            <p style=" font-size: 17px;">{{objetoProducto?.guiaTalles}}</p>
+            <div style=" font-size: 17px;">{{objetoProducto?.guiaTalles}}</div>
         </div>
     </div>
 
