@@ -156,6 +156,14 @@
 /* INFO */
 .sectionInfo {
     padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 992px) {
+        display: block;
+
+    }
 }
 
 .divInfo {
@@ -185,11 +193,24 @@
     margin-bottom: 0.8rem;
 }
 
+.infoFooter {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
 
+.datosFooter ul {
+    padding: 0px;
+}
 
 /* FOOTER */
 @media screen and (max-width: 425px) {
 
+    .infoFooter {
+        display: block;
+
+        margin-bottom: 25px;
+    }
 
     .SectionppRODUCTOS {
         background-color: var(--negroQueDiosa);

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg justify-content-between align-items-center"
-    style="background-color: var(--negroQueDiosa);     ">
+    style="background-color: var(--negroQueDiosa);  cursor: pointer   ">
     <span class="material-symbols-outlined col-1" style="color: var(--rosadoQueDiosa); font-size: 2rem; padding: 0; "
         *ngIf="mostrarIcono" (click)="accion()">
         {{icono}}
@@ -14,11 +14,11 @@
     </div>
     <div>
         <span class=" material-symbols-outlined" *ngIf="mostrarBuscador"
-            style="color: var(--rosadoQueDiosa); margin-right: 1rem;" (click)="openBuscadorProductos()">
+            style="color: var(--rosadoQueDiosa); margin-right: 1rem; cursor: pointer" (click)="openBuscadorProductos()">
             search
         </span>
-        <span class="material-symbols-outlined" *ngIf="mostrarCarrito" style="color: var(--rosadoQueDiosa);"
-            (click)="openCarrito()">
+        <span class="material-symbols-outlined" *ngIf="mostrarCarrito"
+            style="color: var(--rosadoQueDiosa); cursor: pointer" (click)="openCarrito()">
             shopping_cart
         </span>
     </div>

@@ -15,49 +15,56 @@
                     Eliminar filtros 
                 </mat-panel-description> -->
             </mat-expansion-panel-header>
-            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+            <div>
                 <!--  <p style="font-size: 1.2rem;">Modalidad de busquedas</p> -->
-                <div
-                    style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 100%;">
-                    <div
-                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem; width: 327px;">
-                        <input type="number" class="BasicInput" placeholder="Codigo venta"
-                            style="padding-right: 2.2rem;" [(ngModel)]="codigoVenta">
-                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
-                            (click)="vaciarCampo('idVenta')">
-                            <span class="material-icons BasicBtnCruz">close</span>
-                        </button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
+                            <input type="number" class="BasicInput" placeholder="Codigo venta"
+                                style="padding-right: 2.2rem;" [(ngModel)]="codigoVenta">
+                            <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                                (click)="vaciarCampo('idVenta')">
+                                <span class="material-icons BasicBtnCruz">close</span>
+                            </button>
+                        </div>
                     </div>
-                    <div
-                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;  width: 327px;">
-                        <input type="text" class="BasicInput" placeholder="Nombre cliente"
-                            style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.nombre">
-                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
-                            (click)="vaciarCampo('nombreCliente')">
-                            <span class="material-icons BasicBtnCruz">close</span>
-                        </button>
+                    <div class="col-md-6">
+                        <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
+                            <input type="text" class="BasicInput" placeholder="Nombre cliente"
+                                style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.nombre">
+                            <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                                (click)="vaciarCampo('nombreCliente')">
+                                <span class="material-icons BasicBtnCruz">close</span>
+                            </button>
+                        </div>
                     </div>
-                    <div
-                        style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;  width: 327px;">
-                        <input type="text" class="BasicInput" placeholder="Apellido cliente"
-                            style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.apellido">
-                        <button class="clear-button" aria-label="Clear" style="top: 10px;"
-                            (click)="vaciarCampo('apellidoCliente')">
-                            <span class="material-icons BasicBtnCruz">close</span>
-                        </button>
+                    <div class="col-md-6">
+                        <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
+                            <input type="text" class="BasicInput" placeholder="Apellido cliente"
+                                style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.apellido">
+                            <button class="clear-button" aria-label="Clear" style="top: 10px;"
+                                (click)="vaciarCampo('apellidoCliente')">
+                                <span class="material-icons BasicBtnCruz">close</span>
+                            </button>
+                        </div>
                     </div>
-                    <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
-                        placeholder="Estado del pedido" [(ngModel)]="filtroAlertas.realizado">
-                        <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
-                        <mat-option style="font-size: 0.8rem;" value="realizado">Realizado</mat-option>
-                        <mat-option style="font-size: 0.8rem;" value="noRealizado">No realizado</mat-option>
-                    </mat-select>
-                    <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
-                        placeholder="Modalidad de entrega" [(ngModel)]="filtroAlertas.envioRetiro">
-                        <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
-                        <mat-option style="font-size: 0.8rem;" value="enviar">Enviar</mat-option>
-                        <mat-option style="font-size: 0.8rem;" value="retira">Retira en local</mat-option>
-                    </mat-select>
+                    <div class="col-md-6">
+
+                        <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
+                            placeholder="Estado del pedido" [(ngModel)]="filtroAlertas.realizado">
+                            <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="realizado">Realizado</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="noRealizado">No realizado</mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
+                            placeholder="Modalidad de entrega" [(ngModel)]="filtroAlertas.envioRetiro">
+                            <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="enviar">Enviar</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="retira">Retira en local</mat-option>
+                        </mat-select>
+                    </div>
                 </div>
 
                 <div style="

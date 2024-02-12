@@ -74,6 +74,8 @@
     background-color: none;
     font-size: 1rem;
     border: none;
+    cursor: pointer;
+
 
 }
 
@@ -99,7 +101,7 @@
     background-color: var(--azulBasico);
     font-size: 1rem;
     border: none;
-
+    cursor: pointer;
 }
 
 .BtnFiltrar:active {
