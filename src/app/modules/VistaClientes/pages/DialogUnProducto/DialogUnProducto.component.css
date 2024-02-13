@@ -91,6 +91,10 @@
     /* Mueve aún más hacia abajo para simular que se está presionando */
 }
 
+.AcctionAceptar:disabled {
+    background-color: grey;
+}
+
 
 
 

@@ -7,6 +7,11 @@
                     <p>NUEVO</p>
                 </div>
             </div>
+            <div class="divSuperpuesto" *ngIf="cantidad <= 0">
+                <div>
+                    <p>SIN STOCK</p>
+                </div>
+            </div>
         </div>
         <p class="P">{{objetoProducto?.nombre}}</p>
         <div class="">

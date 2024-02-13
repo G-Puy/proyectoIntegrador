@@ -24,7 +24,7 @@ export class DialogUnProductoComponent implements OnInit {
   private cantidadSubject = new Subject<number>();
   cantidad$ = this.cantidadSubject.asObservable();
   public cantidad: number = 1;
-
+  cantidadStock: number = 0;
   constructor(
     private sharedServ: SharedService,
     public dialogRef: MatDialogRef<DialogUnProductoComponent>,
@@ -41,6 +41,7 @@ export class DialogUnProductoComponent implements OnInit {
     this.cantidad$.subscribe(value => {
       this.validarNumero(value);
     });
+    this.cantidadStock = this.objetoProducto?.stock.cantidad!;
   }
   actualizarCantidad(nuevaCantidad: number): void {
     this.cantidadSubject.next(nuevaCantidad); // Esto emitirá el nuevo valor

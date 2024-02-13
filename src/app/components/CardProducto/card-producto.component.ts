@@ -1,6 +1,6 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DTOProductoEnvio } from 'src/app/interfaces/DTOsEnvio/productoEnvioDTO.interface';
@@ -14,15 +14,20 @@ import { SharedService } from 'src/app/shared/shared.service';
   templateUrl: './card-producto.component.html',
   styleUrls: ['./card-producto.component.css']
 })
-export class CardProductoComponent {
+export class CardProductoComponent implements OnInit {
   @Input() objetoProducto: recibirProductoDTOBack | undefined;
-
+  cantidad: number = 0;
   constructor(
     private overlay: Overlay,
     public dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private sharedServ: SharedService,
     private funcionesGlobalesService: FuncionesGlobalesService) {
+
+  }
+  ngOnInit(): void {
+    this.cantidad = this.objetoProducto!?.stock.cantidad;
+    console.log(this.cantidad);
   }
   public darSrcProducto(): string {
     return `data:image/${this.objetoProducto!.imagenes[0].extension};base64,${this.objetoProducto!.imagenes[0].imagen}`;

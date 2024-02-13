@@ -13,6 +13,11 @@
                             <p>NUEVO</p>
                         </div>
                     </div>
+                    <div class="divSuperpuesto" *ngIf="cantidadStock <= 0">
+                        <div>
+                            <p>SIN STOCK</p>
+                        </div>
+                    </div>
                 </div>
                 <!-- DIV botones con posición absoluta -->
                 <div *ngIf="silderImages.length > 1"
@@ -76,6 +81,7 @@
 </div>
 <mat-dialog-actions style="display: flex; justify-content: center;gap: 2rem;">
     <button mat-button class="" [mat-dialog-close]="" style="width: auto;">Atras</button>
-    <button mat-button class="AcctionAceptar" (click)="agregarAlCarrito()" style="width: auto;">Agregar al
+    <button *ngIf="cantidadStock > 0" mat-button class="AcctionAceptar" (click)="agregarAlCarrito()"
+        style="width: auto;">Agregar al
         carrito</button>
 </mat-dialog-actions>
