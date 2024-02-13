@@ -85,7 +85,7 @@ export class ProductosComponent {
       if (data) {
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
-          this.todosLosProductosFiltrados.push(element);
+          this.todosLosProductos.push(element);
         }
       }
     }, error => {
