@@ -19,6 +19,11 @@ import { DTOImagen } from 'src/app/interfaces/DTOImagen.interface';
 export class ProductosComponent {
 
   todosLosProductos: recibirProductoDTOBack[] = [];
+  todosLosProductosFiltrados: recibirProductoDTOBack[] = [];
+  opcionBusqueda: string = "Nombre";
+  parametroFiltradoNombre: string = "";
+  parametroFiltradoId: number | null = null;
+  panelOpenState = true;
 
   constructor(
     public dialog: MatDialog,
@@ -53,7 +58,6 @@ export class ProductosComponent {
   }
   ngOnInit(): void {
     this.traerTodasLosProductos();
-
   }
 
   url = window.URL.createObjectURL(new Blob([], { type: 'image/png' }));
@@ -81,7 +85,7 @@ export class ProductosComponent {
       if (data) {
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
-          this.todosLosProductos.push(element);
+          this.todosLosProductosFiltrados.push(element);
         }
       }
     }, error => {
@@ -92,8 +96,51 @@ export class ProductosComponent {
     return `data:image/${producto.imagenes[0].extension};base64,${producto.imagenes[0].imagen}`;
 
   }
-
-
+  vaciarInputs(tipoFiltrado: string) {
+    if (tipoFiltrado == "Nombre") {
+      this.parametroFiltradoId = null;
+    } else {
+      this.parametroFiltradoNombre = "";
+    }
+  }
+  vaciarCampoFiltro(tipoFiltrado: string) {
+    if (tipoFiltrado == "Nombre") {
+      this.parametroFiltradoNombre = "";
+    } else {
+      this.parametroFiltradoId = null;
+    }
+  }
+  filtrar() {
+    this.todosLosProductosFiltrados = [];
+    if (this.parametroFiltradoId != null || this.parametroFiltradoNombre != "") {
+      switch (this.opcionBusqueda) {
+        case 'Id':
+          for (let index = 0; index < this.todosLosProductos.length; index++) {
+            const productoActual = this.todosLosProductos[index];
+            if (productoActual.id == this.parametroFiltradoId) {
+              this.todosLosProductosFiltrados.push(productoActual);
+            }
+          }
+          break;
+        case 'Nombre':
+          for (let index = 0; index < this.todosLosProductos.length; index++) {
+            const productoActual = this.todosLosProductos[index];
+            if (productoActual.nombre.toUpperCase().includes(this.parametroFiltradoNombre.toUpperCase())) {
+              this.todosLosProductosFiltrados.push(productoActual);
+            }
+          }
+          break;
+      }
+    } else {
+      this.todosLosProductosFiltrados = this.todosLosProductos.slice();
+    }
+  }
+  vaciarFiltros() {
+    this.parametroFiltradoNombre = "";
+    this.parametroFiltradoId = null;
+    this.opcionBusqueda = "Nombre";
+    this.filtrar();
+  }
   openDialogEliminar(producto: recibirProductoDTOBack) {
 
     const dialogRef = this.dialog.open(AceptarCancelarDialogComponent, {

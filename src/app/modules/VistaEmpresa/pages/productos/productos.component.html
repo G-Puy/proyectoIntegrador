@@ -1,5 +1,4 @@
 <div class="col-md-12 p-0" style="padding-bottom: 0.8rem !important;">
-
     <div style="background-color: var(--rosadoQueDiosaAl80); height: 2.5rem; "
         class="d-flex align-items-center sombra justify-content-between p-2">
         <span class="">PRODUCTOS</span>
@@ -10,13 +9,83 @@
             </span>
         </div>
     </div>
-    <div *ngFor="let producto of todosLosProductos" style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
+    <mat-accordion style="width: 360px; margin-top: 2rem;">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Filtrar
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+                <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 2rem; ">
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input *ngIf="opcionBusqueda == 'Nombre'" type="text" class="BasicInput"
+                            [(ngModel)]="parametroFiltradoNombre" placeholder="Nombre producto"
+                            style="padding-right: 2.2rem;">
+                        <input *ngIf="opcionBusqueda != 'Nombre'" type="number" class="BasicInput"
+                            [(ngModel)]="parametroFiltradoId" placeholder="Id producto" style="padding-right: 2.2rem;">
+
+                        <button *ngIf="opcionBusqueda" class="clear-button" aria-label="Clear"
+                            (click)="vaciarCampoFiltro(opcionBusqueda)" style="top: 10px;">
+                            <span class="material-icons BasicBtnCruz">close</span>
+                        </button>
+                    </div>
+                    <div style="background-color: var(--rosadoQueDiosaAl80); " (click)="filtrar()"
+                        class=" botonCircularSimple">
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </div>
+                    <span class="material-symbols-outlined" style="margin-left: 0.8rem; font-size: 2rem;"
+                        matTooltip="Eliminar filtrado" (click)="vaciarFiltros()">
+                        delete
+                    </span>
+                </div>
+                <div class="text-center">
+                    <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
+                    <mat-radio-group class="radio-buttons-column"
+                        style="font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                        <!--                 <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
+                        </label> -->
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda"
+                                (change)="vaciarInputs('Nombre')" value="Nombre">
+                            Nombre
+                        </label>
+                        <label class="radio-button-label">
+                            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"
+                                (change)="vaciarInputs('')"> Id
+                            producto
+                        </label>
+
+                    </mat-radio-group>
+                </div>
+
+
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div *ngIf="todosLosProductosFiltrados.length == 0" class="text-center" style="margin-top: 2rem;">
+        <span>No se han filtrado productos.</span>
+    </div>
+    <div *ngFor="let producto of todosLosProductosFiltrados"
+        style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
         <div
             style="border-radius: 5px; padding: 0.5rem; display: flex; justify-content: space-between;  gap: 0.5rem; background-color: var(--negroQueDiosa);">
             <div style="display: flex; justify-content: center; align-items: center;">
                 <div class="text-center"
-                    style="background-color: rgb(255, 255, 255); min-width: 6rem; height: 7rem; border-radius: 5px;">
+                    style="background-color: rgb(255, 255, 255); min-width: 6rem; height: 7rem; border-radius: 5px; position: relative;">
                     <img style="width: 100%; height: 100%; object-fit: cover;" [src]="cargarSrc(producto)" alt="">
+                    <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: flex-end; background-color: rgba(0, 0, 0, 0);">
+                        <span
+                            style="color: black; font-size: large; background-color: white; border-radius: 5px; padding: 1px; margin-bottom: 0.3rem;"
+                            class="sombra2">
+                            <p style="margin: 0;">Id: {{producto.id}}</p>
+                        </span>
+                    </div>
                 </div>
                 <div style="padding-left: 5px;">
 
