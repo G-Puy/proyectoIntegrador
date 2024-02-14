@@ -1,4 +1,7 @@
 <div mat-dialog>
+    <div style="min-width: 100%;" class="text-center">
+        <h1 style="background-color: var(--rosadoQueDiosaAl80); font-size: 18px;">Producto: {{data.nombre}}</h1>
+    </div>
     <div mat-dialog-content>
         <section>
             <div *ngFor="let talle of data.stockCompleto.talles">

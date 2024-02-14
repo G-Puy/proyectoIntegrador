@@ -110,12 +110,12 @@ export class StocksComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
     this.dataSource.sort = this.sort;
   }
-  public openDialogEditarStock(stock: DTOStockEnvio): void {
+  public openDialogEditarStock(stock: DTOStockEnvio, nombreProducto: string): void {
 
 
     const dialogRef = this.dialog.open(EditarstockComponent, {
       width: this.funcionesGlobalesService.tamMaxDialogMobile(),
-      data: { stockCompleto: stock },
+      data: { stockCompleto: stock, nombre: nombreProducto },
       disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
     });
 

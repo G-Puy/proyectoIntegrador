@@ -80,7 +80,7 @@
         <ng-container matColumnDef="editar">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell *matCellDef="let productoActual"><span class="material-symbols-outlined"
-                    (click)="openDialogEditarStock(productoActual.stock)">
+                    (click)="openDialogEditarStock(productoActual.stock, productoActual.nombre)">
                     edit
                 </span></mat-cell>
         </ng-container>
