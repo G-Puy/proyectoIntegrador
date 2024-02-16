@@ -27,7 +27,12 @@
     </div>
 
 </div>
-<mat-table [dataSource]="dataSource" matSort class="custom-mat-table-container">
+<div *ngIf="dataSourceOriginal.length <= 0"
+    style="margin: 3rem 0.5rem 0.5rem 0.5rem; text-align: center; font-size: 22px;">Nada para mostrar.</div>
+<div *ngIf="dataSource.data.length <= 0"
+    style="margin: 3rem 0.5rem 0.5rem 0.5rem; text-align: center; font-size: 22px;"> No se encontraron coincidencias
+</div>
+<mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" matSort class="custom-mat-table-container">
     <!-- Name Column -->
     <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>

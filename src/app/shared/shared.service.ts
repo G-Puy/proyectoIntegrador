@@ -84,29 +84,29 @@ export class SharedService {
       )
   }
 
-  altaTipoPrenda(dtoTp: DTOGenAbms): Observable<boolean> {
-    return this.http.post<DTOGenAbms>(`${this.apiUrl}api/TipoPrendas/alta`, dtoTp)
-      .pipe(
+  altaTipoPrenda(dtoTp: DTOGenAbms): Observable<any> {
+    return this.http.post<DTOGenAbms>(`${this.apiUrl}api/TipoPrendas/alta`, dtoTp);
+    /*   .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))
-      )
+      ) */
   }
 
-  editarTipoPrenda(dtoTp: DTOGenAbms): Observable<boolean> {
-    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/TipoPrendas/modificar`, dtoTp)
-      .pipe(
-        tap(resp => of(resp)),
-        catchError(err => of(err))
-      )
+  editarTipoPrenda(dtoTp: DTOGenAbms): Observable<any> {
+    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/TipoPrendas/modificar`, dtoTp);
+    /*  .pipe(
+       tap(resp => of(resp)),
+       catchError(err => of(err))
+     ) */
   }
 
 
-  eliminarTipoPrenda(idEliminar: number): Observable<boolean> {
+  eliminarTipoPrenda(idEliminar: number): Observable<any> {
     return this.http.delete<boolean>(`${this.apiUrl}api/TipoPrendas/eliminar?idTipoPrenda=${idEliminar}`)
-      .pipe(
+    /*   .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))
-      )
+      ) */
   }
 
 
@@ -122,28 +122,28 @@ export class SharedService {
       )
   }
 
-  altaColor(dtoTp: DTOGenAbms): Observable<boolean> {
-    return this.http.post<DTOGenAbms>(`${this.apiUrl}api/Color/alta`, dtoTp)
-      .pipe(
+  altaColor(dtoTp: DTOGenAbms): Observable<any> {
+    return this.http.post<DTOGenAbms>(`${this.apiUrl}api/Color/alta`, dtoTp);
+    /*   .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))
-      )
+      ) */
   }
 
-  editarColor(dtoTp: DTOGenAbms): Observable<boolean> {
+  editarColor(dtoTp: DTOGenAbms): Observable<any> {
     return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Color/modificar`, dtoTp)
-      .pipe(
-        tap(resp => of(resp)),
-        catchError(err => of(err))
-      )
+    /* .pipe(
+      tap(resp => of(resp)),
+      catchError(err => of(err))
+    ) */
   }
 
-  eliminarColor(idEliminar: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiUrl}api/Color/eliminar?idColor=${idEliminar}`)
-      .pipe(
-        tap(resp => of(resp)),
-        catchError(err => of(err))
-      )
+  eliminarColor(idEliminar: number): Observable<any> {
+    return this.http.delete<boolean>(`${this.apiUrl}api/Color/eliminar?idColor=${idEliminar}`);
+    /*    .pipe(
+         tap(resp => of(resp)),
+         catchError(err => of(err))
+       ) */
   }
 
   //#endregion COLORES
@@ -158,28 +158,28 @@ export class SharedService {
       )
   }
 
-  altaTalle(dtoTp: DTOGenAbms): Observable<boolean> {
+  altaTalle(dtoTp: DTOGenAbms): Observable<any> {
     return this.http.post<DTOGenAbms>(`${this.apiUrl}api/Talle/alta`, dtoTp)
-      .pipe(
+    /*   .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))
-      )
+      ) */
   }
 
-  editarTalle(dtoTp: DTOGenAbms): Observable<boolean> {
-    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Talle/modificar`, dtoTp)
-      .pipe(
+  editarTalle(dtoTp: DTOGenAbms): Observable<any> {
+    return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Talle/modificar`, dtoTp);
+    /*   .pipe(
         tap(resp => of(resp)),
         catchError(err => of(err))
-      )
+      ) */
   }
 
-  eliminarTalle(idEliminar: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiUrl}api/Talle/eliminar?idTalle=${idEliminar}`)
-      .pipe(
-        tap(resp => of(resp)),
-        catchError(err => of(err))
-      )
+  eliminarTalle(idEliminar: number): Observable<any> {
+    return this.http.delete<boolean>(`${this.apiUrl}api/Talle/eliminar?idTalle=${idEliminar}`);
+    /*  .pipe(
+       tap(resp => of(resp)),
+       catchError(err => of(err))
+     ) */
   }
 
   //#endregion TALLES
@@ -208,12 +208,12 @@ export class SharedService {
 
   }
 
-  modificarProducto(dataEnvio: FormData): Observable<boolean> {
+  modificarProducto(dataEnvio: FormData): Observable<any> {
     return this.http.put<DTOGenAbms>(`${this.apiUrl}api/Producto/modificar`, dataEnvio)
-      .pipe(
-        tap(resp => of(resp)),
-        catchError(err => of(err))
-      )
+    /*  .pipe(
+       tap(resp => of(resp)),
+       catchError(err => of(err))
+     ) */
   }
   //#endregion PRODUCTO
 

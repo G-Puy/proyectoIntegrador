@@ -35,14 +35,14 @@ export class PagosComponent implements OnInit, AfterViewInit {
 
   constructor(private sharedService: SharedService) {
     this.personaForm = new FormGroup({
-      nombre: new FormControl('n', Validators.required),
-      apellido: new FormControl('a', Validators.required),
+      nombre: new FormControl('', Validators.required),
+      apellido: new FormControl('', Validators.required),
       departamento: new FormControl(''),
       ciudad: new FormControl(''),
       barrio: new FormControl(''),
       direccion: new FormControl(''),
-      mail: new FormControl('m', Validators.required),
-      telefono: new FormControl('t', Validators.required),
+      mail: new FormControl('', [Validators.required, Validators.pattern('^0{1}9{1}[0-9]{7}$')]),
+      telefono: new FormControl('', [Validators.required, Validators.email]),
     });
     this.dataSource = new MatTableDataSource(this.productosDelCarrito);
 

@@ -184,6 +184,8 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
               }
             },
             error: (error) => {
+              this.funcionesGlobalesService.abrirSnack(error.error, 2000, false);
+
             }
           });
         break;
@@ -200,6 +202,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
               }
             },
             error: (error) => {
+              this.funcionesGlobalesService.abrirSnack(error.error, 2000, false);
             }
           });
 
@@ -217,6 +220,7 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
               }
             },
             error: (error) => {
+              this.funcionesGlobalesService.abrirSnack(error.error, 2000, false);
             }
           });
 

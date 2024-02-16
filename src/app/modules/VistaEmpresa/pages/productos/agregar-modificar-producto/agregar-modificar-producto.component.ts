@@ -297,14 +297,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         next: (resultadoAlta) => {
           // Si la llamada es exitosa, cerrar el diálogo con el resultado
           if (resultadoAlta) {
-            this.dialogRef.close({ result: resultadoAlta, error: "" });
+            this.dialogRef.close({ result: true, error: "" });
           } else {
             this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
           }
         },
         error: (error) => {
           // En caso de error, cerrar el diálogo con el error
-          //this.dialogRef.close({ result: false, error: "Error en el alta." });
+          this.dialogRef.close({ result: false, error: error.error });
         }
       });
 
@@ -313,14 +313,14 @@ export class AgregarModificarProductoComponent implements AfterViewInit {
         next: (reusltadoModificar) => {
           // Si la llamada es exitosa, cerrar el diálogo con el resultado
           if (reusltadoModificar) {
-            this.dialogRef.close({ result: reusltadoModificar, error: "" });
+            this.dialogRef.close({ result: true, error: "" });
           } else {
             this.dialogRef.close({ result: reusltadoModificar, error: "No se pudo modificar el producto." });
           }
         },
         error: (error) => {
           // En caso de error, cerrar el diálogo con el error
-          //this.dialogRef.close({ result: false, error: "Error en el alta." });
+          this.dialogRef.close({ result: false, error: error.error });
         }
       });
 

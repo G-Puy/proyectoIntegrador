@@ -75,6 +75,10 @@ export class ProductosComponent {
       } else if (result.result == true) {
         this.funcionesGlobalesService.abrirSnack("Operación exitosa.", 2000, true);
         this.traerTodasLosProductos();
+        setTimeout(() => {
+
+          this.filtrar();
+        }, 1200);
       }
     });
   }
@@ -163,12 +167,16 @@ export class ProductosComponent {
           if (resultadoEliminar) {
             this.funcionesGlobalesService.abrirSnack("El eliminado fue exitoso.", 2000, true);
             this.traerTodasLosProductos();
+            setTimeout(() => {
+              this.filtrar();
+            }, 1000);
           }
           else {
             this.funcionesGlobalesService.abrirSnack("No se pudo eliminar", 2000, true);
           }
         },
         error: (error) => {
+          this.funcionesGlobalesService.abrirSnack(error.error, 2000, true);
         }
       });
   }

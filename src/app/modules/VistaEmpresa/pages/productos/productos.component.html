@@ -68,7 +68,7 @@
 
     </mat-accordion>
     <div *ngIf="todosLosProductosFiltrados.length == 0" class="text-center" style="margin-top: 2rem;">
-        <span>No se han filtrado productos.</span>
+        <span>Nada para mostrar</span>
     </div>
     <div *ngFor="let producto of todosLosProductosFiltrados"
         style="padding-left: 1rem; padding-right: 1rem; padding-top: 1rem;">
@@ -89,23 +89,31 @@
                 </div>
                 <div style="padding-left: 5px;">
 
-                    <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
-                        <span class="letraRosaDiosa180" style="margin-bottom: 4px;">Nombre: </span>
-                        <div style="color: white; font-size: 18px;">{{producto.nombre}}</div>
+                    <div style="display: flex; flex-direction: column; ">
+                        <span class="letraRosaDiosa180" style="margin-bottom: 4px; font-size: 15px">Nombre: </span>
+                        <div style="color: white; font-size: 14px;">{{producto.nombre}}</div>
                     </div>
                     <div>
-                        <span class="letraRosaDiosa180">Precio: </span>
-                        <span style="color: white; font-size: 18px;">${{producto.precioActual}}</span>
+                        <span class="letraRosaDiosa180" style="font-size: 14px">Precio: </span>
+                        <span style="color: white; font-size: 14px;">${{producto.precioActual}}</span>
                     </div>
 
                     <div style="display: flex; justify-content: start; align-items: center;">
-                        <span *ngIf="producto.nuevo" class="material-symbols-outlined"
-                            style="font-size: 2rem; color: white;">
-                            fiber_new
-                        </span>
-                        <div *ngIf="producto.precioAnterior > 0" style="color: white;  font-size: 18px;">
-                            Precio oferta ${{producto.precioAnterior}}
+                        <div *ngIf="producto.nuevo" style="display: flex; justify-content: start; align-items: center;">
+                            <span class="letraRosaDiosa180" style="font-size: 15px;">Nuevo: </span>
+                            <div style="color: white; font-size: 14px;"> SI</div>
                         </div>
+                        <div *ngIf="producto.precioAnterior > 0">
+                            <span class="letraRosaDiosa180" style="font-size: 14px">Precio oferta: </span>
+                            <span style="color: white; font-size: 14px;">${{producto.precioAnterior}}</span>
+                        </div>
+
+                    </div>
+                    <div style="display: flex; margin-bottom: 1rem;">
+                        <span class="letraRosaDiosa180" style="font-size: 15px;">Visible web:
+                        </span>
+                        <div *ngIf="producto.visibleEnWeb" style="color: white; font-size: 14px;"> SI</div>
+                        <div *ngIf="!producto.visibleEnWeb" style="color: white; font-size: 14px;"> NO</div>
                     </div>
                 </div>
 

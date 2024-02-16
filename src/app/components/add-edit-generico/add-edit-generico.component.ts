@@ -65,8 +65,8 @@ export class AddEditGenericoComponent {
                 }
               },
               error: (error) => {
-                // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error en el alta." });
+                this.dialogRef.close({ result: false, error: error.error });
+
               }
             });
           break;
@@ -83,7 +83,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error en el alta." });
+                this.dialogRef.close({ result: false, error: error.error });
               }
             });
           break;
@@ -94,13 +94,13 @@ export class AddEditGenericoComponent {
                 // Si la llamada es exitosa, cerrar el diálogo con el resultado
                 if (resultadoAlta) {
                   this.dialogRef.close({ result: resultadoAlta, error: "" });
-                } else {
-                  this.dialogRef.close({ result: resultadoAlta, error: "No se pudo realizar el alta" });
                 }
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error en el alta." });
+                console.log(error);
+
+                this.dialogRef.close({ result: false, error: error.error });
               }
             });
           break;
@@ -128,7 +128,8 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar" });
+                this.dialogRef.close({ result: false, error: error.error });
+
               }
             });
           break;
@@ -141,7 +142,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar" });
+                this.dialogRef.close({ result: false, error: error.error });
               }
             });
           break;
@@ -154,7 +155,7 @@ export class AddEditGenericoComponent {
               },
               error: (error) => {
                 // En caso de error, cerrar el diálogo con el error
-                this.dialogRef.close({ result: false, error: "Error al editar" });
+                this.dialogRef.close({ result: false, error: error.error });
               }
             });
           break;

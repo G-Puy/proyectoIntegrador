@@ -8,4 +8,5 @@ export interface DTOAlertaPedido {
     telefono: string;
     direccion: string;
     realizado: boolean;
+    fecha: Date;
 }
