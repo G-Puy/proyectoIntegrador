@@ -6,7 +6,9 @@
     <div>
         <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
             <div style="position: relative; display: flex; align-items: center;">
-                <input *ngIf="opcionBusqueda != 'Tipo'" type="text" class="BasicInput" [(ngModel)]="parametroFiltrado"
+                <input *ngIf="opcionBusqueda == 'Nombre'" type="text" class="BasicInput" [(ngModel)]="parametroFiltrado"
+                    placeholder="Buscar" style="padding-right: 2.2rem;">
+                <input *ngIf="opcionBusqueda == 'Id'" type="number" class="BasicInput" [(ngModel)]="parametroFiltrado"
                     placeholder="Buscar" style="padding-right: 2.2rem;">
                 <mat-select *ngIf="opcionBusqueda == 'Tipo'" class="marginBot BasicSelect " required
                     placeholder="Seleccione un tipo" [(ngModel)]="tipoPrenda">
@@ -31,7 +33,7 @@
         <div class="text-center">
             <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
             <mat-radio-group class="radio-buttons-column"
-                style="font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                style="font-size: 1rem; display: flex;  justify-content: center; align-items: center; gap: 1rem;">
                 <!--                 <label class="radio-button-label">
                     <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
                 </label> -->
@@ -40,6 +42,9 @@
                 </label>
                 <label class="radio-button-label">
                     <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Tipo"> Tipo producto
+                </label>
+                <label class="radio-button-label">
+                    <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
                 </label>
 
             </mat-radio-group>
@@ -63,6 +68,10 @@
         <ng-container matColumnDef="producto">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Prod</mat-header-cell>
             <mat-cell *matCellDef="let productoActual">{{productoActual.nombre}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let productoActual">{{productoActual.id}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="cantidad">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Cant</mat-header-cell>

@@ -132,6 +132,7 @@ export class DialogUnProductoComponent implements OnInit {
       }
       if (this.objetoProducto?.precioAnterior! > 0) {
         this.objProductoParaElCarrito.oferta = true;
+        this.objProductoParaElCarrito.precio = this.objetoProducto?.precioAnterior!;;
       }
       if (!this.sharedServ.existeProductoEnCarrito(this.objProductoParaElCarrito)) {
 

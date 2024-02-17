@@ -41,8 +41,8 @@ export class PagosComponent implements OnInit, AfterViewInit {
       ciudad: new FormControl(''),
       barrio: new FormControl(''),
       direccion: new FormControl(''),
-      mail: new FormControl('', [Validators.required, Validators.pattern('^0{1}9{1}[0-9]{7}$')]),
-      telefono: new FormControl('', [Validators.required, Validators.email]),
+      mail: new FormControl('', [Validators.required, Validators.email]),
+      telefono: new FormControl('', [Validators.required, Validators.pattern('^0{1}9{1}[0-9]{7}$')]),
     });
     this.dataSource = new MatTableDataSource(this.productosDelCarrito);
 

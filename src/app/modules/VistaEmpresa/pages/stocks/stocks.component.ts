@@ -18,7 +18,7 @@ export class StocksComponent implements OnInit {
   tipoPrenda: string = '';
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort;
   dataSource: MatTableDataSource<recibirProductoDTOBack>;
-  displayedColumns: string[] = ['foto', 'producto', 'cantidad', 'tipo', 'editar'];
+  displayedColumns: string[] = ['foto', 'id', 'producto', 'cantidad', 'tipo', 'editar'];
   dataSourceOriginal: recibirProductoDTOBack[] = [];
   parametroFiltrado: string = "";
   opcionBusqueda: string = "Nombre";
@@ -78,8 +78,10 @@ export class StocksComponent implements OnInit {
       switch (this.opcionBusqueda) {
         case 'Id':
           const resultadoFiltradoId = this.dataSourceOriginal.filter(elemento =>
-            elemento.id.toString().includes(this.parametroFiltrado.toString())
+            elemento.id.toString() == this.parametroFiltrado.toString()
+            // elemento.id.toString().includes(this.parametroFiltrado.toString())
           );
+          console.log(resultadoFiltradoId);
           this.dataSource = new MatTableDataSource(resultadoFiltradoId);
           this.dataSource.sort = this.sort;
           break;
@@ -107,6 +109,8 @@ export class StocksComponent implements OnInit {
   }
 
   vaciarFiltros() {
+    this.parametroFiltrado = "Nombre";
+    this.tipoPrenda = "";
     this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
     this.dataSource.sort = this.sort;
   }

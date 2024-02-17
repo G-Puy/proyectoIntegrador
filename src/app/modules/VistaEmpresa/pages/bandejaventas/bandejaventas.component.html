@@ -103,6 +103,11 @@
             </div>
             <div class="contenidoCard">
                 <div>
+                    <span>Fecha: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">
+                        {{ alertaActual.fecha | date:'dd/MM/yyyy HH:mm:ss' }} </p>
+                </div>
+                <div>
                     <span>Monto: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;"> {{alertaActual.montoTotal}} </p>
                 </div>
