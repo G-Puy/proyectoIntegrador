@@ -9,4 +9,6 @@ export interface DTOAlertaPedido {
     direccion: string;
     realizado: boolean;
     fecha: Date;
+    notas: string;
+
 }

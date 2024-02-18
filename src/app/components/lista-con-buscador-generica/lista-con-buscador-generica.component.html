@@ -12,27 +12,64 @@
 </div>
 <div *ngIf="seccionOrigen == 'tipoprenda'" style="display: flex; justify-content: center; align-items: center;     margin-top: 2rem;
 ">
-    <div style="position: relative; display: flex; align-items: center;">
-        <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Buscar por tipo"
-            style="padding-right: 2.2rem;">
-        <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
-            style="top: 10px;">
-            <span class="material-icons BasicBtnCruz">close</span>
-        </button>
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+        <div *ngIf="opcionBusqueda == 'Nombre'">
+            <input type="text" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Ingrese nombre"
+                style="padding-right: 2.2rem;">
+            <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
+                style="top: 10px;">
+                <span class="material-icons BasicBtnCruz">close</span>
+            </button>
+        </div>
+
+        <div *ngIf="opcionBusqueda == 'Id'">
+            <input type="number" class="BasicInput" [(ngModel)]="parametroFiltrado" placeholder="Ingrese id"
+                style="padding-right: 2.2rem;">
+            <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
+                style="top: 10px;">
+                <span class="material-icons BasicBtnCruz">close</span>
+            </button>
+        </div>
+
     </div>
     <div style="background-color: var(--rosadoQueDiosaAl80); " (click)="filtrar()" class=" botonCircularSimple">
         <span class="material-symbols-outlined">
             search
         </span>
     </div>
-
 </div>
+
+
+
+<div class="text-center" style="margin-top: 1rem;">
+    <p style="font-size: 1.2rem;">Seleccione la modalidad de busqueda</p>
+    <mat-radio-group class="radio-buttons-column"
+        style="font-size: 1rem; display: flex;  justify-content: center; align-items: center; gap: 1rem;">
+        <!--                 <label class="radio-button-label">
+            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
+        </label> -->
+        <label class="radio-button-label">
+            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Nombre"> Nombre
+        </label>
+        <label class="radio-button-label">
+            <input type="radio" [(ngModel)]="opcionBusqueda" name="opcionBusqueda" value="Id"> Id
+        </label>
+
+    </mat-radio-group>
+</div>
+
+
 <div *ngIf="dataSourceOriginal.length <= 0"
     style="margin: 3rem 0.5rem 0.5rem 0.5rem; text-align: center; font-size: 22px;">Nada para mostrar.</div>
 <div *ngIf="dataSource.data.length <= 0"
     style="margin: 3rem 0.5rem 0.5rem 0.5rem; text-align: center; font-size: 22px;"> No se encontraron coincidencias
 </div>
 <mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" matSort class="custom-mat-table-container">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+
     <!-- Name Column -->
     <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>

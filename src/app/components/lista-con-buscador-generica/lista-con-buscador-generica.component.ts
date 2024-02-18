@@ -21,13 +21,13 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   @Input() seccionOrigen!: string;
   @Input() textoSeccion!: string;
   textoBtn: string = "Agregar nuevo";
-
+  opcionBusqueda: string = "Nombre";
 
 
   parametroFiltrado: string = "";
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort;
 
-  displayedColumns: string[] = ['nombre', 'eliminar', 'editar'];
+  displayedColumns: string[] = ['id', 'nombre', 'eliminar', 'editar'];
   dataSource: MatTableDataSource<DTOGenAbms>;
   dataSourceOriginal: DTOGenAbms[] = [];
   constructor(public dialog: MatDialog,
@@ -45,11 +45,22 @@ export class ListaConBuscadorGenericaComponent implements OnInit {
   }
   filtrar() {
     if (this.parametroFiltrado != "") {
-      const resultadoFiltrado = this.dataSourceOriginal.filter(elemento =>
-        elemento.nombre.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
-      );
-      this.dataSource = new MatTableDataSource(resultadoFiltrado);
-      this.dataSource.sort = this.sort;
+      if (this.opcionBusqueda == "Nombre") {
+        const resultadoFiltrado = this.dataSourceOriginal.filter(elemento =>
+          elemento.nombre.toLowerCase().includes(this.parametroFiltrado.toLowerCase())
+        );
+        this.dataSource = new MatTableDataSource(resultadoFiltrado);
+        this.dataSource.sort = this.sort;
+      } else if (this.opcionBusqueda == "Id") {
+
+        const resultadoFiltrado = this.dataSourceOriginal.filter(elemento =>
+          elemento.id.toString() == this.parametroFiltrado
+        );
+        this.dataSource = new MatTableDataSource(resultadoFiltrado);
+        this.dataSource.sort = this.sort;
+
+      }
+
     } else {
       this.dataSource = new MatTableDataSource(this.dataSourceOriginal);
       this.dataSource.sort = this.sort;

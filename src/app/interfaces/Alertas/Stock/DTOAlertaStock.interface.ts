@@ -6,4 +6,5 @@ export interface DTOAlertaStock {
     cantidad: number;
     leido: boolean;
     idProducto: number;
+    fecha: Date;
 }

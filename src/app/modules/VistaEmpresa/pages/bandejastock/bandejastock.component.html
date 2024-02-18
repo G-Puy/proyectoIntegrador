@@ -26,6 +26,11 @@
             </div>
             <div class="contenidoCard">
                 <div>
+                    <span>Fecha: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">
+                        {{ item.fecha | date:'dd/MM/yyyy' }} </p>
+                </div>
+                <div>
                     <span>Id producto: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{item.idProducto}}</p>
                 </div>

@@ -105,7 +105,7 @@
                 <div>
                     <span>Fecha: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">
-                        {{ alertaActual.fecha | date:'dd/MM/yyyy HH:mm:ss' }} </p>
+                        {{ alertaActual.fecha | date:'dd/MM/yyyy' }} </p>
                 </div>
                 <div>
                     <span>Monto: </span>
@@ -128,7 +128,7 @@
                     <span>Telefono: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.telefono}}</p>
                 </div>
-                <div>
+                <div *ngIf="alertaActual.direccion != ''">
                     <span>Direccion: </span>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.direccion}}</p>
                 </div>
@@ -138,6 +138,10 @@
                         Realizado</p>
                     <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;" *ngIf="!alertaActual.realizado">No
                         realizado</p>
+                </div>
+                <div *ngIf="alertaActual.notas != ''">
+                    <span>Notas: </span>
+                    <p style="font-size: 18px; margin: 0; padding-left: 0.5rem;">{{alertaActual.notas}}</p>
                 </div>
             </div>
             <div style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
