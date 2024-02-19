@@ -43,6 +43,8 @@ export class PagosComponent implements OnInit, AfterViewInit {
       direccion: new FormControl(''),
       mail: new FormControl('', [Validators.required, Validators.email]),
       telefono: new FormControl('', [Validators.required, Validators.pattern('^0{1}9{1}[0-9]{7}$')]),
+      notas: new FormControl(''),
+
     });
     this.dataSource = new MatTableDataSource(this.productosDelCarrito);
 
@@ -118,7 +120,8 @@ export class PagosComponent implements OnInit, AfterViewInit {
         direccion: '',
         mail: '',
         telefono: '',
-        enviar: false // inicializa con un valor por defecto
+        enviar: false, // inicializa con un valor por defecto
+        notas: ''
       },
       datosProductos: [] // inicializa como un arreglo vacío
     };
@@ -132,6 +135,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
     this.orderDataEnvio!.datosPersona.direccion = this.personaForm.get('direccion')!.value;
     this.orderDataEnvio!.datosPersona.mail = this.personaForm.get('mail')!.value;
     this.orderDataEnvio!.datosPersona.telefono = this.personaForm.get('telefono')!.value;
+    this.orderDataEnvio!.datosPersona.notas = this.personaForm.get('notas')!.value;
     this.orderDataEnvio!.datosPersona.enviar = enviar;
     //*Cargar la lista de productos para back
     this.productosDelCarrito.forEach(producto => {

@@ -12,6 +12,7 @@ export interface objOrderDataPersona {
     mail: string,
     telefono: string,
     enviar: boolean
+    notas: string;
 }
 export interface objOrderDataProducto {
     id: number,

@@ -41,6 +41,13 @@
                             placeholder="Telefono ej: 091991991">
                     </div>
 
+                    <!-- Campo Notas -->
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <label for="notas">Notas adicionales:</label>
+                        <textarea name="" class="BasicTextArea" id="" maxlength="550" cols="30" rows="10"
+                            formControlName="notas"></textarea>
+                    </div>
+
                     <!-- Campos adicionales para 'Para enviar' -->
                     <div *ngIf="tipoEnvio === 'paraEnviar'" class="col-12 col-md-12 col-lg-6">
                         <label for="departamento"><span style="color: red;">*</span> Departamento:</label>

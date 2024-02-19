@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PerfilPersonaComponent } from '../perfil-persona/perfil-persona.component';
 import { SharedService } from 'src/app/shared/shared.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HomeEmpresaComponent {
   tipoUsuario: string = '0';
   cantAlertaPedidos: number = 0;
   cantAlertaStock: number = 0;
-  constructor(private sharedServ: SharedService) {
+  constructor(private sharedServ: SharedService, private router: Router) {
     this.traerCantidadAlrtStock();
     this.traerCantidadAlrtPedidos();
     this.tipoUsuario = localStorage.getItem('tipoUsuario')!;
@@ -37,6 +38,9 @@ export class HomeEmpresaComponent {
       error: (error) => {
       }
     })
+  }
+  navegarAStore() {
+    this.router.navigate(['store']);
   }
 
 }
