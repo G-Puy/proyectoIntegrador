@@ -13,6 +13,7 @@ export class AuthService {
   apiUrl = 'https://quediosa.azurewebssites.net/';
 
 
+
   private usuarioLogin: DTOUsuarioLogin | null = null;
   private usuarioLogeado: DTOUsuario | null = null;
   error: string = '';
