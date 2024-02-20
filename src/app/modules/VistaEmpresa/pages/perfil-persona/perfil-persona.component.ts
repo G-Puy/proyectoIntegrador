@@ -33,7 +33,7 @@ export class PerfilPersonaComponent {
   openDialogEditarPass() {
     const dialogRef = this.dialog.open(CambioContrasniaComponent, {
       width: '300px',
-      height: '350px',
+      height: '450px',
       data: { personaData: this.persona },
       disableClose: true
     });

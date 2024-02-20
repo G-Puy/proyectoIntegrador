@@ -35,9 +35,16 @@
                 formControlName="telefono" style="padding-right: 2.2rem;">
         </div>
         <div *ngIf="data.soyAgregar == false" style="padding-top: 1rem;">
-            <input type="text" class="marginBot BasicInput" placeholder="Contraseña" formControlName="pass"
+            <input type="text" class="marginBot BasicInput" placeholder="Ej: Quediosa2024." formControlName="pass"
                 style="padding-right: 2.2rem;">
         </div>
+        <div *ngIf="data.soyAgregar == false" style="padding-top: 1rem;">
+            <p style="font-size: 12px; margin: 0;">
+                La contraseña requiere: mínimo 2 letras (1 mayúscula y 1 minúscula), 1 número, 1 símbolo y minimo 8
+                caracteres de largo.
+            </p>
+        </div>
+
     </div>
     <div *ngIf="validandoForm()" class="text-center" style="font-size: 0.8rem;">
         <span style="color:  var(--colorAlerta)">Todos los campos son obligatorios</span>

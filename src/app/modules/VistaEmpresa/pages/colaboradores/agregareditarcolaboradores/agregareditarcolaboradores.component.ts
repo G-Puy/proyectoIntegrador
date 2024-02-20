@@ -120,11 +120,7 @@ export class AgregareditarcolaboradoresComponent implements OnInit {
           this.dialogRef.close({ result: true, error: "" });
         },
         error: (error) => {
-          /*  console.log("Resultado error");
-           console.log(error);
-           let er = 'No se pudo modificar el colaborador';
-           if (error == "Contrasenia invalida") er = 'Contraseña invalida' */
-          this.dialogRef.close({ result: error, error: error.mensaje });
+          this.dialogRef.close({ result: false, error: error.error.mensaje });
         }
       });
 

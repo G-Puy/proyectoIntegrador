@@ -8,6 +8,7 @@ import { DTOGenAbms } from 'src/app/interfaces/objGenericoParaABMS.interface';
 import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { EditarstockComponent } from './editarstock/editarstock.component';
+import { VerdetallestockComponent } from './verdetallestock/verdetallestock.component';
 
 @Component({
   selector: 'app-stocks',
@@ -81,7 +82,6 @@ export class StocksComponent implements OnInit {
             elemento.id.toString() == this.parametroFiltrado.toString()
             // elemento.id.toString().includes(this.parametroFiltrado.toString())
           );
-          console.log(resultadoFiltradoId);
           this.dataSource = new MatTableDataSource(resultadoFiltradoId);
           this.dataSource.sort = this.sort;
           break;
@@ -133,5 +133,18 @@ export class StocksComponent implements OnInit {
     });
 
   }
+
+
+
+  public openDialogDetalleStock(stock: DTOStockEnvio, nombreProducto: string): void {
+    const dialogRef = this.dialog.open(VerdetallestockComponent, {
+      width: this.funcionesGlobalesService.tamMaxDialogMobile(),
+      data: { stockCompleto: stock, nombre: nombreProducto },
+      disableClose: true  // Esto evita que el diálogo se cierre al hacer clic fuera de él
+    });
+  }
+
+
+
 
 }

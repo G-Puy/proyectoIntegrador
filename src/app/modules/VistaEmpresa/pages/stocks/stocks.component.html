@@ -15,8 +15,8 @@
                     <mat-option style="font-size: 0.8rem;" *ngFor="let tipo of cargaTiposDePrenda"
                         [value]=tipo.nombre>{{tipo.nombre}}</mat-option>
                 </mat-select>
-                <button *ngIf="parametroFiltrado" class="clear-button" aria-label="Clear" (click)="parametroFiltrado=''"
-                    style="top: 10px;">
+                <button *ngIf="parametroFiltrado && opcionBusqueda != 'Tipo'" class="clear-button" aria-label="Clear"
+                    (click)="parametroFiltrado=''" style="top: 10px;">
                     <span class="material-icons BasicBtnCruz">close</span>
                 </button>
             </div>
@@ -67,7 +67,8 @@
         </ng-container> -->
         <ng-container matColumnDef="producto">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Prod</mat-header-cell>
-            <mat-cell *matCellDef="let productoActual">{{productoActual.nombre}}</mat-cell>
+            <mat-cell *matCellDef="let productoActual"
+                (click)="openDialogDetalleStock(productoActual.stock, productoActual.nombre)">{{productoActual.nombre}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
@@ -97,4 +98,5 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <div *ngIf="dataSource.data.length <= 0" class="text-center" style="margin-top: 2rem;">Nada para mostrar</div>
 </div>

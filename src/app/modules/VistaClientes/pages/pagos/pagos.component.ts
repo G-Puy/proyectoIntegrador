@@ -6,6 +6,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { objCarritoYProcesoDeCompra } from 'src/app/interfaces/DTOsCarritoYProcesoDeCompra/DTOCarritoYProcesoDeCompra.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { FuncionesGlobalesService } from 'src/app/shared/funciones-globales.service';
 
 declare var MercadoPago: any;
 
@@ -33,7 +34,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
     locale: 'es-UY'
   });//*Credenciales de prueba VendedorQuediosa
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private funcionesGlobalesService: FuncionesGlobalesService) {
     this.personaForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
@@ -164,6 +165,7 @@ export class PagosComponent implements OnInit, AfterViewInit {
           }
         },
         error: (error) => {
+          this.funcionesGlobalesService.abrirSnack("No se pudo realizar el pago, póngase  en contacto con la empresa.", 2000, false);
 
         }
       });

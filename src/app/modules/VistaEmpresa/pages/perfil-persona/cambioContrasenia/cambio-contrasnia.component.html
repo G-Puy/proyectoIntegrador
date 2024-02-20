@@ -35,6 +35,13 @@
                         <span class="material-icons noBorder" style="font-size: 28px;">visibility</span>
                     </button>
                 </div>
+                <div style="padding-top: 1rem;">
+                    <p style="font-size: 12px; margin: 0;">
+                        La contraseña requiere: mínimo 2 letras (1 mayúscula y 1 minúscula), 1 número, 1 símbolo y
+                        minimo 8
+                        caracteres de largo.
+                    </p>
+                </div>
             </div>
             <span *ngIf="errorValidacionPassass != '' " style="color: var(--colorAlerta);">
                 {{errorValidacionPassass}}</span>

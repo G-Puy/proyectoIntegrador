@@ -19,8 +19,9 @@
                 <!--  <p style="font-size: 1.2rem;">Modalidad de busquedas</p> -->
                 <div class="row">
                     <div class="col-md-6">
+                        <label for="codigoVenta">Codigo pedido:</label>
                         <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
-                            <input type="number" class="BasicInput" placeholder="Codigo venta"
+                            <input type="number" class="BasicInput" placeholder="Codigo pedido"
                                 style="padding-right: 2.2rem;" [(ngModel)]="codigoVenta">
                             <button class="clear-button" aria-label="Clear" style="top: 10px;"
                                 (click)="vaciarCampo('idVenta')">
@@ -29,6 +30,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <label for="codigoVenta">Nombre cliente:</label>
                         <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
                             <input type="text" class="BasicInput" placeholder="Nombre cliente"
                                 style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.nombre">
@@ -39,6 +41,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <label for="codigoVenta">Apellido cliente:</label>
                         <div style="position: relative; display: flex; align-items: center;  margin-bottom: 1rem;">
                             <input type="text" class="BasicInput" placeholder="Apellido cliente"
                                 style="padding-right: 2.2rem;" [(ngModel)]="filtroAlertas.apellido">
@@ -49,20 +52,22 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-
+                        <label for="codigoVenta">Estado pedido:</label>
                         <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
                             placeholder="Estado del pedido" [(ngModel)]="filtroAlertas.realizado">
+
                             <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
                             <mat-option style="font-size: 0.8rem;" value="realizado">Realizado</mat-option>
                             <mat-option style="font-size: 0.8rem;" value="noRealizado">No realizado</mat-option>
                         </mat-select>
                     </div>
                     <div class="col-md-6">
+                        <label for="codigoVenta">Metodo de entrega:</label>
                         <mat-select class="marginBot BasicSelect " required style="margin-bottom: 1rem;"
                             placeholder="Modalidad de entrega" [(ngModel)]="filtroAlertas.envioRetiro">
                             <mat-option style="font-size: 0.8rem;" value="">Ambas opciones</mat-option>
-                            <mat-option style="font-size: 0.8rem;" value="enviar">Enviar</mat-option>
-                            <mat-option style="font-size: 0.8rem;" value="retira">Retira en local</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="envio">Enviar</mat-option>
+                            <mat-option style="font-size: 0.8rem;" value="retiro">Retira en local</mat-option>
                         </mat-select>
                     </div>
                 </div>

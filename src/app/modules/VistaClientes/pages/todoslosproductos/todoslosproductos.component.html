@@ -83,4 +83,7 @@
             <app-card-producto [objetoProducto]="producto" style="margin-top: 1.5rem;"></app-card-producto>
         </div>
     </div>
+    <div *ngIf="productosFiltrados.length <= 0" class="text-center" style="margin-top: 2rem; color: white;">Nada para
+        mostrar
+    </div>
 </div>

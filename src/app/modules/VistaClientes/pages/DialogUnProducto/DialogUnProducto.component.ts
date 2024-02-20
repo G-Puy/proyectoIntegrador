@@ -80,7 +80,9 @@ export class DialogUnProductoComponent implements OnInit {
             nombre: colorActual.nombreColor,
             bajaLogica: false
           };
-          this.cargaColores.push(nuevoColor);
+          if (colorActual.cantidad > 0) {
+            this.cargaColores.push(nuevoColor);
+          }
         }
       }
     }
